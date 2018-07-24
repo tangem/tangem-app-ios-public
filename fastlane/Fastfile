@@ -1,0 +1,26 @@
+lane :test_flight do
+  build_number = latest_testflight_build_number(
+      app_identifier: "com.tangem.Tangem",
+      username: "bergencroc@gmail.com"
+  )
+  build_number = (build_number.to_i + 1).to_s
+  increment_build_number(
+    build_number: build_number,
+    xcodeproj: "Tangem.xcodeproj",
+  )
+  git_commit(
+   path: "*", 
+   message: "Version bump [" + build_number + "]"
+  )
+  add_git_tag(
+   grouping: "fastlane-builds",
+   prefix: "v",
+   build_number: build_number
+  )
+  push_to_git_remote
+  build_app(scheme: "Tangem")
+  upload_to_app_store(
+    username: "bergencroc@gmail.com",
+    force: true
+  )
+end
