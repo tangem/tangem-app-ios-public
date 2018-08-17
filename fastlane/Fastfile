@@ -8,6 +8,11 @@ lane :test_flight do
     build_number: build_number,
     xcodeproj: "Tangem.xcodeproj",
   )
+  build_app(scheme: "Tangem")
+  upload_to_app_store(
+    username: "bergencroc@gmail.com",
+    force: true
+  )
   git_commit(
    path: "*", 
    message: "Version bump [" + build_number + "]"
@@ -18,9 +23,4 @@ lane :test_flight do
    build_number: build_number
   )
   push_to_git_remote
-  build_app(scheme: "Tangem")
-  upload_to_app_store(
-    username: "bergencroc@gmail.com",
-    force: true
-  )
 end
