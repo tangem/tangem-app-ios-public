@@ -15,7 +15,9 @@ lane :test_flight do
    message: "Build bump [" + build_number + "]"
   )
   add_git_tag(
+   grouping: "fastlane-builds",
+   prefix: "v",
    build_number: build_number
   )
-  #push_to_git_remote
+  push_to_git_remote
 end
