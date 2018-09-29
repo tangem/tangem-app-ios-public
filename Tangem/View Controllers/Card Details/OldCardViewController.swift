@@ -3,7 +3,7 @@
 //  Tangem
 //
 //  Created by Yulia Moskaleva on 02/02/2018.
-//  Copyright © 2018 Yulia Moskaleva. All rights reserved.
+//  Copyright © 2018 Smart Cash AG. All rights reserved.
 //
 
 import UIKit

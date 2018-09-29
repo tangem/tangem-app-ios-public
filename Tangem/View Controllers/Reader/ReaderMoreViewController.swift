@@ -3,7 +3,7 @@
 //  Tangem
 //
 //  Created by Gennady Berezovsky on 02.09.18.
-//  Copyright © 2018 dns user. All rights reserved.
+//  Copyright © 2018 Smart Cash AG. All rights reserved.
 //
 
 import Foundation
