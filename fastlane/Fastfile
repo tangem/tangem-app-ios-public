@@ -1,10 +1,15 @@
 lane :test_flight do
-  increment_build_number
-  build_app(scheme: "Tangem")
-  upload_to_app_store(
-    username: "bergencroc@gmail.com",
-    force: true
-  )
+  build_number = get_build_number(xcodeproj: "Tangem.xcodeproj")
+  # build_number = (build_number.to_i + 1).to_s
+  # increment_build_number(
+  #   build_number: build_number,
+  #   xcodeproj: "Tangem.xcodeproj",
+  # )
+  # build_app(scheme: "Tangem")
+  # upload_to_app_store(
+  #   username: "bergencroc@gmail.com",
+  #   force: true
+  # )
   git_commit(
    path: "*", 
    message: "Build bump [" + build_number + "]"
