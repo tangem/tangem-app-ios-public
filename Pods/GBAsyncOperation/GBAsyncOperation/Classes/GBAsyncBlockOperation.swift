@@ -1,5 +1,5 @@
 //
-//  AsyncOperation.swift
+//  GBBlockOperation.swift
 //  Tangem
 //
 //  Created by Gennady Berezovsky on 03.10.18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class GBAsyncBlockOperation: GBAsyncOperation {
+open class GBBlockOperation: GBAsyncOperation {
 
     let block: () -> Void
 
@@ -17,7 +17,9 @@ open class GBAsyncBlockOperation: GBAsyncOperation {
     }
 
     open override func main() {
-        block()
-        finish()
+        DispatchQueue.global().async {
+            self.block()
+            self.finish()
+        }
     }
 }
