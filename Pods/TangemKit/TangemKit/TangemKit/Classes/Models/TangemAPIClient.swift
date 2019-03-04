@@ -1,8 +1,9 @@
 //
 //  TangemAPIClient.swift
-//  BigInt
+//  TangemKit
 //
 //  Created by Gennady Berezovsky on 02.01.19.
+//  Copyright © 2019 Smart Cash AG. All rights reserved.
 //
 
 import Foundation
