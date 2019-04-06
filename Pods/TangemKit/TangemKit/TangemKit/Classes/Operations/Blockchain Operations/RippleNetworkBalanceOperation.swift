@@ -1,29 +1,32 @@
 //
-//  RootstockNetworkBalanceOperation.swift
-//  BigInt
+//  RippleNetworkBalanceOperation.swift
+//  Tangem
 //
-//  Created by Gennady Berezovsky on 06.02.19.
+//  Created by Gennady Berezovsky on 06.04.19.
+//  Copyright © 2019 Smart Cash AG. All rights reserved.
 //
 
 import SwiftyJSON
 import GBAsyncOperation
 
-class RootstockNetworkBalanceOperation: GBAsyncOperation {
-    
+class RippleNetworkBalanceOperation: GBAsyncOperation {
+
     private struct Constants {
-        static let mainNetURL = "https://public-node.rsk.co/"
+        static let mainNetURL = "https://s1.ripple.com:51234"
     }
-    
+
     var address: String
     var completion: (TangemObjectResult<String>) -> Void
-    
+
     init(address: String, completion: @escaping (TangemObjectResult<String>) -> Void) {
         self.address = address
         self.completion = completion
     }
-    
+
     override func main() {
-        let jsonDict = ["jsonrpc": "2.0", "method": "eth_getBalance", "params": [address, "latest"], "id": 03] as [String: Any] 
+        let params = ["account": address, "strict": true, "ledger_index": "validated"] as [String: Any]
+        let jsonDict = ["method": "account_info", 
+                        "params": [params]] as [String: Any] 
         
         let url = URL(string: Constants.mainNetURL)
         var urlRequest = URLRequest(url: url!)
@@ -44,20 +47,15 @@ class RootstockNetworkBalanceOperation: GBAsyncOperation {
             case .success(let data):
                 let balanceInfo = try? JSON(data: data)
                 
-                guard balanceInfo?["result"] != JSON.null, let checkStr = balanceInfo?["result"].stringValue else {
-                    self.failOperationWith(error: "RSK – Missing check string")
+                guard balanceInfo?["result"] != JSON.null, 
+                    let balanceString = balanceInfo?["result"]["account_data"]["Balance"].stringValue,
+                    let balance = UInt64(balanceString) else {
+                    self.failOperationWith(error: "XRP – Missing balance object")
                     return
                 }
                 
-                let checkWithoutTwoFirstLetters = String(checkStr[checkStr.index(checkStr.startIndex, offsetBy: 2)...])
-                
-                let checkArray = checkWithoutTwoFirstLetters.asciiHexToData()
-                guard let checkArrayUInt8 = checkArray, let checkInt64 = arrayToUInt64(checkArrayUInt8) else {
-                    return
-                }
-                
-                let decimalCount: Int16 = 18
-                let walletValue = NSDecimalNumber(value: checkInt64).dividing(by: NSDecimalNumber(value: 1).multiplying(byPowerOf10: decimalCount))
+                let decimalCount: Int16 = 6
+                let walletValue = NSDecimalNumber(value: balance).dividing(by: NSDecimalNumber(value: 1).multiplying(byPowerOf10: decimalCount))
                 
                 self.completeOperationWith(balance: walletValue.stringValue)
             case .failure(let error):
@@ -67,23 +65,22 @@ class RootstockNetworkBalanceOperation: GBAsyncOperation {
         
         task.resume()
     }
-    
+
     func completeOperationWith(balance: String) {
         guard !isCancelled else {
             return
         }
-        
+
         completion(.success(balance))
         finish()
     }
-    
+
     func failOperationWith(error: Error) {
         guard !isCancelled else {
             return
         }
-        
+
         completion(.failure(error))
         finish()
     }
-    
 }
