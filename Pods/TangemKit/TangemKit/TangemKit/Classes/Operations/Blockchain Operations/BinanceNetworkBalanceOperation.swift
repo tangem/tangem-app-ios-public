@@ -1,31 +1,35 @@
 //
-//  CardanoNetworkBalanceOperation.swift
-//  Tangem
+//  BinanceNetworkBalanceOperation.swift
+//  TangemKit
 //
-//  Created by Gennady Berezovsky on 03.10.18.
-//  Copyright © 2018 Smart Cash AG. All rights reserved.
+//  Created by Gennady Berezovsky on 13.06.19.
+//  Copyright © 2019 Smart Cash AG. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 import GBAsyncOperation
 
-class CardanoNetworkBalanceOperation: GBAsyncOperation {
-
+class BinanceNetworkBalanceOperation: GBAsyncOperation {
+    
     private struct Constants {
-        static let mainNetURL = "https://explorer2.adalite.io/api/addresses/summary/"
+        static let mainNetURL = "https://dex.binance.org/api/v1/account/"
+        static let testNetURL = "https://testnet-dex.binance.org/api/v1/account/"
     }
-
+    
     var address: String
+    var isTestNet: Bool
     var completion: (TangemObjectResult<String>) -> Void
-
-    init(address: String, completion: @escaping (TangemObjectResult<String>) -> Void) {
+    
+    init(address: String, isTestNet: Bool = false, completion: @escaping (TangemObjectResult<String>) -> Void) {
         self.address = address
+        self.isTestNet = isTestNet
         self.completion = completion
     }
-
+    
     override func main() {
-        let url = URL(string: Constants.mainNetURL + address)
+        let urlString = isTestNet ? Constants.testNetURL : Constants.mainNetURL 
+        let url = URL(string: urlString + address)
         let urlRequest = URLRequest(url: url!)
         
         let task = TangemAPIClient.dataDask(request: urlRequest) { [weak self] (result) in
@@ -37,10 +41,16 @@ class CardanoNetworkBalanceOperation: GBAsyncOperation {
             case .success(let data):
                 do {
                     let balanceInfo = try JSON(data: data)
-                    let balance = balanceInfo["Right"]["caBalance"]["getCoin"].doubleValue
+                    let balances = balanceInfo["balances"].array 
+                    let bnbBalance = balances?.first(where: { $0["symbol"].stringValue == "BNB" })
+                    guard let balanceString = bnbBalance?["free"].stringValue else {
+                        self.failOperationWith(error: "No balance data")
+                        assertionFailure()
+                        return
+                    }
                     
-                    let walletValue = NSDecimalNumber(value: balance).dividing(by: NSDecimalNumber(value: 1).multiplying(byPowerOf10: Blockchain.cardano.decimalCount))
-                        
+                    let walletValue = NSDecimalNumber(string: balanceString)
+                    
                     self.completeOperationWith(balance: walletValue.stringValue)
                 } catch {
                     self.failOperationWith(error: error)
@@ -53,22 +63,23 @@ class CardanoNetworkBalanceOperation: GBAsyncOperation {
         
         task.resume()
     }
-
+    
     func completeOperationWith(balance: String) {
         guard !isCancelled else {
             return
         }
-
+        
         completion(.success(balance))
         finish()
     }
-
+    
     func failOperationWith(error: Error) {
         guard !isCancelled else {
             return
         }
-
+        
         completion(.failure(error))
         finish()
     }
+    
 }
