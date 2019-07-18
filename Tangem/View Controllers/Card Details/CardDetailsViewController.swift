@@ -379,7 +379,7 @@ extension CardDetailsViewController {
     @IBAction func extractButtonPressed(_ sender: Any) {
         
         let fw = Float(card?.firmware ?? "") ?? 0
-        
+        //TODO: check firmware
         if #available(iOS 13.0, *) {
             let viewController = storyboard!.instantiateViewController(withIdentifier: "ExtractViewController")
             
