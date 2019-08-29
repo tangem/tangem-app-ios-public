@@ -27,9 +27,7 @@ end
 
 lane :build do |options|
 
-#  enable_automatic_code_signing(
-#   code_sign_identity: "iPhone Developer"
-#  )
+  enable_automatic_code_signing()
 
   increment_version_number(
   	version_number: options[:versionName]
