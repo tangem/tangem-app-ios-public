@@ -39,7 +39,7 @@ lane :build do |options|
 
   build_app(
     output_name: APPNAME + "-adhoc",
-    scheme: "Tangem",
+    scheme: "Tangem beta",
     export_method: "ad-hoc",
     clean: true,
     silent: true,
