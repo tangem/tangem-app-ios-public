@@ -1,5 +1,7 @@
 # Constants
 APPNAME = "TangemLite"
+ADHOC_PROVISION = "Ad Hoc Provisioning Profile"
+APPSTORE_PROVISION = "App Store Provisioning Profile"
 
 lane :test_flight do
   build_number = get_build_number(xcodeproj: "Tangem.xcodeproj")
@@ -25,9 +27,33 @@ lane :test_flight do
   push_to_git_remote
 end
 
-lane :build do |options|
+lane :buildAppStore do |options|
+  increment_version_number(
+  	version_number: options[:versionName]
+  )
 
-  enable_automatic_code_signing()
+  increment_build_number(
+    build_number: options[:versionCode]
+  )
+
+
+  build_app(
+    output_name: APPNAME + "-release",
+    scheme: "Tangem",
+    export_method: "app-store",
+    clean: true,
+    silent: true,
+    configuration: "Release",
+    export_options: {
+      provisioningProfiles: { 
+        BUNDLE_NAME => APPSTORE_PROVISION
+      }
+    }
+  )
+
+end
+
+lane :buildAdHoc do |options|
 
   increment_version_number(
   	version_number: options[:versionName]
@@ -43,16 +69,12 @@ lane :build do |options|
     export_method: "ad-hoc",
     clean: true,
     silent: true,
-    configuration: "Release"
-  )
-
-  build_app(
-    output_name: APPNAME + "-release",
-    scheme: "Tangem",
-    export_method: "app-store",
-    clean: true,
-    silent: true,
-    configuration: "Release"
+    configuration: "Release",
+    export_options: {
+      provisioningProfiles: { 
+        BUNDLE_NAME => ADHOC_PROVISION
+      }
+    }
   )
 
 end
