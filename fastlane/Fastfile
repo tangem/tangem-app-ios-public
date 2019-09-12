@@ -2,6 +2,7 @@
 APPNAME = "TangemLite"
 ADHOC_PROVISION = "Ad Hoc Provisioning Profile"
 APPSTORE_PROVISION = "App Store Provisioning Profile"
+BUNDLE_NAME = "com.tangem.Tangem"
 
 lane :test_flight do
   build_number = get_build_number(xcodeproj: "Tangem.xcodeproj")
