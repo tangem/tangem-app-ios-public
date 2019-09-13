@@ -1,8 +1,5 @@
 # Constants
 APPNAME = "TangemLite"
-ADHOC_PROVISION = "Ad Hoc Provisioning Profile"
-APPSTORE_PROVISION = "App Store Provisioning Profile"
-BUNDLE_NAME = "com.tangem.Tangem"
 
 lane :test_flight do
   build_number = get_build_number(xcodeproj: "Tangem.xcodeproj")
@@ -44,12 +41,7 @@ lane :buildAppStore do |options|
     export_method: "app-store",
     clean: true,
     silent: true,
-    configuration: "Release",
-    export_options: {
-      provisioningProfiles: { 
-        BUNDLE_NAME => APPSTORE_PROVISION
-      }
-    }
+    configuration: "Release"
   )
 
 end
@@ -70,12 +62,7 @@ lane :buildAdHoc do |options|
     export_method: "ad-hoc",
     clean: true,
     silent: true,
-    configuration: "Release",
-    export_options: {
-      provisioningProfiles: { 
-        BUNDLE_NAME => ADHOC_PROVISION
-      }
-    }
+    configuration: "Release"
   )
 
 end
