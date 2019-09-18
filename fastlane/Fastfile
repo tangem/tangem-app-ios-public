@@ -25,9 +25,28 @@ lane :test_flight do
   push_to_git_remote
 end
 
-lane :build do |options|
+lane :buildAppStore do |options|
+  increment_version_number(
+  	version_number: options[:versionName]
+  )
 
-  enable_automatic_code_signing()
+  increment_build_number(
+    build_number: options[:versionCode]
+  )
+
+
+  build_app(
+    output_name: APPNAME + "-release",
+    scheme: "Tangem",
+    export_method: "app-store",
+    clean: true,
+    silent: true,
+    configuration: "Release"
+  )
+
+end
+
+lane :buildAdHoc do |options|
 
   increment_version_number(
   	version_number: options[:versionName]
@@ -41,15 +60,6 @@ lane :build do |options|
     output_name: APPNAME + "-adhoc",
     scheme: "Tangem beta",
     export_method: "ad-hoc",
-    clean: true,
-    silent: true,
-    configuration: "Release"
-  )
-
-  build_app(
-    output_name: APPNAME + "-release",
-    scheme: "Tangem",
-    export_method: "app-store",
     clean: true,
     silent: true,
     configuration: "Release"
