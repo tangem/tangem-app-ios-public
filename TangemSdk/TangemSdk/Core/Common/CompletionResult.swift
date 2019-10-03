@@ -1,5 +1,5 @@
 //
-//  TangemResult.swift
+//  CompletionResult.swift
 //  TangemSdk
 //
 //  Created by Alexander Osokin on 26/09/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum TangemResult<T> {
+public enum CompletionResult<T> {
     case success(T)
     case failure(Error)
 }
