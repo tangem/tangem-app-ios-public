@@ -9,8 +9,20 @@
 import Foundation
 
 struct CheckWalletResponse: TlvMapable {
+    let cardId: String
+    let salt: Data
+    let walletSignature: Data
+    
     init?(from tlv: [Tlv]) {
-        //TODO: init
+        guard let cardIdData = tlv.value(for: .cardId),
+            let saltData = tlv.value(for: .salt),
+            let walletSignature = tlv.value(for: .walletSignature) else {
+                return nil
+        }
+        
+        self.cardId = cardIdData.toHex()
+        self.salt = saltData
+        self.walletSignature = walletSignature
     }
 }
 
@@ -18,14 +30,22 @@ struct CheckWalletResponse: TlvMapable {
 class CheckWalletCommand: CommandSerializer {
     typealias CommandResponse = CheckWalletResponse
     
-    init() {
-             //TODO: all params
+    let pin1: String
+    let cardId: String
+    let challenge: Data
+    
+    init(pin1: String, cardId: String, challenge: Data) {
+        self.pin1 = pin1
+        self.cardId = cardId
+        self.challenge = challenge
     }
     
     func serialize(with environment: CardEnvironment) -> CommandApdu {
-       let tlv = [Tlv]()
-        //TODO: handle tlv
-        let cApdu = CommandApdu(.checkWallet, tlv: tlv)
+        let tlvData = [Tlv(.pin, value: environment.pin1.sha256()),
+                       Tlv(.cardId, value: Data(hex: cardId)),
+                       Tlv(.challenge, value: challenge)]
+        
+        let cApdu = CommandApdu(.checkWallet, tlv: tlvData)
         return cApdu
     }
 }
