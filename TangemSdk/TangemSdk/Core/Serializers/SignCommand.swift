@@ -9,6 +9,8 @@
 import Foundation
 
 struct SignResponse: TlvMapable {
+    
+    
     init?(from tlv: [Tlv]) {
         //TODO: SignResponse
     }
