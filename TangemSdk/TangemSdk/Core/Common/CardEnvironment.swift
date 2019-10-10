@@ -44,6 +44,9 @@ public class DefaultDataStorage: DataStorage {
     public func set(_ value: Any, forKey: String) {
         //TODO: implement
     }
+    
+    public init() {
+    }
 }
 
 class CardEnvironmentRepository {
