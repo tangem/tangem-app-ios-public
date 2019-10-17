@@ -39,5 +39,6 @@ final class DefaultCardManagerDelegate: CardManagerDelegate {
     }
     
     func requestPin(completion: @escaping () -> CompletionResult<String, Error>) {
+        //TODO:implement
     }
 }
