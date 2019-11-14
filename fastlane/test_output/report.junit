@@ -1,7 +1,42 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='TangemTests.xctest' tests='2' failures='0'>
-  <testsuite name='TangemTests.TangemTests' tests='2' failures='0'>
-    <testcase classname='TangemTests.TangemTests' name='testExample' time='0.001'/>
-    <testcase classname='TangemTests.TangemTests' name='testPerformanceExample' time='0.349'/>
+<testsuites name='TangemSdkTests.xctest' tests='25' failures='0'>
+  <testsuite name='TangemSdkTests.ApduTests' tests='2' failures='0'>
+    <testcase classname='TangemSdkTests.ApduTests' name='testInitialization' time='0.003'/>
+    <testcase classname='TangemSdkTests.ApduTests' name='testResponse' time='0.003'/>
+  </testsuite>
+  <testsuite name='TangemSdkTests.ByteUtilsTests' tests='2' failures='0'>
+    <testcase classname='TangemSdkTests.ByteUtilsTests' name='testHexConversion' time='0.001'/>
+    <testcase classname='TangemSdkTests.ByteUtilsTests' name='testInputStream' time='0.001'/>
+  </testsuite>
+  <testsuite name='TangemSdkTests.CryptoUtilsTests' tests='3' failures='0'>
+    <testcase classname='TangemSdkTests.CryptoUtilsTests' name='testEd25519Verify' time='0.002'/>
+    <testcase classname='TangemSdkTests.CryptoUtilsTests' name='testGeneratePrivateKey' time='0.001'/>
+    <testcase classname='TangemSdkTests.CryptoUtilsTests' name='testSecp256k1Sign' time='0.024'/>
+  </testsuite>
+  <testsuite name='TangemSdkTests.DataExtensionTests' tests='10' failures='0'>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testBytesConversion' time='0.001'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testFromHexConversion' time='0.000'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testSha256' time='0.000'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testSha256CryptoKitPerfomance' time='0.254'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testSha256OldPerfomance' time='0.258'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testSha512' time='0.001'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testToDateString' time='0.001'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testToHexConversion' time='0.001'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testToIntConversion' time='0.000'/>
+    <testcase classname='TangemSdkTests.DataExtensionTests' name='testToUtf8Conversion' time='0.001'/>
+  </testsuite>
+  <testsuite name='TangemSdkTests.IntUtilsTests' tests='2' failures='0'>
+    <testcase classname='TangemSdkTests.IntUtilsTests' name='testFromHexConversion' time='0.001'/>
+    <testcase classname='TangemSdkTests.IntUtilsTests' name='testToByteConversion' time='0.001'/>
+  </testsuite>
+  <testsuite name='TangemSdkTests.StringUtilsTest' tests='3' failures='0'>
+    <testcase classname='TangemSdkTests.StringUtilsTest' name='testRemove' time='0.001'/>
+    <testcase classname='TangemSdkTests.StringUtilsTest' name='testSha256' time='0.001'/>
+    <testcase classname='TangemSdkTests.StringUtilsTest' name='testSha512' time='0.001'/>
+  </testsuite>
+  <testsuite name='TangemSdkTests.TlvTests' tests='3' failures='0'>
+    <testcase classname='TangemSdkTests.TlvTests' name='testMapping' time='0.004'/>
+    <testcase classname='TangemSdkTests.TlvTests' name='testTlvDeserialization' time='0.001'/>
+    <testcase classname='TangemSdkTests.TlvTests' name='testTlvSerialization' time='0.001'/>
   </testsuite>
 </testsuites>
