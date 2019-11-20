@@ -20,9 +20,14 @@ or alternatively using `brew cask install fastlane`
 fastlane test_flight
 ```
 
-### build
+### buildAppStore
 ```
-fastlane build
+fastlane buildAppStore
+```
+
+### buildAdHoc
+```
+fastlane buildAdHoc
 ```
 
 ### test

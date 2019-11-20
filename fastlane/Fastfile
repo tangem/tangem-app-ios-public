@@ -68,5 +68,9 @@ lane :buildAdHoc do |options|
 end
 
 lane :test do
-run_tests(scheme: "Tangem")
+run_tests(
+  project: "TangemSdk/TangemSdk/TangemSdk.xcodeproj",
+  clean: true
+)
 end
+
