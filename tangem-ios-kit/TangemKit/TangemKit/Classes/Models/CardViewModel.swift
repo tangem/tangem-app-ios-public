@@ -424,7 +424,6 @@ public class CardViewModel {
         self.status = status
         self.walletPublicKey = walletPublicKey?.hex ?? ""
         self.walletPublicKeyBytesArray = walletPublicKey?.bytes ?? []
-        self.genuinityState = .genuine
         setupEngine()
     }
 //    //TODO: Check all
