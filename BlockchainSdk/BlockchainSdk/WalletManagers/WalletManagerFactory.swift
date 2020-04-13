@@ -1,5 +1,5 @@
 //
-//  BlockchainFactory.swift
+//  WalletManagerFactory.swift
 //  BlockchainSdk
 //
 //  Created by Alexander Osokin on 06.12.2019.
