@@ -1,5 +1,5 @@
 //
-//  Any+.swift
+//  ThenProcessable.swift
 //  BlockchainSdk
 //
 //  Created by Alexander Osokin on 11.02.2020.
@@ -8,8 +8,11 @@
 
 import Foundation
 
-extension WalletManager {
-    public func then(_ block: (Self) -> Void) -> Self {
+
+protocol ThenProcessable {}
+
+extension ThenProcessable where Self: Any {
+    func then(_ block: (Self) -> Void) -> Self {
         block(self)
         return self
     }
