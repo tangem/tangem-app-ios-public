@@ -1,5 +1,5 @@
 //
-//  EthereumNetworkManager.swift
+//  EthereumNetworkService.swift
 //  BlockchainSdk
 //
 //  Created by Alexander Osokin on 18.12.2019.
@@ -14,7 +14,7 @@ import SwiftyJSON
 import web3swift
 import BigInt
 
-class EthereumNetworkManager {
+class EthereumNetworkService {
     let network: EthereumNetwork
     let provider = MoyaProvider<InfuraTarget>()
     

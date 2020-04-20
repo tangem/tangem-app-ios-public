@@ -1,5 +1,5 @@
 //
-//  BitcoinNetwork.swift
+//  BitcoinNetworkService.swift
 //  BlockchainSdk
 //
 //  Created by Alexander Osokin on 10.12.2019.
@@ -13,7 +13,7 @@ import TangemSdk
 import RxSwift
 import Alamofire
 
-class BitcoinNetworkManager: BitcoinNetworkProvider {
+class BitcoinNetworkService: BitcoinNetworkProvider {
     let isTestNet: Bool
     var networkApi: BitcoinNetworkApi = .main
     let providers: [BitcoinNetworkApi: BitcoinNetworkProvider]

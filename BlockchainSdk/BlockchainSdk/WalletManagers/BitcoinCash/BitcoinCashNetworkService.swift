@@ -1,5 +1,5 @@
 //
-//  BitcoinCashWalletManager.swift
+//  BitcoinCashNetworkService.swift
 //  BlockchainSdk
 //
 //  Created by Alexander Osokin on 14.02.2020.
@@ -12,7 +12,7 @@ import Combine
 import TangemSdk
 import RxSwift
 
-class BitcoinCashNetworkManager {
+class BitcoinCashNetworkService {
     let provider: BlockchairProvider
 
     init(address: String) {

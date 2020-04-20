@@ -1,5 +1,5 @@
 //
-//  XRPNetworkManager.swift
+//  XRPNetworkService.swift
 //  BlockchainSdk
 //
 //  Created by Alexander Osokin on 10.04.2020.
@@ -11,7 +11,7 @@ import Moya
 import RxSwift
 import Combine
 
-class XRPNetworkManager {
+class XRPNetworkService {
     let provider = MoyaProvider<XrpTarget>()
     
     @available(iOS 13.0, *)
