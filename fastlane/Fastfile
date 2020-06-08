@@ -69,7 +69,7 @@ end
 
 lane :test do
 run_tests(
-  project: "TangemSdk/TangemSdk/TangemSdk.xcodeproj",
+  workspace: "Tangem.xcworkspace",
   clean: true
 )
 end
