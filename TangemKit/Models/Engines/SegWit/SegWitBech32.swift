@@ -65,8 +65,8 @@ public class SegWitBech32 {
     /// Encode segwit address
     public static func encode(hrp: String, version: UInt8, program: Data) throws -> String {
         var enc = Data([version])
-        enc.append(try convertBits(from: 8, to: 5, pad: true, idata: program))
-        let result = bech32.encode(hrp, values: enc)
+        enc.append(try convertBits(from: 8, to: 5, pad: true, idata: program)) //TODO: CHECK IT!!
+        let result = bech32.encode(hrp, values: enc) //TODO: Converbits inside!
         guard let _ = try? decode(hrp: hrp, addr: result) else {
             throw CoderError.encodingCheckFailed
         }
