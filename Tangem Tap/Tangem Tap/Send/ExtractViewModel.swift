@@ -154,6 +154,7 @@ class ExtractViewModel: ObservableObject {
             .debounce(for: 0.3, scheduler: RunLoop.main, options: nil)
             .dropFirst()
             .sink { [unowned self] _ in
+                //TODO: //switch include fee and open block with animation
                 self.amountToSend = self.cardViewModel.wallet!.amounts[self.amountToSend.type]!
                 self.amountText = self.walletTotalBalanceDecimals
         }
