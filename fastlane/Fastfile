@@ -2,13 +2,13 @@
 APPNAME = "TangemLite"
 
 lane :test_flight do
-  build_number = get_build_number(xcodeproj: "Tangem.xcodeproj")
+  build_number = get_build_number(xcodeproj: "Tangem Tap.xcodeproj")
   build_number = (build_number.to_i + 1).to_s
   increment_build_number(
     build_number: build_number,
-    xcodeproj: "Tangem.xcodeproj",
+    xcodeproj: "Tangem Tap.xcodeproj",
   )
-  build_app(scheme: "Tangem")
+  build_app(scheme: "Tangem Tap")
   upload_to_app_store(
     username: "bergencroc@gmail.com",
     force: true
@@ -37,7 +37,7 @@ lane :buildAppStore do |options|
 
   build_app(
     output_name: APPNAME + "-release",
-    scheme: "Tangem",
+    scheme: "Tangem Tap",
     export_method: "app-store",
     clean: true,
     silent: true,
@@ -69,7 +69,7 @@ end
 
 lane :test do
 run_tests(
-  workspace: "Tangem.xcworkspace",
+  workspace: "Tangem Tap.xcworkspace",
   clean: true
 )
 end
