@@ -1,32 +1,19 @@
 //
-//  TangemSdkService.swift
+//  CardsRepository.swift
 //  Tangem Tap
 //
-//  Created by Alexander Osokin on 25.08.2020.
+//  Created by Alexander Osokin on 03.11.2020.
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
 import Foundation
 import TangemSdk
-import BlockchainSdk
 
-
-class TangemSdkService: ObservableObject {
+class CardsRepository {
+    var tangemSdk: TangemSdk!
     var ratesService: CoinMarketCapService!
     
     var cards = [String: CardViewModel]()
-    
-    lazy var tangemSdk: TangemSdk = {
-        let sdk = TangemSdk()
-        return sdk
-    }()
-    
-    var signer: TransactionSigner {
-        let signer = DefaultSigner(tangemSdk: self.tangemSdk,
-                                   initialMessage: Message(header: nil,
-                                                           body: "initial_message_sign_header".localized))
-        return signer
-    }
     
     func scan(_ completion: @escaping (Result<CardViewModel, Error>) -> Void) {
         Analytics.log(event: .readyToScan)
