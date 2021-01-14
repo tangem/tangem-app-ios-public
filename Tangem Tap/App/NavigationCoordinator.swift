@@ -119,9 +119,5 @@ class NavigationCoordinator: ObservableObject {
 	
 	// MARK: DetailsView
     //All this stuff needed for fix permanent highlighting issues on ios 14
-    @Published var detailsToTwinsRecreateWarning: Bool = false //for back directly to details screen
-//    @Published var detailsToCurrencySelection: Bool = false
-//    @Published var detailsToDisclaimer: Bool = false
-//    @Published var detailsToSecurityManagement: Bool = false
-//    @Published var detailsToCardOperation: Bool = false
+    @Published var detailsToTwinsRecreateWarning: Bool = false //for back 
 }
