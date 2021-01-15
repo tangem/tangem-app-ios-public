@@ -14,7 +14,6 @@ struct CurrencySelectView: View {
     @ObservedObject var viewModel: CurrencySelectViewModel
     @Environment(\.presentationMode) var presentationMode
 
-   // @State private var selected: String = ""
     var body: some View {
         VStack {
             if viewModel.loading {
