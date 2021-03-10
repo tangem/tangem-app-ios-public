@@ -1,5 +1,5 @@
 //
-//  SupportedWalletItems.swift
+//  SupportedTokenItems.swift
 //  Tangem Tap
 //
 //  Created by Alexander Osokin on 28.02.2021.
@@ -9,7 +9,7 @@
 import Foundation
 import BlockchainSdk
 
-class SupportedWalletItems {
+class SupportedTokenItems {
     lazy var blockchains: Set<Blockchain> = {[.ethereum(testnet: false),
                                               .litecoin,
                                               .bitcoin(testnet: false),
