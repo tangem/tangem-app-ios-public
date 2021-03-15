@@ -74,3 +74,9 @@ run_tests(
 )
 end
 
+lane :refresh_dsyms do |options|
+  download_dsyms(options[:version], options[:build_number]) 
+  upload_symbols_to_crashlytics 
+  clean_build_artifacts
+end
+
