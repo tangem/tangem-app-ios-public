@@ -36,6 +36,7 @@ lane :buildAppStore do |options|
 
 
   build_app(
+    xcargs: "-allowProvisioningUpdates",
     output_name: APPNAME + "-release",
     scheme: "Tangem Tap",
     export_method: "app-store",
@@ -57,6 +58,7 @@ lane :buildAdHoc do |options|
   )
 
   build_app(
+    xcargs: "-allowProvisioningUpdates",
     output_name: APPNAME + "-adhoc",
     scheme: "Tangem beta",
     export_method: "ad-hoc",
