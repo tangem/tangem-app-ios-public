@@ -1,25 +1,13 @@
 //
-//  Models.swift
+//  Analytics.swift
 //  TangemClip
 //
-//  Created by Andrew Son on 09/03/21.
+//  Created by Andrew Son on 24/03/21.
 //  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import Foundation
 import TangemSdkClips
-
-class CardViewModel: ObservableObject {
-    var cardInfo: CardInfo
-    
-    init(cardInfo: CardInfo) {
-        self.cardInfo = cardInfo
-    }
-    
-    func getCardInfo() {
-        
-    }
-}
 
 class Analytics {
     enum Event: String {
