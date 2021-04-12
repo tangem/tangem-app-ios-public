@@ -609,10 +609,7 @@ class SendViewModel: ViewModel {
                     callback()
                 }
                 
-            }, receiveValue: { _ in
-                //TODO: handle changed state after sign
-              //  self.cardViewModel.onSign(signResponse)
-            })
+            }, receiveValue: { _ in  })
             .store(in: &bag)
     }
     
