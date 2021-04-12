@@ -276,6 +276,7 @@ class Assembly: ObservableObject {
         vm.warningsConfigurator = services.warningsService
         vm.warningsAppendor = services.warningsService
         vm.tokenItemsRepository = services.tokenItemsRepository
+        vm.userPrefsService = services.userPrefsService
         //TODO: Payid can work only with concrete wallet, not with the whole card
 //        if services.featuresService.isPayIdEnabled, let payIdService = PayIDService.make(from: blockchain) {
 //            vm.payIDService = payIdService
