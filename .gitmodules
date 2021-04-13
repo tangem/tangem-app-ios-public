@@ -1,0 +1,3 @@
+[submodule "tangem-app-config"]
+	path = tangem-app-config
+	url = git@github.com:tangem/tangem-app-config.git
