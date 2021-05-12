@@ -1,14 +1,13 @@
 //
 //  TokenIconView.swift
-//  Tangem Tap
+//  TangemClip
 //
-//  Created by Andrew Son on 22/04/21.
+//  Created by Andrew Son on 11/05/21.
 //  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import Foundation
 import SwiftUI
-import Kingfisher
 
 struct TokenIconView: View {
     
@@ -16,12 +15,7 @@ struct TokenIconView: View {
     
     var body: some View {
         if let path = token.imagePath, let url = URL(string: path) {
-            KFImage(url)
-                .resizable()
-                .placeholder {
-                    token.imageView
-                }
-                .fade(duration: 0.3)
+            WebImage(imagePath: url, placeholder: token.imageView.toAnyView())
         } else {
             token.imageView
         }
