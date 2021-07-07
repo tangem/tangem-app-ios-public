@@ -5,9 +5,9 @@
 //  Created by Alexander Osokin on 29.09.2020.
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
-
 import Foundation
 import TangemSdk
+#if !CLIP
 import BlockchainSdk
 import Combine
 
@@ -57,6 +57,7 @@ public class DefaultSigner: TangemSigner {
     }
 }
 
+#endif
 protocol SignerDelegate: AnyObject {
     func onSign(_ card: Card)
 }
