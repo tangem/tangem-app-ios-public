@@ -82,17 +82,17 @@ struct AddressDetailView: View {
     }
 }
 
-struct AddressDetailView_Previews: PreviewProvider {
-    @State static var cardViewModel = CardViewModel.previewCardViewModel
-    @State static var showPayID = false
-    @State static var showQR = false
-    @State static var addressIndex = 0
-    
-    static var previews: some View {
-        ZStack {
-            Color.tangemTapBgGray
-            AddressDetailView(selectedAddressIndex: $addressIndex,
-                              walletModel: cardViewModel.walletModels.first!)
-        }.previewGroup()
-    }
-}
+//struct AddressDetailView_Previews: PreviewProvider {
+//    @State static var cardViewModel = CardViewModel.previewCardViewModel
+//    @State static var showPayID = false
+//    @State static var showQR = false
+//    @State static var addressIndex = 0
+//
+//    static var previews: some View {
+//        ZStack {
+//            Color.tangemTapBgGray
+//            AddressDetailView(selectedAddressIndex: $addressIndex,
+//                              walletModel: cardViewModel.walletModels.first!)
+//        }.previewGroup()
+//    }
+//}
