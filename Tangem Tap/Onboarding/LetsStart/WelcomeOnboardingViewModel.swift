@@ -1,5 +1,5 @@
 //
-//  LetsStartOnboardingViewModel.swift
+//  WelcomeOnboardingViewModel.swift
 //  Tangem Tap
 //
 //  Created by Andrew Son on 30.08.2021.
@@ -9,7 +9,7 @@
 import Combine
 import SwiftUI
 
-class LetsStartOnboardingViewModel: ViewModel {
+class WelcomeOnboardingViewModel: ViewModel {
     
     weak var assembly: Assembly!
     weak var navigation: NavigationCoordinator!
