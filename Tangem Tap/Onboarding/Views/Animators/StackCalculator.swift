@@ -8,9 +8,11 @@
 
 import SwiftUI
 
+// TODO: Add updating number of cards in stack
 struct StackCalculator {
     
     private(set) var prehideAnimSettings: CardAnimSettings = .zero
+    // TODO: Refactor to: hide cards settings and add function that returns settings for specified index if it in array bounds, otherwise return zero settings
     private(set) var cardsSettings: [CardAnimSettings] = []
     
     private let maxZIndex: Double = 100
