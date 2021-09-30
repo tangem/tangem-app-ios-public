@@ -199,6 +199,7 @@ class OnboardingViewModel<Step: OnboardingStep>: ViewModel {
             isMainButtonBusy = false
             includeInResetAnim?()
         }
+        // TODO: Can cause some navigation errors. May be subscription in OnboardingBaseViewModel will cause some navigation issues
         DispatchQueue.main.asyncAfter(deadline: .now() + resetAnimDuration) {
             self.navigation.onboardingReset = true
         }
