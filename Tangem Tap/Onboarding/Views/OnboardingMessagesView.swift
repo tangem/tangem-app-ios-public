@@ -27,7 +27,7 @@ struct OnboardingMessagesView: View {
                 .padding(.bottom, 14)
                 .onTapGesture {
                     // TODO: Remove before create PR. This is debug feature.
-                    onTitleTapCallback?()
+                    //onTitleTapCallback?()
                 }
                 .transition(.opacity)
                 .id("onboarding_title_\(title)")
