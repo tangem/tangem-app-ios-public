@@ -1,29 +1,6 @@
 # Constants
 APPNAME = "TangemLite"
 
-lane :test_flight do
-  build_number = get_build_number(xcodeproj: "Tangem Tap.xcodeproj")
-  build_number = (build_number.to_i + 1).to_s
-  increment_build_number(
-    build_number: build_number,
-    xcodeproj: "Tangem Tap.xcodeproj",
-  )
-  build_app(scheme: "Tangem Tap")
-  upload_to_app_store(
-    username: "bergencroc@gmail.com",
-    force: true
-  )
-  git_commit(
-   path: "*", 
-   message: "Build bump [" + build_number + "]"
-  )
-  add_git_tag(
-   grouping: "fastlane-builds",
-   prefix: "v",
-   build_number: build_number
-  )
-  push_to_git_remote
-end
 
 lane :buildAppStore do |options|
   increment_version_number(
@@ -78,7 +55,7 @@ run_tests(
 end
 
 lane :refresh_dsyms do |options|
-  download_dsyms(options[:version], options[:build_number]) 
+  download_dsyms(version: options[:version], build_number: options[:build_number]) 
   upload_symbols_to_crashlytics 
   clean_build_artifacts
 end
