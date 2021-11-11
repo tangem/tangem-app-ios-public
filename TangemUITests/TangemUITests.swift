@@ -1,5 +1,5 @@
 //
-//  Tangem_TapUITests.swift
+//  TangemUITests.swift
 //  TangemUITests
 //
 //  Created by Alexander Osokin on 15.07.2020.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class Tangem_TapUITests: XCTestCase {
+class TangemUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
