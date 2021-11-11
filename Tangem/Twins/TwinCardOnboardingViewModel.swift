@@ -1,6 +1,6 @@
 ////
 ////  TwinCardOnboardingViewModel.swift
-////  Tangem Tap
+////  Tangem
 ////
 ////  Created by Andrew Son on 17/11/20.
 ////  Copyright © 2020 Tangem AG. All rights reserved.

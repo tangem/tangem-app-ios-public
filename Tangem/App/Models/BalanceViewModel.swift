@@ -1,6 +1,6 @@
 //
 //  BalanceViewModel.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Alexander Osokin on 09.11.2020.
 //  Copyright © 2020 Tangem AG. All rights reserved.

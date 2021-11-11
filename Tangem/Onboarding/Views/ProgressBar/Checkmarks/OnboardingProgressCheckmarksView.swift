@@ -1,6 +1,6 @@
 //
 //  OnboardingProgressCheckmarksView.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Andrew Son on 19.08.2021.
 //  Copyright © 2021 Tangem AG. All rights reserved.

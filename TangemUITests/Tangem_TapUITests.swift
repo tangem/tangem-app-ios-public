@@ -1,6 +1,6 @@
 //
 //  Tangem_TapUITests.swift
-//  Tangem TapUITests
+//  TangemUITests
 //
 //  Created by Alexander Osokin on 15.07.2020.
 //  Copyright © 2020 Tangem AG. All rights reserved.

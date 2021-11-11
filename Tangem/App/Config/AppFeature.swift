@@ -1,6 +1,6 @@
 //
 //  AppFeature.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Andrew Son on 16/12/20.
 //  Copyright © 2020 Tangem AG. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  SignAndReadTask.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Alexander Osokin on 06.07.2021.
 //  Copyright © 2021 Tangem AG. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Card+Preview.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Alexander Osokin on 13.08.2020.
 //  Copyright © 2020 Tangem AG. All rights reserved.

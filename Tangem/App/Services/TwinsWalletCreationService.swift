@@ -1,6 +1,6 @@
 //
 //  TwinsWalletCreationService.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Andrew Son on 18/11/20.
 //  Copyright © 2020 Tangem AG. All rights reserved.

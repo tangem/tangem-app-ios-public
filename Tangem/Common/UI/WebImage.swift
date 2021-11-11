@@ -1,6 +1,6 @@
 //
 //  WebImage.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Andrew Son on 22/04/21.
 //  Copyright © 2021 Tangem AG. All rights reserved.

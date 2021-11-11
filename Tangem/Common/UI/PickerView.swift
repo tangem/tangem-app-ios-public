@@ -1,6 +1,6 @@
 //
 //  PickerView.swift
-//  Tangem Tap
+//  Tangem
 //
 //  Created by Alexander Osokin on 16.12.2020.
 //  Copyright © 2020 Tangem AG. All rights reserved.
