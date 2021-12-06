@@ -15,7 +15,7 @@ lane :buildAppStore do |options|
   build_app(
     xcargs: "-allowProvisioningUpdates",
     output_name: APPNAME + "-release",
-    scheme: "Tangem Tap",
+    scheme: "Tangem",
     export_method: "app-store",
     clean: true,
     silent: true,
@@ -48,8 +48,8 @@ end
 
 lane :test do
 run_tests(
-  workspace: "Tangem Tap.xcworkspace",
-  scheme: "Tangem Tap",
+  workspace: "Tangem.xcworkspace",
+  scheme: "Tangem",
   clean: true
 )
 end

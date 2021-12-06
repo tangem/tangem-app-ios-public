@@ -15,11 +15,6 @@ Install _fastlane_ using
 or alternatively using `brew install fastlane`
 
 # Available Actions
-### test_flight
-```
-fastlane test_flight
-```
-
 ### buildAppStore
 ```
 fastlane buildAppStore
