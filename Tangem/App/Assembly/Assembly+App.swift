@@ -220,10 +220,6 @@ extension Assembly {
         vm.tokenItemsRepository = services.tokenItemsRepository
         vm.userPrefsService = services.userPrefsService
         vm.imageLoaderService = services.imageLoaderService
-        //TODO: Payid can work only with concrete wallet, not with the whole card
-        //        if services.featuresService.isPayIdEnabled, let payIdService = PayIDService.make(from: blockchain) {
-        //            vm.payIDService = payIdService
-        //        }
         vm.updateState()
         return vm
     }
@@ -318,6 +314,11 @@ extension Assembly {
                                               cardViewModel: card,
                                               signer: services.signer,
                                               warningsManager: services.warningsService)
+        
+        if services.featuresService.isPayIdEnabled, let payIdService = PayIDService.make(from: blockchain) {
+            vm.payIDService = payIdService
+        }
+        
         prepareSendViewModel(vm)
         return vm
     }
