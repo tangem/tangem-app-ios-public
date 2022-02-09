@@ -10,6 +10,8 @@ import Foundation
 import Combine
 import MobileBuySDK
 
+#warning("TODO: check self capture")
+
 class ShopViewModel: ViewModel, ObservableObject {
     enum Bundle: String, CaseIterable, Identifiable {
         case twoCards, threeCards

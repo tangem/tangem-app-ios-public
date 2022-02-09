@@ -15,6 +15,8 @@ enum ShopifyError: Error {
     case userError(errors: [DisplayableError])
 }
 
+#warning("TODO: check self capture")
+
 class ShopifyService {
     private let client: Graph.Client
     private let shop: ShopifyShop
