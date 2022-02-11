@@ -17,8 +17,6 @@ struct ShopView: View {
     private let sectionCornerRadius = 18.0
     private let applePayCornerRadius = 18.0
     
-    #warning("TODO: l10n")
-    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
