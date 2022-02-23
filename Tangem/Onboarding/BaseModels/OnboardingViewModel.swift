@@ -221,7 +221,8 @@ class OnboardingViewModel<Step: OnboardingStep>: ViewModel {
         if assembly.isPreview {
             newSteps.append(contentsOf: steps)
         }
-        withAnimation(.easeIn(duration: resetAnimDuration)) {
+        
+       // withAnimation(.easeIn(duration: resetAnimDuration)) { //disable back animation
             mainCardSettings = defaultSettings.main
             supplementCardSettings = defaultSettings.supplement
             isNavBarVisible = false
@@ -229,11 +230,11 @@ class OnboardingViewModel<Step: OnboardingStep>: ViewModel {
             steps = newSteps
             isMainButtonBusy = false
             includeInResetAnim?()
-        }
+        //}
         // TODO: Can cause some navigation errors. May be subscription in OnboardingBaseViewModel will cause some navigation issues
-        DispatchQueue.main.asyncAfter(deadline: .now() + resetAnimDuration) {
+       // DispatchQueue.main.asyncAfter(deadline: .now() /* + resetAnimDuration*/) {
             self.navigation.onboardingReset = true
-        }
+       // }
     }
     
     func mainButtonAction() {
