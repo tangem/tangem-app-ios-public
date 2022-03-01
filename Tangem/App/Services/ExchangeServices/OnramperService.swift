@@ -2,13 +2,11 @@
 //  OnramperService.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 07.11.2020.
+//  Created by Andrey Chukavin on 01.03.2022.
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
 import Foundation
-import CryptoKit
-import Alamofire
 import Combine
 import BlockchainSdk
 
