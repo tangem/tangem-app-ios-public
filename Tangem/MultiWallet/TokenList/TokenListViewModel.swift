@@ -186,10 +186,9 @@ class TokenListViewModel: ViewModel, ObservableObject {
         
         let supportedCurves = cardModel?.cardInfo.card.walletCurves ?? EllipticCurve.allCases
         let fwVersion = cardModel?.cardInfo.card.firmwareVersion.doubleValue
-        let isSupportSolanaTokens = fwVersion.map { $0 < 4.52 } ?? true //TODO: Old wallets. Refactor in SDK.
+        let isSupportSolanaTokens = fwVersion.map { $0 >= 4.52 } ?? true //TODO: Old wallets. Refactor in SDK.
         
         self.data = currencies.compactMap { currency in
-            
             let filteredItems = currency.items.filter { item in
                 if !supportedCurves.contains(item.blockchain.curve) {
                     return false
@@ -205,6 +204,10 @@ class TokenListViewModel: ViewModel, ObservableObject {
             }
             
             let totalItems = filteredItems.count
+            guard totalItems > 0 else {
+                return nil
+            }
+            
             let currencyItems: [CurrencyItemViewModel] = filteredItems.enumerated().map { (index, item) in
                     .init(tokenItem: item,
                           isReadonly: isReadonlyMode,
