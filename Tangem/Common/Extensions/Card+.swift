@@ -28,6 +28,12 @@ extension Card {
         return true
     }
     
+    var canSupportSolanaTokens: Bool {
+        //TODO: Old wallets. Refactor in SDK.
+        let fwVersion = firmwareVersion.doubleValue
+        return fwVersion >= 4.52
+    }
+    
     var isTwinCard: Bool {
         TwinCardSeries.series(for: cardId) != nil
     }
