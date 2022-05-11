@@ -1,49 +1,26 @@
 //
-//  CoinsService.swift
+//  CommonCoinsService.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 31.03.2022.
+//  Created by Alexander Osokin on 06.05.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation
 import Combine
 import Moya
-import BlockchainSdk
-import TangemSdk
 
-class CoinsService {
-    let provider = MoyaProvider<TangemApiTarget>()
-    
-    var card: Card?
-    
-    init() {}
-    
-    deinit {
-        print("CoinsService deinit")
-    }
-    
-    func checkContractAddress(contractAddress: String, networkId: String?) -> AnyPublisher<[CoinModel], MoyaError> {
-        provider
-            .requestPublisher(TangemApiTarget(type: .coins(contractAddress: contractAddress, networkId: networkId), card: card))
-            .filterSuccessfulStatusCodes()
-            .map(CoinsResponse.self)
-            .map {[weak self] list -> [CoinModel] in
-                guard let self = self else { return [] }
-                
-                return list.coins
-                    .compactMap {
-                        let model = CoinModel(with: $0, baseImageURL: list.imageHost)
-                        
-                        if let card = self.card {
-                            return model.makeFiltered(with: card, contractAddress: contractAddress)
-                        }
-                        
-                        return model
-                    }
+protocol CoinsService {
+    func checkContractAddress(contractAddress: String, networkId: String?) -> AnyPublisher<[CoinModel], MoyaError>
+}
 
-            }
-            .subscribe(on: DispatchQueue.global())
-            .eraseToAnyPublisher()
+private struct CoinsServiceKey: InjectionKey {
+    static var currentValue: CoinsService = CommonCoinsService()
+}
+
+extension InjectedValues {
+    var coinsService: CoinsService {
+        get { Self[CoinsServiceKey.self] }
+        set { Self[CoinsServiceKey.self] = newValue }
     }
 }
