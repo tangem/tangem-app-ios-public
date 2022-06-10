@@ -31,7 +31,6 @@ struct CardInfo {
     
 #if !CLIP
     var isTestnet: Bool {
-        return true
         if card.batchId == "99FF" { //TODO: TBD ??
             return card.cardId.starts(with: card.batchId.reversed())
         }
