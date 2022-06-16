@@ -1,5 +1,5 @@
 //
-//  WalletOnboardingViewRoutable.swift
+//  WalletOnboardingRoutable.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 16.06.2022.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol WalletOnboardingViewRoutable: AnyObject {
+protocol WalletOnboardingRoutable: AnyObject {
     func openAccessCodeView(callback: @escaping (String) -> Void)
 }

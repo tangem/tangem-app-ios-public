@@ -1,5 +1,5 @@
 //
-//  OnboardingTopupViewModelRoutable.swift
+//  OnboardingTopupRoutable.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 16.06.2022.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol OnboardingTopupViewModelRoutable: AnyObject {
+protocol OnboardingTopupRoutable: AnyObject {
     func openCryptoShop(at url: URL, closeUrl: String, action: @escaping () -> Void)
 }
