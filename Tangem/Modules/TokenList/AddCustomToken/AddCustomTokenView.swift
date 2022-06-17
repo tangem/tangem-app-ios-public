@@ -8,6 +8,47 @@
 
 import SwiftUI
 
+struct AddCustomTokenView: View {
+    @ObservedObject var viewModel: AddCustomTokenViewModel
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 10) {
+                VStack(spacing: 1) {
+                    TextInputWithTitle(title: "custom_token_contract_address_input_title".localized, placeholder: "0x0000000000000000000000000000000000000000", text: $viewModel.contractAddress, keyboardType: .default, isEnabled: true, isLoading: viewModel.isLoading)
+                        .cornerRadius(10, corners: [.topLeft, .topRight])
+                    
+                    PickerInputWithTitle(title: "custom_token_network_input_title".localized, model: $viewModel.blockchainsPicker)
+                    
+                    TextInputWithTitle(title: "custom_token_name_input_title".localized, placeholder: "custom_token_name_input_placeholder".localized, text: $viewModel.name, keyboardType: .default, isEnabled: viewModel.canEnterTokenDetails, isLoading: false)
+                    
+                    TextInputWithTitle(title: "custom_token_token_symbol_input_title".localized, placeholder: "custom_token_token_symbol_input_placeholder".localized, text: $viewModel.symbol, keyboardType: .default, isEnabled: viewModel.canEnterTokenDetails, isLoading: false)
+                    
+                    TextInputWithTitle(title: "custom_token_decimals_input_title".localized, placeholder: "0", text: $viewModel.decimals, keyboardType: .numberPad, isEnabled: viewModel.canEnterTokenDetails, isLoading: false)
+                        .cornerRadius(viewModel.showDerivationPaths ? 0 : 10, corners: [.bottomLeft, .bottomRight])
+                    
+                    if viewModel.showDerivationPaths {
+                        PickerInputWithTitle(title: "custom_token_derivation_path_input_title".localized, model: $viewModel.derivationsPicker)
+                            .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
+                    }
+                }
+                
+                WarningListView(warnings: viewModel.warningContainer, warningButtonAction: { _,_,_ in })
+                
+                TangemButton(title: "custom_token_add_token", systemImage: "plus", action: viewModel.createToken)
+                    .buttonStyle(TangemButtonStyle(colorStyle: .black, layout: .flexibleWidth, isDisabled: viewModel.addButtonDisabled, isLoading: viewModel.isLoading))
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+        }
+        .background(Color.tangemBgGray.edgesIgnoringSafeArea(.all))
+        .onAppear(perform: viewModel.onAppear)
+        .onDisappear(perform: viewModel.onDisappear)
+        .alert(item: $viewModel.error, content: { $0.alert })
+        .navigationBarTitle("add_custom_token_title", displayMode: .inline) //fix ios14 navbar overlap
+    }
+}
+
 // TODO: Refactor? Combine together? Is this stuff going to survive the redesign?
 fileprivate struct TextInputWithTitle: View {
     var title: String
@@ -81,49 +122,6 @@ fileprivate struct PickerStyleModifier: ViewModifier {
             content
                 .pickerStyle(.wheel)
         }
-    }
-}
-
-
-struct AddCustomTokenView: View {
-    @ObservedObject var viewModel: AddCustomTokenViewModel
-    @EnvironmentObject var navigation: NavigationCoordinator
-    
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                VStack(spacing: 1) {
-                    TextInputWithTitle(title: "custom_token_contract_address_input_title".localized, placeholder: "0x0000000000000000000000000000000000000000", text: $viewModel.contractAddress, keyboardType: .default, isEnabled: true, isLoading: viewModel.isLoading)
-                        .cornerRadius(10, corners: [.topLeft, .topRight])
-                    
-                    PickerInputWithTitle(title: "custom_token_network_input_title".localized, model: $viewModel.blockchainsPicker)
-                    
-                    TextInputWithTitle(title: "custom_token_name_input_title".localized, placeholder: "custom_token_name_input_placeholder".localized, text: $viewModel.name, keyboardType: .default, isEnabled: viewModel.canEnterTokenDetails, isLoading: false)
-                    
-                    TextInputWithTitle(title: "custom_token_token_symbol_input_title".localized, placeholder: "custom_token_token_symbol_input_placeholder".localized, text: $viewModel.symbol, keyboardType: .default, isEnabled: viewModel.canEnterTokenDetails, isLoading: false)
-                    
-                    TextInputWithTitle(title: "custom_token_decimals_input_title".localized, placeholder: "0", text: $viewModel.decimals, keyboardType: .numberPad, isEnabled: viewModel.canEnterTokenDetails, isLoading: false)
-                        .cornerRadius(viewModel.showDerivationPaths ? 0 : 10, corners: [.bottomLeft, .bottomRight])
-                    
-                    if viewModel.showDerivationPaths {
-                        PickerInputWithTitle(title: "custom_token_derivation_path_input_title".localized, model: $viewModel.derivationsPicker)
-                            .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
-                    }
-                }
-                
-                WarningListView(warnings: viewModel.warningContainer, warningButtonAction: { _,_,_ in })
-                
-                TangemButton(title: "custom_token_add_token", systemImage: "plus", action: viewModel.createToken)
-                    .buttonStyle(TangemButtonStyle(colorStyle: .black, layout: .flexibleWidth, isDisabled: viewModel.addButtonDisabled, isLoading: viewModel.isLoading))
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-        }
-        .background(Color.tangemBgGray.edgesIgnoringSafeArea(.all))
-        .onAppear(perform: viewModel.onAppear)
-        .onDisappear(perform: viewModel.onDisappear)
-        .alert(item: $viewModel.error, content: { $0.alert })
-        .navigationBarTitle("add_custom_token_title", displayMode: .inline) //fix ios14 navbar overlap
     }
 }
 
