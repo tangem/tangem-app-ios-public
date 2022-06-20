@@ -1,5 +1,5 @@
 //
-//  BottomSheetView.swift
+//  AddressQrBottomSheetContent.swift
 //  Tangem
 //
 //  Created by Andrew Son on 12.08.2021.
