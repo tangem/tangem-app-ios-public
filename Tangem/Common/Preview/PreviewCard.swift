@@ -1,58 +1,15 @@
 //
-//  Assembly+Preview.swift
+//  PreviewCard.swift
 //  Tangem
 //
-//  Created by Andrew Son on 04/08/21.
-//  Copyright © 2021 Tangem AG. All rights reserved.
+//  Created by Alexander Osokin on 20.06.2022.
+//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation
 import TangemSdk
 import Combine
-
-#if !CLIP
 import BlockchainSdk
-#endif
-
-extension Assembly {
-#if !CLIP
-    static func previewAssembly(for card: PreviewCard) -> Assembly {
-        let assembly = Assembly(isPreview: true)
-        let repo = CommonCardsRepository()
-        repo.lastScanResult = card.scanResult
-        InjectedValues[\.cardsRepository] = repo
-        return assembly
-    }
-    
-    static func previewCardViewModel(for card: PreviewCard) -> CardViewModel {
-        card.scanResult.cardModel!
-    }
-    
-    static var previewAssembly: Assembly {
-        .previewAssembly(for: .cardanoNoteEmptyWallet)
-    }
-    
-    var previewCardViewModel: CardViewModel {
-        InjectedValues[\.cardsRepository].lastScanResult.cardModel!
-    }
-#endif
-}
-
-
-#if !CLIP
-fileprivate class DummyTransactionSigner: TransactionSigner {
-    private let privateKey = Data(repeating: 0, count: 32)
-    
-    func sign(hashes: [Data], cardId: String, walletPublicKey: Wallet.PublicKey) -> AnyPublisher<[Data], Error> {
-        Fail(error: WalletError.failedToGetFee).eraseToAnyPublisher()
-    }
-    
-    func sign(hash: Data, cardId: String, walletPublicKey: Wallet.PublicKey) -> AnyPublisher<Data, Error> {
-        Fail(error: WalletError.failedToGetFee).eraseToAnyPublisher()
-    }
-}
-#endif
-
 
 enum PreviewCard {
     case withoutWallet, twin, ethereum, stellar, v4, cardanoNote, cardanoNoteEmptyWallet, ethEmptyNote, tangemWalletEmpty

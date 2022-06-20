@@ -1,5 +1,5 @@
 //
-//  Assembly+AppPreview.swift
+//  PreviewData.swift
 //  Tangem
 //
 //  Created by Andrew Son on 25.08.2021.
