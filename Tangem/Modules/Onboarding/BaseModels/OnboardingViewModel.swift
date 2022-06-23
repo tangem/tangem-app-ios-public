@@ -210,7 +210,7 @@ class OnboardingViewModel<Step: OnboardingStep> {
         }
     }
     
-    func reset(includeInResetAnim: (() -> Void)? = nil) { //TODO: remove
+    func reset(includeInResetAnim: (() -> Void)? = nil) { // TODO: remove
 //        let defaultSettings = WelcomeCardLayout.defaultSettings(in: containerSize, animated: true)
 //        var newSteps = [Step.initialStep]
 //        if assembly.isPreview {
@@ -245,7 +245,7 @@ class OnboardingViewModel<Step: OnboardingStep> {
     }
 }
 
-//MARK: - Navigation
+// MARK: - Navigation
 extension OnboardingViewModel {
     func closeOnboarding() {
         onboardingCoordinator.closeOnboarding()

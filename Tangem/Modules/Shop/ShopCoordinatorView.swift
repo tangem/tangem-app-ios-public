@@ -11,13 +11,13 @@ import SwiftUI
 
 struct ShopCoordinatorView: CoordinatorView {
     @ObservedObject var coordinator: ShopCoordinator
-    
+
     var body: some View {
         if let webShopUrl = coordinator.webShopUrl {
             SafariView(url: webShopUrl)
         } else {
             NavigationView {
-                if let order = coordinator.shopViewModel?.order { //TODO: refactor. Move initializations from viewModel to coordinator
+                if let order = coordinator.shopViewModel?.order { // TODO: refactor. Move initializations from viewModel to coordinator
                     ShopOrderView(order: order)
                 } else if coordinator.shopViewModel?.pollingForOrder == true {
                     ShopOrderProgressView()
@@ -29,7 +29,7 @@ struct ShopCoordinatorView: CoordinatorView {
             .navigationViewStyle(.stack)
         }
     }
-    
+
     @ViewBuilder
     private var links: some View {
         NavHolder()
