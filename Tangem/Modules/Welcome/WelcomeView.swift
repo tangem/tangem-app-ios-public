@@ -10,10 +10,10 @@ import SwiftUI
 
 struct WelcomeView: View {
     @ObservedObject var viewModel: WelcomeViewModel
-    
+
     var body: some View {
         ZStack {
-            StoriesView(viewModel: viewModel.storiesModel) { //TODO: refactor
+            StoriesView(viewModel: viewModel.storiesModel) { // TODO: refactor
                 viewModel.storiesModel.currentStoryPage(
                     isScanning: viewModel.isScanningCard,
                     scanCard: viewModel.scanCard,
@@ -24,7 +24,7 @@ struct WelcomeView: View {
             .statusBar(hidden: true)
             .environment(\.colorScheme, viewModel.storiesModel.currentPage.colorScheme)
             .actionSheet(item: $viewModel.discardAlert, content: { $0.sheet })
-            
+
             ScanTroubleshootingView(isPresented: $viewModel.showTroubleshootingView,
                                     tryAgainAction: viewModel.scanCard,
                                     requestSupportAction: viewModel.requestSupport)
