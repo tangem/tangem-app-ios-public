@@ -14,7 +14,6 @@ lane :buildAppStore do |options|
     build_number: options[:versionCode]
   )
 
-
   build_app(
     xcargs: "-allowProvisioningUpdates",
     output_name: APPNAME + "-release",
