@@ -72,8 +72,7 @@ end
 
 lane :refresh_dsyms do |options|
   download_dsyms(version: options[:version], build_number: options[:build_number]) 
-  path = APPNAME + "-release" + ".app.dSYM.zip"
-  upload_symbols_to_crashlytics(dsym_path: path) 
+  upload_symbols_to_crashlytics
   clean_build_artifacts
 end
 
