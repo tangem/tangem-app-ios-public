@@ -2,17 +2,17 @@
 APPNAME = "TangemLite"
 
 before_all do |lane, options|
-  sh("../bootstrap.sh")
+    sh("../bootstrap.sh")
 end
 
 lane :buildAppStore do |options|
-  increment_version_number(
-  	version_number: options[:versionName]
-  )
+  # increment_version_number(
+  # 	version_number: options[:versionName]
+  # )
 
-  increment_build_number(
-    build_number: options[:versionCode]
-  )
+  # increment_build_number(
+  #   build_number: options[:versionCode]
+  # )
 
   build_app(
     xcargs: "-allowProvisioningUpdates",
@@ -50,15 +50,18 @@ end
 
 lane :test do
 run_tests(
-  workspace: "Tangem.xcworkspace",
+  workspace: "TangemApp.xcworkspace",
   scheme: "Tangem",
   clean: true
 )
 end
 
 lane :refresh_dsyms do |options|
-  download_dsyms(version: options[:version], build_number: options[:build_number]) 
-  upload_symbols_to_crashlytics 
+  puts options
+  # download_dsyms(version: options[:version], build_number: options[:build_number]) 
+  path = APPNAME + "-release" + ".app.dSYM.zip"
+  puts path
+  upload_symbols_to_crashlytics(dsym_path: path) 
   clean_build_artifacts
 end
 
