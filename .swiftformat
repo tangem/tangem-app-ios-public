@@ -24,3 +24,4 @@
 --enable anyObjectProtocol
 --enable duplicateImports
 --enable trailingCommas
+--enable wrapEnumCases
