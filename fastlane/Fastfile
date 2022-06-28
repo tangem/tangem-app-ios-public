@@ -78,9 +78,8 @@ end
 
 # Don't use now
 lane :buildAdHoc do |options|
-
   increment_version_number(
-  	version_number: options[:versionName]
+    version_number: options[:versionName]
   )
 
   increment_build_number(
@@ -96,6 +95,5 @@ lane :buildAdHoc do |options|
     silent: true,
     configuration: "Release"
   )
-
 end
 
