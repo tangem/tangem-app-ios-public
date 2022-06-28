@@ -1,0 +1,26 @@
+# file options
+--exclude Pods
+
+# Format options
+# Disable all default options
+--disable all
+
+# Enable options
+--enable spaceAroundBraces
+--enable spaceAroundBrackets
+--enable spaceAroundComments
+--enable spaceAroundGenerics
+--enable spaceAroundOperators
+--enable spaceAroundParens
+--enable spaceInsideBraces
+--enable spaceInsideBrackets
+--enable spaceInsideBrackets
+--enable spaceInsideComments
+--enable spaceInsideGenerics
+--enable spaceInsideParens
+--enable indent
+--ifdef no-indent
+
+--enable anyObjectProtocol
+--enable duplicateImports
+--enable trailingCommas

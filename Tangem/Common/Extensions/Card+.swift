@@ -29,7 +29,7 @@ extension Card {
     }
     
     var canSupportSolanaTokens: Bool {
-        //TODO: Old wallets. Refactor in SDK.
+        // TODO: Old wallets. Refactor in SDK.
         let fwVersion = firmwareVersion.doubleValue
         return fwVersion >= 4.52
     }
@@ -183,7 +183,7 @@ extension Card {
         wallets.compactMap { $0.curve }
     }
     
-#if !CLIP
+    #if !CLIP
     var derivationStyle: DerivationStyle {
         Card.getDerivationStyle(for: batchId, isHdWalletAllowed: settings.isHDWalletAllowed)
     }
@@ -202,5 +202,5 @@ extension Card {
         return .new
     }
     
-#endif
+    #endif
 }

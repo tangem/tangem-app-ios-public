@@ -1,6 +1,9 @@
 # Constants
 APPNAME = "TangemLite"
 
+before_all do |lane, options|
+  sh("../bootstrap.sh")
+end
 
 lane :buildAppStore do |options|
   increment_version_number(
