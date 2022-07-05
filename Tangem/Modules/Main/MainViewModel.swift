@@ -254,6 +254,7 @@ class MainViewModel: ObservableObject {
         self.state = .card(model: cardModel) // TODO: remove state
         self.coordinator = coordinator
         bind()
+        cardModel.updateState()
     }
     
     deinit {
