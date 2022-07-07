@@ -207,28 +207,6 @@ class OnboardingViewModel<Step: OnboardingStep> {
         }
     }
     
-    func reset(includeInResetAnim: (() -> Void)? = nil) { // TODO: remove
-//        let defaultSettings = WelcomeCardLayout.defaultSettings(in: containerSize, animated: true)
-//        var newSteps = [Step.initialStep]
-//        if assembly.isPreview {
-//            newSteps.append(contentsOf: steps)
-//        }
-//
-//       // withAnimation(.easeIn(duration: resetAnimDuration)) { //disable back animation
-//            mainCardSettings = defaultSettings.main
-//            supplementCardSettings = defaultSettings.supplement
-//            isNavBarVisible = false
-//            currentStepIndex = 0
-//            steps = newSteps
-//            isMainButtonBusy = false
-//            includeInResetAnim?()
-//        //}
-//        // TODO: Can cause some navigation errors. May be subscription in OnboardingBaseViewModel will cause some navigation issues
-//       // DispatchQueue.main.asyncAfter(deadline: .now() /* + resetAnimDuration*/) {
-//            self.navigation.onboardingReset = true
-//       // }
-    }
-    
     func mainButtonAction() {
         fatalError("Not implemented")
     }
@@ -246,5 +224,9 @@ class OnboardingViewModel<Step: OnboardingStep> {
 extension OnboardingViewModel {
     func closeOnboarding() {
         onboardingCoordinator.closeOnboarding()
+    }
+    
+    func popToRoot() {
+        onboardingCoordinator.popToRoot()
     }
 }
