@@ -97,27 +97,24 @@ class WelcomeOnboardingViewModel: ViewModel, ObservableObject {
     func orderCard() {
         self.isOpeningShop = true
         
-        geoIpService.regionCode()
-            .sink { [weak self] regionCode in
-                // TODO: move to coordinator?
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self?.isOpeningShop = false
-                }
-                
-                let webShopRegionCodes = [
-                    "ru",
-                    "by",
-                ]
-                let openWebShop = webShopRegionCodes.contains(regionCode)
+        let regionCode = geoIpService.getRegionCode()
+        // TODO: move to coordinator?
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.isOpeningShop = false
+        }
+        
+        let webShopRegionCodes = [
+            "ru",
+            "by",
+        ]
+        let openWebShop = webShopRegionCodes.contains(regionCode)
 
-                if openWebShop {
-                    self?.navigation.readToWebShop = true
-                } else {
-                    self?.navigation.readToShop = true
-                }
-                Analytics.log(.getACard, params: [.source: .welcome])
-            }
-            .store(in: &bag)
+        if openWebShop {
+            navigation.readToWebShop = true
+        } else {
+            navigation.readToShop = true
+        }
+        Analytics.log(.getACard, params: [.source: .welcome])
     }
 
     func searchTokens() {
