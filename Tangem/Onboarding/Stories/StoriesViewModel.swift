@@ -87,6 +87,7 @@ class StoriesViewModel: ViewModel, ObservableObject {
             self?.currentProgress = $0
         }
         
+        // TODO: refactor the arguments
         switch currentPage {
         case WelcomeStoryPage.meetTangem:
             MeetTangemStoryPage(progress: progressBinding, immediatelyShowButtons: didDisplayMainScreenStories, isScanning: isScanning, isOpeningShop: isOpeningShop, scanCard: scanCard, orderCard: orderCard)
