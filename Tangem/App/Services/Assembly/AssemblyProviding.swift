@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol AssemblyProviding { //TODO: Refactor and remove
+protocol AssemblyProviding { // TODO: Refactor and remove
     var assembly: Assembly { get }
 }
- 
+
 private struct AssemblyProviderKey: InjectionKey {
     static var currentValue: AssemblyProviding = AssemblyProvider()
 }
