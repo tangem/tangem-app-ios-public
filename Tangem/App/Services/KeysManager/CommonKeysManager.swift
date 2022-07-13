@@ -43,8 +43,12 @@ extension CommonKeysManager: KeysManager {
         MoonPayKeys(apiKey: keys.moonPayApiKey, secretApiKey: keys.moonPayApiSecretKey)
     }
     
-    var onramperApiKey: String {
-        keys.onramperApiKey
+    var mercuryoWidgetId: String {
+        keys.mercuryoWidgetId
+    }
+    
+    var mercuryoSecret: String {
+        keys.mercuryoSecret
     }
     
     var blockchainConfig: BlockchainSdkConfig {
@@ -60,25 +64,44 @@ extension CommonKeysManager: KeysManager {
     var zendesk: ZendeskConfig {
         keys.zendesk
     }
+    
+    var amplitudeApiKey: String {
+        keys.amplitudeApiKey
+    }
 }
 
 extension CommonKeysManager {
     struct Keys: Decodable {
         let moonPayApiKey: String
         let moonPayApiSecretKey: String
-        let onramperApiKey: String
+        let mercuryoWidgetId: String
+        let mercuryoSecret: String
         let blockchairApiKey: String
         let blockcypherTokens: [String]
         let infuraProjectId: String
         let appsFlyerDevKey: String
+        let amplitudeApiKey: String
         let shopifyShop: ShopifyShop
         let zendesk: ZendeskConfig
         
         fileprivate static var empty: Keys {
-            .init(moonPayApiKey: "", moonPayApiSecretKey: "", onramperApiKey: "", blockchairApiKey: "",
-                  blockcypherTokens: [], infuraProjectId: "", appsFlyerDevKey: "",
-                  shopifyShop: .init(domain: "", storefrontApiKey: "", merchantID: ""),
-                  zendesk: .init(zendeskApiKey: "", zendeskAppId: "", zendeskClientId: "", zendeskUrl: ""))
+            .init(moonPayApiKey: "",
+                  moonPayApiSecretKey: "",
+                  mercuryoWidgetId: "",
+                  mercuryoSecret: "",
+                  blockchairApiKey: "",
+                  blockcypherTokens: [],
+                  infuraProjectId: "",
+                  appsFlyerDevKey: "",
+                  amplitudeApiKey: "",
+                  shopifyShop: .init(domain: "",
+                                     storefrontApiKey: "",
+                                     merchantID: ""),
+                  zendesk: .init(zendeskApiKey: "",
+                                 zendeskAppId: "",
+                                 zendeskClientId: "",
+                                 zendeskUrl: "")
+            )
         }
     }
 }
