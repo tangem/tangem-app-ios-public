@@ -18,6 +18,7 @@
 --enable spaceInsideComments
 --enable spaceInsideGenerics
 --enable spaceInsideParens
+--enable trailingSpace
 --enable indent
 --ifdef no-indent
 
