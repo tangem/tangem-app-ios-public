@@ -145,7 +145,7 @@ private extension SecurityPrivacyView {
                 Toggle("", isOn: isOn)
                     .labelsHidden()
                     .toggleStyleCompat(.tangemGreen)
-                    .disabled(true)
+                    .disabled(true) // TODO: Delete it when add logic for disable saved cards and access codes
             }
         }
     }
