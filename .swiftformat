@@ -1,5 +1,6 @@
 # file options
 --exclude Pods
+--exclude **/*Generated.swift
 
 # Format options
 # Disable all default options
