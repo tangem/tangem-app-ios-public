@@ -1,6 +1,6 @@
 # file options
 --exclude Pods
---exclude **/*Generated.swift
+--exclude Tangem/Assets/XCAssets+Generated.swift
 
 # Format options
 # Disable all default options
