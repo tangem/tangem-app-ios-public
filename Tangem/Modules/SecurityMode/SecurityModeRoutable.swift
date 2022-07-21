@@ -1,5 +1,5 @@
 //
-//  SecurityManagementRoutable.swift
+//  SecurityModeRoutable.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 20.06.2022.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SecurityManagementRoutable: AnyObject {
+protocol SecurityModeRoutable: AnyObject {
     func openPinChange(with title: String, action: @escaping (_ completion: @escaping (Result<Void, Error>) -> Void) -> Void)
 }
