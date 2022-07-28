@@ -78,7 +78,7 @@ struct DetailsView: View {
 
             cardSettingsRow
 
-// TODO: Uncomment when implementation is complete
+            // TODO: Uncomment when implementation is complete
 //                appSettings
 
             if viewModel.isTwinCard {
