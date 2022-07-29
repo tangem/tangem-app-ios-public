@@ -78,9 +78,6 @@ struct DetailsView: View {
 
             cardSettingsRow
 
-            // TODO: Uncomment when implementation is complete
-//                appSettings
-
             if viewModel.isTwinCard {
                 twinCardRecreateView
 
