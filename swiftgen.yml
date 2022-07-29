@@ -18,6 +18,7 @@ xcassets:
   outputs:
     - templatePath: Utilites/swiftui-xcassets.stencil
       params:
+        removeFolderName: true
         forceProvidesNamespaces: true
         publicAccess: true
       output: Assets/XCAssets+Generated.swift
