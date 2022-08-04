@@ -1,5 +1,5 @@
 //
-//  DemoCardBuilder.swift
+//  DemoConfig.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 03.08.2022.
