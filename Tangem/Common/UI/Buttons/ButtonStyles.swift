@@ -101,7 +101,7 @@ enum ButtonColorStyle {
         case .transparentWhite: return .clear
         case .grayAlt: return .tangemBgGray
         case .grayAlt2: return .tangemBgGray3
-        #warning("TODO: add all buttons styles properly")
+            #warning("TODO: add all buttons styles properly")
         case .grayAlt3: return Colors.Button.secondary
         }
     }
