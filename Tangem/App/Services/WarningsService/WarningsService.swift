@@ -109,7 +109,7 @@ class WarningsService {
 //        guard cardInfo.isTestnet, !cardInfo.card.isDemoCard else {
 //            return
 //        }
-        //TODO: move features to config
+        // TODO: move features to config
         container.add(WarningEvent.testnetCard.warning)
     }
 

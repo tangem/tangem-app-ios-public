@@ -7,7 +7,7 @@
 //
 
 import Foundation
-#if !CLIP
+#if !CLIP // TODO: remove
 import FirebaseAnalytics
 import FirebaseCrashlytics
 import AppsFlyerLib
