@@ -73,9 +73,9 @@ class WarningsService {
     }
 
     private func addDevCardWarningIfNeeded(in container: WarningsContainer, for cardInfo: CardInfo) {
-        guard cardInfo.card.firmwareVersion.type == .sdk, !cardInfo.isTestnet, !cardInfo.card.isDemoCard else {
-            return
-        }
+//        guard cardInfo.card.firmwareVersion.type == .sdk, !cardInfo.isTestnet, !cardInfo.card.isDemoCard else { //TODO: move features to config
+//            return
+//        }
 
         container.add(WarningsList.devCard)
     }
@@ -106,17 +106,17 @@ class WarningsService {
     }
 
     private func addTestnetCardWarningIfNeeded(in container: WarningsContainer, for cardInfo: CardInfo) {
-        guard cardInfo.isTestnet, !cardInfo.card.isDemoCard else {
-            return
-        }
-
+//        guard cardInfo.isTestnet, !cardInfo.card.isDemoCard else {
+//            return
+//        }
+        //TODO: move features to config
         container.add(WarningEvent.testnetCard.warning)
     }
 
     private func addDemoWarningIfNeeded(in container: WarningsContainer, for cardInfo: CardInfo) {
-        if cardInfo.card.isDemoCard {
-            container.add(WarningsList.demoCard)
-        }
+//        if cardInfo.card.isDemoCard { //TODO: move features to config
+//            container.add(WarningsList.demoCard)
+//        }
     }
 }
 
