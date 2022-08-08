@@ -1,5 +1,5 @@
 //
-//  Font+.swift
+//  Fonts.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 12.07.2022.
