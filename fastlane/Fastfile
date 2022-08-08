@@ -30,7 +30,7 @@ lane :buildAppStore do |options|
     configuration: "Release"
   )
 
-  upload_dsyms(name: suffix)
+  #upload_dsyms(name: suffix)
 end
 
 lane :buildBeta do |options|
@@ -54,7 +54,7 @@ lane :buildBeta do |options|
     configuration: "Release"
   )
 
-  upload_dsyms(name: suffix)
+  #upload_dsyms(name: suffix)
 end
 
 # For upload dSym can call
@@ -65,7 +65,7 @@ lane :upload_dsyms do |options|
   name = options[:name]
   path = APPNAME + "-" + name + ".app.dSYM.zip"
   upload_symbols_to_crashlytics(dsym_path: path) 
-  clean_build_artifacts
+  #clean_build_artifacts
 end
 
 lane :test do
