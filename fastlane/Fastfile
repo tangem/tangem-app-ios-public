@@ -1,6 +1,13 @@
 # Constants
 APPNAME = "TangemLite"
 
+before_all do |lane, options|
+  # "Run bootstrap on buildBeta and buildAppStore lanes"
+  case lane
+  when :buildBeta, :buildAppStore
+    sh("../bootstrap.sh")
+  end
+end
 
 lane :buildAppStore do |options|
   increment_version_number(
@@ -11,10 +18,11 @@ lane :buildAppStore do |options|
     build_number: options[:versionCode]
   )
 
+  suffix = "release"
 
   build_app(
     xcargs: "-allowProvisioningUpdates",
-    output_name: APPNAME + "-release",
+    output_name: APPNAME + "-" + suffix,
     scheme: "Tangem",
     export_method: "app-store",
     clean: true,
@@ -22,10 +30,10 @@ lane :buildAppStore do |options|
     configuration: "Release"
   )
 
+  upload_dsyms(name: suffix)
 end
 
-lane :buildAdHoc do |options|
-
+lane :buildBeta do |options|
   increment_version_number(
   	version_number: options[:versionName]
   )
@@ -34,29 +42,42 @@ lane :buildAdHoc do |options|
     build_number: options[:versionCode]
   )
 
+  suffix = "beta"
+
   build_app(
     xcargs: "-allowProvisioningUpdates",
-    output_name: APPNAME + "-adhoc",
-    scheme: "Tangem beta",
-    export_method: "ad-hoc",
+    output_name: APPNAME + "-" + suffix,
+    scheme: "Tangem Beta",
+    export_method: "app-store",
     clean: true,
     silent: true,
     configuration: "Release"
   )
 
+  upload_dsyms(name: suffix)
+end
+
+# For upload dSym can call
+# fastlane upload_dsyms name:release or
+# fastlane upload_dsyms name:beta  
+# for upload symbols from folder
+lane :upload_dsyms do |options|
+  name = options[:name]
+  path = APPNAME + "-" + name + ".app.dSYM.zip"
+  upload_symbols_to_crashlytics(dsym_path: path) 
+  clean_build_artifacts
 end
 
 lane :test do
-run_tests(
-  workspace: "Tangem.xcworkspace",
-  scheme: "Tangem",
-  clean: true
-)
+  run_tests(
+    workspace: "TangemApp.xcworkspace",
+    scheme: "Tangem",
+    clean: true
+  )
 end
 
 lane :refresh_dsyms do |options|
   download_dsyms(version: options[:version], build_number: options[:build_number]) 
-  upload_symbols_to_crashlytics 
+  upload_symbols_to_crashlytics
   clean_build_artifacts
 end
-
