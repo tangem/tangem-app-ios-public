@@ -5,7 +5,10 @@ before_all do |lane, options|
   # "Run bootstrap on buildBeta and buildAppStore lanes"
   case lane
   when :buildBeta, :buildAppStore
-    sh("cd ..; ./bootstrap.sh")
+    Dir.chdir("..") do
+      # code here runs in the parent directory
+      sh("./bootstrap.sh") 
+    end
   end
 end
 
