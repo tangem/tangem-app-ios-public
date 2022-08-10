@@ -53,14 +53,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### buildAdHoc
-
-```sh
-[bundle exec] fastlane buildAdHoc
-```
-
-
-
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
