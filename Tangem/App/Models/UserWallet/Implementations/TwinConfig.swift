@@ -10,7 +10,7 @@ import Foundation
 import TangemSdk
 import BlockchainSdk
 
-struct TwinConfig {
+struct TwinConfig: BaseConfig {
     private let card: Card
     private let walletData: WalletData
     private let twinData: TwinCardInfo
@@ -153,4 +153,7 @@ extension TwinConfig: UserWalletConfig {
             return .available
         }
     }
+
+    // TODO: TBD Enable twin signing by any card
+    var tangemSigner: TangemSigner { .init(with: card.cardId) }
 }
