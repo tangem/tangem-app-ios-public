@@ -15,7 +15,7 @@ import BlockchainSdk
 
 struct CardInfo {
     var card: Card
-    var name: String = "" // TODO: remove
+    var name: String // TODO: remove
     var walletData: WalletData?
     var artwork: CardArtwork = .notLoaded
     var twinCardInfo: TwinCardInfo?
