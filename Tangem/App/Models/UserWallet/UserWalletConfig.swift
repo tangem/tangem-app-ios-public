@@ -46,7 +46,8 @@ protocol UserWalletConfig {
 
     func selectNetwork(for dAppInfo: Session.DAppInfo) -> BlockchainNetwork?
 
-    // func makeWalletModels(tokens: [StorageEntry], factory: WalletManagerFactory) -> [WalletModel]
+    //TODO: Collect derivedKeys inside wallets?
+    func makeWalletModels(for tokens: [StorageEntry], derivedKeys: [DerivationPath: ExtendedPublicKey]) -> [WalletModel]
 }
 
 extension UserWalletConfig {
