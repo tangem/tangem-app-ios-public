@@ -8,27 +8,27 @@
 
 import Foundation
 
-enum UserWalletFeature: Int { //TODO: Add comments
+enum UserWalletFeature: Int { // TODO: Add comments
     case accessCode
     case passcode
     case longTap
     case longHashes
     case backup
     case twinning
-    
+
     case signedHashesCounter
-    
+
     case send
     case receive
-    
+
     case topup
     case withdrawal
     case exchange
     case staking
-    
+
     case walletConnect
     case multiCurrency
-    
+
     case tokensSearch
     case resetToFactory
     case hdWallets
@@ -38,7 +38,7 @@ enum UserWalletFeature: Int { //TODO: Add comments
 extension UserWalletFeature {
     enum Availability {
         case available
-        case unavailable //Hidden
+        case unavailable // Hidden
         case disabled(localizedReason: String? = nil)
 
         var disabledLocalizedReason: String? {
