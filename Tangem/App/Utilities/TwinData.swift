@@ -1,5 +1,5 @@
 //
-//  TwinCardInfo.swift
+//  TwinData.swift
 //  Tangem
 //
 //  Created by Andrew Son on 19/11/20.
@@ -35,8 +35,7 @@ enum TwinCardSeries: String, CaseIterable {
     }
 }
 
-struct TwinCardInfo {
-    let cid: String
+struct TwinData {
     let series: TwinCardSeries
     var pairPublicKey: Data?
 }
