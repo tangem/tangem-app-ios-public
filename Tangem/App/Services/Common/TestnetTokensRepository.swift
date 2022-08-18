@@ -1,5 +1,5 @@
 //
-//  SupportedTokenItems.swift
+//  TestnetTokensRepository.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 28.02.2021.
@@ -10,7 +10,7 @@ import Foundation
 import TangemSdk
 import Combine
 
-class SupportedTokenItems { // TODO: rename
+class TestnetTokensRepository {
     func loadCoins(requestModel: CoinsListRequestModel) -> AnyPublisher<[CoinModel], Error> {
         readTestnetList()
             .map { list in
@@ -34,7 +34,7 @@ class SupportedTokenItems { // TODO: rename
     }
 }
 
-fileprivate extension SupportedTokenItems {
+fileprivate extension TestnetTokensRepository {
     enum Constants {
         static let testFilename: String = "testnet_tokens"
     }

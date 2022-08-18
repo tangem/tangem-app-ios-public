@@ -13,6 +13,7 @@ struct OnboardingInput { // TODO: Split to coordinator options and input
     let steps: OnboardingSteps
     let cardInput: CardInput
     let welcomeStep: WelcomeStep?
+    let twinData: TwinData?
     var currentStepIndex: Int
     var isStandalone = false
 }

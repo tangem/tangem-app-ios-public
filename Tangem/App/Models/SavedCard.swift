@@ -25,7 +25,7 @@ struct SavedCard: Codable { // TODO: Migrate to a new saved cards system
     }
 
     private var isHdWalletAllowed: Bool {
-        wallets.contains(where: { $0.isHdWalletAllowed })
+        wallets.contains { $0.isHdWalletAllowed }
     }
 
     func makeWalletModels(for tokens: [StorageEntry]) -> [WalletModel] {
