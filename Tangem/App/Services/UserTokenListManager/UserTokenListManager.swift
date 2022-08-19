@@ -9,5 +9,12 @@
 import Combine
 
 protocol UserTokenListManager {
+    func append(entry: [StorageEntry], completion: (Result<Void, Error>) -> Void)
     func loadAndSaveUserTokenList() -> AnyPublisher<UserTokenList, Error>
+}
+
+extension UserTokenListManager {
+    func append(entry: [StorageEntry], completion: (Result<Void, Error>) -> Void = { _ in }) {
+        append(entry: entry, completion: completion)
+    }
 }
