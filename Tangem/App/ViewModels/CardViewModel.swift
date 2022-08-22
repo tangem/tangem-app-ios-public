@@ -23,7 +23,6 @@ class CardViewModel: Identifiable, ObservableObject {
     @Injected(\.cardImageLoader) var imageLoader: CardImageLoaderProtocol
     @Injected(\.appWarningsService) private var warningsService: AppWarningsProviding
     @Injected(\.tangemSdkProvider) private var tangemSdkProvider: TangemSdkProviding
-//    @Injected(\.tokenItemsRepository) private var tokenItemsRepository: TokenItemsRepository
     @Injected(\.tangemApiService) var tangemApiService: TangemApiService
     @Injected(\.scannedCardsRepository) private var scannedCardsRepository: ScannedCardsRepository
 
