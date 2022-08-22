@@ -275,6 +275,10 @@ class CardViewModel: Identifiable, ObservableObject {
 
     @Published var cardImage: UIImage?
 
+    var isUserWalletLocked: Bool {
+        return userWallet.isLocked
+    }
+
     var subtitle: String {
         // TODO:
 //        if cardInfo.twinCardInfo?.series.number != nil {
