@@ -21,10 +21,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### buildAdHoc
+### buildBeta
 
 ```sh
-[bundle exec] fastlane buildAdHoc
+[bundle exec] fastlane buildBeta
+```
+
+
+
+### upload_dsyms
+
+```sh
+[bundle exec] fastlane upload_dsyms
 ```
 
 
