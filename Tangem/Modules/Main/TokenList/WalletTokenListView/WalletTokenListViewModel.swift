@@ -9,9 +9,6 @@
 import Combine
 
 class WalletTokenListViewModel: ObservableObject {
-    // TODO: Refactoring https://tangem.atlassian.net/browse/IOS-2047
-    @Injected(\.tokenItemsRepository) private var tokenItemsRepository: TokenItemsRepository
-
     // MARK: - ViewState
     @Published var contentState: ContentState<[TokenItemViewModel]> = .loading
     @Published var loadingError: Error?
