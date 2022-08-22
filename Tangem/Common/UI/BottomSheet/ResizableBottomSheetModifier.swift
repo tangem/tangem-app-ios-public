@@ -1,15 +1,15 @@
 //
-//  BottomSheetModifier.swift
+//  ResizableBottomSheetModifier.swift
 //  Tangem
 //
-//  Created by Pavel Grechikhin on 17.07.2022.
+//  Created by Pavel Grechikhin on 15.08.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI
 import UIKit
 
-struct BottomSheetModifier<ContentView: View>: ViewModifier {
+struct ResizableBottomSheetModifier<ContentView: ResizableSheetView>: ViewModifier {
     @Binding private var isPresented: Bool
     @State private var bottomSheetViewController: BottomSheetBaseController?
 
@@ -47,7 +47,13 @@ struct BottomSheetModifier<ContentView: View>: ViewModifier {
         }
 
         if isPresented {
-            let wrappedView = BottomSheetWrappedView(content: contentView(),
+            let view = contentView()
+
+            view.setResizeCallback { action in
+                self.bottomSheetViewController?.resize(withAction: action)
+            }
+
+            let wrappedView = BottomSheetWrappedView(content: view,
                                                      settings: viewModelSettings) {
                 bottomSheetViewController?.dismiss(animated: true)
             }
