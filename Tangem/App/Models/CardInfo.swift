@@ -16,7 +16,7 @@ import BlockchainSdk
 struct CardInfo {
     var card: CardDTO
     var walletData: DefaultWalletData
-    var name: String // TODO: remove
+    var name: String
     var artwork: CardArtwork = .notLoaded
     var derivedKeys: [Data: [DerivationPath: ExtendedPublicKey]] = [:]
     var primaryCard: PrimaryCard? = nil
