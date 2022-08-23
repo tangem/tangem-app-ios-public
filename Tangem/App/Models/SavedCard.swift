@@ -21,7 +21,7 @@ struct SavedCard: Codable { // TODO: Migrate to a new saved cards system
             return .legacy
         }
 
-        return Card.getDerivationStyle(for: batchId, isHdWalletAllowed: isHdWalletAllowed)
+        return CardDTO.getDerivationStyle(for: batchId, isHdWalletAllowed: isHdWalletAllowed)
     }
 
     private var isHdWalletAllowed: Bool {

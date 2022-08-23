@@ -14,7 +14,7 @@ import BlockchainSdk
 #endif
 
 struct CardInfo {
-    var card: Card
+    var card: CardDTO
     var walletData: DefaultWalletData
     var name: String // TODO: remove
     var artwork: CardArtwork = .notLoaded
