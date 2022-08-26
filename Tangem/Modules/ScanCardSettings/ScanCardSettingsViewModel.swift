@@ -32,6 +32,7 @@ extension ScanCardSettingsViewModel {
             switch result {
             case let .success(cardInfo):
                 let cardModel = CardViewModel(cardInfo: cardInfo)
+                cardModel.didScan() // TODO: refactor
                 cardModel.updateState()
                 self?.coordinator.openCardSettings(cardModel: cardModel)
             case let .failure(error):

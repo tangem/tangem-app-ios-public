@@ -14,7 +14,5 @@ class TangemSdkProvider: TangemSdkProviding {
 
     func setup(with config: Config) {
         sdk.config = config
-        // TODO: Remove
-        sdk.config.attestationMode = .offline
     }
 }
