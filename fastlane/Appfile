@@ -1,5 +1,13 @@
-app_identifier "com.tangem.Tangem"
-apple_id "tureckiy@gmail.com"
-
 itc_team_id "118990352"
 
+for_lane :beta do
+    app_identifier 'com.tangem.TangemAlpha'
+end
+
+for_lane :beta do
+    app_identifier 'com.tangem.TangemBeta'
+end
+
+for_lane :release do
+    app_identifier 'com.tangem.Tangem'
+end

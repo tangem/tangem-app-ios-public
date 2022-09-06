@@ -13,30 +13,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### buildAppStore
-
-```sh
-[bundle exec] fastlane buildAppStore
-```
-
-
-
-### buildBeta
-
-```sh
-[bundle exec] fastlane buildBeta
-```
-
-
-
-### upload_dsyms
-
-```sh
-[bundle exec] fastlane upload_dsyms
-```
-
-
-
 ### test
 
 ```sh
@@ -44,13 +20,36 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 ```
 
 
+  A lane that builds and tests the scheme "Tangem" using a clean and build application.
+  Using enviroment: Production
 
-### refresh_dsyms
+
+### release
 
 ```sh
-[bundle exec] fastlane refresh_dsyms
+[bundle exec] fastlane release
 ```
 
+
+  A lane that builds a "Tangem" scheme and uploads the archive to TestFlight for release.
+  Using enviroment: Production
+  Options:
+  - version: app version
+  - changelog: notes for QA
+  
+
+### beta
+
+```sh
+[bundle exec] fastlane beta
+```
+
+
+A lane that builds a "Tangem Beta" scheme and uploads the archive to Firebase for testing.
+Using enviroment: Production
+Options:
+- version: app version
+- changelog: notes for QA
 
 
 ----
