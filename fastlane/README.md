@@ -35,7 +35,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
   Using enviroment: Production
   Options:
   - version: app version
-  - changelog: notes for QA
   
 
 ### beta
@@ -49,7 +48,32 @@ A lane that builds a "Tangem Beta" scheme and uploads the archive to Firebase fo
 Using enviroment: Production
 Options:
 - version: app version
-- changelog: notes for QA
+
+
+### alpha
+
+```sh
+[bundle exec] fastlane alpha
+```
+
+
+A lane that builds a "Tangem Alpha" scheme and uploads the archive to Firebase for testing.
+Using enviroment: Test
+Options:
+- version: app version
+
+
+### refresh_dsyms
+
+```sh
+[bundle exec] fastlane refresh_dsyms
+```
+
+
+Load from testFlight dSyms and upload it to Firebase
+Options:
+- version: app version
+- build: build number
 
 
 ----

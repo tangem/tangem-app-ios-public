@@ -1,6 +1,6 @@
 itc_team_id "118990352"
 
-for_lane :beta do
+for_lane :alpha do
     app_identifier 'com.tangem.TangemAlpha'
 end
 
@@ -9,5 +9,9 @@ for_lane :beta do
 end
 
 for_lane :release do
+    app_identifier 'com.tangem.Tangem'
+end
+
+for_lane :refresh_dsyms do
     app_identifier 'com.tangem.Tangem'
 end

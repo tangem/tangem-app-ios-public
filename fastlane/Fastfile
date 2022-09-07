@@ -91,6 +91,24 @@ lane :alpha do |options|
   clean_artifacts
 end
 
+desc """
+Load from testFlight dSyms and upload it to Firebase
+Options:
+- version: app version
+- build: build number
+"""
+lane :refresh_dsyms do |options|
+  app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  app_store_connect_api_key(duration: 1200)
+  download_dsyms(
+    app_identifier: app_identifier,
+    version: options[:version],
+    build_number: options[:build]
+  )
+  upload_symbols_to_crashlytics
+  clean_build_artifacts
+end
+
 private_lane :build do |options|
   app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
   build_app(
@@ -159,12 +177,6 @@ private_lane :upload_testflight do |options|
     app_version: options[:version],
     changelog: options[:changelog]
   )
-end
-
-private_lane :refresh_dsyms do |options|
-  download_dsyms(version: options[:version], build_number: options[:build_number]) 
-  upload_symbols_to_crashlytics
-  clean_build_artifacts
 end
 
 private_lane :clean_artifacts do |options|
