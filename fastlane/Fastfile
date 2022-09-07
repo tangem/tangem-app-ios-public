@@ -21,7 +21,7 @@ desc """
 lane :test do
   run_tests(
     workspace: "TangemApp.xcworkspace",
-    scheme: "Tangem",
+    scheme: PRODUCTION_SCHEME,
     device: "iPhone 13 Pro",
     clean: true,
     build_for_testing: true,
@@ -171,7 +171,6 @@ private_lane :upload_testflight do |options|
   path = BUILD_PATH + filename
 
   upload_to_testflight(
-    # add api_key: {} # TODO: Add json file
     skip_waiting_for_build_processing: true,
     ipa: path,
     app_version: options[:version],
