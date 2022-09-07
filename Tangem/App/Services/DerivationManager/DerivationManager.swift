@@ -1,5 +1,5 @@
 //
-//  DeriveManager.swift
+//  DerivationManager.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 26.08.2022.
@@ -8,7 +8,7 @@
 
 import TangemSdk
 
-struct DeriveManager {
+struct DerivationManager {
     @Injected(\.tangemSdkProvider) private var tangemSdkProvider: TangemSdkProviding
 
     private let config: UserWalletConfig
