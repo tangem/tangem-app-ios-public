@@ -34,11 +34,13 @@ desc """
   Using enviroment: Production
   Options:
   - version: app version
+  - build: optional build number
+  - changelog: string for description archive
   """
 lane :release do |options|
   app_store_connect_api_key(duration: 1200)
   increment_version_number(version_number: options[:version])
-  increment_testflight_build_number(version: options[:version])
+  increment_testflight_build_number(version: options[:version], build: options[:build])
 
   build(scheme: PRODUCTION_SCHEME, version: options[:version])
   upload_dsyms(name: PRODUCTION_SCHEME)
@@ -46,7 +48,7 @@ lane :release do |options|
   upload_testflight(
     name: PRODUCTION_SCHEME,
     version: options[:version],
-    changelog: git_branch
+    changelog: options[:changelog]
   )
   clean_artifacts
 end
@@ -56,17 +58,19 @@ A lane that builds a \"Tangem Beta\" scheme and uploads the archive to Firebase 
 Using enviroment: Production
 Options:
 - version: app version
+- build: optional build number
+- changelog: string for description archive
 """
 lane :beta do |options|
   increment_version_number(version_number: options[:version])
-  increment_firebase_build_number(app_id: ENV["APP_ID_BETA"])
+  increment_firebase_build_number(app_id: ENV["APP_ID_BETA"], build: options[:build])
   build(scheme: BETA_SCHEME, export_method: "ad-hoc")
 
   upload_dsyms(name: BETA_SCHEME)
   upload_firebase(
     name: BETA_SCHEME,
     app_id: ENV["APP_ID_BETA"],
-    changelog: git_branch
+    changelog: options[:changelog]
   )
   clean_artifacts
 end
@@ -76,17 +80,19 @@ A lane that builds a \"Tangem Alpha\" scheme and uploads the archive to Firebase
 Using enviroment: Test
 Options:
 - version: app version
+- build: optional build number
+- changelog: string for description archive
 """
 lane :alpha do |options|
   increment_version_number(version_number: options[:version])
-  increment_firebase_build_number(app_id: ENV["APP_ID_ALPHA"])
+  increment_firebase_build_number(app_id: ENV["APP_ID_ALPHA"], build: options[:build])
   build(scheme: ALPHA_SCHEME, export_method: "ad-hoc")
 
   upload_dsyms(name: ALPHA_SCHEME)
   upload_firebase(
     name: ALPHA_SCHEME,
     app_id: ENV["APP_ID_ALPHA"],
-    changelog: git_branch
+    changelog: options[:changelog]
   )
   clean_artifacts
 end
@@ -127,24 +133,30 @@ private_lane :build do |options|
 end
 
 private_lane :increment_firebase_build_number do |options|
-  latest_release = firebase_app_distribution_get_latest_release(
-    app: options[:app_id],
-    firebase_cli_token: ENV["FIREBASE_CREDITIONAL_KEY"]
-  )
+  if options[:build].nil?
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: options[:app_id],
+      firebase_cli_token: ENV["FIREBASE_CREDITIONAL_KEY"]
+    )
 
-  if latest_release.nil?
-    latest_build_number = 0
+    if latest_release.nil?
+      latest_build_number = 0
+    else 
+      latest_build_number = latest_release[:buildVersion].to_i
+    end
+    increment_build_number({ build_number: latest_build_number + 1 })
   else 
-    latest_build_number = latest_release[:buildVersion].to_i
+    increment_build_number(build_number: options[:build])
   end
-  increment_build_number({ build_number: latest_build_number + 1 })
 end
 
 private_lane :increment_testflight_build_number do |options|
-  latest_build_number = latest_testflight_build_number(
-    version: options[:version]
-  )
-  increment_build_number({ build_number: latest_build_number + 1 })
+  if options[:build].nil?
+    latest_build_number = latest_testflight_build_number(version: options[:version])
+    increment_build_number({ build_number: latest_build_number + 1 })
+  else
+    increment_build_number(build_number: options[:build])
+  end
 end
 
 private_lane :upload_dsyms do |options|

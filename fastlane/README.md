@@ -35,6 +35,8 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
   Using enviroment: Production
   Options:
   - version: app version
+  - build: optional build number
+  - changelog: string for description archive
   
 
 ### beta
@@ -48,6 +50,8 @@ A lane that builds a "Tangem Beta" scheme and uploads the archive to Firebase fo
 Using enviroment: Production
 Options:
 - version: app version
+- build: optional build number
+- changelog: string for description archive
 
 
 ### alpha
@@ -61,6 +65,8 @@ A lane that builds a "Tangem Alpha" scheme and uploads the archive to Firebase f
 Using enviroment: Test
 Options:
 - version: app version
+- build: optional build number
+- changelog: string for description archive
 
 
 ### refresh_dsyms
