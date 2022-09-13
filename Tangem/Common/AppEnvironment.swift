@@ -1,5 +1,5 @@
 //
-//  Environment.swift
+//  AppEnvironment.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 24.06.2022.
@@ -13,10 +13,7 @@ private let infoDictionary = Bundle.main.infoDictionary ?? [:]
 enum AppEnvironment: String {
     case beta = "Beta"
     case production = "Production"
-
-    var isTestnet: Bool  {
-        false // TODO: Get from scheme
-    }
+    case alpha = "Alpha"
 }
 
 extension AppEnvironment {
@@ -41,5 +38,9 @@ extension AppEnvironment {
         }
 
         return identifier
+    }
+
+    var isTestnet: Bool  {
+        self == .alpha
     }
 }
