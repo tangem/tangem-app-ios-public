@@ -37,8 +37,8 @@ enum PreviewCard {
         }
 
         walletModels.forEach { $0.initialize() }
-
-        vm.state = .loaded(walletModel: walletModels)
+        // TODO: Add preview models
+//        vm.state = .loaded(walletModel: walletModels)
         #endif
         return vm
     }
