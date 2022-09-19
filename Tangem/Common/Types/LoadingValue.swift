@@ -1,5 +1,5 @@
 //
-//  ValueState.swift
+//  LoadingValue.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 16.09.2022.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// A simple enum to wrap a value to two states
-enum ValueState<Value> {
+enum LoadingValue<Value> {
     case loading
     case loaded(_ value: Value)
 
