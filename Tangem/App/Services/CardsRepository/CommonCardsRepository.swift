@@ -70,11 +70,14 @@ class CommonCardsRepository: CardsRepository {
 
         cardInfo.primaryCard.map { backupServiceProvider.backupService.setPrimaryCard($0) }
 
-        let cm = CardViewModel(cardInfo: cardInfo)
+        // TODO: Remove CardViewModel from here, use CardInfo
+        let config = UserWalletConfigFactory(cardInfo).makeConfig()
+        let cardModel = CardViewModel(cardInfo: cardInfo, config: config)
+
         tangemApiService.setAuthData(cardInfo.card.tangemApiAuthData)
-        walletConnectServiceProvider.initialize(with: cm)
-        cm.didScan()
-        cards[cardInfo.card.cardId] = cm
-        return cm
+        walletConnectServiceProvider.initialize(with: cardModel)
+        cardModel.didScan()
+        cards[cardInfo.card.cardId] = cardModel
+        return cardModel
     }
 }
