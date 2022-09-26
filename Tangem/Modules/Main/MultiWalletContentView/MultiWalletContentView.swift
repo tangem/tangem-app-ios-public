@@ -1,24 +1,40 @@
 //
-//  TokenListView.swift
+//  MultiWalletContentView.swift
 //  Tangem
 //
-//  Created by Sergey Balashov on 10.08.2022.
+//  Created by Sergey Balashov on 26.09.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI
-import Combine
 
-struct WalletTokenListView: View {
-    @ObservedObject private var viewModel: WalletTokenListViewModel
+struct MultiWalletContentView: View {
+    @ObservedObject private var viewModel: MultiWalletContentViewModel
 
-    init(viewModel: WalletTokenListViewModel) {
+    init(viewModel: MultiWalletContentViewModel) {
         self.viewModel = viewModel
     }
 
-    // I hope will be redesign
     var body: some View {
-        if !viewModel.contentState.isEmpty {
+        Group {
+            if !viewModel.tokenListIsEmpty {
+                TotalSumBalanceView(viewModel: viewModel.totalSumBalanceViewModel)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 6)
+            }
+
+            tokenList
+
+            AddTokensView(action: viewModel.openTokensList)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 8)
+                .padding(.top, 6)
+        }
+    }
+
+
+    @ViewBuilder var tokenList: some View {
+        if !viewModel.tokenListIsEmpty {
             VStack(alignment: .center, spacing: 0) {
                 Text("main_tokens".localized)
                     .style(Fonts.Bold.footnote, color: Colors.Text.tertiary)
@@ -40,10 +56,6 @@ struct WalletTokenListView: View {
             ActivityIndicatorView(color: .gray)
                 .padding()
 
-        case .empty:
-            // Oops, user haven't added any tokens
-            EmptyView()
-
         case let .loaded(viewModels):
             VStack(alignment: .leading, spacing: 6) {
                 ForEach(viewModels) { item in
@@ -63,10 +75,6 @@ struct WalletTokenListView: View {
                     }
                 }
             }
-
-        case let .error(error):
-            Text(error.localizedDescription)
-                .padding()
         }
     }
 }
