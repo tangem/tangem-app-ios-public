@@ -105,6 +105,7 @@ class WelcomeViewModel: ObservableObject {
     }
 
     private func processScannedCard(_ cardModel: CardViewModel, isWithAnimation: Bool) {
+        // TODO: if saltpay go to update and return with steps
         let input = cardModel.onboardingInput
         self.isScanningCard = false
 
