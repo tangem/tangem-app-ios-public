@@ -37,11 +37,13 @@ private extension SaltPayUtil {
         [
             "AE02",
             "AE03",
+            "FFFF", //TODO: remove this test batch
         ]
     }
     
     var backupCardIds: [String] {
         [
+            "AC01000000041886", //TODO: remove this test card
             "AC01000000033503",
             "AC01000000033594",
             "AC01000000033586",
