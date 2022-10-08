@@ -198,7 +198,7 @@ class SaltPayRegistrator {
             self.state = newState
         }
 
-        self.state = .needPin
+        self.state = .kycStart //TODO: remove
     }
 
     private func checkGasIfNeeded() -> AnyPublisher<Void, Error> {
