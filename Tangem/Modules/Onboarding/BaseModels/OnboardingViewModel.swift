@@ -181,9 +181,7 @@ class OnboardingViewModel<Step: OnboardingStep> {
     }
 
     func onOnboardingFinished(for cardId: String) {
-        if let existingIndex = AppSettings.shared.cardsStartedActivation.firstIndex(where: { $0 == cardId }) {
-            AppSettings.shared.cardsStartedActivation.remove(at: existingIndex) // TODO: enable
-        }
+        AppSettings.shared.cardsStartedActivation.remove(cardId)
     }
 
     func backButtonAction() {}

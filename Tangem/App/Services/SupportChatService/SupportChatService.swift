@@ -31,13 +31,12 @@ class SupportChatService: SupportChatServiceProtocol {
     }
     
     private func makeConfig(for env: SupportChatEnvironment) -> ZendeskConfig {
-        return keysManager.zendesk
-//        switch env { TODO: uncomment when ready
-//        case .default:
-//            return keysManager.zendesk
-//        case .saltpay:
-//            return keysManager.saltPay.zendesk
-//        }
+        switch env {
+        case .default:
+            return keysManager.zendesk
+        case .saltpay:
+            return keysManager.saltPay.zendesk
+        }
     }
 }
 
