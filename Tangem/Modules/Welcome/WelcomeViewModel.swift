@@ -12,9 +12,9 @@ import TangemSdk
 
 class WelcomeViewModel: ObservableObject {
     @Injected(\.cardsRepository) private var cardsRepository: CardsRepository
-    @Injected(\.onboardingStepsSetupService) private var stepsSetupService: OnboardingStepsSetupService
     @Injected(\.backupServiceProvider) private var backupServiceProvider: BackupServiceProviding
     @Injected(\.failedScanTracker) var failedCardScanTracker: FailedScanTrackable
+    @Injected(\.saletPayRegistratorProvider) private var saltPayRegistratorProvider: SaltPayRegistratorProviding
 
     @Published var showTroubleshootingView: Bool = false
     @Published var isScanningCard: Bool = false
@@ -51,12 +51,36 @@ class WelcomeViewModel: ObservableObject {
         var subscription: AnyCancellable? = nil
 
         subscription = cardsRepository.scanPublisher()
+            .flatMap { [weak self] response -> AnyPublisher<CardViewModel, Error> in
+                if SaltPayUtil().isBackupCard(cardId: response.cardId) {
+                    if let backupInput = response.backupInput, backupInput.steps.stepsCount > 0 {
+                        return .anyFail(error: SaltPayRegistratorError.emptyBackupCardScanned)
+                    } else {
+                        return .justWithError(output: response)
+                    }
+                }
+
+                guard let saltPayRegistrator = self?.saltPayRegistratorProvider.registrator else {
+                    return .justWithError(output: response)
+                }
+
+                return saltPayRegistrator.updatePublisher()
+                    .map { _ in
+                        return response
+                    }
+                    .eraseToAnyPublisher()
+            }
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case let .failure(error) = completion {
                     print("Failed to scan card: \(error)")
                     self?.isScanningCard = false
                     self?.failedCardScanTracker.recordFailure()
+
+                    if let salpayError = error as? SaltPayRegistratorError {
+                        self?.error = salpayError.alertBinder
+                        return
+                    }
 
                     if self?.failedCardScanTracker.shouldDisplayAlert ?? false {
                         self?.showTroubleshootingView = true
@@ -74,7 +98,9 @@ class WelcomeViewModel: ObservableObject {
                 let numberOfFailedAttempts = self?.failedCardScanTracker.numberOfFailedAttempts ?? 0
                 self?.failedCardScanTracker.resetCounter()
                 Analytics.log(numberOfFailedAttempts == 0 ? .firstScan : .secondScan)
-                self?.processScannedCard(cardModel, isWithAnimation: true)
+                DispatchQueue.main.async {
+                    self?.processScannedCard(cardModel, isWithAnimation: true)
+                }
             }
 
         subscription?.store(in: &bag)
@@ -106,31 +132,15 @@ class WelcomeViewModel: ObservableObject {
     }
 
     private func processScannedCard(_ cardModel: CardViewModel, isWithAnimation: Bool) {
-        cardModel.cardInfo.primaryCard.map { backupService.setPrimaryCard($0) }
+        let input = cardModel.onboardingInput
+        self.isScanningCard = false
 
-        stepsSetupService.steps(for: cardModel.cardInfo)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.error = error.alertBinder
-                }
-                self?.isScanningCard = false
-            } receiveValue: { [unowned self] steps in
-                let input = OnboardingInput(steps: steps,
-                                            cardInput: .cardModel(cardModel),
-                                            welcomeStep: nil,
-                                            currentStepIndex: 0)
-
-                self.isScanningCard = false
-                if input.steps.needOnboarding {
-                    cardModel.updateState()
-                    openOnboarding(with: input)
-                } else {
-                    openMain(with: input)
-                }
-
-                self.bag.removeAll()
-            }
-            .store(in: &bag)
+        if input.steps.needOnboarding {
+            cardModel.userWalletModel?.updateAndReloadWalletModels()
+            openOnboarding(with: input)
+        } else {
+            openMain(with: input)
+        }
     }
 }
 
@@ -141,7 +151,7 @@ extension WelcomeViewModel {
     }
 
     func openMail() {
-        coordinator.openMail(with: failedCardScanTracker)
+        coordinator.openMail(with: failedCardScanTracker, recipient: EmailConfig.default.recipient)
     }
 
     func openDisclaimer() {
@@ -199,28 +209,14 @@ private extension WelcomeViewModel {
             return
         }
 
-        stepsSetupService.stepsForBackupResume()
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    Analytics.log(error: error)
-                    print("Failed to load image for new card")
-                    self.error = error.alertBinder
-                case .finished:
-                    break
-                }
-            } receiveValue: { [weak self] steps in
-                guard let self = self else { return }
+        let input = OnboardingInput(steps: .wallet(WalletOnboardingStep.resumeBackupSteps),
+                                    cardInput: .cardId(primaryCardId),
+                                    welcomeStep: nil,
+                                    twinData: nil,
+                                    currentStepIndex: 0,
+                                    isStandalone: true)
 
-                let input = OnboardingInput(steps: steps,
-                                            cardInput: .cardId(primaryCardId),
-                                            welcomeStep: nil,
-                                            currentStepIndex: 0,
-                                            isStandalone: true)
-
-                self.openInterruptedBackup(with: input)
-            }
-            .store(in: &bag)
+        self.openInterruptedBackup(with: input)
     }
 }
 

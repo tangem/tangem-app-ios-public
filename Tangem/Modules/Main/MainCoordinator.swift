@@ -41,7 +41,17 @@ class MainCoordinator: CoordinatorObject {
     }
 
     func start(with options: MainCoordinator.Options) {
-        mainViewModel = MainViewModel(cardModel: options.cardModel, coordinator: self)
+        guard let userWalletModel = options.cardModel.userWalletModel else {
+            assertionFailure("UserWalletModel not created")
+            return
+        }
+
+        mainViewModel = MainViewModel(
+            cardModel: options.cardModel,
+            userWalletModel: userWalletModel,
+            cardImageProvider: CardImageProvider(supportsOnlineImage: options.cardModel.supportsOnlineImage),
+            coordinator: self
+        )
     }
 }
 
@@ -55,6 +65,7 @@ extension MainCoordinator: MainRoutable {
     func openOnboardingModal(with input: OnboardingInput) {
         let dismissAction: Action = { [weak self] in
             self?.modalOnboardingCoordinator = nil
+            self?.mainViewModel?.updateIsBackupAllowed()
         }
 
         let coordinator = OnboardingCoordinator(dismissAction: dismissAction)
@@ -172,8 +183,8 @@ extension MainCoordinator: MainRoutable {
         self.tokenListCoordinator = coordinator
     }
 
-    func openMail(with dataCollector: EmailDataCollector, emailType: EmailType) {
-        mailViewModel = MailViewModel(dataCollector: dataCollector, support: .tangem, emailType: emailType)
+    func openMail(with dataCollector: EmailDataCollector, emailType: EmailType, recipient: String) {
+        mailViewModel = MailViewModel(dataCollector: dataCollector, recipient: recipient, emailType: emailType)
     }
 
     func openQR(shareAddress: String, address: String, qrNotice: String) {

@@ -35,6 +35,17 @@
             ]
         },
         {
+            "id": "ethereum-pow-iou",
+            "symbol": "ETCW",
+            "name": "Ethereum PoW",
+            "networks":
+            [
+                {
+                    "networkId": "ethereum-pow-iou/test"
+                }
+            ]
+        },
+        {
             "id": "binancecoin",
             "symbol": "BNB",
             "name": "Binance",
@@ -111,6 +122,28 @@
             [
                 {
                     "networkId": "tron/test"
+                }
+            ]
+        },
+        {
+            "id": "polkadot",
+            "symbol": "DOT",
+            "name": "Polkadot",
+            "networks":
+            [
+                {
+                    "networkId": "polkadot/test"
+                }
+            ]
+        },
+        {
+            "id": "optimistic-ethereum",
+            "symbol": "ETH",
+            "name": "Optimistic Ethereum",
+            "networks":
+            [
+                {
+                    "networkId": "optimistic-ethereum/test"
                 }
             ]
         },
@@ -455,7 +488,7 @@
                     "decimalCount": 18
                 }
             ]
-        }
+        },
     ],
     "total": 0,
     "imageHost": "https://s3.eu-central-1.amazonaws.com/tangem.api/coins/"
