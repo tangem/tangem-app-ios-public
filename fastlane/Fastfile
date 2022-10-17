@@ -51,6 +51,11 @@ lane :release do |options|
     changelog: options[:changelog]
   )
   clean_artifacts
+  slack_message(
+    message: "Tangem Release successfully uploaded to TestFlight",
+    version: options[:version],
+    changelog: options[:changelog]
+  )
 end
 
 desc """
@@ -73,6 +78,11 @@ lane :beta do |options|
     changelog: options[:changelog]
   )
   clean_artifacts
+  slack_message(
+    message: "Tangem Beta successfully uploaded to Firebase",
+    version: options[:version],
+    changelog: options[:changelog]
+  )
 end
 
 desc """
@@ -95,6 +105,11 @@ lane :alpha do |options|
     changelog: options[:changelog]
   )
   clean_artifacts
+  slack_message(
+    message: "Tangem Aplha successfully uploaded to Firebase",
+    version: options[:version],
+    changelog: options[:changelog]
+  )
 end
 
 desc """
@@ -187,6 +202,27 @@ private_lane :upload_testflight do |options|
     ipa: path,
     app_version: options[:version],
     changelog: options[:changelog]
+  )
+end
+
+private_lane :slack_message do |options|
+  slack(
+    message: options[:message] + "\n@qa",
+    default_payloads: [:git_branch, :last_git_commit],
+    slack_url: ENV["SLACK_WEBHOOK_URL"],
+    attachment_properties: {
+      fields: [
+          {
+              title: "Version",
+              value: options[:version],
+          },
+          {
+              title: "Changelog",
+              value: options[:changelog],
+          }
+      ]
+    },
+    link_names: true
   )
 end
 
