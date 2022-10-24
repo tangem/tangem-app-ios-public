@@ -104,7 +104,7 @@ extension SaltPayConfig: UserWalletConfig {
     }
 
     var touURL: URL {
-        .init(string: "https://google.com")!
+        .init(string: "https://tangem.com")! //TODO: url
     }
 
     var cardsCount: Int {
