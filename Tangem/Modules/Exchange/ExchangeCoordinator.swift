@@ -12,25 +12,25 @@ import BlockchainSdk
 class ExchangeCoordinator: CoordinatorObject {
     var dismissAction: Action
     var popToRootAction: ParamsAction<PopToRootOptions>
-    
+
     @Published var exchangeViewModel: ExchangeViewModel? = nil
-    
+
     required init(dismissAction: @escaping Action, popToRootAction: @escaping ParamsAction<PopToRootOptions>) {
         self.dismissAction = dismissAction
         self.popToRootAction = popToRootAction
     }
-    
+
     func start(with options: ExchangeCoordinator.Options) {
         exchangeViewModel = ExchangeViewModel(amountType: options.amountType, walletModel: options.walletModel, cardViewModel: options.cardViewModel, blockchainNetwork: options.blockchainNetwork)
     }
 }
 
 extension ExchangeCoordinator {
-    func openTokenList() { } //TODO: - IOS-2344
-    
-    func openApproveView() { } //TODO: - IOS-2344
-    
-    func openSuccessView() { } //TODO: - IOS-2344
+    func openTokenList() { } // TODO: - IOS-2344
+
+    func openApproveView() { } // TODO: - IOS-2344
+
+    func openSuccessView() { } // TODO: - IOS-2344
 }
 
 extension ExchangeCoordinator {
