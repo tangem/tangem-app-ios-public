@@ -23,7 +23,14 @@ class ExchangeCoordinator: CoordinatorObject {
     func start(with options: ExchangeCoordinator.Options) {
         exchangeViewModel = ExchangeViewModel(amountType: options.amountType, walletModel: options.walletModel, cardViewModel: options.cardViewModel, blockchainNetwork: options.blockchainNetwork)
     }
+}
+
+extension ExchangeCoordinator {
+    func openTokenList() { } //TODO: - IOS-2344
     
+    func openApproveView() { } //TODO: - IOS-2344
+    
+    func openSuccessView() { } //TODO: - IOS-2344
 }
 
 extension ExchangeCoordinator {
