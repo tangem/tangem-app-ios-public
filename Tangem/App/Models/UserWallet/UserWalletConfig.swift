@@ -70,10 +70,10 @@ extension UserWalletConfig {
     var supportChatEnvironment: SupportChatEnvironment {
         .default
     }
-    
+
     var touURL: URL {
         .init(string: "https://tangem.com")!
-    } //TODO: set default url
+    } // TODO: set default url
 }
 
 struct EmailConfig {
