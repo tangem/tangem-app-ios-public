@@ -11,7 +11,7 @@ import SwiftUI
 // TODO: Will be remove in IOS-2085
 struct FeatureToggleViewModel: Identifiable {
     var id: Int { toggle.hashValue }
-    
+
     let toggle: FeatureToggle
     let isActive: Binding<Bool>
 }
