@@ -1,5 +1,5 @@
 //
-//  FeatureToggle.swift
+//  FeatureProvider.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 26.10.2022.
@@ -7,6 +7,18 @@
 //
 
 import Foundation
+
+// MARK: - Provider
+
+// Use this provider for your feature
+// Will be expand for control availability version
+enum FeatureProvider {
+    static func isAvailable(_ toggle: FeatureToggle) -> Bool {
+        EnvironmentProvider.integratedFeatures.contains(toggle.rawValue)
+    }
+}
+
+// MARK: - Keys
 
 enum FeatureToggle: String, Hashable, CaseIterable {
     case test
