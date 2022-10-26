@@ -1,5 +1,5 @@
 //
-//  SetupEnvironmentViewModel.swift
+//  EnvironmentSetupViewModel.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 26.10.2022.
@@ -9,7 +9,7 @@
 import Combine
 import SwiftUI
 
-final class SetupEnvironmentViewModel: ObservableObject {
+final class EnvironmentSetupViewModel: ObservableObject {
     // MARK: - ViewState
 
     @Published var isTestnet: Bool
@@ -44,7 +44,7 @@ final class SetupEnvironmentViewModel: ObservableObject {
     }
 }
 
-private extension SetupEnvironmentViewModel {
+private extension EnvironmentSetupViewModel {
     func bind() {
         $isTestnet
             .sink { EnvironmentStorage.isTestnet = $0 }
