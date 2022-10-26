@@ -41,7 +41,7 @@ extension AppEnvironment {
     }
 
     var isTestnet: Bool  {
-        self == .alpha // TODO: Get it from defaults
+        EnvironmentProvider.shared.isTestnet
     }
 
     var isDebug: Bool {
