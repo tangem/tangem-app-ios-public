@@ -191,12 +191,12 @@ extension DetailsViewModel {
         ))
 
         // TODO: Saving card implementation
-        /*
+        
          viewModels.append(DefaultRowViewModel(
              title: "details_row_title_app_settings".localized,
              action: openAppSettings
          ))
-          */
+        
 
         if canCreateBackup {
             viewModels.append(DefaultRowViewModel(
