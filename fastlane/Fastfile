@@ -207,19 +207,23 @@ end
 
 private_lane :slack_message do |options|
   slack(
-    message: options[:message] + "\n@qa",
+    message: options[:message] + " @qa",
     default_payloads: [:git_branch, :last_git_commit],
     slack_url: ENV["SLACK_WEBHOOK_URL"],
     attachment_properties: {
       fields: [
-          {
-              title: "Version",
-              value: options[:version],
-          },
-          {
-              title: "Changelog",
-              value: options[:changelog],
-          }
+        {
+          title: "Git Hash",
+          value: last_git_commit[:commit_hash],
+        },        
+        {
+          title: "Version",
+          value: options[:version],
+        },
+        {
+          title: "Changelog",
+          value: options[:changelog],
+        }
       ]
     },
     link_names: true
