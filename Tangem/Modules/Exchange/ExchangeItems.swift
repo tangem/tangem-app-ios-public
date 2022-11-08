@@ -1,5 +1,5 @@
 //
-//  ExchangeViewItem.swift
+//  ExchangeItems.swift
 //  Tangem
 //
 //  Created by Pavel Grechikhin on 21.10.2022.
