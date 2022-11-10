@@ -75,6 +75,7 @@ class ReferralViewModel: ObservableObject {
         referralProgramInfo = try! jsonDecoder.decode(ReferralProgramInfo.self, from: json.data(using: .utf8)!)
     }
 
+    // Temp solution. Will be updated in IOS-2429
     static func mock(_ mock: ReferralMock, with coordinator: ReferralRoutable) -> ReferralViewModel {
         .init(coordinator: coordinator, json: mock.json)
     }
