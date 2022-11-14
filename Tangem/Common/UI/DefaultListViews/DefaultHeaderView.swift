@@ -1,14 +1,14 @@
 //
-//  DefaultFooterView.swift
+//  DefaultHeaderView.swift
 //  Tangem
 //
-//  Created by Sergey Balashov on 26.07.2022.
+//  Created by Sergey Balashov on 26.10.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI
 
-struct DefaultFooterView: View {
+struct DefaultHeaderView: View {
     private let title: String
 
     init(_ title: String) {
@@ -16,7 +16,7 @@ struct DefaultFooterView: View {
     }
 
     var body: some View {
-        Text(title)
+        Text(title.uppercased())
             .style(Fonts.Regular.footnote, color: Colors.Text.tertiary)
     }
 }
