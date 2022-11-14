@@ -180,7 +180,7 @@ end
 private_lane :upload_firebase do |options|
   filename = options[:name] + ".ipa"
   path = BUILD_PATH + filename
-  release_notes = options[:changelog] + "\nGitHash: " + last_git_commit[:commit_hash]
+  release_notes = "#{options[:changelog]}\nGitHash: #{last_git_commit[:commit_hash]}"
 
   firebase_app_distribution(
     app: options[:app_id],
@@ -194,7 +194,7 @@ end
 private_lane :upload_testflight do |options|
   filename = options[:name] + ".ipa"
   path = BUILD_PATH + filename
-  release_notes = options[:changelog] + "\nGitHash: " + last_git_commit[:commit_hash]
+  release_notes = "#{options[:changelog]}\nGitHash: #{last_git_commit[:commit_hash]}"
 
   upload_to_testflight(
     skip_waiting_for_build_processing: true,
