@@ -10,7 +10,16 @@ import Foundation
 import ExchangeSdk
 import BlockchainSdk
 
-extension ExchangeBlockchain {
+// TODO: Move CaseIterable in sdk
+extension ExchangeBlockchain: CaseIterable {
+    static func exchangeBlockchain(from chainId: Int) -> ExchangeBlockchain {
+        guard let blockchain = ExchangeBlockchain.allCases.first { $0.id == chainId } else {
+            fatalError("OneInch not support this blockchain")
+        }
+        
+        return blockchain
+    }
+    
     static func convert(from blockchainNetwork: BlockchainNetwork) -> ExchangeBlockchain {
         switch blockchainNetwork.blockchain {
         case .ethereum:
