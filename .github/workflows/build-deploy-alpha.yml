@@ -7,7 +7,6 @@ jobs:
  build:
    name: Build
    runs-on: self-hosted
-   if: github.event.pull_request.draft == false
    steps:
    - name: Checkout
      uses: actions/checkout@v3
@@ -22,10 +21,22 @@ jobs:
    - name: Pods install
      run: bundle exec pod install
       
-   - name: Tests
-     run: bundle exec fastlane test
+   - name: Build
+     run: bundle exec fastlane build scheme: "Tangem Alpha" version:"Test"
+     
+   - name: Upload binary artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Application
+        path: ???app.ipa
      
  deploy:
-   name: Build
+   name: Deploy
      needs: build
      runs-on: self-hosted
+     steps:
+     - name: Download binary artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Application
+     - name: Deploy to 
