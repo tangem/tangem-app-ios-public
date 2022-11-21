@@ -13,6 +13,8 @@ import BlockchainSdk
 struct UserWalletConfigFactory {
     private let cardInfo: CardInfo
 
+    #warning("TODO: Add ability to create config based on UserWallet")
+
     init(_ cardInfo: CardInfo) {
         self.cardInfo = cardInfo
     }
