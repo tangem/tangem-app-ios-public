@@ -53,7 +53,6 @@ lane :release do |options|
   clean_artifacts
   slack_message(
     message: "Tangem Release successfully uploaded to TestFlight",
-    version: options[:version],
     changelog: options[:changelog]
   )
 end
@@ -80,7 +79,6 @@ lane :beta do |options|
   clean_artifacts
   slack_message(
     message: "Tangem Beta successfully uploaded to Firebase",
-    version: options[:version],
     changelog: options[:changelog]
   )
 end
@@ -107,7 +105,6 @@ lane :alpha do |options|
   clean_artifacts
   slack_message(
     message: "Tangem Aplha successfully uploaded to Firebase",
-    version: options[:version],
     changelog: options[:changelog]
   )
 end
@@ -183,43 +180,53 @@ end
 private_lane :upload_firebase do |options|
   filename = options[:name] + ".ipa"
   path = BUILD_PATH + filename
+  release_notes = "#{options[:changelog]}\nGitHash: #{last_git_commit[:commit_hash]}"
 
   firebase_app_distribution(
     app: options[:app_id],
     ipa_path: path,
     groups: FIREBASE_TESTERS_GROUP,
     firebase_cli_token: ENV["FIREBASE_CREDITIONAL_KEY"],
-    release_notes: options[:changelog]
+    release_notes: release_notes
   )
 end
 
 private_lane :upload_testflight do |options|
   filename = options[:name] + ".ipa"
   path = BUILD_PATH + filename
+  release_notes = "#{options[:changelog]}\nGitHash: #{last_git_commit[:commit_hash]}"
 
   upload_to_testflight(
     skip_waiting_for_build_processing: true,
     ipa: path,
     app_version: options[:version],
-    changelog: options[:changelog]
+    changelog: release_notes
   )
 end
 
 private_lane :slack_message do |options|
   slack(
-    message: options[:message] + "\n@qa",
+    message: options[:message] + " @qa",
     default_payloads: [:git_branch, :last_git_commit],
     slack_url: ENV["SLACK_WEBHOOK_URL"],
     attachment_properties: {
       fields: [
-          {
-              title: "Version",
-              value: options[:version],
-          },
-          {
-              title: "Changelog",
-              value: options[:changelog],
-          }
+        {
+          title: "Git Hash",
+          value: last_git_commit[:commit_hash],
+        },        
+        {
+          title: "Version",
+          value: get_version_number(xcodeproj: "TangemApp.xcodeproj"),
+        },
+        {
+          title: "Build number",
+          value: get_build_number(xcodeproj: "TangemApp.xcodeproj"),
+        },
+        {
+          title: "Changelog",
+          value: options[:changelog],
+        }
       ]
     },
     link_names: true
