@@ -1,5 +1,5 @@
 //
-//  SuccessSwapRoutable.swift
+//  SuccessSwappingRoutable.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 18.11.2022.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SuccessSwapRoutable: AnyObject {
+protocol SuccessSwappingRoutable: AnyObject {
 
 }
