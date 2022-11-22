@@ -39,7 +39,7 @@ enum WalletConnectNetworkParserUtility {
             }
         } else if dAppInfo.peerMeta.url.absoluteString.contains("honeyswap.1hive.eth.limo") {
             // This service doesn't return chainID despite the fact they support both Gnosis and Polygon.
-            // TODO Check if something's changed after this bug report:
+            // TODO: Check if something's changed after this bug report:
             // https://github.com/1Hive/honeyswap-interface/issues/83
             return Blockchain.gnosis
         } else {
@@ -50,8 +50,7 @@ enum WalletConnectNetworkParserUtility {
     }
 
     private static func makeBlockchain(from chainId: Int) -> Blockchain? {
-        let items = SupportedTokenItems()
-        let allBlockchains = items.blockchains(for: [.secp256k1], isTestnet: nil)
+        let allBlockchains = Blockchain.supportedBlockchains.union(Blockchain.supportedTestnetBlockchains)
         return allBlockchains.first(where: { $0.chainId == chainId })
     }
 }
