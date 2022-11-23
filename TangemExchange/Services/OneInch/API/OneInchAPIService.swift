@@ -1,42 +1,14 @@
 //
-//  ExchangingFacade.swift
-//  Tangem
+//  OneInchAPIService.swift
+//  TangemExchange
 //
-//  Created by Pavel Grechikhin.
+//  Created by Sergey Balashov on 23.11.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation
 
-public protocol OneInchApiServiceProtocol: AnyObject {
-    // Check status of service
-    func healthCheck(blockchain: ExchangeBlockchain) async -> Result<HealthCheck, ExchangeInchError>
-    func tokens(blockchain: ExchangeBlockchain) async -> Result<TokensList, ExchangeInchError>
-
-    func presets(blockchain: ExchangeBlockchain) async -> Result<PresetsConfiguration, ExchangeInchError>
-    func liquiditySources(blockchain: ExchangeBlockchain) async -> Result<LiquiditySourcesList, ExchangeInchError>
-
-    // Find best quote to exchange
-    func quote(blockchain: ExchangeBlockchain,
-               parameters: QuoteParameters) async -> Result<QuoteData, ExchangeInchError>
-
-    // Generating data for exchange
-    func swap(blockchain: ExchangeBlockchain,
-              parameters: SwapParameters) async -> Result<SwapData, ExchangeInchError>
-
-    // Address of the 1inch router that must be trusted to spend funds for the exchange
-    func spender(blockchain: ExchangeBlockchain) async -> Result<ApproveSpender, ExchangeInchError>
-
-    // Generate data for calling the contract in order to allow the 1inch router to spend funds
-    func approveTransaction(blockchain: ExchangeBlockchain,
-                            approveTransactionParameters: ApproveTransactionParameters) async -> Result<ApprovedTransactionData, ExchangeInchError>
-
-    // Get the number of tokens that the 1inch router is allowed to spend
-    func allowance(blockchain: ExchangeBlockchain,
-                   allowanceParameters: ApproveAllowanceParameters) async -> Result<ApprovedAllowance, ExchangeInchError>
-}
-
-class OneInchApiService: OneInchApiServiceProtocol {
+class OneInchAPIService: OneInchAPIProvider {
     let isDebug: Bool
     private lazy var networkService: NetworkService = NetworkService(isDebug: isDebug)
 
