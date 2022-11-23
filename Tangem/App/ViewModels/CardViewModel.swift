@@ -169,6 +169,11 @@ class CardViewModel: Identifiable, ObservableObject {
         config.hasFeature(.withdrawal)
     }
 
+    var canParticipateInReferralProgram: Bool {
+        // TODO: refactor to a single function that any other entity can use to request feature availability
+        config.hasFeature(.referralProgram)
+    }
+
     var supportedBlockchains: Set<Blockchain> {
         config.supportedBlockchains
     }
