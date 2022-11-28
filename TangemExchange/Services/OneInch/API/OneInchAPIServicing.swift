@@ -1,5 +1,5 @@
 //
-//  ExchangingFacade.swift
+//  OneInchAPIServicing.swift
 //  Tangem
 //
 //  Created by Pavel Grechikhin.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol OneInchAPIProvider {
+public protocol OneInchAPIServicing {
 
     // Check status of service
     func healthCheck(blockchain: ExchangeBlockchain) async -> Result<HealthCheck, ExchangeInchError>

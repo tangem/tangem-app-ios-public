@@ -1,5 +1,5 @@
 //
-//  OneInchServiceError.swift
+//  OneInchExchangeProviderErrors.swift
 //  TangemExchange
 //
 //  Created by Sergey Balashov on 23.11.2022.
