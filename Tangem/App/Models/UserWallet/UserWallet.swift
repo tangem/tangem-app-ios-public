@@ -2,12 +2,50 @@
 //  UserWallet.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 29.07.2022.
+//  Created by Andrey Chukavin on 04.08.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation
+import CryptoKit
+import TangemSdk
 
-class UserWallet {
+struct UserWallet: Identifiable, Codable {
+    var id = UUID()
+    let userWalletId: Data
+    var name: String
+    var card: CardDTO
+    var associatedCardIds: Set<String>
+    let walletData: DefaultWalletData
+    let artwork: ArtworkInfo?
+    let isHDWalletAllowed: Bool
+}
 
+extension UserWallet {
+    struct SensitiveInformation: Codable {
+        let wallets: [Card.Wallet]
+    }
+}
+
+extension UserWallet {
+    var isLocked: Bool {
+        card.wallets.isEmpty
+    }
+
+    func cardInfo() -> CardInfo {
+        let cardArtwork: CardArtwork
+        if let artwork = artwork {
+            cardArtwork = .artwork(artwork)
+        } else {
+            cardArtwork = .noArtwork
+        }
+
+        return CardInfo(
+            card: card,
+            walletData: walletData,
+            name: self.name,
+            artwork: cardArtwork,
+            primaryCard: nil
+        )
+    }
 }
