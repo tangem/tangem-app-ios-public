@@ -91,3 +91,7 @@ private extension SwappingTokenListViewModel {
         // TODO: Add navigation
     }
 }
+
+private extension Currency {
+    
+}
