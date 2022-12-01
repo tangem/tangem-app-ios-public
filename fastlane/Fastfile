@@ -117,7 +117,7 @@ Options:
 """
 lane :refresh_dsyms do |options|
   app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-  app_store_connect_api_key(duration: 1200)
+  app_store_connect_api_key(duration: 1200, is_key_content_base64: true)
   download_dsyms(
     app_identifier: app_identifier,
     version: options[:version],
