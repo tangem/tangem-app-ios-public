@@ -1,5 +1,5 @@
 //
-//  TokenIconUtil.swift
+//  TokenIconURLBuilder.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 28.11.2022.
