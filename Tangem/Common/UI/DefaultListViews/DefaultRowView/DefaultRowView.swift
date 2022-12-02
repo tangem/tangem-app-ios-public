@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct DefaultRowView: View {
+    // TODO: Make @ObservedObject
     private let viewModel: DefaultRowViewModel
 
     init(viewModel: DefaultRowViewModel) {
