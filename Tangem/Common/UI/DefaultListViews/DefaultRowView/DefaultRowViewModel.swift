@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Make ObservableObject
 struct DefaultRowViewModel {
     let title: String
     let detailsType: DetailsType?
