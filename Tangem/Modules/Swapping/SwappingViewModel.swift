@@ -89,6 +89,8 @@ private extension SwappingViewModel {
     }
 }
 
+// MARK: - ExchangeManagerDelegate
+
 extension SwappingViewModel: ExchangeManagerDelegate {
     func exchangeManagerDidUpdate(availabilityState: TangemExchange.ExchangeAvailabilityState) {
         DispatchQueue.main.async {
@@ -172,10 +174,12 @@ private extension SwappingViewModel {
             receiveCurrencyViewModel?.updateState(.loaded(0, fiatValue: 0))
             refreshWarningRowViewModel = DefaultWarningRowViewModel(
                 icon: Assets.attention,
-                title: "Exchange rate has expired", // TODO: Update design
-                subtitle: error.localizedDescription, // TODO: Update design
+                title: "Exchange rate has expired", // TODO: Design will be updated
+                subtitle: error.localizedDescription, // TODO: Design will be updated
                 detailsType: .icon(Assets.refreshWarningIcon),
-                action: {}
+                action: { [weak self] in
+                    self?.exchangeManager.refresh()
+                }
             )
         }
     }
@@ -253,13 +257,13 @@ extension SwappingViewModel {
         var title: String {
             switch self {
             case .swap:
-                return "Swap"
+                return "swapping_swap".localized
             case .insufficientFunds:
-                return "Insufficient funds"
+                return "swapping_insufficient_funds".localized
             case .givePermission:
-                return "Give permission"
+                return "swapping_give_permission".localized
             case .permitAndSwap:
-                return "Permit and Swap"
+                return "swapping_permit_and_swap".localized
             }
         }
 
