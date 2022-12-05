@@ -38,7 +38,7 @@ desc """
   - changelog: string for description archive
   """
 lane :release do |options|
-  app_store_connect_api_key(duration: 1200)
+  app_store_connect_api_key(duration: 1200, is_key_content_base64: true)
   increment_version_number(version_number: options[:version])
   increment_testflight_build_number(version: options[:version], build: options[:build])
 
@@ -117,13 +117,13 @@ Options:
 """
 lane :refresh_dsyms do |options|
   app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-  app_store_connect_api_key(duration: 1200)
+  app_store_connect_api_key(duration: 1200, is_key_content_base64: true)
   download_dsyms(
     app_identifier: app_identifier,
     version: options[:version],
     build_number: options[:build]
   )
-  upload_symbols_to_crashlytics
+  upload_symbols_to_crashlytics(app_id: ENV["PRODUCTION_SCHEME"])
   clean_build_artifacts
 end
 
