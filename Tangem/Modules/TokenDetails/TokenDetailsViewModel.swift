@@ -498,7 +498,7 @@ private extension TokenDetailsViewModel {
                 assertionFailure("TODO: Add loaded token")
                 return nil
             }
-            
+
             return mapper.mapToCurrency(token: token, blockchain: blockchain)
         case .token:
             return mapper.mapToCurrency(blockchain: blockchainNetwork.blockchain)
