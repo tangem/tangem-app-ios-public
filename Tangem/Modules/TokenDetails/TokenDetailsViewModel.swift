@@ -506,7 +506,7 @@ private extension TokenDetailsViewModel {
                 assertionFailure("TODO: Add loaded token")
                 return nil
             }
-            
+
             return tokenCurrency(token: token, exchangeBlockchain: exchangeBlockchain)
         case .token:
             return coinCurrency(exchangeBlockchain: exchangeBlockchain)
