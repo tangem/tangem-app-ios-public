@@ -8,16 +8,15 @@
 
 import Foundation
 
-struct TokenIconURLBuilder {
-    enum IconSize: String {
-        /// 50x50
-        case small
-        /// 250x250
-        case large
+struct TokenIconURLBuilder: TokenIconURLBuilding {
+    private let baseURL: URL
+
+    init(baseURL: URL) {
+        self.baseURL = baseURL
     }
 
-    func iconURL(id: String, size: IconSize = .large) -> URL {
-        CoinsResponse.baseURL
+    func iconURL(id: String, size: TokenURLIconSize = .large) -> URL {
+        baseURL
             .appendingPathComponent("coins")
             .appendingPathComponent(size.rawValue)
             .appendingPathComponent("\(id).png")
