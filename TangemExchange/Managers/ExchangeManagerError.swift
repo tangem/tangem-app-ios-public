@@ -1,5 +1,5 @@
 //
-//  ExchangeManagerErrors.swift
+//  ExchangeManagerError.swift
 //  TangemExchange
 //
 //  Created by Sergey Balashov on 05.12.2022.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ExchangeManagerErrors: Error {
+public enum ExchangeManagerError: Error {
     case incorrectData
     case walletAddressNotFound
 }
