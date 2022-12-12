@@ -13,30 +13,18 @@ enum WelcomeStep {
     case letsStart
 
     var title: LocalizedStringKey {
-        switch self {
-        case .welcome: return "onboarding_read_title"
-        case .letsStart: return "onboarding_read_title"
-        }
+        LocalizedStringKey("TODO: REMOVE ME")
     }
 
     var subtitle: LocalizedStringKey {
-        switch self {
-        case .welcome: return "onboarding_read_subtitle"
-        case .letsStart: return "onboarding_read_subtitle"
-        }
+        LocalizedStringKey("TODO: REMOVE ME")
     }
 
     var mainButtonTitle: LocalizedStringKey {
-        switch self {
-        case .welcome: return "home_button_scan"
-        case .letsStart: return "home_button_scan"
-        }
+        LocalizedStringKey("TODO: REMOVE ME")
     }
 
     var supplementButtonTitle: LocalizedStringKey {
-        switch self {
-        case .welcome: return "onboarding_button_shop"
-        case .letsStart: return "onboarding_button_shop"
-        }
+        LocalizedStringKey("TODO: REMOVE ME")
     }
 }
