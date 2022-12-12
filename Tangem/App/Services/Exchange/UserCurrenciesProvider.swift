@@ -1,5 +1,5 @@
 //
-//  UserWalletListProvider.swift
+//  UserCurrenciesProvider.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 06.12.2022.
@@ -8,7 +8,7 @@
 
 import TangemExchange
 
-struct UserWalletListProvider {
+struct UserCurrenciesProvider {
     private let walletModel: WalletModel
 
     init(walletModel: WalletModel) {
@@ -18,7 +18,7 @@ struct UserWalletListProvider {
 
 // MARK: - UserCurrenciesProviding
 
-extension UserWalletListProvider: UserCurrenciesProviding {
+extension UserCurrenciesProvider: UserCurrenciesProviding {
     func addCurrencyInList(currency: Currency) {
         // TODO: add currency to user token list
     }
