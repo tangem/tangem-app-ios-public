@@ -1,5 +1,5 @@
 //
-//  BlockchainInfoProvider.swift
+//  BlockchainDataProvider.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 15.11.2022.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol BlockchainInfoProvider {
+public protocol BlockchainDataProvider {
     func getWalletAddress(currency: Currency) -> String?
 
     func getBalance(currency: Currency) async throws -> Decimal
