@@ -10,6 +10,8 @@ import Foundation
 import Combine
 import BlockchainSdk
 
+// TODO - Remove ObservableObject and change @Published to CurrentValueSubject
+
 class WalletModel: ObservableObject, Identifiable {
     @Injected(\.tangemApiService) private var tangemApiService: TangemApiService
 
