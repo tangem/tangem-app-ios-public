@@ -19,7 +19,7 @@ struct UserCurrenciesProvider {
 // MARK: - UserCurrenciesProviding
 
 extension UserCurrenciesProvider: UserCurrenciesProviding {
-    func addCurrencyInList(currency: Currency) {
+    func add(currency: TangemExchange.Currency) {
         // TODO: add currency to user token list
     }
 
