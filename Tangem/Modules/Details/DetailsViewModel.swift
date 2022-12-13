@@ -217,14 +217,14 @@ extension DetailsViewModel {
         }
 
         viewModels.append(DefaultRowViewModel(
-            title: "details_row_title_card_settings".localized,
+            title: "card_settings_title".localized,
             action: openCardSettings
         ))
 
         // TODO: Saving card implementation
 
         viewModels.append(DefaultRowViewModel(
-            title: "details_row_title_app_settings".localized,
+            title: "app_settings_title".localized,
             action: openAppSettings
         ))
 
