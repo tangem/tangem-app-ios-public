@@ -1,5 +1,5 @@
 //
-//  TransactionSender.swift
+//  TransactionSenderProtocol.swift
 //  TangemExchange
 //
 //  Created by Sergey Balashov on 12.12.2022.

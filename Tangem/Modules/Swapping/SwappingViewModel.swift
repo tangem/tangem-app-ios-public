@@ -97,7 +97,7 @@ final class SwappingViewModel: ObservableObject {
     func userDidTapMainButton() {
         switch mainButtonState {
         case .permitAndSwap:
-            break
+            break // TODO - wait money for testing
         case .swap:
             swapItems()
         case .givePermission:
