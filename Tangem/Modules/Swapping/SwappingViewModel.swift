@@ -262,7 +262,7 @@ private extension SwappingViewModel {
             refreshWarningRowViewModel = DefaultWarningRowViewModel(
                 icon: Assets.attention,
                 title: "Exchange rate has expired", // TODO: Design will be updated
-                subtitle: error.localizedDescription, // TODO: Design will be updated
+                subtitle: error.detailedError.localizedDescription, // TODO: Design will be updated
                 detailsType: .icon(Assets.refreshWarningIcon),
                 action: { [weak self] in
                     self?.exchangeManager.refresh()
