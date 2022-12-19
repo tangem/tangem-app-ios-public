@@ -1,5 +1,5 @@
 //
-//  CurrencyPrice.swift
+//  CurrencyAmount.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 14.12.2022.
@@ -8,7 +8,7 @@
 
 import TangemExchange
 
-struct CurrencyPrice {
+struct CurrencyAmount {
     let value: Decimal
     let currency: Currency
 
