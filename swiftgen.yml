@@ -3,8 +3,8 @@
 ## In case your config entries all use a common input/output parent directory, you can specify those here.
 ##   Every input/output paths in the rest of the config will then be expressed relative to these.
 ##   Those two top-level keys are optional and default to "." (the directory of the config file).
-input_dir: Tangem
-output_dir: Tangem
+input_dir: Tangem/Resources
+output_dir: Tangem/Resources/Generated
 
 ## Generate constants for your Assets Catalogs, including constants for images, colors, ARKit resources, etc.
 ##   This example also shows how to provide additional parameters to your template to customize the output.
@@ -21,17 +21,16 @@ xcassets:
         removeFolderName: true
         forceProvidesNamespaces: true
         publicAccess: true
-      output: Assets/XCAssets+Generated.swift
+      output: XCAssets+Generated.swift
 
 ## Generate constants for your localized strings.
 ##   Be sure that SwiftGen only parses ONE locale (typically Base.lproj, or en.lproj, or whichever your development region is); otherwise it will generate the same keys multiple times.
 ##   SwiftGen will parse all `.strings` files found in that folder. 
-##   structured-swift5
-# strings:
-#   inputs:
-#     - Localizations/en.lproj
-#   outputs:
-#     - templatePath: Utilites/swiftui-strings-template.stencil
-#       output: Localizations/Localizable+Generated.swift
-#       params:
-#         publicAccess: 1
+strings:
+  inputs:
+    - Localizations/en.lproj
+  outputs:
+    - templatePath: Utilites/swiftui-strings-template.stencil
+      output: Localizable+Generated.swift
+      params:
+        publicAccess: 1
