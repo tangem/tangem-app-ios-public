@@ -33,4 +33,4 @@ strings:
     - templatePath: Utilites/swiftui-strings-template.stencil
       output: Localizable+Generated.swift
       params:
-        publicAccess: 1
+        publicAccess: true
