@@ -12,19 +12,19 @@ enum WelcomeStep {
     case welcome
     case letsStart
 
-    var title: LocalizedStringKey {
-        LocalizedStringKey("TODO: REMOVE ME")
+    var title: String {
+        String("TODO: REMOVE ME")
     }
 
-    var subtitle: LocalizedStringKey {
-        LocalizedStringKey("TODO: REMOVE ME")
+    var subtitle: String {
+        String("TODO: REMOVE ME")
     }
 
-    var mainButtonTitle: LocalizedStringKey {
-        LocalizedStringKey("TODO: REMOVE ME")
+    var mainButtonTitle: String {
+        String("TODO: REMOVE ME")
     }
 
-    var supplementButtonTitle: LocalizedStringKey {
-        LocalizedStringKey("TODO: REMOVE ME")
+    var supplementButtonTitle: String {
+        String("TODO: REMOVE ME")
     }
 }
