@@ -39,6 +39,7 @@ extension CommonKeysManager: KeysManager {
                             blockcypherTokens: keys.blockcypherTokens,
                             infuraProjectId: keys.infuraProjectId,
                             tronGridApiKey: keys.tronGridApiKey,
+                            // TODO: rename to solana
                             quickNodeSolanaCredentials: .init(apiKey: keys.quiknodeApiKey, subdomain: keys.quiknodeSubdomain),
                             quickNodeBscCredentials: .init(apiKey: keys.bscQuiknodeApiKey, subdomain: keys.bscQuiknodeSubdomain),
                             defaultNetworkProviderConfiguration: .init(logger: .verbose, urlSessionConfiguration: .standart),
