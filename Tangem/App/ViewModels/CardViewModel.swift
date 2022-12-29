@@ -273,10 +273,7 @@ class CardViewModel: Identifiable, ObservableObject {
 
     private var _signer: TangemSigner {
         didSet {
-            signSubscription = _signer.signPublisher
-                .sink { [weak self] card in // TODO: TBD remaining signatures feature
-                    self?.onSigned(card)
-                }
+            bindSigner()
         }
     }
 
@@ -665,6 +662,15 @@ class CardViewModel: Identifiable, ObservableObject {
                 }
             }
             .store(in: &bag)
+
+        bindSigner()
+    }
+
+    private func bindSigner() {
+        signSubscription = _signer.signPublisher
+            .sink { [weak self] card in // TODO: TBD remaining signatures feature
+                self?.onSigned(card)
+            }
     }
 
     private func updateUserWallet() {
