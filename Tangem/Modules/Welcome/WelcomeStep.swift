@@ -12,19 +12,20 @@ enum WelcomeStep {
     case welcome
     case letsStart
 
+    #warning("TODO: remove the welcome step")
     var title: String {
-        String("TODO: REMOVE ME")
+        String("")
     }
 
     var subtitle: String {
-        String("TODO: REMOVE ME")
+        String("")
     }
 
     var mainButtonTitle: String {
-        String("TODO: REMOVE ME")
+        String("")
     }
 
     var supplementButtonTitle: String {
-        String("TODO: REMOVE ME")
+        String("")
     }
 }
