@@ -38,12 +38,12 @@ desc """
   - changelog: string for description archive
   """
 lane :release do |options|
-  app_store_connect_api_key(duration: 1200)
+  app_store_connect_api_key(duration: 1200, is_key_content_base64: true)
   increment_version_number(version_number: options[:version])
   increment_testflight_build_number(version: options[:version], build: options[:build])
 
   build(scheme: PRODUCTION_SCHEME, version: options[:version])
-  upload_dsyms(name: PRODUCTION_SCHEME)
+  upload_dsyms(app_id: ENV["APP_ID_PRODUCTION"], name: PRODUCTION_SCHEME)
   
   upload_testflight(
     name: PRODUCTION_SCHEME,
@@ -70,7 +70,7 @@ lane :beta do |options|
   increment_firebase_build_number(app_id: ENV["APP_ID_BETA"], build: options[:build])
   build(scheme: BETA_SCHEME, export_method: "ad-hoc")
 
-  upload_dsyms(name: BETA_SCHEME)
+  upload_dsyms(app_id: ENV["APP_ID_BETA"], name: BETA_SCHEME)
   upload_firebase(
     name: BETA_SCHEME,
     app_id: ENV["APP_ID_BETA"],
@@ -96,7 +96,7 @@ lane :alpha do |options|
   increment_firebase_build_number(app_id: ENV["APP_ID_ALPHA"], build: options[:build])
   build(scheme: ALPHA_SCHEME, export_method: "ad-hoc")
 
-  upload_dsyms(name: ALPHA_SCHEME)
+  upload_dsyms(app_id: ENV["APP_ID_ALPHA"], name: ALPHA_SCHEME)
   upload_firebase(
     name: ALPHA_SCHEME,
     app_id: ENV["APP_ID_ALPHA"],
@@ -117,13 +117,13 @@ Options:
 """
 lane :refresh_dsyms do |options|
   app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-  app_store_connect_api_key(duration: 1200)
+  app_store_connect_api_key(duration: 1200, is_key_content_base64: true)
   download_dsyms(
     app_identifier: app_identifier,
     version: options[:version],
     build_number: options[:build]
   )
-  upload_symbols_to_crashlytics
+  upload_symbols_to_crashlytics(app_id: ENV["PRODUCTION_SCHEME"])
   clean_build_artifacts
 end
 
@@ -174,7 +174,10 @@ end
 private_lane :upload_dsyms do |options|
   filename = options[:name] + ".app.dSYM.zip"
   path = BUILD_PATH + filename
-  upload_symbols_to_crashlytics(dsym_path: path) 
+  upload_symbols_to_crashlytics(
+    app_id: options[:app_id],
+    dsym_path: path
+  )
 end
 
 private_lane :upload_firebase do |options|
