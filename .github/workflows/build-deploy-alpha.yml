@@ -1,0 +1,57 @@
+name: Alpha - Build and Deploy 
+
+on:
+  workflow_dispatch:
+  
+env:
+  APP_PATH: /tmp/app.ipa
+  ARTIFACT_NAME: Application
+  
+jobs:
+ build:
+   name: Build
+   runs-on: self-hosted
+   steps:
+   - name: Checkout
+     uses: actions/checkout@v3
+     with:
+       submodules: true
+       token: ${{ secrets.GH_MOBILE_PAT }}
+       
+   - name: Bundle install
+     run: bundle install --jobs 4 --retry 3
+      
+   - name: Pods install
+     run: bundle exec pod install
+     
+   - name: TEST
+     run: echo ${{ github.head_ref }}
+     
+   - name: Get Jira Issue Number from Branch Name
+     id: issue_number
+     uses: tangem/jira-action@master
+     with:
+       action: getBranchId
+       branch-name: ${{ github.head_ref }}
+       
+   - name: TEST
+     run: echo ${{ steps.issue_number.outputs.result }}
+   
+#   - name: Build
+#     run: bundle exec fastlane build scheme:"Tangem Alpha" version:${{ steps.issue_number.outputs.result }}
+     
+#   - name: Upload binary artifact
+#     uses: actions/upload-artifact@v3
+#     with:
+#       name: $ARTIFACT_NAME
+#       path: $APP_PATH
+     
+# deploy:
+#   name: Deploy
+#   needs: build
+#   runs-on: self-hosted
+#   steps:
+#   - name: Download a single artifact
+#     uses: actions/download-artifact@v3
+#     with:
+#       name: $ARTIFACT_NAME
