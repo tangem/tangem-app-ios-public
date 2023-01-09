@@ -1,13 +1,41 @@
 # file options
 --exclude Pods
---exclude Tangem/Assets/XCAssets+Generated.swift
+--exclude Tangem/Resources/Generated
 --exclude Utilites/XCTemplate
 
 # Format options
 # Disable all default options
 --disable all
 
-# Enable options
+# Enabled rules
+--enable wrapEnumCases
+# --enable elseOnSameLine
+# --enable braces
+# --enable assertionFailures
+
+# --enable extensionAccessControl
+# --enable hoistPatternLet
+# --enable modifierOrder
+# --enable markTypes
+--enable indent
+--indent 4
+--ifdef no-indent
+
+# Spacing rules options
+# --enable consecutiveSpaces
+# --enable consecutiveBlankLines
+
+# --enable blankLinesBetweenScopes
+# --enable blankLinesBetweenImports
+# --enable blankLinesAtStartOfScope
+# --enable blankLinesAtEndOfScope
+# --enable blankLinesAroundMark
+
+--enable trailingSpace
+--trimwhitespace nonblank-lines
+
+--enable trailingCommas
+
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
 --enable spaceAroundComments
@@ -20,11 +48,26 @@
 --enable spaceInsideComments
 --enable spaceInsideGenerics
 --enable spaceInsideParens
---enable trailingSpace
---enable indent
---ifdef no-indent
 
---enable anyObjectProtocol
---enable duplicateImports
---enable trailingCommas
---enable wrapEnumCases
+# Redundant rules
+# --enable redundantType
+# --enable redundantVoidReturnType
+# --enable redundantSelf
+# --enable redundantReturn
+# --enable redundantPattern
+# --enable redundantInit
+# --enable redundantParens
+# --enable redundantLetError
+# --enable redundantGet
+# --enable redundantExtensionACL
+# --enable redundantClosure
+
+# Old rules
+# They are not uses in most cases
+# --enable anyObjectProtocol
+# --enable duplicateImports
+# --enable typeSugar
+# --enable strongifiedSelf
+# --enable semicolons
+# --enable linebreakAtEndOfFile
+# --enable leadingDelimiters
