@@ -1,5 +1,5 @@
 //
-//  OrderedMulticastDelegate.swift
+//  OrderedWeakObjectsCollection.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 09.01.2023.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Use this class for saving a strong objects as weak
-public class OrderedMulticastDelegate<T> {
+public class OrderedWeakObjectsCollection<T> {
     private typealias KeyType = NSNumber
     private let mapTable: NSMapTable<KeyType, AnyObject> = NSMapTable.strongToWeakObjects()
 
