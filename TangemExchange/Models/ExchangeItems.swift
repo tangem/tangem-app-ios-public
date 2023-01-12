@@ -12,7 +12,9 @@ public struct ExchangeItems {
     public var source: Currency
     public var destination: Currency?
 
+    // TODO: Remove source fiatBalance from here because it send amount in fiat
     public var sourceBalance: Balance
+    public var destinationBalance: Decimal?
 
     public init(
         source: Currency,
