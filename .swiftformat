@@ -8,33 +8,79 @@
 --disable all
 
 # Enabled rules
---enable wrapEnumCases
-# --enable elseOnSameLine
-# --enable braces
-# --enable assertionFailures
 
-# --enable extensionAccessControl
-# --enable hoistPatternLet
-# --enable modifierOrder
-# --enable markTypes
+--enable andOperator
+--enable anyObjectProtocol
+--enable assertionFailures
+--enable braces
+--enable duplicateImports
+--enable elseOnSameLine
+--enable emptyBraces
+--enable enumNamespaces
+--enable extensionAccessControl
+--enable hoistPatternLet
+--patternlet inline
 --enable indent
 --indent 4
 --ifdef no-indent
+--enable isEmpty
+--enable leadingDelimiters
+--enable linebreakAtEndOfFile
+--enable linebreaks
+--enable modifierOrder
+
+## Redundant rules
+--enable redundantBackticks
+--enable redundantBreak
+--enable redundantClosure
+--enable redundantExtensionACL
+--enable redundantGet
+--enable redundantInit
+--enable redundantLet
+--enable redundantLetError
+--enable redundantNilInit
+--enable redundantObjc
+--enable redundantParens
+--enable redundantPattern
+--enable redundantRawValues
+--enable redundantSelf
+--enable redundantType
+--enable redundantVoidReturnType
+
+--enable semicolons
+--enable typeSugar
+--enable strongifiedSelf
+--enable todos
+--enable void
+
+## Wrap rules
+--enable wrapArguments
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--closingparen balanced
+--wrapreturntype preserve
+--wrapconditions preserve
+--wraptypealiases preserve
+--enable wrapAttributes
+--funcattributes prev-line
+--typeattributes prev-line
+--varattributes preserve
+--enable wrapEnumCases
 
 # Spacing rules options
-# --enable consecutiveSpaces
-# --enable consecutiveBlankLines
+--enable consecutiveSpaces
+--enable consecutiveBlankLines
 
-# --enable blankLinesBetweenScopes
-# --enable blankLinesBetweenImports
-# --enable blankLinesAtStartOfScope
-# --enable blankLinesAtEndOfScope
-# --enable blankLinesAroundMark
+--enable blankLinesBetweenScopes
+--enable blankLinesBetweenImports
+--enable blankLinesAtStartOfScope
+--enable blankLinesAtEndOfScope
+--enable blankLinesAroundMark
 
 --enable trailingSpace
---trimwhitespace nonblank-lines
-
 --enable trailingCommas
+--enable trailingClosures
 
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
@@ -48,26 +94,3 @@
 --enable spaceInsideComments
 --enable spaceInsideGenerics
 --enable spaceInsideParens
-
-# Redundant rules
-# --enable redundantType
-# --enable redundantVoidReturnType
-# --enable redundantSelf
-# --enable redundantReturn
-# --enable redundantPattern
-# --enable redundantInit
-# --enable redundantParens
-# --enable redundantLetError
-# --enable redundantGet
-# --enable redundantExtensionACL
-# --enable redundantClosure
-
-# Old rules
-# They are not uses in most cases
-# --enable anyObjectProtocol
-# --enable duplicateImports
-# --enable typeSugar
-# --enable strongifiedSelf
-# --enable semicolons
-# --enable linebreakAtEndOfFile
-# --enable leadingDelimiters
