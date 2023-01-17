@@ -20,7 +20,6 @@ final class SwappingViewModel: ObservableObject {
     @Published var sendDecimalValue: Decimal?
     @Published var refreshWarningRowViewModel: DefaultWarningRowViewModel?
     @Published var permissionInfoRowViewModel: DefaultWarningRowViewModel?
-    @Published var transactionInProgressInfoRowViewModel: DefaultWarningRowViewModel?
 
     @Published var mainButtonIsEnabled: Bool = false
     @Published var mainButtonState: MainButtonState = .swap
@@ -108,7 +107,7 @@ final class SwappingViewModel: ObservableObject {
     func didTapMainButton() {
         switch mainButtonState {
         case .permitAndSwap:
-            break // TODO - wait when 1inch fix their API
+            break // TODO: https://tangem.atlassian.net/browse/IOS-2727
         case .swap:
             swapItems()
         case .givePermission:
@@ -475,7 +474,6 @@ private extension SwappingViewModel {
 
     func updateRefreshWarningRowViewModel(message: String) {
         refreshWarningRowViewModel = DefaultWarningRowViewModel(
-            title: nil,
             subtitle: message.capitalizingFirstLetter(),
             leftView: .icon(Assets.attention),
             rightView: .icon(Assets.refreshWarningIcon)

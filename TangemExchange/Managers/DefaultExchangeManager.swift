@@ -84,8 +84,6 @@ extension DefaultExchangeManager: ExchangeManager {
         }
 
         guard let tokenExchangeAllowanceLimit else {
-            // If tokenExchangeAllowanceLimit not loaded don't show view
-            // Because will be better if the view will be expanded instead of collapsed
             return false
         }
 
@@ -162,6 +160,8 @@ private extension DefaultExchangeManager {
         refreshDataTimerBag = refreshDataTimer
             .autoconnect()
             .sink { [weak self] date in
+                // TODO: Update permission remain time to deadline every second
+
                 let period = Int(date.timeIntervalSince1970 - startTimestamp)
                 if period % 10 == 0 {
                     self?.refreshValues(silent: false)
