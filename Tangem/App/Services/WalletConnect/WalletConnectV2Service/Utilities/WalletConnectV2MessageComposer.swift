@@ -16,7 +16,6 @@ protocol WalletConnectV2MessageComposable {
 struct WalletConnectV2MessageComposer {}
 
 extension WalletConnectV2MessageComposer: WalletConnectV2MessageComposable {
-    // TODO: Replace with Blockchain.Sdk blockchains
     func makeMessage(for proposal: Session.Proposal, targetBlockchains: [String]) -> String {
         let proposer = proposal.proposer
         let namespaces = proposal.requiredNamespaces
