@@ -1,5 +1,5 @@
 //
-//  ExplorerLinkProviding.swift
+//  ExplorerURLService.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 01.02.2023.
@@ -8,6 +8,6 @@
 
 import TangemExchange
 
-protocol ExplorerLinkProviding {
+protocol ExplorerURLService {
     func getExplorerURL(for blockchain: ExchangeBlockchain, transaction: String) -> URL?
 }

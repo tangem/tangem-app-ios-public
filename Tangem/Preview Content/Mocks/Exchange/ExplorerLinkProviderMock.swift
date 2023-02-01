@@ -1,5 +1,5 @@
 //
-//  ExplorerLinkProviderMock.swift
+//  CommonExplorerURLServiceMock.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 31.01.2023.
@@ -8,7 +8,7 @@
 
 import TangemExchange
 
-struct ExplorerLinkProviderMock: ExplorerLinkProviding {
+struct CommonExplorerURLServiceMock: ExplorerURLService {
     func getExplorerURL(for blockchain: ExchangeBlockchain, transaction: String) -> URL? {
         nil
     }

@@ -1,5 +1,5 @@
 //
-//  ExplorerLinkProvider.swift
+//  CommonExplorerURLService.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 31.01.2023.
@@ -10,11 +10,11 @@ import Foundation
 import TangemExchange
 
 // TODO: Will be refactored to use it for blockchain sdk
-struct ExplorerLinkProvider {}
+struct CommonExplorerURLService {}
 
-// MARK: - ExplorerLinkProviding
+// MARK: - ExplorerURLService
 
-extension ExplorerLinkProvider: ExplorerLinkProviding {
+extension CommonExplorerURLService: ExplorerURLService {
     func getExplorerURL(for blockchain: ExchangeBlockchain, transaction: String) -> URL? {
         switch blockchain {
         case .ethereum:
