@@ -71,7 +71,15 @@ final class WalletConnectHandlersFactory: WalletConnectHandlersCreator {
                 walletModelProvider: walletModelProvider
             )
         case .sendTransaction:
-            throw WalletConnectV2Error.unknown("Not implemented")
+            return try WalletConnectV2SendTransactionHandler(
+                requestParams: params,
+                blockchain: blockchain,
+                transactionBuilder: ethTransactionBuilder,
+                messageComposer: messageComposer,
+                signer: signer,
+                uiDelegate: uiDelegate,
+                walletModelProvider: walletModelProvider
+            )
         case .bnbSign, .bnbTxConfirmation:
             // TODO: https://tangem.atlassian.net/browse/IOS-2896
             // Initially this methods was found occasionally and supported without any request
