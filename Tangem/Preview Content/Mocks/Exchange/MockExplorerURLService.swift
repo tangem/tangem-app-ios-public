@@ -1,5 +1,5 @@
 //
-//  CommonExplorerURLServiceMock.swift
+//  MockExplorerURLService.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 31.01.2023.
