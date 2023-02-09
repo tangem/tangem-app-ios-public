@@ -104,11 +104,6 @@ extension NoteConfig: UserWalletConfig {
         card.wallets.first?.publicKey
     }
 
-    // TODO: Remove before merge
-    var exchangeServiceEnvironment: ExchangeServiceEnvironment {
-        .saltpay
-    }
-
     func getFeatureAvailability(_ feature: UserWalletFeature) -> UserWalletFeature.Availability {
         switch feature {
         case .accessCode:
