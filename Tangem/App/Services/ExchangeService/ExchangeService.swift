@@ -9,18 +9,22 @@
 import Foundation
 import BlockchainSdk
 
-protocol ExchangeService: AnyObject {
+// TODO: Refactor name)
+private typealias ExternalExchangeService = ExchangeService & ExchangeServiceConfigurator
+
+protocol ExchangeService: AnyObject, Initializable {
     var initialized: Published<Bool>.Publisher { get }
     var successCloseUrl: String { get }
     var sellRequestUrl: String { get }
-    // TODO: Remove after merge https://github.com/tangem/tangem-app-ios/pull/1239
-    // Add separate interface for configuring CombineExchangeService
-    func initialize(for environment: ExchangeServiceEnvironment)
     func canBuy(_ currencySymbol: String, amountType: Amount.AmountType, blockchain: Blockchain) -> Bool
     func canSell(_ currencySymbol: String, amountType: Amount.AmountType, blockchain: Blockchain) -> Bool
     func getBuyUrl(currencySymbol: String, amountType: Amount.AmountType, blockchain: Blockchain, walletAddress: String) -> URL?
     func getSellUrl(currencySymbol: String, amountType: Amount.AmountType, blockchain: Blockchain, walletAddress: String) -> URL?
     func extractSellCryptoRequest(from data: String) -> SellCryptoRequest?
+}
+
+protocol ExchangeServiceConfigurator {
+    func configure(for environment: ExchangeServiceEnvironment)
 }
 
 enum ExchangeServiceEnvironment {
@@ -29,7 +33,7 @@ enum ExchangeServiceEnvironment {
 }
 
 private struct ExchangeServiceKey: InjectionKey {
-    static var currentValue: ExchangeService = CombinedExchangeService(
+    static var currentValue: ExternalExchangeService = CombinedExchangeService(
         mercuryoService: MercuryoService(),
         utorgService: UtorgService(),
         sellService: MoonPayService()
@@ -38,6 +42,15 @@ private struct ExchangeServiceKey: InjectionKey {
 
 extension InjectedValues {
     var exchangeService: ExchangeService {
+        externalExchangeService
+    }
+
+    var exchangeServiceConfigurator: ExchangeServiceConfigurator {
+        externalExchangeService
+    }
+
+    // TODO: Make not private because we can't mock this services. For now it's ok, but later it should be updated.
+    private var externalExchangeService: ExternalExchangeService {
         get { Self[ExchangeServiceKey.self] }
         set { Self[ExchangeServiceKey.self] = newValue }
     }
