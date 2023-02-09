@@ -9,6 +9,7 @@
 import Foundation
 import BlockchainSdk
 
+// TODO: Refactor name)
 private typealias ExternalExchangeService = ExchangeService & ExchangeServiceConfigurator
 
 protocol ExchangeService: AnyObject, Initializable {
@@ -48,6 +49,7 @@ extension InjectedValues {
         externalExchangeService
     }
 
+    // TODO: Make not private because we can't mock this services. For now it's ok, but later it should be updated.
     private var externalExchangeService: ExternalExchangeService {
         get { Self[ExchangeServiceKey.self] }
         set { Self[ExchangeServiceKey.self] = newValue }
