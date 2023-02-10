@@ -41,6 +41,7 @@ enum UserWalletFeature: Int, CaseIterable { // TODO: Add comments
 
     case swapping
     case displayHashesCount
+    case transactionHistory
 }
 
 extension UserWalletFeature {
