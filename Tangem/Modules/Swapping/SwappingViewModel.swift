@@ -147,6 +147,10 @@ final class SwappingViewModel: ObservableObject {
         exchangeManager.didSendApprovingTransaction(exchangeTxData: transactionInfo)
     }
 
+    func didClosePermissionSheet() {
+        restartTimer()
+    }
+
     func didTapWaringRefresh() {
         exchangeManager.refresh(type: .full)
     }
@@ -558,7 +562,8 @@ private extension SwappingViewModel {
     }
 
     func processingError(error: Error) {
-        // TODO: Add log
+        AppLog.shared.debug("DefaultExchangeManager catch error: ")
+        AppLog.shared.error(error)
 
         switch error {
         case let error as ExchangeManagerError:
