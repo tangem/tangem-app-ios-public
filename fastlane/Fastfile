@@ -220,7 +220,7 @@ private_lane :slack_message do |options|
         },        
         {
           title: "Version",
-          value: get_version_number(xcodeproj: "TangemApp.xcodeproj"),
+          value: get_version_number(xcodeproj: "TangemApp.xcodeproj", target: "Tangem"),
         },
         {
           title: "Build number",
