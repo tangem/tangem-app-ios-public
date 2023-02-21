@@ -17,7 +17,7 @@ struct IconView: View {
     // TODO: on 16.2 on the first run of the first time this screen is opened
     private let forceKingfisher: Bool
 
-    init(url: URL?, size: CGSize = CGSize(width: 36, height: 36), forceKingfisher: Bool = false) {
+    init(url: URL?, size: CGSize = CGSize(width: 36, height: 36), forceKingfisher: Bool = true) {
         self.url = url
         self.size = size
         self.forceKingfisher = forceKingfisher
