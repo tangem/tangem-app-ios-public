@@ -13,13 +13,18 @@ struct IconView: View {
     private let url: URL?
     private let size: CGSize
 
-    init(url: URL?, size: CGSize = CGSize(width: 36, height: 36)) {
+    // TODO: HACK - figure out why CachedAsyncImage is making Manage Tokens screen jump
+    // TODO: on 16.2 on the first run of the first time this screen is opened
+    private let forceKingfisher: Bool
+
+    init(url: URL?, size: CGSize = CGSize(width: 36, height: 36), forceKingfisher: Bool = false) {
         self.url = url
         self.size = size
+        self.forceKingfisher = forceKingfisher
     }
 
     var body: some View {
-        if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, *), !forceKingfisher {
             cachedAsyncImage
         } else {
             kfImage
