@@ -2,7 +2,7 @@
 //  ExchangeButtonStateType.swift
 //  Tangem
 //
-//  Created by skibinalexander on 21.02.2023.
+//  Created by Skibin Alexander on 21.02.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -21,7 +21,7 @@ enum ExchangeButtonType: Hashable, CaseIterable {
         case .sell:
             return Localization.walletButtonSell
         case .swap:
-            return Localization.swappingSwap
+            return Localization.swappingSwapAction
         }
     }
 
