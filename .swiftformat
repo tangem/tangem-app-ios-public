@@ -1,13 +1,87 @@
 # file options
 --exclude Pods
---exclude Tangem/Assets/XCAssets+Generated.swift
+--exclude Tangem/Resources/Generated
 --exclude Utilites/XCTemplate
 
 # Format options
 # Disable all default options
 --disable all
 
-# Enable options
+# Enabled rules
+
+--enable andOperator
+--enable anyObjectProtocol
+--enable assertionFailures
+--enable braces
+--enable duplicateImports
+--enable elseOnSameLine
+--enable emptyBraces
+--enable enumNamespaces
+--enable extensionAccessControl
+--enable hoistPatternLet
+--patternlet inline
+--enable indent
+--indent 4
+--ifdef no-indent
+--enable isEmpty
+--enable leadingDelimiters
+--enable linebreakAtEndOfFile
+--enable linebreaks
+--enable modifierOrder
+
+## Redundant rules
+--enable redundantBackticks
+--enable redundantBreak
+--enable redundantClosure
+--enable redundantExtensionACL
+--enable redundantGet
+--enable redundantInit
+--enable redundantLet
+--enable redundantLetError
+--enable redundantNilInit
+--enable redundantObjc
+--enable redundantParens
+--enable redundantPattern
+--enable redundantRawValues
+--enable redundantSelf
+--enable redundantType
+--enable redundantVoidReturnType
+
+--enable semicolons
+--enable typeSugar
+--enable strongifiedSelf
+--enable todos
+--enable void
+
+## Wrap rules
+--enable wrapArguments
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--closingparen balanced
+--wrapreturntype preserve
+--wrapconditions preserve
+--wraptypealiases preserve
+--enable wrapAttributes
+--funcattributes prev-line
+--typeattributes prev-line
+--varattributes preserve
+--enable wrapEnumCases
+
+# Spacing rules options
+--enable consecutiveSpaces
+--enable consecutiveBlankLines
+
+--enable blankLinesBetweenScopes
+--enable blankLinesBetweenImports
+--enable blankLinesAtStartOfScope
+--enable blankLinesAtEndOfScope
+--enable blankLinesAroundMark
+
+--enable trailingSpace
+--enable trailingCommas
+--enable trailingClosures
+
 --enable spaceAroundBraces
 --enable spaceAroundBrackets
 --enable spaceAroundComments
@@ -20,11 +94,3 @@
 --enable spaceInsideComments
 --enable spaceInsideGenerics
 --enable spaceInsideParens
---enable trailingSpace
---enable indent
---ifdef no-indent
-
---enable anyObjectProtocol
---enable duplicateImports
---enable trailingCommas
---enable wrapEnumCases
