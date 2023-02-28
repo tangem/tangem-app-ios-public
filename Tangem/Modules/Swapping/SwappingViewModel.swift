@@ -66,6 +66,7 @@ final class SwappingViewModel: ObservableObject {
     // MARK: - Private
 
     private lazy var refreshDataTimer = Timer.publish(every: 1, on: .main, in: .common)
+    // TODO: Remove this variable and refactor Task cancellation in DefaultExchangeManager
     private var pendingValidatingAmount: Decimal?
     private var refreshDataTimerBag: AnyCancellable?
     private var bag: Set<AnyCancellable> = []
