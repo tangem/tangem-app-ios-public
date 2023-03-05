@@ -15,7 +15,7 @@ struct SwappingAvailableUtils {
         .bsc,
         .polygon,
         .optimism,
-//        .arbitrum, TODO: Add after fix https://tangem.atlassian.net/browse/IOS-3038
+        .arbitrum,
         .gnosis,
         .avalanche,
         .fantom,
