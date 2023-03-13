@@ -43,7 +43,7 @@ extension CommonKeysManager: KeysManager {
             nowNodesApiKey: keys.nowNodesApiKey,
             getBlockApiKey: keys.getBlockApiKey,
             tronGridApiKey: keys.tronGridApiKey,
-            toncenterApiKey: keys.toncenterApiKey.mainnet,
+            tonCenterApiKey: keys.toncenterApiKey.mainnet,
             // TODO: rename to solana
             quickNodeSolanaCredentials: .init(apiKey: keys.quiknodeApiKey, subdomain: keys.quiknodeSubdomain),
             quickNodeBscCredentials: .init(apiKey: keys.bscQuiknodeApiKey, subdomain: keys.bscQuiknodeSubdomain),
