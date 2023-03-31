@@ -1,15 +1,16 @@
 //
-//  ExchangeTransactionDataModel+Mock.swift
+//  SwappingTransactionData+Mock.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 12.12.2022.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
-import TangemExchange
+import TangemSwapping
+import Foundation
 
-extension ExchangeTransactionDataModel {
-    static let mock = ExchangeTransactionDataModel(
+extension SwappingTransactionData {
+    static let mock = SwappingTransactionData(
         sourceCurrency: .mock,
         sourceBlockchain: .ethereum,
         destinationCurrency: .mock,

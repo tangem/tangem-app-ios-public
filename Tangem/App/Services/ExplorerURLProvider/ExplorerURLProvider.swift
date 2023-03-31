@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import TangemExchange
+import TangemSwapping
 
 // TODO: Will be refactored to use it for blockchain sdk
 struct CommonExplorerURLService {}
@@ -15,7 +15,7 @@ struct CommonExplorerURLService {}
 // MARK: - ExplorerURLService
 
 extension CommonExplorerURLService: ExplorerURLService {
-    func getExplorerURL(for blockchain: ExchangeBlockchain, transactionID: String) -> URL? {
+    func getExplorerURL(for blockchain: SwappingBlockchain, transactionID: String) -> URL? {
         switch blockchain {
         case .ethereum:
             return URL(string: "https://etherscan.io/tx/\(transactionID)")!
