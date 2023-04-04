@@ -1,0 +1,33 @@
+//
+//  SwappingManagerMock.swift
+//  Tangem
+//
+//  Created by Sergey Balashov on 06.12.2022.
+//  Copyright © 2022 Tangem AG. All rights reserved.
+//
+
+import Foundation
+import TangemSwapping
+
+struct SwappingManagerMock: SwappingManager {
+    func setDelegate(_ delegate: TangemSwapping.SwappingManagerDelegate) {}
+
+    func getSwappingItems() -> TangemSwapping.SwappingItems {
+        SwappingItems(source: .mock, destination: .mock)
+    }
+
+    func getAvailabilityState() -> SwappingAvailabilityState { .idle }
+
+    func getReferrerAccount() -> SwappingReferrerAccount? { nil }
+
+    func update(swappingItems swappingItems: SwappingItems) {}
+
+    func update(amount: Decimal?) {}
+
+    func isEnoughAllowance() -> Bool { true }
+
+    func refresh(type: SwappingManagerRefreshType) {}
+
+    func didSendApprovingTransaction(swappingTxData swappingTxData: SwappingTransactionData) {}
+    func didSendSwapTransaction(swappingTxData swappingTxData: SwappingTransactionData) {}
+}
