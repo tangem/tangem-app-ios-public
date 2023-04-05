@@ -25,8 +25,8 @@ protocol UserWalletRepository: Initializable {
     func add(_ completion: @escaping (UserWalletRepositoryResult?) -> Void)
     // use this method for saving. TODO: refactor
     func save(_ cardViewModel: CardViewModel)
-    // use this method for updating. TODO: refactor
     func contains(_ userWallet: UserWallet) -> Bool
+    // use this method for updating. TODO: refactor
     func save(_ userWallet: UserWallet)
     func delete(_ userWallet: UserWallet, logoutIfNeeded shouldAutoLogout: Bool)
     func clear()
