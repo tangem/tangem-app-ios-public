@@ -10,10 +10,11 @@ import UIKit
 import TangemSdk
 
 struct OnboardingInput { // TODO: Split to coordinator options and input
+    let tangemSdk: TangemSdk
+    let backupService: BackupService
     let steps: OnboardingSteps
     let cardInput: CardInput
     let twinData: TwinData?
-    var currentStepIndex: Int
     var isStandalone = false
 }
 
