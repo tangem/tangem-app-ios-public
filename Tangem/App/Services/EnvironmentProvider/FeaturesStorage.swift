@@ -1,5 +1,5 @@
 //
-//  FeaturesStorage.swift
+//  FeatureStorage.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 26.10.2022.
@@ -10,20 +10,20 @@ import Foundation
 
 // MARK: - Provider
 
-class FeaturesStorage {
-    @AppStorageCompat(FeaturesStorageKeys.testnet)
+class FeatureStorage {
+    @AppStorageCompat(FeatureStorageKeys.testnet)
     var isTestnet: Bool = false
 
-    @AppStorageCompat(FeaturesStorageKeys.availableFeatures)
+    @AppStorageCompat(FeatureStorageKeys.availableFeatures)
     var availableFeatures: [Feature: FeatureState] = [:]
 
-    @AppStorageCompat(FeaturesStorageKeys.useDevApi)
+    @AppStorageCompat(FeatureStorageKeys.useDevApi)
     var useDevApi = false
 }
 
 // MARK: - Keys
 
-private enum FeaturesStorageKeys: String {
+private enum FeatureStorageKeys: String {
     case testnet
     case availableFeatures = "integrated_features"
     case useDevApi = "use_dev_api"
