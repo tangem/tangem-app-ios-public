@@ -208,8 +208,8 @@ extension Blockchain {
             .kaspa,
             .ravencoin(testnet: false),
             .cosmos(testnet: false),
-            .terraV1,
-            .terraV2,
+            .terraV1, // TODO: REMOVE
+            .terraV2, // TODO: REMOVE
         ]
     }()
 
