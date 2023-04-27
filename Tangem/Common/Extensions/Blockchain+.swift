@@ -207,7 +207,6 @@ extension Blockchain {
             .kava(testnet: false),
             .kaspa,
             .ravencoin(testnet: false),
-            .cosmos(testnet: false),
             .terraV1, // TODO: REMOVE
             .terraV2, // TODO: REMOVE
         ]
@@ -233,7 +232,6 @@ extension Blockchain {
             .ton(testnet: true),
             .kava(testnet: true),
             .ravencoin(testnet: true),
-            .cosmos(testnet: true),
         ]
     }()
 }
