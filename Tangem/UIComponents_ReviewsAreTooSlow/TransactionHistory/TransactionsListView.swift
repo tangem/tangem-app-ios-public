@@ -46,6 +46,7 @@ struct TransactionsListView: View {
                         Assets.compass.image
                             .foregroundColor(Colors.Icon.informative)
 
+                        #warning("TODO: localization")
                         Text("Explore")
                             .style(Fonts.Regular.footnote, color: Colors.Text.tertiary)
                     }
