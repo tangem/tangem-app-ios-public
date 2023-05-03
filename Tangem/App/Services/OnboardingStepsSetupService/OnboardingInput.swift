@@ -10,17 +10,19 @@ import UIKit
 import TangemSdk
 
 struct OnboardingInput { // TODO: Split to coordinator options and input
-    let tangemSdk: TangemSdk
     let backupService: BackupService
+    let cardInteractor: (CardPreparable & CardResettable)?
     let steps: OnboardingSteps
     let cardInput: CardInput
     let twinData: TwinData?
     var isStandalone = false
     var userWalletToDelete: UserWallet? // for twins. TODO: refactor UserWalletRepository to remove this
+    var stepsBuilder: OnboardingStepsBuilder? // for saltpay
 }
 
 extension OnboardingInput {
     enum CardInput {
+        case cardInfo(_ cardInfo: CardInfo)
         case cardModel(_ cardModel: CardViewModel)
         case cardId(_ cardId: String)
 
@@ -35,6 +37,8 @@ extension OnboardingInput {
 
         var cardId: String {
             switch self {
+            case .cardInfo(let cardInfo):
+                return cardInfo.card.cardId
             case .cardModel(let cardModel):
                 return cardModel.cardId
             case .cardId(let cardId):
