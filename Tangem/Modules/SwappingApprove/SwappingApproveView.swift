@@ -62,7 +62,7 @@ struct SwappingApproveView: View {
                 DefaultMenuRowView(viewModel: $0, selection: $viewModel.selectedAction)
             } footer: {
                 // TODO: Change text in https://tangem.atlassian.net/browse/IOS-3448
-                DefaultFooterView(Localization.swappingPermissionHeader)
+                DefaultFooterView(Localization.swappingPermissionSubheader(viewModel.tokenSymbol))
             }
             .padding(.horizontal, 16)
 
@@ -70,7 +70,7 @@ struct SwappingApproveView: View {
                 DefaultRowView(viewModel: $0)
             } footer: {
                 // TODO: Change text in https://tangem.atlassian.net/browse/IOS-3448
-                DefaultFooterView(Localization.swappingPermissionHeader)
+                DefaultFooterView(Localization.swappingPermissionSubheader(viewModel.tokenSymbol))
             }
             .padding(.horizontal, 16)
         }
@@ -82,7 +82,6 @@ struct SwappingApproveView: View {
                 title: Localization.swappingPermissionButtonsApprove,
                 icon: .trailing(Assets.tangemIcon),
                 isLoading: viewModel.isLoading,
-                isDisabled: viewModel.isDisabled,
                 action: viewModel.didTapApprove
             )
 
