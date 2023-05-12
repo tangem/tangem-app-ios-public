@@ -61,16 +61,14 @@ struct SwappingApproveView: View {
             GroupedSection(viewModel.menuRowViewModel) {
                 DefaultMenuRowView(viewModel: $0, selection: $viewModel.selectedAction)
             } footer: {
-                // TODO: Change text in https://tangem.atlassian.net/browse/IOS-3448
-                DefaultFooterView(Localization.swappingPermissionSubheader(viewModel.tokenSymbol))
+                DefaultFooterView(Localization.swappingPermissionPolicyTypeFooter)
             }
             .padding(.horizontal, 16)
 
             GroupedSection(viewModel.feeRowViewModel) {
                 DefaultRowView(viewModel: $0)
             } footer: {
-                // TODO: Change text in https://tangem.atlassian.net/browse/IOS-3448
-                DefaultFooterView(Localization.swappingPermissionSubheader(viewModel.tokenSymbol))
+                DefaultFooterView(Localization.swappingPermissionFeeFooter)
             }
             .padding(.horizontal, 16)
         }
