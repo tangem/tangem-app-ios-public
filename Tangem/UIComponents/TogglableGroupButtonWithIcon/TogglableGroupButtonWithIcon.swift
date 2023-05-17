@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// TODO: - Need continue task for IOS-3627 (append bindings), after token list redesign will be done
 public struct TogglableGroupButtonWithIcon: View {
     public var body: some View {
         HStack {
