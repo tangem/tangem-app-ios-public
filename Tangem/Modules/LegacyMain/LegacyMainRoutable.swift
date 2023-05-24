@@ -1,5 +1,5 @@
 //
-//  MainRoutable.swift
+//  LegacyMainRoutable.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 15.06.2022.
@@ -9,7 +9,7 @@
 import Foundation
 import BlockchainSdk
 
-protocol MainRoutable: TokenDetailsRoutable {
+protocol LegacyMainRoutable: TokenDetailsRoutable {
     func close(newScan: Bool)
     func openSettings(cardModel: CardViewModel)
     func openTokenDetails(cardModel: CardViewModel, blockchainNetwork: BlockchainNetwork, amountType: Amount.AmountType)
