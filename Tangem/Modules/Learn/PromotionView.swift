@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct LearnView: View {
-    @ObservedObject private var viewModel: LearnViewModel
+struct PromotionView: View {
+    @ObservedObject private var viewModel: PromotionViewModel
 
-    init(viewModel: LearnViewModel) {
+    init(viewModel: PromotionViewModel) {
         self.viewModel = viewModel
     }
 
@@ -19,10 +19,10 @@ struct LearnView: View {
     }
 }
 
-struct LearnView_Preview: PreviewProvider {
-    static let viewModel = LearnViewModel(coordinator: LearnCoordinator())
+struct PromotionView_Preview: PreviewProvider {
+    static let viewModel = PromotionViewModel(coordinator: PromotionCoordinator())
 
     static var previews: some View {
-        LearnView(viewModel: viewModel)
+        PromotionView(viewModel: viewModel)
     }
 }
