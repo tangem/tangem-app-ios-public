@@ -79,6 +79,7 @@
 --enable blankLinesAroundMark
 
 --enable trailingSpace
+--trimwhitespace nonblank-lines
 --enable trailingCommas
 --enable trailingClosures
 
