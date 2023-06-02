@@ -86,7 +86,7 @@ struct CardsInfoPagerView<
     }
 
     private func makeHeader(with proxy: GeometryProxy) -> some View {
-        // TODO: Andrey Fedorov - Migrate to LazyHStack
+        // TODO: Andrey Fedorov - Migrate to LazyHStack (IOS-3771)
         HStack(spacing: Constants.headerInteritemSpacing) {
             ForEach(data.indexed(), id: idProvider) { index, element in
                 headerFactory(element)
@@ -115,7 +115,7 @@ struct CardsInfoPagerView<
     }
 
     private func makeContent(with proxy: GeometryProxy) -> some View {
-        // TODO: Andrey Fedorov - Migrate to LazyHStack
+        // TODO: Andrey Fedorov - Migrate to LazyHStack (IOS-3771)
         ZStack(alignment: .topLeading) {
             let currentPageIndex = nextIndexToSelect ?? selectedIndex
             ForEach(data.indexed(), id: idProvider) { index, element in

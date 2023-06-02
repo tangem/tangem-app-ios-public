@@ -24,11 +24,11 @@ struct CardsInfoPageHeaderPlaceholderView: View {
             .frame(height: headerPlaceholderHeight)
             .matchedGeometryEffect(id: matchedGeometryEffectId, in: namespace, isSource: true)
             .onAppear {
-                // FIXME: Andrey Fedorov - Doesn't work reliably on iOS 14
+                // FIXME: Andrey Fedorov - Doesn't work reliably on iOS 14 (IOS-3765)
                 isHeaderPlaceholderVisible.wrappedValue = true
             }
             .onDisappear {
-                // FIXME: Andrey Fedorov - Doesn't work reliably on iOS 14
+                // FIXME: Andrey Fedorov - Doesn't work reliably on iOS 14 (IOS-3765)
                 isHeaderPlaceholderVisible.wrappedValue = false
             }
             .listRowInsets(EdgeInsets())

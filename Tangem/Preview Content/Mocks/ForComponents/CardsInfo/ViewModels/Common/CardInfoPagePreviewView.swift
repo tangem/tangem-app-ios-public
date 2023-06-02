@@ -14,6 +14,7 @@ struct CardInfoPagePreviewView<HeaderPlaceholder>: View where HeaderPlaceholder:
     let headerPlaceholder: HeaderPlaceholder
 
     var body: some View {
+        // FIXME: Andrey Fedorov - List has incorrect contentInset/adjustedContentInset on iOS 14 (IOS-3765)
         List {
             headerPlaceholder
                 .listRowSeparatorHidden(backgroundColor: Constants.backgroundColor)
