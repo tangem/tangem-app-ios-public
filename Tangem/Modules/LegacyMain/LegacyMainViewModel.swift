@@ -179,6 +179,9 @@ class LegacyMainViewModel: ObservableObject {
         self.cardImageProvider = cardImageProvider
         self.coordinator = coordinator
 
+        #warning("TODO: REMOVE")
+        canLearnAndEarn = true
+
         bind()
         cardModel.setupWarnings()
         updateContent()
