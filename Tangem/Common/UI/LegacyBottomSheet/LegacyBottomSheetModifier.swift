@@ -1,5 +1,5 @@
 //
-//  BottomSheetModifier.swift
+//  LegacyBottomSheetModifier.swift
 //  Tangem
 //
 //  Created by Pavel Grechikhin on 17.07.2022.
@@ -9,7 +9,7 @@
 import SwiftUI
 import UIKit
 
-struct BottomSheetModifier<ContentView: View>: ViewModifier {
+struct LegacyBottomSheetModifier<ContentView: View>: ViewModifier {
     @Binding private var isPresented: Bool
     @State private var bottomSheetViewController: BottomSheetBaseController?
 
