@@ -8,4 +8,28 @@
 
 import Foundation
 
-final class OrganizeTokensHeaderViewModel: ObservableObject {}
+final class OrganizeTokensHeaderViewModel: ObservableObject {
+    @Published var isLeadingButtonSelected = true
+
+    var leadingButtonTitle: String {
+        return Localization.organizeTokensSortByBalance
+    }
+
+    @Published var isTrailingButtonSelected = true
+
+    var trailingButtonTitle: String {
+        return isTrailingButtonSelected
+            ? Localization.organizeTokensGroup
+            : Localization.organizeTokensUngroup
+    }
+
+    func onLeadingButtonTap() {
+        isLeadingButtonSelected.toggle()
+        // TODO: Andrey Fedorov - Add actual implementation
+    }
+
+    func onTrailingButtonTap() {
+        isTrailingButtonSelected.toggle()
+        // TODO: Andrey Fedorov - Add actual implementation
+    }
+}
