@@ -10,8 +10,7 @@ import BlockchainSdk
 import Combine
 
 protocol WalletListManager {
-    func update(config: UserWalletConfig)
-
+    func update(config: UserWalletConfig) // TODO: refactor. SHould be recreated
     func getWalletModels() -> [WalletModel]
     func subscribeToWalletModels() -> AnyPublisher<[WalletModel], Never>
 
