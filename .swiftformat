@@ -28,7 +28,6 @@
 --enable linebreakAtEndOfFile
 --enable linebreaks
 --enable modifierOrder
---enable unusedArguments
 
 ## Redundant rules
 --enable redundantBackticks
