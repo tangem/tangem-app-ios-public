@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Andrey Fedorov - This VM is subject to change (IOS-3461)
 struct OrganizeTokensListItemViewModel: Hashable, Identifiable {
     var id = UUID()
 

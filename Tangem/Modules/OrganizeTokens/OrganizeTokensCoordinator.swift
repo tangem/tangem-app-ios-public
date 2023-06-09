@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 
+// TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
 class OrganizeTokensCoordinator: CoordinatorObject {
     let dismissAction: Action
     let popToRootAction: ParamsAction<PopToRootOptions>

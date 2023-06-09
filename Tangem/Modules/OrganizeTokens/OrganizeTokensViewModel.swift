@@ -27,10 +27,10 @@ final class OrganizeTokensViewModel: ObservableObject {
     }
 
     func onCancelButtonTap() {
-        // TODO: Andrey Fedorov - Add actual implementation
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
     }
 
     func onApplyButtonTap() {
-        // TODO: Andrey Fedorov - Add actual implementation
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
     }
 }

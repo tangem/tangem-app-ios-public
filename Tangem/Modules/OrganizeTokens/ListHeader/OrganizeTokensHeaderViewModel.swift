@@ -25,11 +25,11 @@ final class OrganizeTokensHeaderViewModel: ObservableObject {
 
     func onLeadingButtonTap() {
         isLeadingButtonSelected.toggle()
-        // TODO: Andrey Fedorov - Add actual implementation
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
     }
 
     func onTrailingButtonTap() {
         isTrailingButtonSelected.toggle()
-        // TODO: Andrey Fedorov - Add actual implementation
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
     }
 }
