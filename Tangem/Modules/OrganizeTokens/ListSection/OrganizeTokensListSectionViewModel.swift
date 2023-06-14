@@ -1,5 +1,5 @@
 //
-//  OrganizeTokensListSection.swift
+//  OrganizeTokensListSectionViewModel.swift
 //  Tangem
 //
 //  Created by Andrey Fedorov on 06.06.2023.
