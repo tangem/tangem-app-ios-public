@@ -2,7 +2,7 @@
 //  OrganizeTokensView.swift
 //  Tangem
 //
-//  Created by m3g0byt3 on 06.06.2023.
+//  Created by Andrey Fedorov on 06.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -11,10 +11,10 @@ import SwiftUI
 struct OrganizeTokensView: View {
     @ObservedObject private var viewModel: OrganizeTokensViewModel
 
-    @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Replace with native .safeAreaInset()")
+    @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Use native .safeAreaInset() instead")
     @State private var scrollViewBottomContentInset = 0.0
 
-    @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Replace with native .safeAreaInset()")
+    @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Use native .safeAreaInset() instead")
     @State private var scrollViewTopContentInset = 0.0
 
     init(viewModel: OrganizeTokensViewModel) {
