@@ -103,14 +103,10 @@ struct OrganizeTokensView: View {
                                         makeCell(viewModel: itemViewModel, indexPath: indexPath, parametersProvider: parametersProvider)
                                             .opacity(indexPath == dragAndDropDestinationIndexPath ? 0.05 : 1.0)
                                             .id(itemViewModel.id)
-                                            .background(
-                                                // TODO: Andrey Fedorov - Get rid of separate geometry reader here
-                                                GeometryReader { proxy -> Color in
-                                                    let frame = proxy.frame(in: .named(scrollViewContentCoordinateSpaceName))
-                                                    dragAndDropController.saveFrame(frame, forItemAtIndexPath: indexPath)
-                                                    return Color.clear
-                                                }
-                                            )
+                                            .readGeometry(
+                                                inCoordinateSpace: .named(scrollViewContentCoordinateSpaceName),
+                                                transform: \.frame
+                                            ) { dragAndDropController.saveFrame($0, forItemAtIndexPath: indexPath) }
                                     }
                                 },
                                 header: {
