@@ -2,7 +2,7 @@
 //  View+onTouchesBegan.swift
 //  Tangem
 //
-//  Created by m3g0byt3 on 14.06.2023.
+//  Created by Andrey Fedorov on 14.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -12,11 +12,13 @@ extension View {
     typealias OnTouchesBegan = (_ location: CGPoint) -> Void
 
     @ViewBuilder
-    @available(iOS, introduced: 13.0, deprecated: 16.0, message: "Replace with native SpatialTapGesture")
+    @available(iOS, introduced: 13.0, deprecated: 16.0, message: "Replace with native 'SpatialTapGesture'")
     func onTouchesBegan(_ action: @escaping OnTouchesBegan) -> some View {
         overlay(TouchesBeganInterceptor(onTouchesBegan: action))
     }
 }
+
+// MARK: - Private implementation
 
 private struct TouchesBeganInterceptor: UIViewRepresentable {
     private final class InterceptorView: UIView {
