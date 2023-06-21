@@ -1,14 +1,14 @@
 //
-//  OrganizeTokensSectionView.swift
+//  OrganizeTokensListSectionView.swift
 //  Tangem
 //
-//  Created by m3g0byt3 on 06.06.2023.
+//  Created by Andrey Fedorov on 06.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import SwiftUI
 
-struct OrganizeTokensSectionView: View {
+struct OrganizeTokensListSectionView: View {
     let title: String
     let isDraggable: Bool
 
@@ -23,10 +23,6 @@ struct OrganizeTokensSectionView: View {
             if isDraggable {
                 Assets.OrganizeTokens.groupDragAndDropIcon
                     .image
-                    .renderingMode(.template)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(size: .init(bothDimensions: 20.0))
                     .foregroundColor(Colors.Icon.informative)
             }
         }
@@ -37,16 +33,16 @@ struct OrganizeTokensSectionView: View {
 
 // MARK: - Previews
 
-struct OrganizeTokensSectionView_Previews: PreviewProvider {
+struct OrganizeTokensListSectionView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Group {
-                OrganizeTokensSectionView(
+                OrganizeTokensListSectionView(
                     title: "Bitcoin network",
                     isDraggable: true
                 )
 
-                OrganizeTokensSectionView(
+                OrganizeTokensListSectionView(
                     title: "Bitcoin network",
                     isDraggable: false
                 )

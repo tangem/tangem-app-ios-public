@@ -2,7 +2,7 @@
 //  TokenItemViewMiddleComponent.swift
 //  Tangem
 //
-//  Created by m3g0byt3 on 06.06.2023.
+//  Created by Andrey Fedorov on 06.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -22,6 +22,7 @@ struct TokenItemViewMiddleComponent: View {
                         Fonts.Bold.subheadline,
                         color: networkUnreachable ? Colors.Text.tertiary : Colors.Text.primary1
                     )
+                    .lineLimit(2)
 
                 if hasPendingTransactions {
                     Assets.pendingTxIndicator.image
@@ -38,6 +39,5 @@ struct TokenItemViewMiddleComponent: View {
                 )
             }
         }
-        .lineLimit(2)
     }
 }

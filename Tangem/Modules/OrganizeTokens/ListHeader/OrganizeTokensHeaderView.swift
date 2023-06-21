@@ -2,7 +2,7 @@
 //  OrganizeTokensHeaderView.swift
 //  Tangem
 //
-//  Created by m3g0byt3 on 06.06.2023.
+//  Created by Andrey Fedorov on 06.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -14,27 +14,18 @@ struct OrganizeTokensHeaderView: View {
     var body: some View {
         HStack(spacing: 8.0) {
             Group {
-                Group {
-                    if viewModel.isLeadingButtonSelected {
-                        FlexySizeSelectedButtonWithLeadingIcon(
-                            title: viewModel.leadingButtonTitle,
-                            icon: Assets.OrganizeTokens.byBalanceSortIcon.image,
-                            action: viewModel.onLeadingButtonTap
-                        )
-                    } else {
-                        FlexySizeDeselectedButtonWithLeadingIcon(
-                            title: viewModel.leadingButtonTitle,
-                            icon: Assets.OrganizeTokens.byBalanceSortIcon.image,
-                            action: viewModel.onLeadingButtonTap
-                        )
-                    }
-                }
-                .transition(.opacity.animation(.default))
+                FlexySizeButtonWithLeadingIcon(
+                    title: viewModel.sortByBalanceButtonTitle,
+                    icon: Assets.OrganizeTokens.byBalanceSortIcon.image,
+                    isSelected: viewModel.isSortByBalanceEnabled,
+                    action: viewModel.toggleSortState
+                )
 
-                FlexySizeSelectedButtonWithLeadingIcon(
-                    title: viewModel.trailingButtonTitle,
+                FlexySizeButtonWithLeadingIcon(
+                    title: viewModel.groupingButtonTitle,
                     icon: Assets.OrganizeTokens.makeGroupIcon.image,
-                    action: viewModel.onTrailingButtonTap
+                    isSelected: true,
+                    action: viewModel.toggleGroupState
                 )
             }
             .background(

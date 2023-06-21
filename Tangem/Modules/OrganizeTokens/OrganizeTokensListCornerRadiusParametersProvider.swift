@@ -2,7 +2,7 @@
 //  OrganizeTokensListCornerRadiusParametersProvider.swift
 //  Tangem
 //
-//  Created by m3g0byt3 on 08.06.2023.
+//  Created by Andrey Fedorov on 08.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -11,13 +11,18 @@ import struct UIKit.UIRectCorner
 
 struct OrganizeTokensListCornerRadiusParametersProvider {
     private let sections: [OrganizeTokensListSectionViewModel]
+    private let cornerRadius: CGFloat
 
-    init(sections: [OrganizeTokensListSectionViewModel]) {
+    init(
+        sections: [OrganizeTokensListSectionViewModel],
+        cornerRadius: CGFloat
+    ) {
         self.sections = sections
+        self.cornerRadius = cornerRadius
     }
 
     func cornerRadius(forSectionAtIndex sectionIndex: Int) -> CGFloat {
-        return sectionIndex == 0 ? 14.0 : 0.0
+        return sectionIndex == 0 ? cornerRadius : 0.0
     }
 
     func rectCorners(forSectionAtIndex sectionIndex: Int) -> UIRectCorner {
@@ -29,13 +34,13 @@ struct OrganizeTokensListCornerRadiusParametersProvider {
     ) -> CGFloat {
         if indexPath.section == sections.count - 1,
            indexPath.item == sections[indexPath.section].items.count - 1 {
-            return 14.0
+            return cornerRadius
         }
 
         if case .invisible = sections[indexPath.section].style,
            indexPath.section == 0,
            indexPath.item == 0 {
-            return 14.0
+            return cornerRadius
         }
 
         return 0.0
