@@ -47,10 +47,6 @@ final class OrganizeTokensDragAndDropController: ObservableObject {
         impactFeedbackGenerator.prepare()
     }
 
-    func onDragEnd() {
-        // TODO: Andrey Fedorov - Add actual implementation
-    }
-
     func onItemsMove() {
         impactFeedbackGenerator.impactOccurred()
     }
