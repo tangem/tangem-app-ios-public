@@ -52,7 +52,7 @@ final class OrganizeTokensDragAndDropController: ObservableObject {
     }
 
     func scrollTarget(sourceLocation: CGPoint, currentLocation: CGPoint) -> UUID? {
-        // TODO: Andrey Fedorov - Add actual implementation
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-3883)
         return nil
     }
 
