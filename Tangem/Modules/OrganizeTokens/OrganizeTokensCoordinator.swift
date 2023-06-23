@@ -9,18 +9,13 @@
 import Foundation
 import Combine
 
-// TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
-class OrganizeTokensCoordinator: CoordinatorObject {
+final class OrganizeTokensCoordinator: CoordinatorObject {
     let dismissAction: Action
     let popToRootAction: ParamsAction<PopToRootOptions>
 
     // MARK: - Root view model
 
     @Published private(set) var rootViewModel: OrganizeTokensViewModel?
-
-    // MARK: - Child coordinators
-
-    // MARK: - Child view models
 
     required init(
         dismissAction: @escaping Action,
@@ -30,15 +25,28 @@ class OrganizeTokensCoordinator: CoordinatorObject {
         self.popToRootAction = popToRootAction
     }
 
-    func start(with options: Options) {}
+    func start(with options: Options) {
+        // TODO: Andrey Fedorov - Replace with proper initializer
+        rootViewModel = OrganizeTokensViewModel(
+            coordinator: self,
+            sections: OrganizeTokensPreviewProvider().multipleSections()
+        )
+    }
 }
 
 // MARK: - Options
 
 extension OrganizeTokensCoordinator {
-    enum Options {}
+    enum Options {
+        // TODO: Andrey Fedorov - Remove if custom options aren't used in this flow
+        case none
+    }
 }
 
-// MARK: - OrganizeTokensRoutable
+// MARK: - OrganizeTokensRoutable protocol conformance
 
-extension OrganizeTokensCoordinator: OrganizeTokensRoutable {}
+extension OrganizeTokensCoordinator: OrganizeTokensRoutable {
+    func didTapCancelButton() {
+        dismiss()
+    }
+}
