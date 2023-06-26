@@ -28,6 +28,7 @@ struct OrganizeTokensHeaderView: View {
                     action: viewModel.toggleGroupState
                 )
             }
+            .shadow(color: Colors.Button.primary.opacity(0.1), radius: 5.0) // TODO: Andrey Fedorov - Use correct color
             .background(
                 Colors.Background
                     .primary
