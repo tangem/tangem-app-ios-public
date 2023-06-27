@@ -28,7 +28,8 @@ struct OrganizeTokensHeaderView: View {
                     action: viewModel.toggleGroupState
                 )
             }
-            .shadow(color: Colors.Button.primary.opacity(0.1), radius: 5.0) // TODO: Andrey Fedorov - Use correct color
+            // TODO: Andrey Fedorov - Proper shadow color and dark mode support (IOS-3927)
+            .shadow(color: Colors.Button.primary.opacity(0.1), radius: 5.0)
             .background(
                 Colors.Background
                     .primary
