@@ -1,22 +1,25 @@
 //
-//  TwinWalletModelsFactory.swift
+//  TwinWalletManagerFactory.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 19.06.2023.
+//  Created by Alexander Osokin on 27.06.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation
+import TangemSdk
 import BlockchainSdk
 
-struct TwinsWalletModelFactory: WalletModelsFactory {
+struct TwinWalletManagerFactory {
     private let pairPublicKey: Data
 
     init(pairPublicKey: Data) {
         self.pairPublicKey = pairPublicKey
     }
+}
 
-    func makeWalletModels(for token: StorageEntry, keys: [CardDTO.Wallet]) throws -> [WalletModel] {
+extension TwinWalletManagerFactory: AnyWalletManagerFactory {
+    func makeWalletManager(for token: StorageEntry, keys: [CardDTO.Wallet]) throws -> WalletManager {
         guard let walletPublicKey = keys.first?.publicKey else {
             throw CommonError.noData
         }
@@ -28,7 +31,6 @@ struct TwinsWalletModelFactory: WalletModelsFactory {
             isTestnet: AppEnvironment.current.isTestnet
         )
 
-        let model = WalletModel(walletManager: twinManager, amountType: .coin, isCustom: false)
-        return [model]
+        return twinManager
     }
 }
