@@ -100,8 +100,8 @@ struct OrganizeTokensView: View {
                                         .hidden(itemViewModel.id == dragAndDropSourceViewModelIdentifier)
                                         .id(itemViewModel.id)
                                         .readGeometry(
-                                            inCoordinateSpace: .named(scrollViewContentCoordinateSpaceName),
-                                            transform: \.frame
+                                            \.frame,
+                                            inCoordinateSpace: .named(scrollViewContentCoordinateSpaceName)
                                         ) { dragAndDropController.saveFrame($0, forItemAtIndexPath: indexPath) }
                                     }
                                 },
@@ -119,8 +119,9 @@ struct OrganizeTokensView: View {
                                     .hidden(sectionViewModel.id == dragAndDropSourceViewModelIdentifier)
                                     .id(sectionViewModel.id)
                                     .readGeometry(
-                                        inCoordinateSpace: .named(scrollViewContentCoordinateSpaceName),
-                                        transform: \.frame
+                                        \
+                                        .frame,
+                                        inCoordinateSpace: .named(scrollViewContentCoordinateSpaceName)
                                     ) { dragAndDropController.saveFrame($0, forItemAtIndexPath: indexPath) }
                                 }
                             )
@@ -135,7 +136,7 @@ struct OrganizeTokensView: View {
                     )
                     .coordinateSpace(name: scrollViewContentCoordinateSpaceName)
                     .onTouchesBegan(onTouchesBegan(atLocation:))
-                    .readGeometry(to: $tokenListContentFrameMaxY, transform: \.frame.maxY)
+                    .readGeometry(\.frame.maxY, bindTo: $tokenListContentFrameMaxY)
 
                     Spacer(minLength: scrollViewBottomContentInset + Constants.overlayViewAdditionalVerticalInset)
                 }
@@ -397,7 +398,7 @@ struct OrganizeTokensView: View {
             .frame(width: width)
             .cornerRadiusContinuous(hasActiveDrag ? Constants.draggableViewCornerRadius : 0.0)
             .shadow(
-                color: Color.black.opacity(0.08), // TODO: Andrey Fedorov - Correct value for dark mode
+                color: Color.black.opacity(0.08), // TODO: Andrey Fedorov - Dark mode support (IOS-3927)
                 radius: hasActiveDrag ? 14.0 : 0.0,
                 x: 0.0,
                 y: 8.0
