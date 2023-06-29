@@ -21,6 +21,15 @@ class WalletModel: ObservableObject {
     @Published var transactionHistoryState: TransactionHistoryState = .notLoaded
     @Published var rates: [String: Decimal] = [:]
 
+    var tokenItem: TokenItem {
+        switch amountType {
+        case .coin, .reserve:
+            return .blockchain(wallet.blockchain)
+        case .token(let token):
+            return .token(token, wallet.blockchain)
+        }
+    }
+
     var name: String {
         switch amountType {
         case .coin, .reserve:
@@ -305,7 +314,7 @@ class WalletModel: ObservableObject {
         .eraseToAnyPublisher()
     }
 
-    //TODO: refactor, move into WalletManager
+    // TODO: refactor, move into WalletManager
     private func checkLatestUpdateTime(silent: Bool) -> Bool {
         guard let latestUpdateTime = latestUpdateTime,
               latestUpdateTime.distance(to: Date()) <= 10 else {
