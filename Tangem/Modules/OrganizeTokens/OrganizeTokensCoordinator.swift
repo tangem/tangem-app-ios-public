@@ -26,10 +26,9 @@ final class OrganizeTokensCoordinator: CoordinatorObject {
     }
 
     func start(with options: Options) {
-        // TODO: Andrey Fedorov - Replace with proper initializer
         rootViewModel = OrganizeTokensViewModel(
             coordinator: self,
-            sections: OrganizeTokensPreviewProvider().multipleSections()
+            userWalletModel: options.userWalletModel
         )
     }
 }
@@ -37,9 +36,8 @@ final class OrganizeTokensCoordinator: CoordinatorObject {
 // MARK: - Options
 
 extension OrganizeTokensCoordinator {
-    enum Options {
-        // TODO: Andrey Fedorov - Remove if custom options aren't used in this flow
-        case none
+    struct Options {
+        let userWalletModel: UserWalletModel
     }
 }
 
