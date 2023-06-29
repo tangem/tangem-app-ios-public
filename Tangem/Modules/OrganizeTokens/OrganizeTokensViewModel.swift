@@ -8,8 +8,11 @@
 
 import Combine
 import SwiftUI
+import struct BlockchainSdk.Token
 
 final class OrganizeTokensViewModel: ObservableObject {
+    private typealias Token = BlockchainSdk.Token
+
     var itemIndexSentinelValueForSectionIndexPath: Int { .min }
 
     private(set) lazy var headerViewModel = OrganizeTokensHeaderViewModel()
@@ -24,7 +27,10 @@ final class OrganizeTokensViewModel: ObservableObject {
     private var currentlyDraggedSectionIdentifier: UUID?
     private var currentlyDraggedSectionItems: [OrganizeTokensListItemViewModel] = []
 
-    @available(*, deprecated, message: "Only for SwiftUI previews")
+    private var didPerformBind = false
+
+    private var bag = Set<AnyCancellable>()
+
     init(
         coordinator: OrganizeTokensRoutable,
         userWalletModel: UserWalletModel
@@ -33,6 +39,94 @@ final class OrganizeTokensViewModel: ObservableObject {
         self.userWalletModel = userWalletModel
     }
 
+    func onViewAppear() {
+        bindIfNeeded()
+    }
+
+    func onViewDisappear() {
+        // TODO: Andrey Fedorov - Really needed?
+    }
+
+    func onCancelButtonTap() {
+        coordinator.didTapCancelButton()
+    }
+
+    func onApplyButtonTap() {
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
+    }
+
+    private func bindIfNeeded() {
+        if didPerformBind {
+            return
+        }
+
+        // TODO: Andrey Fedorov - Subscribe to balance, unavailable network and other publishers
+        // TODO: Andrey Fedorov - Should we use `userWalletModel.getSavedEntries()` (for proper ordering perhabs)?
+        userWalletModel
+            .subscribeToWalletModels()
+            .map(Self.map)
+            .weakAssign(to: \.sections, on: self)
+            .store(in: &bag)
+
+        didPerformBind = true
+    }
+
+    private static func map(
+        _ walletModels: [WalletModel]
+    ) -> [OrganizeTokensListSectionViewModel] {
+        return walletModels.map { walletModel in
+            let blockchainNetwork = walletModel.blockchainNetwork
+            let networkItem = map(blockchainNetwork)
+            let tokenItems = map(walletModel.getTokens(), in: blockchainNetwork)
+            // TODO: Andrey Fedorov - Fix localization placeholder (use %@ instead of %s)
+            return OrganizeTokensListSectionViewModel(
+                style: .fixed(title: Localization.walletNetworkGroupTitle(blockchainNetwork.blockchain.displayName)),
+                items: [networkItem] + tokenItems
+            )
+        }
+    }
+
+    private static func map(
+        _ blockchainNetwork: BlockchainNetwork
+    ) -> OrganizeTokensListItemViewModel {
+        let tokenIcon = TokenIconInfoBuilder().build(
+            for: .coin,
+            in: blockchainNetwork.blockchain
+        )
+        return makeListItemViewModel(tokenIcon: tokenIcon)
+    }
+
+    private static func map(
+        _ tokens: [Token],
+        in blockchainNetwork: BlockchainNetwork
+    ) -> [OrganizeTokensListItemViewModel] {
+        let tokenIconInfoBuilder = TokenIconInfoBuilder()
+        return tokens.map { token in
+            let tokenIcon = tokenIconInfoBuilder.build(
+                for: .token(value: token),
+                in: blockchainNetwork.blockchain
+            )
+            return makeListItemViewModel(tokenIcon: tokenIcon)
+        }
+    }
+
+    private static func makeListItemViewModel(
+        tokenIcon: TokenIconInfo
+    ) -> OrganizeTokensListItemViewModel {
+        // TODO: Andrey Fedorov - Use real data for list item VM props
+        return OrganizeTokensListItemViewModel(
+            tokenIcon: tokenIcon,
+            balance: .noData,
+            isDraggable: false,
+            networkUnreachable: false,
+            hasPendingTransactions: false
+        )
+    }
+}
+
+// MARK: - Drag and drop support
+
+extension OrganizeTokensViewModel {
     func itemViewModel(for identifier: UUID) -> OrganizeTokensListItemViewModel? {
         return sections
             .flatMap { $0.items }
@@ -82,14 +176,6 @@ final class OrganizeTokensViewModel: ObservableObject {
 
     func onDragAnimationCompletion() {
         endDragAndDropSessionForCurrentlyDraggedSectionIfNeeded()
-    }
-
-    func onCancelButtonTap() {
-        coordinator.didTapCancelButton()
-    }
-
-    func onApplyButtonTap() {
-        // TODO: Andrey Fedorov - Add actual implementation (IOS-3461)
     }
 
     private func beginDragAndDropSession(forSectionWithIdentifier identifier: UUID) {
