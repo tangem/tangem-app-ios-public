@@ -8,10 +8,11 @@
 
 import SwiftUI
 
-// TODO: Andrey Fedorov - Fix generic resolution issue: Conflicting arguments to generic parameter 'Content' ('<<hole>>' vs. '<<hole>>' vs. '<<hole>>' vs. '<<hole>>')
 protocol CardsInfoPagerScrollViewConnectable {
     associatedtype PlaceholderView: View
 
     var contentOffset: Binding<CGPoint> { get }
     var placeholderView: PlaceholderView { get }
+
+    func scrollViewFooterHeight(viewportSize: CGSize, contentSize: CGSize) -> CGFloat
 }
