@@ -1,5 +1,5 @@
 //
-//  SwappingPermissionRoutableMock.swift
+//  SwappingApproveRoutableMock.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 06.05.2023.
@@ -7,11 +7,6 @@
 //
 
 import TangemSwapping
-
-class SwappingPermissionRoutableMock: SwappingPermissionRoutable {
-    func didSendApproveTransaction(transactionData: TangemSwapping.SwappingTransactionData) {}
-    func userDidCancel() {}
-}
 
 class SwappingApproveRoutableMock: SwappingApproveRoutable {
     func didSendApproveTransaction(transactionData: TangemSwapping.SwappingTransactionData) {}
