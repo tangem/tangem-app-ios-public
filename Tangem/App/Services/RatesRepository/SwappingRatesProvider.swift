@@ -1,5 +1,5 @@
 //
-//  FiatRatesProvider.swift
+//  SwappingRatesProvider.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 19.01.2023.
