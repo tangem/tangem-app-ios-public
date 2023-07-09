@@ -277,7 +277,7 @@ final class OrganizeTokensDragAndDropController: ObservableObject {
         // TODO: Andrey Fedorov - Add cache and/or maintain the current index to avoid repetitive O(N) work
         let sortedItemsFrames = itemsFrames
             .filter { isIndexPathValid($0.key) }
-            .sorted { $0.value.minY < $1.value.minY }
+            .sorted(by: \.value.minY)
 
         switch direction {
         case .top:
