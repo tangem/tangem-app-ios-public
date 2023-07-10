@@ -260,7 +260,7 @@ final class OrganizeTokensDragAndDropController: ObservableObject {
         contentOffset: CGPoint,
         viewportSize: CGSize
     ) -> IndexPath? {
-        // TODO: Andrey Fedorov - Add cache and/or maintain the current index to avoid repetitive O(N) work
+        // TODO: Andrey Fedorov - Add cache and/or maintain the current index to avoid repetitive O(N) work if possible (IOS-3884)
         let sortedItemsFrames = itemsFrames
             .filter { isIndexPathValid($0.key) }
             .sorted(by: \.value.minY)

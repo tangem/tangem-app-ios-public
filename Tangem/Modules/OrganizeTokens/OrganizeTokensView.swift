@@ -68,17 +68,6 @@ struct OrganizeTokensView: View {
     // Semantically, this is the same as `UITableView.hasActiveDrag` from UIKit
     private var hasActiveDrag: Bool { dragAndDropSourceIndexPath != nil }
 
-    private var autoScrollAnchor: UnitPoint? {
-        switch dragAndDropController.autoScrollStatus {
-        case .active(.top):
-            return .top
-        case .active(.bottom):
-            return .bottom
-        case .inactive:
-            return nil
-        }
-    }
-
     // MARK: - Body
 
     var body: some View {
@@ -138,23 +127,11 @@ struct OrganizeTokensView: View {
                         .remainder
                 }
                 .onChange(of: draggedItemFrame) { draggedItemFrame in
-                    // TODO: Andrey Fedorov - Refactor this logic into separate method/entity
-                    if visibleViewportFrame.canBeRendered, draggedItemFrame.canBeRendered {
-                        let intersection = visibleViewportFrame.intersection(draggedItemFrame)
-                        if intersection.isNull || intersection.height < min(visibleViewportFrame.height, draggedItemFrame.height) {
-                            if draggedItemFrame.minY + Constants.autoScrollTriggerHeightDiff < visibleViewportFrame.minY {
-                                dragAndDropController.startAutoScrolling(direction: .top)
-                            } else if draggedItemFrame.maxY - Constants.autoScrollTriggerHeightDiff > visibleViewportFrame.maxY {
-                                dragAndDropController.startAutoScrolling(direction: .bottom)
-                            } else {
-                                // TODO: Andrey Fedorov - Stop autoscrolling here
-                            }
-                        }
-                    }
+                    changeAutoScrollStatusIfNeeded(draggedItemFrame: draggedItemFrame)
                 }
                 .onReceive(dragAndDropController.autoScrollTargetPublisher) { newValue in
                     withAnimation(.linear(duration: Constants.autoScrollFrequency)) {
-                        scrollProxy.scrollTo(newValue, anchor: autoScrollAnchor)
+                        scrollProxy.scrollTo(newValue, anchor: scrollAnchor())
                     }
                 }
             }
@@ -370,6 +347,35 @@ struct OrganizeTokensView: View {
             dragAndDropInitialIndexPath = initialIndexPath
         } else {
             dragAndDropInitialIndexPath = nil
+        }
+    }
+
+    // MARK: - Auto scrolling support
+
+    private func scrollAnchor() -> UnitPoint? {
+        switch dragAndDropController.autoScrollStatus {
+        case .active(.top):
+            return .top
+        case .active(.bottom):
+            return .bottom
+        case .inactive:
+            return nil
+        }
+    }
+
+    private func changeAutoScrollStatusIfNeeded(draggedItemFrame: CGRect) {
+        guard visibleViewportFrame.canBeRendered, draggedItemFrame.canBeRendered else { return }
+
+        let intersection = visibleViewportFrame.intersection(draggedItemFrame)
+        if intersection.isNull || intersection.height < min(visibleViewportFrame.height, draggedItemFrame.height) {
+            if draggedItemFrame.minY + Constants.autoScrollTriggerHeightDiff < visibleViewportFrame.minY {
+                dragAndDropController.startAutoScrolling(direction: .top)
+            } else if draggedItemFrame.maxY - Constants.autoScrollTriggerHeightDiff > visibleViewportFrame.maxY {
+                dragAndDropController.startAutoScrolling(direction: .bottom)
+            } else {
+                // TODO: Andrey Fedorov - Doesn't work reliably since dragged view doesn't preserve a fixed position on the screen (IOS-3884)
+                dragAndDropController.stopAutoScrolling()
+            }
         }
     }
 
