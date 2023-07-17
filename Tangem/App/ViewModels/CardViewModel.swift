@@ -25,6 +25,7 @@ class CardViewModel: Identifiable, ObservableObject {
         // TODO: move derivationstyle into config
         CommonUserTokensManager(
             userTokenListManager: userTokenListManager,
+            walletModelsManager: walletModelsManager,
             derivationStyle: cardInfo.card.derivationStyle,
             derivationManager: derivationManager,
             cardDerivableProvider: self
