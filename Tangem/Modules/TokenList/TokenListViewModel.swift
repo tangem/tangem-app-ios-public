@@ -75,11 +75,11 @@ class TokenListViewModel: ObservableObject {
 
         isSaving = true
 
-        pendingRemove.forEach {
-            userTokensManager.remove($0, derivationPath: nil)
-        }
-
-        userTokensManager.add(pendingAdd, derivationPath: nil) { [weak self] result in
+        userTokensManager.update(
+            itemsToRemove: pendingRemove,
+            itemsToAdd: pendingAdd,
+            derivationPath: nil
+        ) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isSaving = false
 
@@ -355,7 +355,7 @@ private extension TokenListViewModel {
     }
 }
 
-// TODO: refactor, split into separete viewModels
+// TODO: refactor, split into separate viewModels
 extension TokenListViewModel {
     enum Mode {
         case add(
