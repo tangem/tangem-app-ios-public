@@ -8,10 +8,11 @@
 
 import Foundation
 
+// TODO: Andrey Fedorov - Move into `Core`/`Common`/`Utils`/etc module (IOS-4029)
+
 /// Provides `multiple readers - single writer` semantics for underlying `value`.
 /// It's most useful with Swift native collections like `Array`, `Dictionary`, etc.
 ///
-/// - ToDo: This is a generic helper, therefore move it into `Core`/`Common`/`Utils`/etc module.
 @dynamicMemberLookup
 public final class ThreadSafeContainer<Value> {
     public subscript<T>(dynamicMember keyPath: KeyPath<Value, T>) -> T {
