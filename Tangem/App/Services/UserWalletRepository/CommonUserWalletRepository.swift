@@ -395,6 +395,7 @@ class CommonUserWalletRepository: UserWalletRepository {
 
     // TODO: refactor
     private func resetServices() {
+        walletConnectService.reset()
         analyticsContext.clearContext()
     }
 
