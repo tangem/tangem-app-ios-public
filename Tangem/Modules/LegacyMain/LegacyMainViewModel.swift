@@ -196,12 +196,6 @@ class LegacyMainViewModel: ObservableObject {
         updateContent()
         updateExchangeButtons()
 
-        // HACK:
-        // Initializing API service authentication outside of the normal flow.
-        // Normal flow is not triggered after going through onboarding
-        // TODO: Remove in 4.10
-        tangemApiService.setAuthData(cardModel.card.tangemApiAuthData)
-
         if cardModel.canParticipateInPromotion {
             runTask { [weak self] in
                 await self?.updatePromotionState()
