@@ -9,16 +9,22 @@
 import SwiftUI
 
 struct OrganizeTokensShadowAnimatableModifier: AnimatableModifier {
-    var progress: Double
-
     var animatableData: Double {
         get { progress }
         set { progress = newValue }
     }
 
+    private var progress: Double
+
     private var shadowColor: Color {
         // TODO: Andrey Fedorov - Dark mode support for shadows (IOS-3927)
         Color.black.opacity(0.08)
+    }
+
+    init(
+        progress: Double
+    ) {
+        self.progress = progress
     }
 
     func body(content: Content) -> some View {
