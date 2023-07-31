@@ -28,7 +28,7 @@ struct OrganizeTokensHeaderView: View {
                     action: viewModel.toggleGroupState
                 )
             }
-            // TODO: Andrey Fedorov - Proper shadow color and dark mode support (IOS-3927)
+            // TODO: Andrey Fedorov - Dark mode support for shadows (IOS-3927)
             .shadow(color: Colors.Button.primary.opacity(0.1), radius: 5.0)
             .background(
                 Colors.Background

@@ -17,13 +17,13 @@ final class OrganizeTokensViewModel: ObservableObject {
     var sectionHeaderItemIndex: Int { .min }
 
     private(set) lazy var headerViewModel = OrganizeTokensHeaderViewModel()
-
-    @Published var sections: [OrganizeTokensListSectionViewModel] = []
+    @Published private(set) var sections: [OrganizeTokensListSectionViewModel] = []
 
     private unowned let coordinator: OrganizeTokensRoutable
 
     private let userWalletModel: UserWalletModel
     private var userTokenListManager: UserTokenListManager { userWalletModel.userTokenListManager }
+    private var walletModelsManager: WalletModelsManager { userWalletModel.walletModelsManager }
 
     private var currentlyDraggedSectionIdentifier: UUID?
     private var currentlyDraggedSectionItems: [OrganizeTokensListItemViewModel] = []
@@ -63,8 +63,9 @@ final class OrganizeTokensViewModel: ObservableObject {
 
         // TODO: Andrey Fedorov - Subscribe to balance, unavailable network and other publishers
         // TODO: Andrey Fedorov - Should we use `userWalletModel.getSavedEntries()` (for proper ordering perhabs)?
-        userWalletModel
-            .subscribeToWalletModels()
+        // TODO: Andrey Fedorov - `userWalletModel.getSavedEntries()` is empty until at least one token is added
+        walletModelsManager
+            .walletModelsPublisher
             .map(Self.map)
             .weakAssign(to: \.sections, on: self)
             .store(in: &bag)
@@ -78,8 +79,7 @@ final class OrganizeTokensViewModel: ObservableObject {
         return walletModels.map { walletModel in
             let blockchainNetwork = walletModel.blockchainNetwork
             let networkItem = map(blockchainNetwork)
-            let tokenItems = map(walletModel.getTokens(), in: blockchainNetwork)
-            // TODO: Andrey Fedorov - Fix localization placeholder (use %@ instead of %s)
+            let tokenItems = map([], in: blockchainNetwork) // TODO: Andrey Fedorov - Fetch all tokens for a particular network
             return OrganizeTokensListSectionViewModel(
                 style: .fixed(title: Localization.walletNetworkGroupTitle(blockchainNetwork.blockchain.displayName)),
                 items: [networkItem] + tokenItems
@@ -114,7 +114,7 @@ final class OrganizeTokensViewModel: ObservableObject {
     private static func makeListItemViewModel(
         tokenIcon: TokenIconInfo
     ) -> OrganizeTokensListItemViewModel {
-        // TODO: Andrey Fedorov - Use real data for list item VM props
+        // TODO: Andrey Fedorov - Use real data for this list item VM
         return OrganizeTokensListItemViewModel(
             tokenIcon: tokenIcon,
             balance: .noData,
