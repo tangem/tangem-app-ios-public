@@ -20,9 +20,10 @@ final class OrganizeTokensViewModel: ObservableObject {
 
     private unowned let coordinator: OrganizeTokensRoutable
 
-    private let userWalletModel: UserWalletModel
-    private var userTokenListManager: UserTokenListManager { userWalletModel.userTokenListManager }
-    private var walletModelsManager: WalletModelsManager { userWalletModel.walletModelsManager }
+    @available(*, deprecated, message: "Get rid of using `UserTokenListManager` and `[StorageEntry]`")
+    private let userTokenListManager: UserTokenListManager
+    private let walletModelsManager: WalletModelsManager
+    private let walletModelsAdapter: OrganizeWalletModelsAdapter<String>
 
     private var currentlyDraggedSectionIdentifier: UUID?
     private var currentlyDraggedSectionItems: [OrganizeTokensListItemViewModel] = []
@@ -33,10 +34,14 @@ final class OrganizeTokensViewModel: ObservableObject {
 
     init(
         coordinator: OrganizeTokensRoutable,
-        userWalletModel: UserWalletModel
+        userTokenListManager: UserTokenListManager,
+        walletModelsManager: WalletModelsManager,
+        walletModelsAdapter: OrganizeWalletModelsAdapter<String>
     ) {
         self.coordinator = coordinator
-        self.userWalletModel = userWalletModel
+        self.userTokenListManager = userTokenListManager
+        self.walletModelsManager = walletModelsManager
+        self.walletModelsAdapter = walletModelsAdapter
     }
 
     func onViewAppear() {
@@ -61,12 +66,11 @@ final class OrganizeTokensViewModel: ObservableObject {
         }
 
         // TODO: Andrey Fedorov - Subscribe to balance, unavailable network and other publishers
-        // TODO: Andrey Fedorov - Use adapter to get ordered/grouped list items
-        walletModelsManager
-            .walletModelsPublisher
-            .combineLatest(userTokenListManager.userTokensPublisher)
+        walletModelsAdapter
+            .organizedWalletModels(from: walletModelsManager.walletModelsPublisher)
+            .combineLatest(userTokenListManager.userTokensPublisher) // TODO: Andrey Fedorov - Get rid of using `UserTokenListManager` and `[StorageEntry]`
             .map { walletModels, storageEntries in
-                return Self.map(walletModels: walletModels, storageEntries: storageEntries)
+                return []   // TODO: Andrey Fedorov - Fix mapping
             }
             .assign(to: \.sections, on: self, ownership: .weak)
             .store(in: &bag)
