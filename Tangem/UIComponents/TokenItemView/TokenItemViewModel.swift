@@ -106,7 +106,6 @@ final class TokenItemViewModel: ObservableObject, Identifiable {
         hasPendingTransactions = infoProvider.hasPendingTransactions
     }
 
-    // TODO: remove update from here! Get it from walletModel
     private func updateBalances() {
         balanceCrypto = .loaded(text: infoProvider.balance)
         balanceFiat = .loaded(text: infoProvider.fiatBalance)
