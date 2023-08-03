@@ -20,6 +20,7 @@ class MainCoordinator: CoordinatorObject {
     // MARK: - Child coordinators
 
     @Published var detailsCoordinator: DetailsCoordinator?
+    @Published var tokenDetailsCoordinator: TokenDetailsCoordinator?
 
     // MARK: - Child view models
 
@@ -68,6 +69,30 @@ extension MainCoordinator: MainRoutable {
     }
 }
 
-extension MainCoordinator: MultiWalletMainContentRoutable {}
+extension MainCoordinator: MultiWalletMainContentRoutable {
+    func openTokenDetails(for model: WalletModel, userWalletModel: UserWalletModel) {
+        // TODO: Remove this stuff after Send screen refactoring
+        guard let cardViewModel = userWalletModel as? CardViewModel else {
+            return
+        }
+
+        Analytics.log(.tokenIsTapped)
+        let dismissAction: Action = { [weak self] in
+            self?.tokenDetailsCoordinator = nil
+        }
+        let coordinator = TokenDetailsCoordinator(dismissAction: dismissAction)
+        coordinator.start(
+            with: .init(
+                cardModel: cardViewModel,
+                walletModel: model,
+                userTokensManager: userWalletModel.userTokensManager,
+                blockchainNetwork: model.blockchainNetwork,
+                amountType: model.amountType
+            )
+        )
+
+        tokenDetailsCoordinator = coordinator
+    }
+}
 
 extension MainCoordinator: SingleWalletMainContentRoutable {}
