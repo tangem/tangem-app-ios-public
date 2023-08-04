@@ -20,10 +20,6 @@ class FeatureStorage {
     @AppStorageCompat(FeatureStorageKeys.useDevApi)
     var useDevApi = false
 
-    // TODO: Remove after transaction history implementation in BlockchainSDK
-    @AppStorageCompat(FeatureStorageKeys.fakeTxHistory)
-    var useFakeTxHistory = false
-
     @AppStorageCompat(FeatureStorageKeys.supportedBlockchainsIds)
     var supportedBlockchainsIds: [String] = []
 }
