@@ -14,13 +14,9 @@ struct LockedUserTokenListManager: UserTokenListManager {
 
     var userTokensPublisher: AnyPublisher<[StorageEntry], Never> { .just(output: []) }
 
-    var userTokenList: AnyPublisher<UserTokenList, Never> {
-        fatalError("\(#function) not implemented yet (IOS-3461)")
-    }
+    var userTokenList: AnyPublisher<UserTokenList, Never> { .just(output: .empty) }
 
-    func update(with userTokenList: UserTokenList) {
-        fatalError("\(#function) not implemented yet (IOS-3461)")
-    }
+    func update(with userTokenList: UserTokenList) {}
 
     func update(_ type: UserTokenListUpdateType, shouldUpload: Bool) {}
 

@@ -56,7 +56,7 @@ extension CommonUserTokenListManager: UserTokenListManager {
     }
 
     func update(with userTokenList: UserTokenList) {
-        fatalError("\(#function) not implemented yet (IOS-3461)")
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-4152)
     }
 
     func update(_ type: UserTokenListUpdateType, shouldUpload: Bool) {
