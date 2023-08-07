@@ -29,7 +29,7 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
             let viewModel = MultiWalletMainContentViewModel(
                 userWalletModel: model,
                 coordinator: coordinator,
-                // TODO: Temp solution. Will be updated after merging IOS-3461
+                // TODO: Temp solution. Will be updated in IOS-4207
                 sectionsProvider: GroupedTokenListInfoProvider(userWalletId: id, walletModelsManager: model.walletModelsManager)
             )
 
