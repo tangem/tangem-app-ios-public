@@ -45,7 +45,10 @@ struct SupportedBlockchains {
             return mainnetBlockchains
         }
 
-        let betaTestingBlockchains = FeatureStorage().supportedBlockchainsIds.compactMap { Blockchain(from: $0) }
+        let betaTestingBlockchains = FeatureStorage().supportedBlockchainsIds.compactMap { id in
+            // TODO: Refactor it to simple ID
+            Blockchain.allMainnetCases.first { $0.id == id }
+        }
 
         return mainnetBlockchains.union(Set(betaTestingBlockchains))
     }
