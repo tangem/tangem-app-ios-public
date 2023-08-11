@@ -10,6 +10,7 @@ import Foundation
 
 // TODO: Temp solution. Will be updated after merging IOS-3461
 struct TokenListSectionInfo {
+    let id: Int
     let sectionType: SectionType
     let infoProviders: [TokenItemInfoProvider]
 }
