@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import CombineExt
 
+// TODO: This class will be removed in IOS-4157
 class GroupedTokenListInfoProvider {
     private let userTokenListManager: UserTokenListManager
     private let walletModelsManager: WalletModelsManager
@@ -32,6 +33,7 @@ class GroupedTokenListInfoProvider {
     }
 
     private func bind() {
+        // FIXME: Removing duplicates is temp solution while waiting sort/group adapter
         userTokenListManager.userTokensPublisher
             .removeDuplicates()
             .combineLatest(walletModelsManager.walletModelsPublisher.removeDuplicates())
