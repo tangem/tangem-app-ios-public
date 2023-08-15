@@ -1,5 +1,5 @@
 //
-//  PendingTransaction.swift
+//  LegacyTransactionRecord.swift
 //  Tangem
 //
 //  Created by Andrew Son on 11/06/21.
