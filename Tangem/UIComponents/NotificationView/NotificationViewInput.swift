@@ -1,5 +1,5 @@
 //
-//  NotificationInput.swift
+//  NotificationViewInput.swift
 //  Tangem
 //
 //  Created by Andrew Son on 15/08/23.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-typealias NotificationId = String
+typealias NotificationViewId = String
 
-struct NotificationInput: Identifiable, Equatable {
+struct NotificationViewInput: Identifiable, Equatable {
     let style: NotificationView.Style
     let settings: NotificationView.Settings
 
-    var id: NotificationId { settings.id }
+    var id: NotificationViewId { settings.id }
 
-    static func == (lhs: NotificationInput, rhs: NotificationInput) -> Bool {
+    static func == (lhs: NotificationViewInput, rhs: NotificationViewInput) -> Bool {
         lhs.settings == rhs.settings
     }
 }
