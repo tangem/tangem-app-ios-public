@@ -2,8 +2,8 @@
 //  TokenItemsRepository.swift
 //  Tangem
 //
-//  Created by Andrey Fedorov on 12.08.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
+//  Created by Alexander Osokin on 06.05.2022.
+//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation
