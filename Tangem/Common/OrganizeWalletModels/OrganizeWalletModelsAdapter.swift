@@ -9,12 +9,10 @@
 import Foundation
 import Combine
 import CombineExt
-import struct BlockchainSdk.Amount // TODO: Andrey Fedorov - Remove after migration to actual types from the domain layer (IOS-4152)
-import enum BlockchainSdk.Blockchain // TODO: Andrey Fedorov - Remove after migration to actual types from the domain layer (IOS-4152)
 
 final class OrganizeWalletModelsAdapter {
     typealias Section = OrganizeWalletModelsSection<SectionType>
-    typealias UserToken = UserTokenList.Token // TODO: Andrey Fedorov - Replace with actual types from the domain layer (IOS-4152)
+    typealias UserToken = UserTokenList.Token // TODO: Andrey Fedorov - Replace with actual types from the domain layer (IOS-4297)
     typealias GroupingOption = OrganizeTokensOptions.Grouping
     typealias SortingOption = OrganizeTokensOptions.Sorting
 

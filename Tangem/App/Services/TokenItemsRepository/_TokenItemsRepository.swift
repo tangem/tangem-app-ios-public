@@ -8,8 +8,6 @@
 
 import Foundation
 
-// TODO: Andrey Fedorov - Improve naming
-// TODO: Andrey Fedorov - Storage version should be stored in a storage itself?
 protocol _TokenItemsRepository {
     var isInitialized: Bool { get }
 

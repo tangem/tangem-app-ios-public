@@ -71,7 +71,7 @@ extension CommonUserTokenListManager: UserTokenListManager {
     }
 
     func update(with userTokenList: UserTokenList) {
-        // TODO: Andrey Fedorov - Add actual implementation (IOS-4152)
+        // TODO: Andrey Fedorov - Add actual implementation (IOS-4297)
     }
 
     func update(_ type: UserTokenListUpdateType, shouldUpload: Bool) {
