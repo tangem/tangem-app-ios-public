@@ -510,9 +510,8 @@ extension CardViewModel {
 }
 
 extension CardViewModel: WalletConnectUserWalletInfoProvider {
-    // TODO: remove?
-    var walletModels: [WalletModel] {
-        walletModelsManager.walletModels
+    var wcWalletModelProvider: WalletConnectWalletModelProvider {
+        CommonWalletConnectWalletModelProvider(walletModelsManager: walletModelsManager)
     }
 }
 
