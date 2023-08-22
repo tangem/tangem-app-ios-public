@@ -86,6 +86,9 @@ struct OrganizeTokensView: View {
         )
     }
 
+    // TODO: Andrey Fedorov - Temporary workaround for cases when auto scrolling occasionally stops working (IOS-4353)
+    private var throttleInterval: GeometryInfo.ThrottleInterval { hasActiveDrag ? .zero : .aggressive }
+
     // MARK: - Body
 
     var body: some View {
@@ -128,14 +131,13 @@ struct OrganizeTokensView: View {
                         .padding(.horizontal, Constants.contentHorizontalInset)
                         .coordinateSpace(name: scrollViewContentCoordinateSpaceName)
                         .onTouchesBegan(onTouchesBegan(atLocation:))
-                        .readGeometry(
-                            \.frame.maxY,
-                            throttleInterval: GeometryInfo.ThrottleInterval.aggressive,
+                        .readGeometry(\.frame.maxY,
+                             throttleInterval: throttleInterval,
                             bindTo: $tokenListContentFrameMaxY
                         )
                         .readContentOffset(
                             inCoordinateSpace: .named(scrollViewFrameCoordinateSpaceName),
-                            throttleInterval: GeometryInfo.ThrottleInterval.aggressive,
+                            throttleInterval: throttleInterval,
                             bindTo: $scrollViewContentOffset
                         )
 
