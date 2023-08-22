@@ -33,11 +33,6 @@ struct UserTokenList: Codable {
 extension UserTokenList {
     static var initialVersion: Int { 0 }
 
-    // TODO: Andrey Fedorov - Remove after migration to a model from the domain layer (IOS-4297)
-    static var empty: Self {
-        return Self(tokens: [], group: .none, sort: .manual)
-    }
-
     init(
         tokens: [Token],
         group: GroupType,
