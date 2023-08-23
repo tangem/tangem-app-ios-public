@@ -114,12 +114,14 @@ final class TokenItemViewModel: ObservableObject, Identifiable {
     }
 
     private func updatePendingTransactionsStateIfNeeded() {
+        // FIXME: Andrey Fedorov - Crash on dangling pointer reading
         guard let infoProvider = infoProvider else { return }
 
         hasPendingTransactions = infoProvider.hasPendingTransactions
     }
 
     private func updateBalances() {
+        // FIXME: Andrey Fedorov - Crash on dangling pointer reading
         guard let infoProvider = infoProvider else { return }
 
         balanceCrypto = .loaded(text: infoProvider.balance)
