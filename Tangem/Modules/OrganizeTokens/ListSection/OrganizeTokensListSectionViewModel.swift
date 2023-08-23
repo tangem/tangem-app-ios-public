@@ -2,7 +2,7 @@
 //  OrganizeTokensListSectionViewModel.swift
 //  Tangem
 //
-//  Created by Andrey Fedorov on 06.06.2023.
+//  Created by Andrey Fedorov on 23.08.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -17,12 +17,4 @@ struct OrganizeTokensListSectionViewModel: Hashable, Identifiable {
 
     let id: AnyHashable
     let style: SectionStyle
-    var items: [OrganizeTokensListItemViewModel]
-
-    var isDraggable: Bool {
-        if case .draggable = style {
-            return true
-        }
-        return false
-    }
 }
