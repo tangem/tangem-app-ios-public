@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import CombineExt
 
-// TODO: This class will be removed in IOS-4157
+// TODO: Andrey Fedorov - Remove
 class GroupedTokenListInfoProvider {
     private let userTokenListManager: UserTokenListManager
     private let walletModelsManager: WalletModelsManager
