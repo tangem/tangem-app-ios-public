@@ -8,6 +8,7 @@
 
 import Foundation
 
+// TODO: Andrey Fedorov - Remove
 struct MultiWalletTokenItemsSection: Identifiable {
     var id: Int
     let title: String?
