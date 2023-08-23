@@ -10,7 +10,6 @@ import Foundation
 import enum BlockchainSdk.Blockchain
 import struct BlockchainSdk.Amount
 
-// TODO: Andrey Fedorov - Remove or update after migration to actual types from the domain layer (IOS-4297)
 struct WalletModelComponentsBuilder {
     typealias UserToken = StorageEntry.V3.Entry
 
