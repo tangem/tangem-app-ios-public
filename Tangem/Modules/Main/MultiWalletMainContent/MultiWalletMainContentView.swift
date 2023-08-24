@@ -41,12 +41,14 @@ struct MultiWalletMainContentView: View {
 
             tokensContent
 
-            FixedSizeButtonWithLeadingIcon(
-                title: Localization.organizeTokensTitle,
-                icon: Assets.OrganizeTokens.filterIcon.image,
-                action: viewModel.openOrganizeTokens
-            )
-            .infinityFrame(axis: .horizontal)
+            if viewModel.isOrganizeTokensVisible {
+                FixedSizeButtonWithLeadingIcon(
+                    title: Localization.organizeTokensTitle,
+                    icon: Assets.OrganizeTokens.filterIcon.image,
+                    action: viewModel.openOrganizeTokens
+                )
+                .infinityFrame(axis: .horizontal)
+            }
 
             // TODO: Will be updated in IOS-4060
             if viewModel.isManageTokensAvailable {
