@@ -36,7 +36,7 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
             )
         }
 
-        if model.isMultiWallet {
+        if model.isMultiWallet || model.walletModelsManager.walletModels.count > 1 {
             let viewModel = MultiWalletMainContentViewModel(
                 userWalletModel: model,
                 coordinator: coordinator,
@@ -45,7 +45,9 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
                     userWalletId: id,
                     userTokenListManager: model.userTokenListManager,
                     walletModelsManager: model.walletModelsManager
-                )
+                ),
+                // TODO: Will be moved (IOS-4060) into separate view model after IOS-4186
+                isManageTokensAvailable: model.isMultiWallet
             )
 
             return .multiWallet(

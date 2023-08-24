@@ -22,7 +22,7 @@ final class MultiWalletMainContentViewModel: ObservableObject {
     @Published var isScannerBusy = false
 
     // TODO: Will be updated in IOS-4060
-    var isManageTokensAvailable: Bool { userWalletModel.config.hasFeature(.manageTokens) }
+    let isManageTokensAvailable: Bool
 
     // MARK: - Dependencies
 
@@ -37,11 +37,13 @@ final class MultiWalletMainContentViewModel: ObservableObject {
     init(
         userWalletModel: UserWalletModel,
         coordinator: MultiWalletMainContentRoutable,
-        sectionsProvider: TokenListInfoProvider
+        sectionsProvider: TokenListInfoProvider,
+        isManageTokensAvailable: Bool
     ) {
         self.userWalletModel = userWalletModel
         self.coordinator = coordinator
         self.sectionsProvider = sectionsProvider
+        self.isManageTokensAvailable = isManageTokensAvailable
 
         setup()
     }
