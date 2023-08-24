@@ -49,6 +49,14 @@ struct MultiWalletMainContentView: View {
                 )
                 .infinityFrame(axis: .horizontal)
             }
+
+            // TODO: Will be updated in IOS-4060
+            if viewModel.isManageTokensAvailable {
+                MainButton(
+                    title: Localization.mainManageTokens,
+                    action: viewModel.openManageTokens
+                )
+            }
         }
         .animation(.default, value: viewModel.missingDerivationNotificationSettings)
         .padding(.horizontal, 16)
@@ -121,7 +129,8 @@ struct MultiWalletContentView_Preview: PreviewProvider {
         return MultiWalletMainContentViewModel(
             userWalletModel: userWalletModel,
             coordinator: mainCoordinator,
-            sectionsProvider: sectionProvider
+            sectionsProvider: sectionProvider,
+            isManageTokensAvailable: userWalletModel.isMultiWallet
         )
     }()
 
