@@ -21,6 +21,7 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
     @Published var isScannerBusy = false
 
+    // TODO: Will be updated in IOS-4060
     var isManageTokensAvailable: Bool { userWalletModel.config.hasFeature(.manageTokens) }
 
     // MARK: - Dependencies
@@ -82,6 +83,7 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         coordinator.openOrganizeTokens(for: userWalletModel)
     }
 
+    // TODO: Will be updated in IOS-4060
     func openManageTokens() {
         let shouldShowLegacyDerivationAlert = userWalletModel.config.warningEvents.contains(where: { $0 == .legacyDerivation })
 
