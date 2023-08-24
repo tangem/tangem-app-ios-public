@@ -47,6 +47,14 @@ struct MultiWalletMainContentView: View {
                 action: viewModel.openOrganizeTokens
             )
             .infinityFrame(axis: .horizontal)
+
+            // TODO: Will be updated in IOS-4060
+            if viewModel.isManageTokensAvailable {
+                MainButton(
+                    title: Localization.mainManageTokens,
+                    action: viewModel.openManageTokens
+                )
+            }
         }
         .animation(.default, value: viewModel.missingDerivationNotificationSettings)
         .padding(.horizontal, 16)
