@@ -96,7 +96,6 @@ extension CommonUserTokenListManager: UserTokenListManager {
     func update(_ type: UserTokenListUpdateType, shouldUpload: Bool) {
         let converter = StorageEntryConverter()
 
-        // TODO: Andrey Fedorov - Or update the whole list instead?
         switch type {
         case .append(let entries):
             let storedUserTokens = converter.convertToStoredUserTokens(entries)

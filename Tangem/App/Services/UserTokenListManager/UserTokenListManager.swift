@@ -9,6 +9,7 @@
 import Combine
 import BlockchainSdk
 
+// TODO: Andrey Fedorov - The interface and responsibilities of this entity are one big mess, refactoring needed (IOS-4403)
 protocol UserTokenListManager: UserTokensSyncService {
     var userTokens: [StorageEntry] { get }
     var userTokensPublisher: AnyPublisher<[StorageEntry], Never> { get }

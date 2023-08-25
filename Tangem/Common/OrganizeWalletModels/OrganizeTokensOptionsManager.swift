@@ -89,6 +89,7 @@ extension OrganizeTokensOptionsManager: OrganizeTokensOptionsEditing {
             .flatMapLatest { input in
                 let (manager, (grouping, sorting)) = input
 
+                // TODO: Andrey Fedorov - Add actual implementation (IOS-4297)
                 return manager.userTokensReorderer.reorder([
                     .setGroupingOption(option: grouping),
                     .setSortingOption(option: sorting),
