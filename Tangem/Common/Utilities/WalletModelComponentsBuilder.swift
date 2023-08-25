@@ -10,7 +10,7 @@ import Foundation
 import enum BlockchainSdk.Blockchain
 import struct BlockchainSdk.Amount
 
-// TODO: Andrey Fedorov - Remove or update after migration to actual types from the domain layer (IOS-4297)
+// TODO: Andrey Fedorov - Remove after migration to actual types from the domain layer (IOS-4152)
 struct WalletModelComponentsBuilder {
     private let supportedBlockchains: Set<Blockchain>
 
