@@ -21,6 +21,9 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
     @Published var isScannerBusy = false
 
+    // TODO: Will be updated in IOS-4060
+    let isManageTokensAvailable: Bool
+
     var isOrganizeTokensVisible: Bool {
         if sections.isEmpty {
             return false
@@ -45,11 +48,13 @@ final class MultiWalletMainContentViewModel: ObservableObject {
     init(
         userWalletModel: UserWalletModel,
         coordinator: MultiWalletMainContentRoutable,
-        sectionsProvider: TokenListInfoProvider
+        sectionsProvider: TokenListInfoProvider,
+        isManageTokensAvailable: Bool
     ) {
         self.userWalletModel = userWalletModel
         self.coordinator = coordinator
         self.sectionsProvider = sectionsProvider
+        self.isManageTokensAvailable = isManageTokensAvailable
 
         setup()
     }
@@ -89,6 +94,22 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
     func openOrganizeTokens() {
         coordinator.openOrganizeTokens(for: userWalletModel)
+    }
+
+    // TODO: Will be updated in IOS-4060
+    func openManageTokens() {
+        let shouldShowLegacyDerivationAlert = userWalletModel.config.warningEvents.contains(where: { $0 == .legacyDerivation })
+
+        let settings = LegacyManageTokensSettings(
+            supportedBlockchains: userWalletModel.config.supportedBlockchains,
+            hdWalletsSupported: userWalletModel.config.hasFeature(.hdWallets),
+            longHashesSupported: userWalletModel.config.hasFeature(.longHashes),
+            derivationStyle: userWalletModel.config.derivationStyle,
+            shouldShowLegacyDerivationAlert: shouldShowLegacyDerivationAlert,
+            existingCurves: (userWalletModel as? CardViewModel)?.card.walletCurves ?? []
+        )
+
+        coordinator.openManageTokens(with: settings, userTokensManager: userWalletModel.userTokensManager)
     }
 
     private func setup() {
