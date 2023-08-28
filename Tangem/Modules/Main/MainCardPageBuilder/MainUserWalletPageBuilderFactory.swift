@@ -45,7 +45,7 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
                 userWalletModel: model,
                 coordinator: coordinator,
                 sectionsAdapter: sectionsAdapter,
-                isManageTokensAvailable: model.isMultiWallet
+                canManageTokens: model.isMultiWallet // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
             )
 
             return .multiWallet(

@@ -30,8 +30,15 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
     @Published var isScannerBusy = false
 
-    // TODO: Will be updated in IOS-4060
-    let isManageTokensAvailable: Bool
+    var bottomOverlayViewModel: MainBottomOverlayViewModel? {
+        guard canManageTokens else { return nil }
+
+        return MainBottomOverlayViewModel(
+            isButtonDisabled: false,
+            buttonTitle: Localization.mainManageTokens,
+            buttonAction: openManageTokens
+        )
+    }
 
     var isOrganizeTokensVisible: Bool {
         if sections.isEmpty {
@@ -47,9 +54,9 @@ final class MultiWalletMainContentViewModel: ObservableObject {
     // MARK: - Dependencies
 
     private let userWalletModel: UserWalletModel
-
     private unowned let coordinator: MultiWalletMainContentRoutable
     private let sectionsAdapter: OrganizeTokensSectionsAdapter
+    private let canManageTokens: Bool // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
 
     private let mappingQueue = DispatchQueue(
         label: "com.tangem.MultiWalletMainContentViewModel.mappingQueue",
@@ -63,12 +70,12 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         userWalletModel: UserWalletModel,
         coordinator: MultiWalletMainContentRoutable,
         sectionsAdapter: OrganizeTokensSectionsAdapter,
-        isManageTokensAvailable: Bool
+        canManageTokens: Bool
     ) {
         self.userWalletModel = userWalletModel
         self.coordinator = coordinator
         self.sectionsAdapter = sectionsAdapter
-        self.isManageTokensAvailable = isManageTokensAvailable
+        self.canManageTokens = canManageTokens
 
         setup()
     }
@@ -110,7 +117,7 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         coordinator.openOrganizeTokens(for: userWalletModel)
     }
 
-    // TODO: Will be updated in IOS-4060
+    // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
     func openManageTokens() {
         let shouldShowLegacyDerivationAlert = userWalletModel.config.warningEvents.contains(where: { $0 == .legacyDerivation })
 
