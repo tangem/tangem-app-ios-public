@@ -59,13 +59,12 @@ extension ScanCardSettingsViewModel {
             return
         }
 
-        // TODO: remove with details refactoring https://tangem.atlassian.net/browse/IOS-4184
-        guard let existingCardModel = userWalletRepository.models.first(where: { $0.userWalletId == userWalletId }) as? CardViewModel else {
-            return
-        }
-
         var cardInfo = cardInfo
-        cardInfo.name = existingCardModel.name
+
+        // TODO: remove with details refactoring https://tangem.atlassian.net/browse/IOS-4184
+        if let existingCardModel = userWalletRepository.models.first(where: { $0.userWalletId == userWalletId }) as? CardViewModel {
+            cardInfo.name = existingCardModel.name
+        }
 
         guard let newCardViewModel = CardViewModel(cardInfo: cardInfo) else {
             return
