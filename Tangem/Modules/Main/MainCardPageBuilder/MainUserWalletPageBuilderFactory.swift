@@ -26,6 +26,7 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
             subtitleProvider: subtitleProvider,
             balanceProvider: model
         )
+        let userWalletNotificationManager = UserWalletNotificationManager(userWalletModel: model)
 
         if model.isUserWalletLocked {
             return .lockedWallet(
@@ -42,6 +43,7 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
         if isMultiWalletPage {
             let viewModel = MultiWalletMainContentViewModel(
                 userWalletModel: model,
+                userWalletNotificationManager: userWalletNotificationManager,
                 coordinator: coordinator,
                 // TODO: Temp solution. Will be updated in IOS-4207
                 sectionsProvider: GroupedTokenListInfoProvider(
@@ -51,6 +53,7 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
                 ),
                 canManageTokens: model.isMultiWallet // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
             )
+            userWalletNotificationManager.setupManager(with: viewModel)
 
             return .multiWallet(
                 id: id,
@@ -74,8 +77,10 @@ struct CommonMainUserWalletPageBuilderFactory: MainUserWalletPageBuilderFactory 
             walletModel: walletModel,
             userTokensManager: model.userTokensManager,
             exchangeUtility: exchangeUtility,
+            userWalletNotificationManager: userWalletNotificationManager,
             coordinator: coordinator
         )
+        userWalletNotificationManager.setupManager()
 
         return .singleWallet(
             id: id,
