@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-enum TokenNotificationEvent {
+enum TokenNotificationEvent: Hashable {
     // TODO: Remove this with notEnoughtFeeForTokenTx event
     case unableToCoverFee(tokenItem: TokenItem)
     case networkUnreachable
