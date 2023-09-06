@@ -50,7 +50,7 @@ final class MultiWalletMainContentViewModel: ObservableObject {
     private let userWalletNotificationManager: NotificationManager
     private unowned let coordinator: MultiWalletMainContentRoutable
     private let tokenSectionsAdapter: TokenSectionsAdapter
-    private let canManageTokens: Bool // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
+    private var canManageTokens: Bool { userWalletModel.isMultiWallet }
 
     private var cachedTokenItemViewModels: [ObjectIdentifier: TokenItemViewModel] = [:]
 
@@ -66,14 +66,12 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         userWalletModel: UserWalletModel,
         userWalletNotificationManager: NotificationManager,
         coordinator: MultiWalletMainContentRoutable,
-        tokenSectionsAdapter: TokenSectionsAdapter,
-        canManageTokens: Bool
+        tokenSectionsAdapter: TokenSectionsAdapter
     ) {
         self.userWalletModel = userWalletModel
         self.userWalletNotificationManager = userWalletNotificationManager
         self.coordinator = coordinator
         self.tokenSectionsAdapter = tokenSectionsAdapter
-        self.canManageTokens = canManageTokens
 
         setup()
     }
@@ -111,11 +109,11 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         }
     }
 
-    func openOrganizeTokens() {
-        coordinator.openOrganizeTokens(for: userWalletModel)
+    func onOpenOrganizeTokensButtonTap() {
+        Analytics.log(.buttonOrganizeTokens)
+        openOrganizeTokens()
     }
 
-    // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
     func openManageTokens() {
         let shouldShowLegacyDerivationAlert = userWalletModel.config.warningEvents.contains(where: { $0 == .legacyDerivation })
 
@@ -270,6 +268,10 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
         let factory = NotificationsFactory()
         missingBackupNotificationSettings = factory.missingBackupNotificationSettings()
+    }
+
+    private func openOrganizeTokens() {
+        coordinator.openOrganizeTokens(for: userWalletModel)
     }
 }
 
