@@ -111,8 +111,9 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         }
     }
 
-    func openOrganizeTokens() {
-        coordinator.openOrganizeTokens(for: userWalletModel)
+    func onOpenOrganizeTokensButtonTap() {
+        Analytics.log(.buttonOrganizeTokens)
+        openOrganizeTokens()
     }
 
     // TODO: Andrey Fedorov - More sophisticated logic (IOS-4060)
@@ -270,6 +271,10 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
         let factory = NotificationsFactory()
         missingBackupNotificationSettings = factory.missingBackupNotificationSettings()
+    }
+
+    private func openOrganizeTokens() {
+        coordinator.openOrganizeTokens(for: userWalletModel)
     }
 }
 
