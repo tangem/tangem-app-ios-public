@@ -23,9 +23,10 @@ enum NotificationButtonActionType: Identifiable, Hashable {
             return Localization.buttonStartBackupProcess
         case .buyCrypto(let currencySymbol):
             guard let currencySymbol else {
+                // TODO: Replace when texts will be confirmed
                 return "Top up card"
             }
-            return "Buy \(currencySymbol)"
+            return Localization.commonBuyCurrency(currencySymbol)
         }
     }
 
