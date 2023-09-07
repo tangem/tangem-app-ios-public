@@ -1,5 +1,5 @@
 //
-//  MainBottomOverlayView.swift
+//  MainFooterView.swift
 //  Tangem
 //
 //  Created by Andrey Fedorov on 26.08.2023.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct MainBottomOverlayView: View {
-    let viewModel: MainBottomOverlayViewModel
+struct MainFooterView: View {
+    let viewModel: MainFooterViewModel
 
     let didScrollToBottom: Bool
 
