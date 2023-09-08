@@ -1,5 +1,5 @@
 //
-//  MainBottomOverlayViewModel.swift
+//  MainFooterViewModel.swift
 //  Tangem
 //
 //  Created by Andrey Fedorov on 26.08.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MainBottomOverlayViewModel {
+struct MainFooterViewModel {
     let isButtonDisabled: Bool
     let buttonTitle: String
     let buttonAction: () -> Void
