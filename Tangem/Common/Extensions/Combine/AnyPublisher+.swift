@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(*, deprecated, message: "Migrate to CombineExt if applicable (IOS-4000)")
 extension AnyPublisher where Failure: Error {
     static func just(output: Output) -> AnyPublisher<Output, Never> {
         Just(output).eraseToAnyPublisher()
