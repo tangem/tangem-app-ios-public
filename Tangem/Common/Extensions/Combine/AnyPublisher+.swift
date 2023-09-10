@@ -31,7 +31,6 @@ extension AnyPublisher where Failure: Error {
     }
 }
 
-@available(*, deprecated, message: "Migrate to CombineExt if applicable (IOS-4000)")
 extension AnyPublisher where Failure == Never {
     func async() async -> Output {
         await withCheckedContinuation { continuation in
