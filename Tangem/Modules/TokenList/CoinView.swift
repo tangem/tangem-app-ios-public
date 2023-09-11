@@ -2,7 +2,7 @@
 //  CoinView.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 17.03.2022.
+//  Created by Andrey Chukavin on 31.07.2023.
 //  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
