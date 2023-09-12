@@ -566,6 +566,8 @@ extension CardViewModel: MainHeaderInfoProvider {
     var isUserWalletLocked: Bool { userWallet.isLocked }
 
     var userWalletNamePublisher: AnyPublisher<String, Never> { _userWalletNamePublisher.eraseToAnyPublisher() }
+
+    var isWalletModelListEmpty: Bool { walletModelsManager.walletModels.isEmpty }
 }
 
 // TODO: refactor storage to single source
