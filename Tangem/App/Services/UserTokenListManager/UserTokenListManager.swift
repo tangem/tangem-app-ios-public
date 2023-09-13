@@ -9,11 +9,15 @@
 import Combine
 import BlockchainSdk
 
-protocol UserTokenListManager {
-    var didPerformInitialLoading: Bool { get }
-    func update(_ type: CommonUserTokenListManager.UpdateType)
+// TODO: Andrey Fedorov - Get rid of `StorageEntry` in this interface (IOS-4152)
+// TODO: Andrey Fedorov - Replace `UserTokenList` with model from the domain layer (IOS-4152)
+protocol UserTokenListManager: UserTokensSyncService {
+    var userTokens: [StorageEntry] { get }
+    var userTokensPublisher: AnyPublisher<[StorageEntry], Never> { get }
+    var userTokenList: AnyPublisher<UserTokenList, Never> { get }
 
-    func updateLocalRepositoryFromServer(result: @escaping (Result<UserTokenList, Error>) -> Void)
-    func getEntriesFromRepository() -> [StorageEntry]
-    func clearRepository(completion: @escaping () -> Void)
+    func update(with userTokenList: UserTokenList)
+    func update(_ type: UserTokenListUpdateType, shouldUpload: Bool)
+    func updateLocalRepositoryFromServer(result: @escaping (Result<Void, Error>) -> Void)
+    func upload()
 }
