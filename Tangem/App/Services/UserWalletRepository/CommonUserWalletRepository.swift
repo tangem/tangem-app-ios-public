@@ -102,6 +102,7 @@ class CommonUserWalletRepository: UserWalletRepository {
 
                 cardInfo.name = config.cardName
 
+                // TODO: Andrey Fedorov - Re-use this view model instead of creating new one (IOS-4501)
                 let cardModel = CardViewModel(cardInfo: cardInfo)
                 if let cardModel {
                     initializeServices(for: cardModel, cardInfo: cardInfo)
@@ -570,6 +571,7 @@ class CommonUserWalletRepository: UserWalletRepository {
             return
         }
 
+        cardModel.initialUpdate()
         models[index] = cardModel
     }
 
