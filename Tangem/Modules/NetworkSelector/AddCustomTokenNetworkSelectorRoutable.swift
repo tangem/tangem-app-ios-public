@@ -1,5 +1,5 @@
 //
-//  NetworkSelectorRoutable.swift
+//  AddCustomTokenNetworkSelectorRoutable.swift
 //  Tangem
 //
 //  Created by Andrey Chukavin on 19.09.2023.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-protocol NetworkSelectorRoutable: AnyObject {}
+protocol AddCustomTokenNetworkSelectorRoutable: AnyObject {}
