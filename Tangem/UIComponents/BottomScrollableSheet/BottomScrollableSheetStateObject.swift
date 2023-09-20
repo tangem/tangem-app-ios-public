@@ -10,17 +10,19 @@ import Foundation
 import SwiftUI
 import Combine
 
+// TODO: Andrey Fedorov - Add status bar appearance management
 public class BottomScrollableSheetStateObject: ObservableObject {
     @Published var visibleHeight: CGFloat = 0
     @Published var scrollViewIsDragging: Bool = false
-    @Published var headerSize: CGFloat = 100
+    @Published var headerSize: CGFloat = 0
 
     var geometryInfo: GeometryInfo = .init()
 
+    // TODO: Andrey Fedorov - rename, fix max val (~0.8745294855708908)
     var percent: CGFloat {
         let maxHeight = height(for: .top)
         let minHeight = height(for: .bottom)
-        return (visibleHeight - minHeight) / maxHeight
+        return clamp((visibleHeight - minHeight) / maxHeight, min: 0.0, max: 1.0)
     }
 
     private var state: SheetState = .bottom
@@ -54,7 +56,7 @@ public class BottomScrollableSheetStateObject: ObservableObject {
     func height(for state: BottomScrollableSheetStateObject.SheetState) -> CGFloat {
         switch state {
         case .bottom:
-            return headerSize + geometryInfo.safeAreaInsets.bottom
+            return headerSize // + geometryInfo.safeAreaInsets.bottom
         case .top:
             return geometryInfo.size.height + geometryInfo.safeAreaInsets.bottom
         }

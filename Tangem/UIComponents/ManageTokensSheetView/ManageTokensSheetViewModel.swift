@@ -8,7 +8,8 @@
 
 import Foundation
 
-// TODO: Will be updated to normal data
+// TODO: Andrey Fedorov - Update, rename and move to the appropriate location
+@available(*, deprecated, message: "Test only, remove if not needed")
 class ManageTokensSheetViewModel: ObservableObject {
     // MARK: - ViewModel
 
