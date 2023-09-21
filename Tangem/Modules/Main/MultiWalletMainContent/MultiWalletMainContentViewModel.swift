@@ -143,12 +143,13 @@ final class MultiWalletMainContentViewModel: ObservableObject {
     }
 
     func didTapContextAction(_ action: TokenActionType, for tokenItemViewModel: TokenItemViewModel) {
+        if case .hide = action {
+            hideTokenAction(for: tokenItemViewModel)
+        }
+
         guard
             let walletModel = userWalletModel.walletModelsManager.walletModels.first(where: { $0.id == tokenItemViewModel.id })
         else {
-            if case .hide = action {
-                hideTokenAction(for: tokenItemViewModel)
-            }
             return
         }
 
@@ -164,9 +165,7 @@ final class MultiWalletMainContentViewModel: ObservableObject {
         case .copyAddress:
             UIPasteboard.general.string = walletModel.defaultAddress
             delegate?.displayAddressCopiedToast()
-        case .hide:
-            hideTokenAction(for: tokenItemViewModel)
-        case .exchange:
+        case .hide, .exchange:
             return
         }
     }
@@ -372,7 +371,7 @@ private extension MultiWalletMainContentViewModel {
     }
 
     func hideToken(tokenItem: TokenItem, blockchainNetwork: BlockchainNetwork) {
-        // TODO: Add anal
+        // TODO: Add analytics
         let derivation = blockchainNetwork.derivationPath
         userWalletModel.userTokensManager.remove(tokenItem, derivationPath: derivation)
     }
