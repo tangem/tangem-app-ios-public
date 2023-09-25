@@ -61,18 +61,7 @@ enum MainUserWalletPageBuilder: Identifiable {
 
     @ViewBuilder
     func makeBottomOverlay(didScrollToBottom: Bool) -> some View {
-        switch self {
-        case .singleWallet:
-            EmptyView()
-        case .multiWallet(_, _, let bodyModel):
-            if let viewModel = bodyModel.manageTokensViewModel {
-                ManageTokensBottomOverlayView(viewModel: viewModel)
-            }
-        case .lockedWallet(_, _, let bodyModel):
-            if let viewModel = bodyModel.footerViewModel {
-                MainFooterView(viewModel: viewModel, didScrollToBottom: didScrollToBottom)
-                // TODO: Andrey Fedorov - Add BottomScrollableSheet in `locked` state
-            }
-        }
+        // TODO: Andrey Fedorov - Add actual implementation
+        EmptyView()
     }
 }

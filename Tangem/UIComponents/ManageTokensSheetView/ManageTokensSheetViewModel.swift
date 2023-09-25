@@ -10,7 +10,7 @@ import Foundation
 
 // TODO: Andrey Fedorov - Update, rename and move to the appropriate location
 @available(*, deprecated, message: "Test only, remove if not needed")
-class ManageTokensSheetViewModel: ObservableObject {
+final class ManageTokensSheetViewModel: ObservableObject {
     // MARK: - ViewModel
 
     @Published var searchText: String = ""
