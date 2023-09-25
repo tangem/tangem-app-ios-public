@@ -66,16 +66,7 @@ enum MainUserWalletPageBuilder: Identifiable {
             EmptyView()
         case .multiWallet(_, _, let bodyModel):
             if let viewModel = bodyModel.manageTokensViewModel {
-                Color.red.frame(height: 100.0 - 34.0).opacity(0.5) // FIXME: Andrey Fedorov - Test only, remove when not needed
-                    .bottomScrollableSheet(
-                        managesSourceViewAppearance: false,
-                        header: {
-                            _ManageTokensHeaderView(viewModel: viewModel)
-                        },
-                        content: {
-                            _ManageTokensView(viewModel: viewModel)
-                        }
-                    )
+                ManageTokensBottomOverlayView(viewModel: viewModel)
             }
         case .lockedWallet(_, _, let bodyModel):
             if let viewModel = bodyModel.footerViewModel {
