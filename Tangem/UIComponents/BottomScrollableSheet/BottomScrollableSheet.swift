@@ -63,19 +63,18 @@ struct BottomScrollableSheet<Header: View, Content: View>: View {
     @ViewBuilder
     private func sheet(proxy: GeometryProxy) -> some View {
         ZStack(alignment: .bottom) {
-            Color.white
-                .opacity(0.5) // FIXME: Andrey Fedorov - Test only, remove when not needed
+            Colors.Background.primary
 
             VStack(spacing: 0.0) {
                 headerView(proxy: proxy)
                     .debugBorder(color: .blue, width: 5.0)
-                    .overlay(Color.blue.frame(width: 50.0, height: 100.0), alignment: .topTrailing) // FIXME: Andrey Fedorov - Test only, remove when not needed
+                    .overlay(Color.blue.frame(width: 12.0, height: 100.0), alignment: .center) // FIXME: Andrey Fedorov - Test only, remove when not needed
 
                 scrollView(proxy: proxy)
             }
         }
         .frame(height: stateObject.visibleHeight, alignment: .bottom)
-        .cornerRadius(28, corners: [.topLeft, .topRight])
+        .cornerRadius(24.0, corners: [.topLeft, .topRight])
     }
 
     private func headerView(proxy: GeometryProxy) -> some View {
