@@ -23,9 +23,6 @@ struct ManageTokensView: View {
         .scrollDismissesKeyboardCompat(true)
         .navigationBarTitle(Text(Localization.addTokensTitle), displayMode: .automatic)
         .alert(item: $viewModel.alert, content: { $0.alert })
-        .toast(isPresenting: $viewModel.showToast) {
-            AlertToast(type: .complete(Colors.Icon.accent), title: Localization.contractAddressCopiedMessage)
-        }
         .searchableCompat(text: $viewModel.enteredSearchText.value)
         .background(Colors.Background.primary.edgesIgnoringSafeArea(.all))
         .onAppear { viewModel.onAppear() }
@@ -69,18 +66,14 @@ struct ManageTokensView: View {
     }
 
     @ViewBuilder private var overlay: some View {
-        // TODO: - Demo
-        VStack {
-            Spacer()
+        if viewModel.hasPendingDerivations {
+            VStack {
+                Spacer()
 
-            // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
-            GenerateAddressesView(
-                numberOfNetworks: 3,
-                currentWalletNumber: 1,
-                totalWalletNumber: 2,
-                didTapGenerate: {}
-            )
-            .padding(.zero)
+                // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
+                GenerateAddressesView(options: viewModel.pendingDerivationOptions, didTapGenerate: {})
+                    .padding(.zero)
+            }
         }
     }
 }
