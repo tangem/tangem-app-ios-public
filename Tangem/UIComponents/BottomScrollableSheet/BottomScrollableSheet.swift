@@ -16,8 +16,13 @@ struct BottomScrollableSheet<Header: View, Content: View>: View {
 
     @ObservedObject private var stateObject: BottomScrollableSheetStateObject
 
+    // TODO: Andrey Fedorov - There is still a chance to simultaneously trigger both the drag gesture and the system bottom edge gesture at the same time. Threfore we have to reset the scroll state on coming to or from the background
+    @Environment(\.scenePhase) private var scenePhase
+
     private let backgroundViewOpacity: CGFloat = 0.5
     private let indicatorSize = CGSize(width: 32, height: 4)
+
+    private var prefersGrabberVisible = true
 
     init(
         stateObject: BottomScrollableSheetStateObject,
@@ -36,67 +41,58 @@ struct BottomScrollableSheet<Header: View, Content: View>: View {
 
                 sheet(proxy: proxy)
             }
-            .frame(
-                width: proxy.size.width,
-                height: proxy.size.height + proxy.safeAreaInsets.top + proxy.safeAreaInsets.bottom,
-                alignment: .bottom
-            )
-            .ignoresSafeArea(.all, edges: .all)
+            .ignoresSafeArea(edges: .bottom)
             .onAppear(perform: stateObject.onAppear)
-            .preference(
-                key: BottomScrollableSheetStateObject.GeometryReaderPreferenceKey.self,
-                value: .init(size: proxy.size, safeAreaInsets: proxy.safeAreaInsets)
-            )
-            .onPreferenceChange(BottomScrollableSheetStateObject.GeometryReaderPreferenceKey.self) { newValue in
-                stateObject.geometryInfo = newValue
-            }
+            .readGeometry(bindTo: stateObject.geometryInfoSubject.asWriteOnlyBinding(.zero))
         }
-        .ignoresSafeArea(.keyboard, edges: .all)
+        .ignoresSafeArea(.keyboard)
     }
 
+    @ViewBuilder
     private var backgroundView: some View {
         Color.black
             .opacity(backgroundViewOpacity * stateObject.percent)
-            .ignoresSafeArea(.all)
+            .ignoresSafeArea()
     }
 
     @ViewBuilder
     private func sheet(proxy: GeometryProxy) -> some View {
-        ZStack(alignment: .bottom) {
-            Colors.Background.primary
+        VStack(spacing: 0.0) {
+            headerView(proxy: proxy)
+                .overlay(Color.blue.frame(width: 12.0, height: 100.0), alignment: .center) // FIXME: Andrey Fedorov - Test only, remove when not needed
 
-            VStack(spacing: 0.0) {
-                headerView(proxy: proxy)
-                    .debugBorder(color: .blue, width: 5.0)
-                    .overlay(Color.blue.frame(width: 12.0, height: 100.0), alignment: .center) // FIXME: Andrey Fedorov - Test only, remove when not needed
-
-                scrollView(proxy: proxy)
-            }
+            scrollView(proxy: proxy)
         }
         .frame(height: stateObject.visibleHeight, alignment: .bottom)
         .cornerRadius(24.0, corners: [.topLeft, .topRight])
     }
 
+    @ViewBuilder
     private func headerView(proxy: GeometryProxy) -> some View {
-        VStack(spacing: .zero) {
-            indicator(proxy: proxy)
-
-            header()
-        }
-        .readGeometry(\.size.height, bindTo: $stateObject.headerSize)
-        .gesture(dragGesture)
+        header()
+            .overlay(indicator(proxy: proxy), alignment: .top)
+            .readGeometry(\.size.height, bindTo: $stateObject.headerSize)
+            .overlay(
+                Color.clear
+                    .frame(height: max(0.0, stateObject.headerSize - 34.0), alignment: .top) // TODO: Andrey Fedorov - 34 is the safeAreaInsets.bottom, get it accordingly. Also test on notchless devices
+                    .contentShape(Rectangle()) // `contentShape` is used here to prevent simultaneous recognition of the drag gesture with the system edge drop gesture
+                    .gesture(dragGesture),
+                alignment: .top
+            )
     }
 
+    @ViewBuilder
     private func indicator(proxy: GeometryProxy) -> some View {
-        ZStack(alignment: .center) {
+        if prefersGrabberVisible {
             Capsule(style: .continuous)
-                .fill(Color.gray)
+                .fill(Colors.Icon.inactive)
                 .frame(width: indicatorSize.width, height: indicatorSize.height)
-                .padding(.vertical, 8)
+                .padding(.vertical, 8.0)
+                .infinityFrame(axis: .horizontal)
         }
-        .frame(maxWidth: .infinity)
     }
 
+    @ViewBuilder
     private func scrollView(proxy: GeometryProxy) -> some View {
         ScrollViewRepresentable(delegate: stateObject, content: content)
             .isScrollDisabled(stateObject.scrollViewIsDragging)
@@ -110,5 +106,13 @@ struct BottomScrollableSheet<Header: View, Content: View>: View {
             .onEnded { value in
                 stateObject.headerDragGesture(onEnded: value)
             }
+    }
+}
+
+// MARK: - Setupable protocol conformance
+
+extension BottomScrollableSheet: Setupable {
+    func prefersGrabberVisible(_ visible: Bool) -> Self {
+        map { $0.prefersGrabberVisible = visible }
     }
 }

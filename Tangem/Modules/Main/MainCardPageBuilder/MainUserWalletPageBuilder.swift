@@ -62,6 +62,9 @@ enum MainUserWalletPageBuilder: Identifiable {
     @ViewBuilder
     func makeBottomOverlay(didScrollToBottom: Bool) -> some View {
         // TODO: Andrey Fedorov - Add actual implementation
-        EmptyView()
+        Color.green
+            .opacity(0.05)
+            .frame(height: 100.0 - 34.0)
+            .infinityFrame(axis: .horizontal)
     }
 }
