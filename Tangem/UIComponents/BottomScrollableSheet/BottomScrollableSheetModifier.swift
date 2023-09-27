@@ -17,13 +17,12 @@ private struct BottomScrollableSheetModifier<SheetHeader, SheetContent>: ViewMod
     @StateObject private var stateObject = BottomScrollableSheetStateObject()
 
     private var scale: CGFloat {
-        let scale = abs(1.0 - stateObject.percent / 10.0)
-        return scale.isFinite ? scale : 1.0 // TODO: Andrey Fedorov - Redundant check, something is wrong with `stateObject.percent`?
+        let scale = abs(1.0 - stateObject.progress / 10.0)
+        return scale.isFinite ? scale : 1.0
     }
 
     func body(content: Content) -> some View {
         ZStack(alignment: .bottom) {
-            // FIXME: Andrey Fedorov - Weird animation for `content` on appear
             content
                 .cornerRadius(14.0)
                 .scaleEffect(scale)

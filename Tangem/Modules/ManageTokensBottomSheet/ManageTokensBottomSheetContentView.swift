@@ -1,5 +1,5 @@
 //
-//  _ManageTokensView.swift
+//  ManageTokensBottomSheetContentView.swift
 //  Tangem
 //
 //  Created by Andrey Fedorov on 20.09.2023.
@@ -8,12 +8,13 @@
 
 import SwiftUI
 
-// TODO: Andrey Fedorov - Rename old manage tokens views with 'Legacy*' prefix
-struct _ManageTokensView: View {
-    @ObservedObject private var viewModel: ManageTokensSheetViewModel // TODO: Andrey Fedorov - Split this VM to header and main VMs
+#if ALPHA_OR_BETA
+@available(*, deprecated, message: "Test only, remove if not needed")
+struct ManageTokensBottomSheetContentView: View {
+    @ObservedObject private var viewModel: ManageTokensBottomSheetViewModel
 
     init(
-        viewModel: ManageTokensSheetViewModel
+        viewModel: ManageTokensBottomSheetViewModel
     ) {
         self.viewModel = viewModel
     }
@@ -36,3 +37,4 @@ struct _ManageTokensView: View {
         }
     }
 }
+#endif // ALPHA_OR_BETA
