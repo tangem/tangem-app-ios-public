@@ -61,16 +61,18 @@ enum MainUserWalletPageBuilder: Identifiable {
 
     @ViewBuilder
     func makeBottomOverlay(didScrollToBottom: Bool) -> some View {
+        // TODO: Andrey Fedorov - Add proper bottom spacer on notch/notchless devices in case of `singleWallet` or if there is no `footerViewModel`
         switch self {
         case .singleWallet:
             EmptyView()
         case .multiWallet(_, _, let bodyModel):
-            if let viewModel = bodyModel.footerViewModel {
-                MainFooterView(viewModel: viewModel, didScrollToBottom: didScrollToBottom)
+            if bodyModel.footerViewModel != nil {
+                _MainFooterView()
             }
         case .lockedWallet(_, _, let bodyModel):
-            if let viewModel = bodyModel.footerViewModel {
-                MainFooterView(viewModel: viewModel, didScrollToBottom: didScrollToBottom)
+            // TODO: Andrey Fedorov - Add proper footer view for locked user wallets
+            if bodyModel.footerViewModel != nil {
+                _MainFooterView()
             }
         }
     }
