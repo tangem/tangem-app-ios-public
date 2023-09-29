@@ -26,15 +26,12 @@ final class MultiWalletMainContentViewModel: ObservableObject {
 
     weak var delegate: MultiWalletContentDelegate?
 
-    var footerViewModel: MainFooterViewModel? {
+    private(set) lazy var manageTokensViewModel: ManageTokensBottomSheetViewModel? = {
+        // TODO: Andrey Fedorov - Does `canManageTokens` have the same constant value for the entire lifetime of this VM?
         guard canManageTokens else { return nil }
 
-        return MainFooterViewModel(
-            isButtonDisabled: false,
-            buttonTitle: Localization.mainManageTokens,
-            buttonAction: openManageTokens
-        )
-    }
+        return ManageTokensBottomSheetViewModel()
+    }()
 
     var isOrganizeTokensVisible: Bool {
         if sections.isEmpty {
