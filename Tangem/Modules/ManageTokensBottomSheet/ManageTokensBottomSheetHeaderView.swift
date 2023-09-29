@@ -12,7 +12,7 @@ import SwiftUI
 @available(*, deprecated, message: "Test only, remove if not needed")
 struct ManageTokensBottomSheetHeaderView: View {
     @Binding private var searchText: String
-    @State private var safeAreaBottomInset: CGFloat = 34.0  // TODO: Andrey Fedorov - inject global safe area using env (also use it in other views)
+    @State private var safeAreaBottomInset: CGFloat = 34.0 // TODO: Andrey Fedorov - inject global safe area using env (also use it in other views)
 
     init(
         searchText: Binding<String>
