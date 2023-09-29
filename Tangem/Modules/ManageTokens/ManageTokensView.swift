@@ -67,9 +67,11 @@ struct ManageTokensView: View {
             VStack {
                 Spacer()
 
-                // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
-                GenerateAddressesView(options: viewModel.pendingDerivationOptions, didTapGenerate: {})
-                    .padding(.zero)
+                GenerateAddressesView(
+                    options: viewModel.generateAddressViewOptions,
+                    didTapGenerate: viewModel.generateAddressButtonDidTap
+                )
+                .padding(.zero)
             }
         }
     }
