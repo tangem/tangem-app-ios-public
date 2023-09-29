@@ -25,6 +25,11 @@ class AppCoordinator: CoordinatorObject {
     @Published var uncompletedBackupCoordinator: UncompletedBackupCoordinator?
     @Published var authCoordinator: AuthCoordinator?
 
+    // MARK: - Child view models
+
+    @available(*, deprecated, message: "Test only, remove when not needed")
+    @Published private(set) var manageTokensSheetViewModel: ManageTokensBottomSheetViewModel? // TODO: Andrey Fedorov - Use a child coordinator instead and update it through the coordinator chain
+
     // MARK: - Private
 
     private var bag: Set<AnyCancellable> = []
