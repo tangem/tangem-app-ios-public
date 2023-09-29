@@ -64,7 +64,7 @@ enum MainUserWalletPageBuilder: Identifiable {
         // TODO: Andrey Fedorov - Add proper bottom spacer on notch/notchless devices in case of `singleWallet` or if there is no `footerViewModel`
         switch self {
         case .singleWallet:
-            EmptyView()
+            Color.clear.frame(height: 0.0)
         case .multiWallet(_, _, let bodyModel):
             if bodyModel.manageTokensViewModel != nil {
                 _MainFooterView()
