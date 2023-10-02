@@ -13,7 +13,7 @@ extension WalletModel {
     enum SendBlockedReason {
         case cantSignLongTransactions
         case hasPendingCoinTx(symbol: String)
-        #warning("TODO: still used after the old token details is remvoed?")
+        #warning("TODO: still used after the old token details is removed?")
         case notEnoughtFeeForTokenTx(tokenName: String, networkName: String, coinSymbol: String)
 
         var description: String {
