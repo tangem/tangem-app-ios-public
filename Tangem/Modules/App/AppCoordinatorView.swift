@@ -41,7 +41,9 @@ struct AppCoordinatorView: CoordinatorView {
                 }
             },
             content: {
-                EmptyView() // TODO: Andrey Fedorov - Check and fix if needed lazy loading of content view
+                if let viewModel = coordinator.manageTokensSheetViewModel {
+                    ManageTokensBottomSheetContentView(viewModel: viewModel)
+                }
             }
         )
     }
