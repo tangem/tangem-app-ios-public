@@ -62,6 +62,10 @@ final class ManageTokensViewModel: ObservableObject {
     func fetch() {
         loader.fetch(enteredSearchText.value)
     }
+    
+    func cacheAlreadyExistTokenTokenUserList() {
+        
+    }
 }
 
 // MARK: - Private
@@ -161,7 +165,7 @@ private extension ManageTokensViewModel {
             // TODO: - Set need display alert for setup raiting voice user
             break
         case .add, .edit:
-            coordinator.openTokenSelectorModule(with: coinModel.items)
+            coordinator.openTokenSelector(with: coinModel.items)
         }
     }
 }
