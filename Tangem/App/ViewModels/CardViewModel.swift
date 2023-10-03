@@ -567,7 +567,7 @@ extension CardViewModel: MainHeaderInfoProvider {
 
     var userWalletNamePublisher: AnyPublisher<String, Never> { _userWalletNamePublisher.eraseToAnyPublisher() }
 
-    var isWalletModelListEmpty: Bool { walletModelsManager.walletModels.isEmpty }
+    var isTokensListEmpty: Bool { userTokenListManager.userTokensList.entries.isEmpty }
 }
 
 // TODO: refactor storage to single source
