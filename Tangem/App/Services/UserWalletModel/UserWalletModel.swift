@@ -23,6 +23,5 @@ protocol UserWalletModel: MainHeaderInfoProvider, TotalBalanceProviding, MultiWa
     var emailData: [EmailCollectedData] { get }
     var backupInput: OnboardingInput? { get } // TODO: refactor
     var twinInput: OnboardingInput? { get }
-    func initialUpdate()
     func updateWalletName(_ name: String)
 }
