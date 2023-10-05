@@ -77,9 +77,14 @@ enum MainUserWalletPageBuilder: Identifiable {
                 }
             }
         case .lockedWallet(_, _, let bodyModel):
-            // TODO: Andrey Fedorov - Add proper footer view for locked user wallets
-            if bodyModel.footerViewModel != nil {
-                ManageTokensBottomSheetMainFooterView()
+            if isMainScreenBottomSheetEnabled {
+                if bodyModel.manageTokensViewModel != nil {
+                    ManageTokensBottomSheetMainFooterView()
+                }
+            } else {
+                if let viewModel = bodyModel.footerViewModel {
+                    MainFooterView(viewModel: viewModel, didScrollToBottom: didScrollToBottom)
+                }
             }
         }
     }

@@ -288,13 +288,17 @@ final class MainViewModel: ObservableObject {
         case .singleWallet:
             coordinator?.hideManageTokensBottomSheet()
         case .multiWallet(_, _, let bodyModel):
-            if let bottomSheetViewModel = bodyModel.manageTokensViewModel {
-                coordinator?.showManageTokensBottomSheet(with: bottomSheetViewModel)
+            if let viewModel = bodyModel.manageTokensViewModel {
+                coordinator?.showManageTokensBottomSheet(with: viewModel)
             } else {
                 coordinator?.hideManageTokensBottomSheet()
             }
-        case .lockedWallet:
-            coordinator?.hideManageTokensBottomSheet() // TODO: Andrey Fedorov - Show show manage tokens bottom sheet for a locked wallet if needed
+        case .lockedWallet(_, _, let bodyModel):
+            if let viewModel = bodyModel.manageTokensViewModel {
+                coordinator?.showManageTokensBottomSheet(with: viewModel)
+            } else {
+                coordinator?.hideManageTokensBottomSheet()
+            }
         }
     }
 }
