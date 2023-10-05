@@ -64,6 +64,7 @@ final class BottomScrollableSheetStateObject: ObservableObject {
 
         withAnimation(.easeOut) {
             visibleHeight = height(for: state)
+            // TODO: Andrey Fedorov - Implement status bar style management (IOS-4770)
         }
     }
 
