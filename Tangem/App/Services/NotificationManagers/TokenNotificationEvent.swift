@@ -13,7 +13,7 @@ enum TokenNotificationEvent: Hashable {
     case networkUnreachable
     case someNetworksUnreachable
     case rentFee(rentMessage: String)
-    case noAccount(message: String, isNoteWallet: Bool)
+    case noAccount(message: String)
     case existentialDepositWarning(message: String)
     case longTransaction(message: String)
     case hasPendingTransactions(message: String)
@@ -50,20 +50,13 @@ extension TokenNotificationEvent: NotificationEvent {
     var title: String {
         switch self {
         case .networkUnreachable:
-            // TODO: Replace when texts will be confirmed
-            return "Network is uncreachable"
+            return Localization.walletBalanceBlockchainUnreachable
         case .someNetworksUnreachable:
-            // TODO: Replace when texts will be confirmed
-            return "Some networks are unreachable"
+            return Localization.warningTitleSomeNetworksUnreachable
         case .rentFee:
             // TODO: Replace when texts will be confirmed
             return "Network rent fee"
-        case .noAccount(_, let isNoteWallet):
-            if isNoteWallet {
-                // TODO: Replace when texts will be confirmed
-                return "Note top up"
-            }
-
+        case .noAccount:
             return Localization.walletErrorNoAccount
         case .existentialDepositWarning:
             return defaultTitle
@@ -79,14 +72,12 @@ extension TokenNotificationEvent: NotificationEvent {
     var description: String? {
         switch self {
         case .networkUnreachable:
-            // TODO: Replace when texts will be confirmed
-            return "Network currently is unreachable. Please try again later."
+            return Localization.warningSubtitleNetworkUnreachable
         case .someNetworksUnreachable:
-            // TODO: Replace when texts will be confirmed
-            return "Some networks currently are unreachable. Please try again later."
+            return Localization.warningSubtitleSomeNetworksUnreachable
         case .rentFee(let message):
             return message
-        case .noAccount(let message, _):
+        case .noAccount(let message):
             return message
         case .existentialDepositWarning(let message):
             return message
