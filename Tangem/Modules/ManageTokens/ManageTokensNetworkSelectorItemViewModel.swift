@@ -1,5 +1,5 @@
 //
-//  ManageTokensNetworkSelectorViewModel.swift
+//  ManageTokensNetworkSelectorItemViewModel.swift
 //  Tangem
 //
 //  Created by Andrey Chukavin on 13.09.2023.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class ManageTokensNetworkSelectorViewModel: ObservableObject {
+final class ManageTokensNetworkSelectorItemViewModel: Identifiable, ObservableObject {
     var iconName: String {
         selectedPublisher ? _iconNameSelected : _iconName
     }
