@@ -62,12 +62,14 @@ struct ManageTokensView: View {
     }
 
     @ViewBuilder private var overlay: some View {
-        if let viewModel = viewModel.generateAddressesViewModel {
+        let generateAddressViewModel = viewModel.generateAddressesViewModel
+
+        if generateAddressViewModel.hasPendingDerivation {
             VStack {
                 Spacer()
 
                 // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
-                GenerateAddressesView(viewModel: viewModel)
+                GenerateAddressesView(viewModel: generateAddressViewModel)
             }
         }
     }
