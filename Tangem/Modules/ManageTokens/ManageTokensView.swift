@@ -62,18 +62,13 @@ struct ManageTokensView: View {
     }
 
     @ViewBuilder private var overlay: some View {
-        // TODO: - Demo
-        VStack {
-            Spacer()
+        if let generateAddressViewModel = viewModel.generateAddressesViewModel {
+            VStack {
+                Spacer()
 
-            // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
-            GenerateAddressesView(
-                numberOfNetworks: 3,
-                currentWalletNumber: 1,
-                totalWalletNumber: 2,
-                didTapGenerate: {}
-            )
-            .padding(.zero)
+                // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
+                GenerateAddressesView(viewModel: generateAddressViewModel)
+            }
         }
     }
 }
