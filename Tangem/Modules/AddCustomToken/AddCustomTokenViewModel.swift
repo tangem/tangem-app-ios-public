@@ -56,6 +56,7 @@ final class AddCustomTokenViewModel: ObservableObject {
 
     private var bag: Set<AnyCancellable> = []
     private var derivationPathByBlockchainName: [String: DerivationPath] = [:]
+    private var didLogScreenAnalytics = false
     private var foundStandardToken: CoinModel?
     private var userTokensManager: UserTokensManager? {
         userWalletRepository
@@ -134,8 +135,10 @@ final class AddCustomTokenViewModel: ObservableObject {
     }
 
     func onAppear() {
-        // TODO: Child Push navigation can skew this
-        Analytics.log(.customTokenScreenOpened)
+        if !didLogScreenAnalytics {
+            Analytics.log(.customTokenScreenOpened)
+            didLogScreenAnalytics = true
+        }
     }
 
     func didTapWalletSelector() {
