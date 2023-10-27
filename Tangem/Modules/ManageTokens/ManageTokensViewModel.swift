@@ -156,7 +156,7 @@ private extension ManageTokensViewModel {
             // TODO: - Set need display alert for setup raiting voice user
             break
         case .add, .edit:
-            coordinator.openTokenSelector(with: coinModel.items)
+            coordinator.openTokenSelector(with: coinModel.items.map { $0.tokenItem })
         }
     }
 
