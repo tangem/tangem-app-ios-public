@@ -1,5 +1,5 @@
 //
-//  ToastPresenter.swift
+//  Toast.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 27.10.2023.
