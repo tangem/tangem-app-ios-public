@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 
-// TODO: Will be added return values during developing
+// TODO: Return values will be added during develop
 
 protocol ExpressAPIService {
     func assets(request: ExpressDTO.Assets.Request) async throws
