@@ -33,6 +33,7 @@ final class ExpressFeeBottomSheetViewModel: ObservableObject, Identifiable {
     private func makeFeeRowViewModel(option: FeeOption) -> FeeRowViewModel {
         FeeRowViewModel(
             option: option,
+            // TODO: Will be Implemented in https://tangem.atlassian.net/browse/IOS-4937
             subtitle: "0.159817 MATIC (0.22 $)",
             isSelected: .init(root: self, default: false, get: { root in
                 root.selectedFeeOption == option
