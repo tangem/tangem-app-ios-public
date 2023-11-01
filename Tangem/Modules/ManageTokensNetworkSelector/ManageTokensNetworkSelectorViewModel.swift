@@ -89,18 +89,32 @@ final class ManageTokensNetworkSelectorViewModel: Identifiable, ObservableObject
     // MARK: - Implementation
 
     func onAppear() {
-        currentWalletName = userWalletRepository.selectedModel?.name ?? ""
+        fillWalletSelector()
     }
 
     func selectWalletActionDidTap() {
         coordinator.openWalletSelectorModule(
             userWallets: walletSelectorProvider.fetchListWalletForSelector(),
-            currentUserWalletId: walletSelectorProvider.fetchCurrentWalletSelected(),
+            currentUserWalletId: walletSelectorProvider.fetchCurrentWalletSelected()?.userWalletId,
             delegate: self
         )
     }
 
     // MARK: - Private Implementation
+
+    private func fillWalletSelector() {
+        guard let currentUserWalletModel = walletSelectorProvider.fetchCurrentWalletSelected() else {
+            return
+        }
+
+        currentWalletName = currentUserWalletModel.userWallet.name
+
+        // TODO: - Need display alert with string "wallet does not support more than one network" wait localize IOS-4902
+
+        if !currentUserWalletModel.isMultiWallet {
+            alert = AlertBinder(title: "TODO:", message: "wallet does not support more than one network")
+        }
+    }
 
     private func fillSelectorItemsFromTokenItems() {
         nativeSelectorItems = tokenItems
