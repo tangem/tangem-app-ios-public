@@ -40,8 +40,9 @@ final class SendViewModel: ObservableObject {
     private var currentStepValid: AnyPublisher<Bool, Never> {
         $step
             .flatMap { [weak self] step in
+                #warning("just")
                 guard let self else {
-                    return Just(true).eraseToAnyPublisher() // TODO: just
+                    return Just(true).eraseToAnyPublisher()
                 }
 
                 switch step {
@@ -57,11 +58,11 @@ final class SendViewModel: ObservableObject {
                             $0 == nil && $1 == nil
                         }
                         .eraseToAnyPublisher()
-                default:
-                    // TODO: just true
-                    // TODO: other steps
-                    return Just(true)
-                        .eraseToAnyPublisher()
+                case .fee:
+                    #warning("just")
+                    return Just(true).eraseToAnyPublisher()
+                case .summary:
+                    return Just(true).eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()
