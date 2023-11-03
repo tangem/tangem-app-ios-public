@@ -1,5 +1,5 @@
 //
-//  ManageTokensBottomSheetContentView.swift
+//  MainBottomSheetContentView.swift
 //  Tangem
 //
 //  Created by Andrey Fedorov on 20.09.2023.
@@ -9,8 +9,8 @@
 import SwiftUI
 
 /// A temporary entity for integration and testing, subject to change.
-struct ManageTokensBottomSheetContentView: View {
-    @ObservedObject var viewModel: ManageTokensBottomSheetViewModel
+struct MainBottomSheetContentView: View {
+    @ObservedObject var viewModel: MainBottomSheetViewModel
 
     var body: some View {
         LazyVStack(spacing: .zero) {
