@@ -58,7 +58,7 @@ struct BottomScrollableSheet<Header: View, Content: View>: View {
     private var headerTapGesture: some Gesture {
         // TODO: Andrey Fedorov - Text field in the bottom sheet header should become focused on tap (IOS-4771)
         TapGesture()
-            .onEnded { stateObject.onHeaderTap() }
+            .onEnded(stateObject.onHeaderTap)
     }
 
     @ViewBuilder private var backgroundView: some View {
