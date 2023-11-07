@@ -23,6 +23,7 @@ struct SendWalletSummaryView: View {
             .padding(.vertical, 12)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Colors.Button.disabled)
+            #warning("TODO: apply background to the whole section")
         }
     }
 }
