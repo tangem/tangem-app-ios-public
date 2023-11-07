@@ -13,7 +13,6 @@ struct IconView: View {
     private let url: URL?
     private let size: CGSize
     private let lowContrastBackgroundColor: UIColor
-    private var cornerRadius: CGFloat = 5
 
     // TODO: HACK - figure out why CachedAsyncImage is making Manage Tokens screen jump
     // TODO: on 16.2 on the first run of the first time this screen is opened
@@ -55,7 +54,7 @@ struct IconView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(size: size)
-                    .cornerRadiusContinuous(cornerRadius)
+                    .cornerRadiusContinuous(5)
             case .failure:
                 Circle()
                     .fill(Color.clear)
@@ -81,19 +80,13 @@ struct IconView: View {
             .resizable()
             .scaledToFit()
             .frame(size: size)
-            .cornerRadiusContinuous(cornerRadius)
+            .cornerRadiusContinuous(5)
     }
 
     private var placeholder: some View {
         SkeletonView()
             .frame(size: size)
             .cornerRadius(size.height / 2)
-    }
-}
-
-extension IconView: Setupable {
-    func cornerRadius(_ radius: CGFloat) -> Self {
-        map { $0.cornerRadius = radius }
     }
 }
 
