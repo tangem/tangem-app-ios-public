@@ -21,6 +21,7 @@ struct ManageTokensView: View {
             overlay
         }
         .scrollDismissesKeyboardCompat(true)
+        .alert(item: $viewModel.alert, content: { $0.alert })
         .navigationBarTitle(Text(Localization.addTokensTitle), displayMode: .automatic)
         .searchableCompat(text: $viewModel.enteredSearchText.value)
         .background(Colors.Background.primary.edgesIgnoringSafeArea(.all))
@@ -69,7 +70,6 @@ struct ManageTokensView: View {
             VStack {
                 Spacer()
 
-                // TODO: - Need fot logic scan wallet on task: https://tangem.atlassian.net/browse/IOS-4651
                 GenerateAddressesView(viewModel: generateAddressViewModel)
             }
         }
