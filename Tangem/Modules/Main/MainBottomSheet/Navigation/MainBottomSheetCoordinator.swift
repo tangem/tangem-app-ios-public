@@ -51,9 +51,7 @@ class MainBottomSheetCoordinator: CoordinatorObject {
         bind()
     }
 
-    func start(with options: Options = .init()) {
-        // TODO: Andrey Fedorov - Add actual implementation
-    }
+    func start(with options: Options = .init()) {}
 
     private func bind() {
         let bottomSheetVisibilityPublisher = bottomSheetVisibility
