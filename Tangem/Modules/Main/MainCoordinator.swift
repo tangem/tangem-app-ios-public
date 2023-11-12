@@ -151,6 +151,7 @@ extension MainCoordinator: MultiWalletMainContentRoutable {
             self?.manageTokensCoordinator = nil
         }
 
+        // TODO: Andrey Fedorov - Delete?
         if FeatureProvider.isAvailable(.manageTokens) {
             let coordinator = ManageTokensCoordinator(dismissAction: dismissAction)
             let options = ManageTokensCoordinator.Options()

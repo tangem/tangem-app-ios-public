@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+// TODO: Andrey Fedorov - Delete?
 struct ManageTokensCoordinatorView: CoordinatorView {
     @ObservedObject var coordinator: ManageTokensCoordinator
 
