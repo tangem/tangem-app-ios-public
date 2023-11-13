@@ -9,10 +9,10 @@
 import Foundation
 import Combine
 
-// TODO: Andrey Fedorov - Add actual implementation
-// TODO: Andrey Fedorov - inject routable (coordinator) if needed
 final class MainBottomSheetHeaderViewModel: ObservableObject {
-    var enteredSearchTextPublisher: some Publisher<String, Never> { return $enteredSearchText }
+    var enteredSearchTextPublisher: AnyPublisher<String, Never> {
+        return $enteredSearchText.eraseToAnyPublisher()
+    }
 
     @Published var enteredSearchText: String = ""
 }
