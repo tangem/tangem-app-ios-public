@@ -55,7 +55,7 @@ extension CommonSwappingModulesFactory: SwappingModulesFactory {
     func makeExpressViewModel(coordinator: ExpressRoutable) -> ExpressViewModel {
         ExpressViewModel(
             initialWallet: walletModel,
-            swappingInteractor: expressInteractor, // TODO: Will be updated in https://tangem.atlassian.net/browse/IOS-5140
+            swappingInteractor: expressInteractor,
             swappingDestinationService: swappingDestinationService,
             tokenIconURLBuilder: tokenIconURLBuilder,
             transactionSender: transactionSender,
