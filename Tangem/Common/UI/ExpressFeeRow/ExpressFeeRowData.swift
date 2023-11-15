@@ -1,5 +1,5 @@
 //
-//  ExpressFeeRowViewModel.swift
+//  ExpressFeeRowData.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 13.11.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExpressFeeRowViewModel: Identifiable {
+struct ExpressFeeRowData: Identifiable {
     var id: String { title }
 
     let title: String
