@@ -88,7 +88,22 @@ class SendModel {
     }
 
     func send() {
-        print("SEND")
+        guard var transaction = transaction.value else {
+            return
+        }
+
+        #warning("TODO: memo")
+        #warning("TODO: loading view")
+        #warning("TODO: demo")
+
+        walletModel.send(transaction, signer: transactionSigner)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                print("SEND FINISH ", completion)
+                #warning("TODO: handle result")
+            } receiveValue: { _ in
+            }
+            .store(in: &bag)
     }
 
     private func bind() {
