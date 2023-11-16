@@ -48,6 +48,8 @@ class SendModel {
     private var _destinationAdditionalFieldText: String = ""
     private var _feeText: String = ""
 
+    private var _isSending = CurrentValueSubject<Bool, Never>(false)
+
     // MARK: - Errors (raw implementation)
 
     private var _amountError = CurrentValueSubject<Error?, Never>(nil)
@@ -96,9 +98,14 @@ class SendModel {
         #warning("TODO: loading view")
         #warning("TODO: demo")
 
+        _isSending.send(true)
         walletModel.send(transaction, signer: transactionSigner)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
+                guard let self else { return }
+
+                _isSending.send(false)
+
                 print("SEND FINISH ", completion)
                 #warning("TODO: handle result")
             } receiveValue: { _ in
@@ -256,5 +263,9 @@ extension SendModel: SendSummaryViewModelInput {
 
     var canEditDestination: Bool {
         sendType.predefinedDestination == nil
+    }
+
+    var isSending: AnyPublisher<Bool, Never> {
+        _isSending.eraseToAnyPublisher()
     }
 }
