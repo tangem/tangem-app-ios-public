@@ -14,9 +14,6 @@ struct MainBottomSheetOverlayCoordinatorView: CoordinatorView {
     @ObservedObject var coordinator: MainBottomSheetCoordinator
 
     var body: some View {
-        if let viewModel = coordinator.overlayViewModel {
-            GenerateAddressesView(viewModel: viewModel)
-                .infinityFrame(alignment: .bottom)
-        }
+        EmptyView() // TODO: Andrey Fedorov - Add actual implementation
     }
 }
