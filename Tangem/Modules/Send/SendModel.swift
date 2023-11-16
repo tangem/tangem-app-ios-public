@@ -70,11 +70,11 @@ class SendModel {
 
         if let amount = sendType.predefinedAmount {
             #warning("TODO")
-            _amountText = "\(amount)"
+            setAmount("\(amount)")
         }
 
         if let destination = sendType.predefinedDestination {
-            _destinationText = destination
+            setDestination(destination)
         }
 
         validateAmount()
@@ -114,7 +114,7 @@ class SendModel {
                     return .just(output: [])
                 }
 
-                #warning("TODO: loading fees")
+                #warning("TODO: loading fees indicator")
                 return walletModel
                     .getFee(amount: amount, destination: destination)
                     .receive(on: DispatchQueue.main)
@@ -127,7 +127,7 @@ class SendModel {
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
             .sink { [unowned self] fees in
-                #warning("TODO: save fees")
+                #warning("TODO: save fee options")
                 fee.send(fees.first)
 
                 print("fetched fees:", fees)
@@ -136,7 +136,6 @@ class SendModel {
 
         Publishers.CombineLatest4(amount, destination, destinationAdditionalField, fee)
             .map { [weak self] amount, destination, destinationAdditionalField, fee -> BlockchainSdk.Transaction? in
-
                 guard
                     let self,
                     let amount,
