@@ -158,6 +158,7 @@ class SendModel {
                     return nil
                 }
 
+                #warning("TODO: Show error alert?")
                 return try? walletModel.createTransaction(
                     amountToSend: amount,
                     fee: fee,
