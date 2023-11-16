@@ -162,7 +162,7 @@ final class ExpressViewModel: ObservableObject {
 private extension ExpressViewModel {
     func openTokenListView() {
         // TODO: Decide source or destination in IOS-5138
-        coordinator.presentSwappingTokenList(walletType: .source(initialWallet))
+        coordinator.presentSwappingTokenList(walletType: .fromSource(initialWallet))
     }
 
     func openSuccessView(transactionData: SwappingTransactionData, transactionID: String) {
