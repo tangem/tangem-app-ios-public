@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-// TODO: Andrey Fedorov - Delete?
 class ManageTokensCoordinator: CoordinatorObject {
     var dismissAction: Action<Void>
     var popToRootAction: Action<PopToRootOptions>
