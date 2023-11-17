@@ -223,7 +223,8 @@ private extension ExpressViewModel {
             balance: .loaded(swappingItems.sourceBalance),
             fiatValue: .loading,
             maximumFractionDigits: source.decimalCount,
-            canChangeCurrency: source != initialSourceCurrency,
+            // Will be updated in IOS-5138
+            canChangeCurrency: source.id != (initialWallet.tokenItem.id ?? ""),
             tokenIconState: mapToSwappingTokenIconViewModel(currency: source)
         )
 
