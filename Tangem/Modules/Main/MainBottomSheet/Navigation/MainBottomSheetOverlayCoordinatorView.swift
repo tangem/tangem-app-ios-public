@@ -14,6 +14,8 @@ struct MainBottomSheetOverlayCoordinatorView: CoordinatorView {
     @ObservedObject var coordinator: MainBottomSheetCoordinator
 
     var body: some View {
-        EmptyView() // TODO: Andrey Fedorov - Add actual implementation
+        if let viewModel = coordinator.overlayViewModel {
+            MainBottomSheetOverlayView(viewModel: viewModel)
+        }
     }
 }
