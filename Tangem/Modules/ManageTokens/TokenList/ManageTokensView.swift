@@ -61,6 +61,7 @@ struct ManageTokensView: View {
             .style(Fonts.Bold.title1, color: Colors.Text.primary1)
     }
 
+    // TODO: Andrey Fedorov - Should be placed over the token list as a floating overlay (IOS-5135)
     @ViewBuilder private var overlay: some View {
         if let generateAddressViewModel = viewModel.generateAddressesViewModel {
             VStack {
