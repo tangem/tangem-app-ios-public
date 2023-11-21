@@ -150,6 +150,7 @@ class SendModel {
             }
             .store(in: &bag)
 
+        #warning("TODO: create TX after a delay")
         Publishers.CombineLatest4(amount, destination, destinationAdditionalField, fee)
             .map { [weak self] amount, destination, destinationAdditionalField, fee -> BlockchainSdk.Transaction? in
                 guard
@@ -206,6 +207,7 @@ class SendModel {
     }
 
     private func validateDestination() {
+        #warning("TODO: validate destination after delay and removing duplicates")
         destinationResolutionRequest?.cancel()
 
         destination.send(nil)
