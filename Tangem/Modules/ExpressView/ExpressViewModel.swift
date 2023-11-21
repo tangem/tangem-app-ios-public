@@ -572,7 +572,7 @@ private extension ExpressViewModel {
         return ProviderRowViewModel(
             provider: expressProviderFormatter.mapToProvider(provider: expectedQuote.provider),
             isDisabled: false,
-            badge: .none, // TODO:
+            badge: expectedQuote.isBest ? .bestRate : .none,
             subtitles: [subtitle],
             detailsType: .chevron
         ) { [weak self] in
