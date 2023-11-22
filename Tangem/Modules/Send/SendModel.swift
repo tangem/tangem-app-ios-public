@@ -95,7 +95,6 @@ class SendModel {
         }
 
         #warning("TODO: memo")
-        #warning("TODO: loading view")
         #warning("TODO: demo")
 
         _isSending.send(true)
