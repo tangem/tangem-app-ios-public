@@ -84,7 +84,7 @@ class SendModel {
 
         if let amount = sendType.predefinedAmount {
             #warning("TODO")
-            setAmount("\(amount)")
+            setAmount(.external(amount))
         }
 
         if let destination = sendType.predefinedDestination {
@@ -146,9 +146,12 @@ class SendModel {
                     return .just(output: [])
                 }
 
+                let blockchain = walletModel.blockchainNetwork.blockchain
+                let amountToSend = Amount(with: blockchain, type: walletModel.amountType, value: amount.value)
+
                 #warning("TODO: loading fees indicator")
                 return walletModel
-                    .getFee(amount: amount, destination: destination)
+                    .getFee(amount: amountToSend, destination: destination)
                     .receive(on: DispatchQueue.main)
                     .catch { [weak self] error in
                         #warning("TODO: handle error")
@@ -179,9 +182,12 @@ class SendModel {
                     return nil
                 }
 
+                let blockchain = walletModel.blockchainNetwork.blockchain
+                let amountToSend = Amount(with: blockchain, type: walletModel.amountType, value: amount.value)
+
                 #warning("TODO: Show error alert?")
                 return try? walletModel.createTransaction(
-                    amountToSend: amount,
+                    amountToSend: amountToSend,
                     fee: fee,
                     destinationAddress: destination
                 )
@@ -342,7 +348,7 @@ extension SendModel: SendSummaryViewModelInput {
     var amountText: String {
         "100"
     }
-    
+
     var canEditAmount: Bool {
         sendType.predefinedAmount == nil
     }
