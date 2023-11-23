@@ -1,16 +1,14 @@
 //
-//  ManageTokensRoutable.swift
+//  ManageTokensCoordinatorDelegate.swift
 //  Tangem
 //
-//  Created by skibinalexander on 14.09.2023.
+//  Created by Andrey Fedorov on 17.11.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation
 
-protocol ManageTokensRoutable: AnyObject {
-    func openTokenSelector(coinId: String, with tokenItems: [TokenItem])
-
+protocol ManageTokensCoordinatorDelegate: AnyObject {
     func showGenerateAddressesWarning(
         numberOfNetworks: Int,
         currentWalletNumber: Int,
