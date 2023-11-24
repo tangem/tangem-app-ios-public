@@ -91,6 +91,7 @@ struct SwappingApproveView: View {
 }
 
 /*
+ // TODO: https://tangem.atlassian.net/browse/IOS-5212
  struct SwappingApproveView_Preview: PreviewProvider {
      static let viewModel = SwappingApproveViewModel(
          transactionSender: TransactionSenderMock(),
