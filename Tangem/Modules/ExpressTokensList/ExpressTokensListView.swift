@@ -88,6 +88,7 @@ struct ExpressTokensListView: View {
 }
 
 /*
+ // TODO: https://tangem.atlassian.net/browse/IOS-5212
  struct ExpressTokensListView_Preview: PreviewProvider {
      static let viewModel = ExpressTokensListViewModel(coordinator: ExpressTokensListRoutableMock())
 
