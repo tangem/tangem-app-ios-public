@@ -11,6 +11,8 @@ import SwiftUI
 import Combine
 import BlockchainSdk
 
+#warning("TODO: move these to different files?")
+
 protocol SendAmountViewModelInput {
     var amountPublisher: AnyPublisher<Amount?, Never> { get }
     var amountError: AnyPublisher<Error?, Never> { get }
