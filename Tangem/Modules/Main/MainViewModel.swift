@@ -328,8 +328,6 @@ final class MainViewModel: ObservableObject {
                 switch event {
                 case .locked:
                     isLoggingOut = true
-                case .unlocked:
-                    break
                 case .scan:
                     // TODO: Do we need to place spinner into Navbar?..
                     break
@@ -351,6 +349,8 @@ final class MainViewModel: ObservableObject {
                     }
                 case .replaced(let userWallet):
                     recreatePagesIfNeeded(for: userWallet)
+                case .biometryUnlocked:
+                    break
                 }
             }
             .store(in: &bag)
