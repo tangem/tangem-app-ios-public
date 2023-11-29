@@ -32,8 +32,7 @@ class UnlockUserWalletBottomSheetViewModel: ObservableObject, Identifiable {
     }
 
     func unlockWithBiometry() {
-        // TODO: Update anal
-        //        Analytics.log(.buttonUnlockAllWithFaceID)
+        Analytics.log(.buttonUnlockAllWithBiometrics)
 
         userWalletRepository.unlock(with: .biometry) { [weak self] result in
             switch result {
