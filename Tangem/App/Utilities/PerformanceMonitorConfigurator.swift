@@ -26,7 +26,7 @@ enum PerformanceMonitorConfigurator {
     }
 
     private static var isEnabledUsingLaunchArguments: Bool {
-        return false // TODO: Andrey Fedorov - Add actual implementation
+        return UserDefaults.standard.bool(forKey: "com.tangem.PerformanceMonitorEnabled")
     }
 
     private static var isEnabledUsingEnvironment: Bool {
