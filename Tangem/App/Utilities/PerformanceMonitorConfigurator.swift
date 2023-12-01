@@ -29,13 +29,13 @@ enum PerformanceMonitorConfigurator {
         return UserDefaults.standard.bool(forKey: "com.tangem.PerformanceMonitorEnabled")
     }
 
-    private static var isEnabledUsingEnvironment: Bool {
-        return false // TODO: Andrey Fedorov - Add actual implementation
+    private static var isEnabledUsingFeatureToggle: Bool {
+        return FeatureStorage().isPerformanceMonitorEnabled
     }
 
     static func configureIfAvailable() {
         #if canImport(GDPerformanceView_Swift)
-        guard isEnabledUsingLaunchArguments || isEnabledUsingEnvironment else { return }
+        guard isEnabledUsingLaunchArguments || isEnabledUsingFeatureToggle else { return }
 
         PerformanceMonitor.shared().performanceViewConfigurator.options = [.performance, .device, .system, .memory]
         PerformanceMonitor.shared().performanceViewConfigurator.style = performanceMonitorStyle
