@@ -201,7 +201,13 @@ private extension TokenDetailsViewModel {
     }
 
     private func didTapPendingExpressTransaction(with id: String) {
-        // TODO: Navigation will be added in IOS-5264
+        guard
+            let pendingTransaction = pendingExpressTransactionsManager.pendingTransactions.first(where: { $0.transactionRecord.expressTransactionId == id })
+        else {
+            return
+        }
+
+        coordinator.openPendingExpressBottomSheet(for: pendingTransaction, pendingTransactionsManager: pendingExpressTransactionsManager)
     }
 }
 
