@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol MainViewDelegate: AnyObject {
+// TODO: Andrey Fedorov - Rename into SingleWalletMainContentDelegate
+protocol MainViewDelegate: MainNotificationsObserver {
     func present(actionSheet: ActionSheetBinder)
 }
