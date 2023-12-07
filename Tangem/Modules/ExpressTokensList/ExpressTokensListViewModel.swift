@@ -50,7 +50,6 @@ final class ExpressTokensListViewModel: ObservableObject, Identifiable {
         self.coordinator = coordinator
 
         bind()
-        Analytics.log(.swapChooseTokenScreenOpened) // TODO: Discuss parameter [.availableTokens: .yes]
     }
 
     func onDisappear() {
@@ -115,6 +114,7 @@ private extension ExpressTokensListViewModel {
         unavailableWalletModels.removeAll()
 
         let currenciesSet = availableCurrencies.toSet()
+        Analytics.log(.swapChooseTokenScreenOpened, params: [.availableTokens: currenciesSet.isEmpty ? .no : .yes])
 
         walletModels
             .forEach { walletModel in
