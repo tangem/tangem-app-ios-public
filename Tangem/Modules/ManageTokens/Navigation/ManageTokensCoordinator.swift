@@ -25,7 +25,7 @@ class ManageTokensCoordinator: CoordinatorObject {
 
     @Published var networkSelectorViewModel: ManageTokensNetworkSelectorViewModel? = nil
     @Published var walletSelectorViewModel: WalletSelectorViewModel? = nil
-    
+
     // TODO: - Make view model type after merge AddCustomTokemViewModel task (by Adnrey Chukavin)
 //    @Published var addCustomTokenViewModel: AddCustomTokenViewModel? = nil
 

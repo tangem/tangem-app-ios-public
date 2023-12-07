@@ -36,7 +36,7 @@ struct ManageTokensCoordinatorView: CoordinatorView {
                 }
                 .navigationViewStyle(.stack)
             }
-            // TODO: - Add coordinate on Add Custom Token by (Andrey Chukavin)
+        // TODO: - Add coordinate on Add Custom Token by (Andrey Chukavin)
     }
 
     @ViewBuilder
