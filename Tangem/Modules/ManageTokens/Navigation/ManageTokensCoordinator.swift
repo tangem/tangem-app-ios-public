@@ -25,6 +25,9 @@ class ManageTokensCoordinator: CoordinatorObject {
 
     @Published var networkSelectorViewModel: ManageTokensNetworkSelectorViewModel? = nil
     @Published var walletSelectorViewModel: WalletSelectorViewModel? = nil
+    
+    // TODO: - Make view model type after merge AddCustomTokemViewModel task (by Adnrey Chukavin)
+//    @Published var addCustomTokenViewModel: AddCustomTokenViewModel? = nil
 
     // MARK: - Init
 
@@ -48,6 +51,10 @@ extension ManageTokensCoordinator {
 }
 
 extension ManageTokensCoordinator: ManageTokensRoutable {
+    func openAddCustomToken() {
+        // TODO: - Set view model after merge AddCustomTokemViewModel task (by Adnrey Chukavin)
+    }
+
     func openTokenSelector(dataSource: ManageTokensDataSource, coinId: String, tokenItems: [TokenItem]) {
         networkSelectorViewModel = ManageTokensNetworkSelectorViewModel(
             parentDataSource: dataSource,
