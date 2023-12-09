@@ -72,16 +72,8 @@ extension CommonSwappingModulesFactory: SwappingModulesFactory {
     }
 
     func makeSwappingApproveViewModel(coordinator: SwappingApproveRoutable) -> SwappingApproveViewModel {
-        SwappingApproveViewModel(
-            transactionSender: transactionSender,
-            fiatRatesProvider: fiatRatesProvider,
-            swappingInteractor: swappingInteractor,
-            swappingFeeFormatter: swappingFeeFormatter,
-            pendingTransactionRepository: nil,
-            logger: logger,
-            expressInteractor: nil,
-            coordinator: coordinator
-        )
+        // https://tangem.atlassian.net/browse/IOS-5213
+        fatalError("Will be deleted")
     }
 
     func makeSwappingSuccessViewModel(
