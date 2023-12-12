@@ -9,5 +9,28 @@
 import Foundation
 
 final class RateAppBottomSheetViewModel: ObservableObject, Identifiable {
-    // TODO: Andrey Fedorov - Add actual implementation
+    typealias RateAppInteraction = (_ result: RateAppResult) -> Void
+
+    private let onInteraction: RateAppInteraction
+    private var isDismissInteractionAllowed = true
+
+    init(onInteraction: @escaping RateAppInteraction) {
+        self.onInteraction = onInteraction
+    }
+
+    deinit {
+        if isDismissInteractionAllowed {
+            onInteraction(.dismissed)
+        }
+    }
+
+    func onRateAppSheetPositiveResponse() {
+        isDismissInteractionAllowed = false
+        onInteraction(.positiveResponse)
+    }
+
+    func onRateAppSheetNegativeResponse() {
+        isDismissInteractionAllowed = false
+        onInteraction(.negativeResponse)
+    }
 }
