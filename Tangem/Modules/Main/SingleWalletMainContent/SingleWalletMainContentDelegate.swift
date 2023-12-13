@@ -1,5 +1,5 @@
 //
-//  MainViewDelegate.swift
+//  SingleWalletMainContentDelegate.swift
 //  Tangem
 //
 //  Created by Andrey Chukavin on 26.09.2023.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: Andrey Fedorov - Rename into SingleWalletMainContentDelegate
-protocol MainViewDelegate: MainNotificationsObserver {
+protocol SingleWalletMainContentDelegate: MainNotificationsObserver {
     func present(actionSheet: ActionSheetBinder)
 }
