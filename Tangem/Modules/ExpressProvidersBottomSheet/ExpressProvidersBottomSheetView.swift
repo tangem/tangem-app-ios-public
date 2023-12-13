@@ -61,6 +61,7 @@ struct ExpressProvidersBottomSheetView_Preview: PreviewProvider {
 
         func toggleItem() {
             /*
+             // TODO: https://tangem.atlassian.net/browse/IOS-5212
              if item == nil {
                  item = ExpressProvidersBottomSheetViewModel(coordinator: self)
              } else {
