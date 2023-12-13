@@ -9,25 +9,20 @@
 import Combine
 import SwiftUI
 
-// TODO: Integration in https://tangem.atlassian.net/browse/IOS-4782
 final class InformationHiddenBalancesViewModel: ObservableObject, Identifiable {
-    // MARK: - ViewState
-
     // MARK: - Dependencies
 
     private unowned let coordinator: InformationHiddenBalancesRoutable
 
-    init(
-        coordinator: InformationHiddenBalancesRoutable
-    ) {
+    init(coordinator: InformationHiddenBalancesRoutable) {
         self.coordinator = coordinator
     }
 
     func userDidRequestCloseView() {
-        coordinator.closeInformationHiddenBalances()
+        coordinator.hiddenBalancesSheetDidRequestClose()
     }
 
     func userDidRequestDoNotShowAgain() {
-        coordinator.closeInformationHiddenBalances()
+        coordinator.hiddenBalancesSheetDidRequestDoNotShowAgain()
     }
 }
