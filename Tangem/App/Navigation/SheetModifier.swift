@@ -2,7 +2,7 @@
 //  UIKitSheetModifier.swift
 //  Tangem
 //
-//  Created by Sergey Balashov on 05.06.2023.
+//  Created by Sergey Balashov on 13.12.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -65,9 +65,14 @@ struct UIKitSheetModifier<Item: Identifiable, ContentView: View>: ViewModifier {
     }
 
     private func didDismiss() {
+        if item != nil {
+            // Set the item to nil if the controller was closed by the user gesture
+            item = nil
+        }
+        
         onDismiss?()
+        // Just clear memory
         controller = nil
-        item = nil
         delegate.controllerDidDissmiss = nil
     }
 }
