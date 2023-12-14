@@ -25,9 +25,7 @@ class ManageTokensCoordinator: CoordinatorObject {
 
     @Published var networkSelectorViewModel: ManageTokensNetworkSelectorViewModel? = nil
     @Published var walletSelectorViewModel: WalletSelectorViewModel? = nil
-
-    // TODO: - Make view model type after merge AddCustomTokemViewModel task (by Adnrey Chukavin)
-//    @Published var addCustomTokenViewModel: AddCustomTokenViewModel? = nil
+    @Published var addCustomTokenCoordinator: AddCustomTokenCoordinator?
 
     // MARK: - Init
 
@@ -51,8 +49,24 @@ extension ManageTokensCoordinator {
 }
 
 extension ManageTokensCoordinator: ManageTokensRoutable {
-    func openAddCustomToken() {
-        // TODO: - Set view model after merge AddCustomTokemViewModel task (by Adnrey Chukavin)
+    func openAddCustomToken(dataSource: ManageTokensDataSource) {
+    #warning("TODO: proper settings!")
+        let settings = LegacyManageTokensSettings(
+            supportedBlockchains: SupportedBlockchains.all,
+            hdWalletsSupported: true,
+            longHashesSupported: true,
+            derivationStyle: .v3,
+            shouldShowLegacyDerivationAlert: false,
+            existingCurves: []
+        )
+
+        let dismissAction: Action<Void> = { [weak self] _ in
+            self?.addCustomTokenCoordinator = nil
+        }
+
+        let addCustomTokenCoordinator = AddCustomTokenCoordinator(dismissAction: dismissAction, popToRootAction: popToRootAction)
+        addCustomTokenCoordinator.start(with: .init(settings: settings, dataSource: dataSource))
+        self.addCustomTokenCoordinator = addCustomTokenCoordinator
     }
 
     func openTokenSelector(dataSource: ManageTokensDataSource, coinId: String, tokenItems: [TokenItem]) {
