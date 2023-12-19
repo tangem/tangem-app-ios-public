@@ -249,6 +249,8 @@ extension SingleTokenBaseViewModel {
         notificationManager.notificationPublisher
             .receive(on: DispatchQueue.main)
             .removeDuplicates()
+            // Fix for reappearing banner notifications.
+            // TODO: Refactor in IOS-5470
             .debounce(for: 0.1, scheduler: DispatchQueue.main)
             .assign(to: \.tokenNotificationInputs, on: self, ownership: .weak)
             .store(in: &bag)
