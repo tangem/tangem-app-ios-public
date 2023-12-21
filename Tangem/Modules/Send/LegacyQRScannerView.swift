@@ -1,5 +1,5 @@
 //
-//  QRScanner.swift
+//  LegacyQRScanner.swift
 //  Tangem
 //
 //  Created by Alexander Osokin on 03.09.2020.
