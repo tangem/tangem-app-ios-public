@@ -1,5 +1,5 @@
 //
-//  SuccessTost.swift
+//  SuccessToast.swift
 //  Tangem
 //
 //  Created by skibinalexander on 26.12.2023.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct SuccessTost: View {
+struct SuccessToast: View {
     let text: String
     var body: some View {
         HStack(spacing: 6) {
