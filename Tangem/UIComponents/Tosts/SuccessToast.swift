@@ -2,7 +2,7 @@
 //  SuccessToast.swift
 //  Tangem
 //
-//  Created by skibinalexander on 26.12.2023.
+//  Created by Andrey Chukavin on 18.12.2023.
 //  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
@@ -32,7 +32,7 @@ struct SuccessToast: View {
 
 #Preview("Figma") {
     VStack {
-        SendAmountChangedToast(text: "Dummy success tost text")
+        SuccessToast(text: "Dummy success toast text")
 
         Spacer()
     }
