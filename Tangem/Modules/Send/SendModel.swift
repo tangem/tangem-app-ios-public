@@ -53,8 +53,9 @@ class SendModel {
 
     private let amount = CurrentValueSubject<Amount?, Never>(nil)
     private let destination = CurrentValueSubject<String?, Never>(nil)
-    private let destinationAdditionalField = CurrentValueSubject<String?, Never>(nil)
     private let fee = CurrentValueSubject<Fee?, Never>(nil)
+
+    private var transactionParameters: TransactionParams?
 
     private let transaction = CurrentValueSubject<BlockchainSdk.Transaction?, Never>(nil)
 
@@ -127,8 +128,10 @@ class SendModel {
             return
         }
 
-        #warning("TODO: memo")
+        #warning("TODO: loading view")
         #warning("TODO: demo")
+
+        transaction.params = transactionParameters
 
         _isSending.send(true)
         walletModel.send(transaction, signer: transactionSigner)
@@ -190,8 +193,8 @@ class SendModel {
             }
             .store(in: &bag)
 
-        Publishers.CombineLatest4(amount, destination, destinationAdditionalField, fee)
-            .map { [weak self] amount, destination, destinationAdditionalField, fee -> BlockchainSdk.Transaction? in
+        Publishers.CombineLatest3(amount, destination, fee)
+            .map { [weak self] amount, destination, fee -> BlockchainSdk.Transaction? in
                 guard
                     let self,
                     let amount,
@@ -273,14 +276,18 @@ class SendModel {
     }
 
     private func validateDestinationAdditionalField() {
-        let destinationAdditionalField: String?
         let error: Error?
+        let transactionParameters: TransactionParams?
+        do {
+            let parametersBuilder = SendTransactionParametersBuilder(blockchain: walletModel.blockchainNetwork.blockchain)
+            transactionParameters = try parametersBuilder.transactionParameters(from: _destinationAdditionalFieldText.value)
+            error = nil
+        } catch let transactionParameterError {
+            transactionParameters = nil
+            error = transactionParameterError
+        }
 
-        #warning("validate")
-        destinationAdditionalField = _destinationAdditionalFieldText.value
-        error = nil
-
-        self.destinationAdditionalField.send(destinationAdditionalField)
+        self.transactionParameters = transactionParameters
         _destinationAdditionalFieldError.send(error)
     }
 
