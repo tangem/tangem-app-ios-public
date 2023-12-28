@@ -36,7 +36,9 @@ struct ManageTokensCoordinatorView: CoordinatorView {
                 }
                 .navigationViewStyle(.stack)
             }
-        // TODO: - Add coordinate on Add Custom Token by (Andrey Chukavin)
+            .sheet(item: $coordinator.addCustomTokenCoordinator) { coordinator in
+                AddCustomTokenCoordinatorView(coordinator: coordinator)
+            }
     }
 
     @ViewBuilder
