@@ -1,5 +1,5 @@
 //
-//  ExpressFeeBottomSheetRoutable.swift
+//  ExpressFeeSelectorRoutable.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 31.10.2023.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ExpressFeeBottomSheetRoutable: AnyObject {
-    func closeExpressFeeBottomSheet()
+protocol ExpressFeeSelectorRoutable: AnyObject {
+    func closeExpressFeeSelector()
 }

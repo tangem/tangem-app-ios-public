@@ -1,5 +1,5 @@
 //
-//  ExpressFeeBottomSheetView.swift
+//  ExpressFeeSelectorView.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 31.10.2023.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct ExpressFeeBottomSheetView: View {
-    @ObservedObject private var viewModel: ExpressFeeBottomSheetViewModel
+struct ExpressFeeSelectorView: View {
+    @ObservedObject private var viewModel: ExpressFeeSelectorViewModel
 
-    init(viewModel: ExpressFeeBottomSheetViewModel) {
+    init(viewModel: ExpressFeeSelectorViewModel) {
         self.viewModel = viewModel
     }
 
@@ -34,7 +34,7 @@ struct ExpressFeeBottomSheetView: View {
     }
 }
 
-struct ExpressFeeBottomSheetView_Preview: PreviewProvider {
+struct ExpressFeeSelectorView_Preview: PreviewProvider {
     struct StatableContainer: View {
         @ObservedObject private var coordinator = BottomSheetCoordinator()
 
@@ -51,20 +51,20 @@ struct ExpressFeeBottomSheetView_Preview: PreviewProvider {
 
                 NavHolder()
                     .bottomSheet(item: $coordinator.item) {
-                        ExpressFeeBottomSheetView(viewModel: $0)
+                        ExpressFeeSelectorView(viewModel: $0)
                     }
             }
         }
     }
 
-    class BottomSheetCoordinator: ObservableObject, ExpressFeeBottomSheetRoutable {
-        @Published var item: ExpressFeeBottomSheetViewModel?
+    class BottomSheetCoordinator: ObservableObject, ExpressFeeSelectorRoutable {
+        @Published var item: ExpressFeeSelectorViewModel?
 
         func toggleItem() {
             // TODO: https://tangem.atlassian.net/browse/IOS-5212
         }
 
-        func closeExpressFeeBottomSheet() {
+        func closeExpressFeeSelector() {
             item = nil
         }
     }
