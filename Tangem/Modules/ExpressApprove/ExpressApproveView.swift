@@ -1,5 +1,5 @@
 //
-//  SwappingApproveView.swift
+//  ExpressApproveView.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 21.11.2022.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct SwappingApproveView: View {
-    @ObservedObject private var viewModel: SwappingApproveViewModel
+struct ExpressApproveView: View {
+    @ObservedObject private var viewModel: ExpressApproveViewModel
 
-    init(viewModel: SwappingApproveViewModel) {
+    init(viewModel: ExpressApproveViewModel) {
         self.viewModel = viewModel
     }
 
@@ -96,8 +96,8 @@ struct SwappingApproveView: View {
 
 /*
  // TODO: https://tangem.atlassian.net/browse/IOS-5212
- struct SwappingApproveView_Preview: PreviewProvider {
-     static let viewModel = SwappingApproveViewModel(
+ struct ExpressApproveView_Preview: PreviewProvider {
+     static let viewModel = ExpressApproveViewModel(
          transactionSender: TransactionSenderMock(),
          swappingInteractor: .init(
              swappingManager: SwappingManagerMock(),
@@ -106,11 +106,11 @@ struct SwappingApproveView: View {
              blockchainNetwork: PreviewCard.ethereum.blockchainNetwork!
          ),
          fiatRatesProvider: FiatRatesProviderMock(),
-         coordinator: SwappingApproveRoutableMock()
+         coordinator: ExpressApproveRoutableMock()
      )
 
      static var previews: some View {
-         SwappingApproveView(viewModel: viewModel)
+         ExpressApproveView(viewModel: viewModel)
      }
  }
  */

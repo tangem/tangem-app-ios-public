@@ -1,5 +1,5 @@
 //
-//  SwappingApproveRoutable.swift
+//  ExpressApproveRoutable.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 11.05.2023.
@@ -8,7 +8,7 @@
 
 import TangemSwapping
 
-protocol SwappingApproveRoutable: AnyObject {
+protocol ExpressApproveRoutable: AnyObject {
     func didSendApproveTransaction()
     func userDidCancel()
 }
