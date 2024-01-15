@@ -348,6 +348,7 @@ class SendModel {
             return
         }
 
+        #warning("TODO: overflow")
         let amount = Amount(with: blockchain, value: Decimal(Int(gasPrice * gasLimit)) / blockchain.decimalValue)
 
         let newFee = Fee(amount, parameters: EthereumFeeParameters(gasLimit: gasLimit, gasPrice: gasPrice))
