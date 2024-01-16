@@ -188,20 +188,15 @@ class WalletModel {
             return .hasPendingCoinTx(symbol: blockchainNetwork.blockchain.currencySymbol)
         }
 
-        guard let amountTypeDisplayName else {
-            return nil
-        }
-
         // no fee
         if !canSendTransaction, !currentAmount.isZero {
-            // TODO: Andrey Fedorov - Use proper values for all props
             return .notEnoughFeeForTransaction(
                 configuration: .init(
-                    transactionAmountTypeName: amountTypeDisplayName,
-                    feeAmountTypeName: blockchainNetwork.blockchain.displayName,
-                    feeAmountTypeCurrencySymbol: blockchainNetwork.blockchain.currencySymbol,
-                    feeAmountTypeIconName: blockchainNetwork.blockchain.iconNameFilled,
-                    networkName: blockchainNetwork.blockchain.displayName
+                    transactionAmountTypeName: tokenItem.name,
+                    feeAmountTypeName: feeTokenItem.name,
+                    feeAmountTypeCurrencySymbol: feeTokenItem.currencySymbol,
+                    feeAmountTypeIconName: feeTokenItem.blockchain.iconNameFilled, // TODO: Andrey Fedorov - Add support for remote icons (IOS-5669)
+                    networkName: tokenItem.networkName
                 )
             )
         }
@@ -236,14 +231,16 @@ class WalletModel {
     private let converter = BalanceConverter()
     private let formatter = BalanceFormatter()
 
-    private var amountTypeDisplayName: String? {
-        switch amountType {
+    private var feeTokenItem: TokenItem {
+        let blockchain = blockchainNetwork.blockchain
+
+        switch blockchain.feePaidCurrency(for: amountType) {
         case .coin:
-            return blockchainNetwork.blockchain.displayName
+            return .blockchain(blockchain)
         case .token(let value):
-            return value.name
-        case .reserve:
-            return nil
+            return .token(value, blockchain)
+        case .sameCurrency:
+            return tokenItem
         }
     }
 
