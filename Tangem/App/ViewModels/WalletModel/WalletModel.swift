@@ -208,7 +208,7 @@ class WalletModel {
                     transactionAmountTypeName: tokenItem.name,
                     feeAmountTypeName: feeTokenItem.name,
                     feeAmountTypeCurrencySymbol: feeTokenItem.currencySymbol,
-                    feeAmountTypeIconName: feeTokenItem.blockchain.iconNameFilled, // TODO: Andrey Fedorov - Add support for remote icons (IOS-5669)
+                    feeAmountTypeIconName: feeTokenItem.blockchain.iconNameFilled,
                     networkName: tokenItem.networkName
                 )
             )
