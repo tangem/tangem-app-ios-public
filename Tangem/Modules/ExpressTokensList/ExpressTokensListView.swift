@@ -95,13 +95,13 @@ struct ExpressTokensListView: View {
     }
 }
 
-/*
- // TODO: https://tangem.atlassian.net/browse/IOS-5212
- struct ExpressTokensListView_Preview: PreviewProvider {
-     static let viewModel = ExpressTokensListViewModel(coordinator: ExpressTokensListRoutableMock())
+struct ExpressTokensListView_Preview: PreviewProvider {
+    static let viewModel = ExpressModulesFactoryMock().makeExpressTokensListViewModel(
+        swapDirection: .fromSource(.mockETH),
+        coordinator: ExpressTokensListRoutableMock()
+    )
 
-     static var previews: some View {
-          ExpressTokensListView(viewModel: viewModel)
-     }
- }
- */
+    static var previews: some View {
+        ExpressTokensListView(viewModel: viewModel)
+    }
+}
