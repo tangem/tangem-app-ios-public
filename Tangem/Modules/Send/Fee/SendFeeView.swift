@@ -26,8 +26,7 @@ struct SendFeeView: View {
             GroupedSection(viewModel.subtractFromAmountModel) {
                 DefaultToggleRowView(viewModel: $0)
             } footer: {
-                #warning("TODO: amount")
-                DefaultFooterView(Localization.sendAmountSubstractFooter(100))
+                DefaultFooterView(viewModel.subtractFromAmountFooterText)
             }
             .backgroundColor(Colors.Background.action)
         }
