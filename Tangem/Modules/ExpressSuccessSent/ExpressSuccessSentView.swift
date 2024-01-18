@@ -109,21 +109,16 @@ struct ExpressSuccessSentView: View {
     }
 }
 
-/*
- // TODO: https://tangem.atlassian.net/browse/IOS-5212
- struct ExpressSuccessSentView_Preview: PreviewProvider {
-     static let viewModel = ExpressSuccessSentViewModel(
-         input: .init(),
-         coordinator: ExpressSuccessSentRoutableMock()
-     )
+struct ExpressSuccessSentView_Preview: PreviewProvider {
+    static let viewModel = ExpressModulesFactoryMock().makeExpressSuccessSentViewModel(
+        data: .mock,
+        coordinator: ExpressSuccessSentRoutableMock()
+    )
 
-     static var previews: some View {
-         NavHolder()
-             .sheet(item: .constant(viewModel)) {
-                 ExpressSuccessSentView(viewModel: $0)
-             }
-     }
- }
-
- class ExpressSuccessSentRoutableMock: ExpressSuccessSentRoutable {}
- */
+    static var previews: some View {
+        NavHolder()
+            .sheet(item: .constant(viewModel)) {
+                ExpressSuccessSentView(viewModel: $0)
+            }
+    }
+}
