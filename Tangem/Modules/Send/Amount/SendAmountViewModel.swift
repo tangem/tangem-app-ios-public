@@ -14,7 +14,7 @@ import BlockchainSdk
 #warning("TODO: move these to different files?")
 
 protocol SendAmountViewModelInput {
-    var amountPublisher: AnyPublisher<Amount?, Never> { get }
+    var amountInputPublisher: AnyPublisher<Amount?, Never> { get }
     var amountError: AnyPublisher<Error?, Never> { get }
 
     var blockchain: Blockchain { get }
@@ -78,7 +78,7 @@ class SendAmountViewModel: ObservableObject, Identifiable {
             .store(in: &bag)
 
         input
-            .amountPublisher
+            .amountInputPublisher
             .sink { [weak self] amount in
                 self?.amount = self?.fromAmount(amount)
             }
