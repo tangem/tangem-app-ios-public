@@ -1,5 +1,5 @@
 //
-//  MainViewDelegate.swift
+//  SingleWalletMainContentDelegate.swift
 //  Tangem
 //
 //  Created by Andrey Chukavin on 26.09.2023.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol MainViewDelegate: AnyObject {
+protocol SingleWalletMainContentDelegate: AnyObject {
     func present(actionSheet: ActionSheetBinder)
 }
