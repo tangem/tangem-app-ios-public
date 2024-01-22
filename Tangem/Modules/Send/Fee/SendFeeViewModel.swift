@@ -56,12 +56,11 @@ class SendFeeViewModel: ObservableObject {
         feeOptions = input.feeOptions
         selectedFeeOption = input.selectedFeeOption
 
-        #warning("TODO decimals")
         if feeOptions.contains(.custom) {
             customFeeModel = SendCustomFeeInputFieldModel(
                 title: Localization.sendMaxFee,
                 amountPublisher: input.customFeePublisher.decimalPublisher,
-                fractionDigits: 18,
+                fractionDigits: walletInfo.feeFractionDigits,
                 amountAlternativePublisher: customFeeInFiat.eraseToAnyPublisher(),
                 footer: Localization.sendMaxFeeFooter
             ) { enteredValue in
