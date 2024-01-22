@@ -1,5 +1,5 @@
 //
-//  MultiWalletContentDelegate.swift
+//  MultiWalletMainContentDelegate.swift
 //  Tangem
 //
 //  Created by Andrew Son on 08/09/23.
