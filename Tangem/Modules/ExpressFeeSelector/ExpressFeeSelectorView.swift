@@ -61,7 +61,11 @@ struct ExpressFeeSelectorView_Preview: PreviewProvider {
         @Published var item: ExpressFeeSelectorViewModel?
 
         func toggleItem() {
-            // TODO: https://tangem.atlassian.net/browse/IOS-5212
+            if item == nil {
+                item = ExpressModulesFactoryMock().makeExpressFeeSelectorViewModel(coordinator: self)
+            } else {
+                item = nil
+            }
         }
 
         func closeExpressFeeSelector() {
