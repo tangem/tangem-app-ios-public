@@ -582,12 +582,14 @@ extension ExpressViewModel: NotificationTapDelegate {
         switch action {
         case .refresh:
             interactor.refresh(type: .full)
-        case .openNetworkCurrency:
+        case .openFeeCurrency:
             openNetworkCurrency()
-        default: return
+        default:
+            return
         }
     }
 
+    // TODO: Andrey Fedorov - Re-use fee currency & redirect logic from Token Details & Send (IOS-5710)
     private func openNetworkCurrency() {
         guard
             let networkCurrencyWalletModel = userWalletModel.walletModelsManager.walletModels.first(where: {
