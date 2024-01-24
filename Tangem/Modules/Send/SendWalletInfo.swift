@@ -9,6 +9,7 @@
 import Foundation
 import BlockchainSdk
 
+#warning("TODO: reformat, regroup, refactor?")
 struct SendWalletInfo {
     let walletName: String
     let balance: String
