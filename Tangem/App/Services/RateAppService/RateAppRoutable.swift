@@ -1,5 +1,5 @@
 //
-//  RateAppRoutabe.swift
+//  RateAppRoutable.swift
 //  Tangem
 //
 //  Created by Andrey Fedorov on 22.01.2024.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol RateAppRoutabe: AnyObject {
+protocol RateAppRoutable: AnyObject {
     func openAppRateDialog(with viewModel: RateAppBottomSheetViewModel)
     func closeAppRateDialog()
     func openFeedbackMail(with dataCollector: EmailDataCollector, emailType: EmailType, recipient: String)
