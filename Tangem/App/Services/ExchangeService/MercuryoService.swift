@@ -184,8 +184,8 @@ private extension URLQueryItem {
 private extension Blockchain {
     var mercuryoNetwork: String? {
         switch self {
-//        case .algorand:   //TODO: Uncomment with algo support
-//            return "ALGORAND"
+        case .algorand:
+            return "ALGORAND"
         case .arbitrum:
             return "ARBITRUM"
         case .avalanche:
