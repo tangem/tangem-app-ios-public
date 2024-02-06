@@ -168,6 +168,3 @@ private extension SendFiatCryptoHelper {
         case maxAmount
     }
 }
-
-// TODO: add struct instead of tuple // container; setFiat; setCrypto
-// TODO: func mutate() { crypto = ; fiat = }
