@@ -27,9 +27,11 @@ struct OrganizeTokensView: View {
 
     @StateObject private var scrollState = OrganizeTokensScrollState(bottomInset: Constants.headerAdditionalBottomInset)
 
+    // TODO: Will be updated in IOS-5884
     @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Replace with native .safeAreaInset()")
     @State private var scrollViewTopContentInset: CGFloat = 0.0
 
+    // TODO: Will be updated in IOS-5884
     @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Replace with native .safeAreaInset()")
     @State private var scrollViewBottomContentInset: CGFloat = 0.0
 
