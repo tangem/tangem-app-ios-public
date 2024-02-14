@@ -9,6 +9,8 @@
 import Foundation
 import SwiftUI
 
+// TODO: Update to new style
+// https://tangem.atlassian.net/browse/IOS-5788
 struct CardOperationView: View {
     @ObservedObject var viewModel: CardOperationViewModel
 

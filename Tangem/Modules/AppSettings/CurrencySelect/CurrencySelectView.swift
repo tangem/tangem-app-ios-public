@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 import Combine
 
+// TODO: Update to new style
+// https://tangem.atlassian.net/browse/IOS-5787
 struct CurrencySelectView: View {
     @ObservedObject var viewModel: CurrencySelectViewModel
     @Environment(\.presentationMode) var presentationMode
