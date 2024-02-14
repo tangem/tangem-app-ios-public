@@ -126,7 +126,10 @@ class SendModel {
         let amountType = walletModel.amountType
         if let amount = walletModel.wallet.amounts[amountType] {
             setAmount(amount)
-            didChangeFeeInclusion(true)
+            if walletModel.tokenItem == walletModel.feeTokenItem {
+                #warning("TODO: Handle in fiat-crypto conversion")
+                didChangeFeeInclusion(true)
+            }
         }
     }
 
