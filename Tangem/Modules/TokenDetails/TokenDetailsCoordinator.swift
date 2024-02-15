@@ -143,7 +143,7 @@ extension TokenDetailsCoordinator: SingleTokenBaseRoutable {
 
     func openFeeCurrency(for model: WalletModel, userWalletModel: UserWalletModel) {
         // TODO: Remove this stuff after Send screen refactoring
-        guard model.tokenItem != tokenDetailsViewModel?.tokenItem else {
+        guard model.tokenItem != tokenDetailsViewModel?.walletModel.tokenItem else {
             return
         }
 
