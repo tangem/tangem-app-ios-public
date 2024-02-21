@@ -260,8 +260,8 @@ class SendModel {
 
                 #warning("TODO: Show error alert?")
                 do {
-                    return try walletModel.createTransaction(
-                        amountToSend: amount,
+                    return try walletModel.transactionCreator.createTransaction(
+                        amount: amount,
                         fee: fee,
                         destinationAddress: destination
                     )
