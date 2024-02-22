@@ -431,7 +431,7 @@ private extension ExpressViewModel {
             return
         }
 
-        let tokenItem = interactor.getSender().tokenItem
+        let tokenItem = interactor.getSender().feeTokenItem
         let formattedFee = feeFormatter.format(fee: fee, tokenItem: tokenItem)
 
         var action: (() -> Void)?
@@ -595,7 +595,7 @@ extension ExpressViewModel: NotificationTapDelegate {
         case .refresh:
             interactor.refresh(type: .full)
         case .openFeeCurrency:
-            openNetworkCurrency()
+            openFeeCurrency()
         case .reduceAmount(let amount, _):
             guard let value = sendDecimalValue?.value else {
                 AppLog.shared.debug("[Express] Couldn't find sendDecimalValue")
@@ -608,18 +608,15 @@ extension ExpressViewModel: NotificationTapDelegate {
         }
     }
 
-    // TODO: Andrey Fedorov - Re-use fee currency & redirect logic from Token Details & Send (IOS-5710)
-    private func openNetworkCurrency() {
-        guard
-            let networkCurrencyWalletModel = userWalletModel.walletModelsManager.walletModels.first(where: {
-                $0.tokenItem == initialWallet.tokenItem
-            })
-        else {
-            assertionFailure("Network currency WalletModel not found")
+    func openFeeCurrency() {
+        guard let feeCurrencyWalletModel = userWalletModel.walletModelsManager.walletModels.first(
+            where: { $0.tokenItem == initialWallet.feeTokenItem && $0.blockchainNetwork == initialWallet.blockchainNetwork }
+        ) else {
+            assertionFailure("Fee currency '\(initialWallet.feeTokenItem.name)' for currency '\(initialWallet.tokenItem.name)' not found")
             return
         }
 
-        coordinator?.presentNetworkCurrency(for: networkCurrencyWalletModel, userWalletModel: userWalletModel)
+        coordinator?.presentFeeCurrency(for: feeCurrencyWalletModel, userWalletModel: userWalletModel)
     }
 }
 
