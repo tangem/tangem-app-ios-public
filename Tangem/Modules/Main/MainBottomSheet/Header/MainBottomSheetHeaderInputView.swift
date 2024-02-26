@@ -25,11 +25,12 @@ struct MainBottomSheetHeaderInputView: View {
     private var searchBar: some View {
         CustomSearchBar(
             searchText: $searchText,
-            placeholder: Localization.commonSearch
+            placeholder: Localization.manageTokensSearchPlaceholder
         )
         .allowsHitTesting(allowsHitTestingForTextField)
         .padding(.top, Constants.verticalInset)
-        .padding(.bottom, max(UIApplication.safeAreaInsets.bottom, Constants.verticalInset))
+        // TODO: - Subscribe on publisher
+//        .padding(.bottom, max(UIApplication.safeAreaInsets.bottom, Constants.verticalInset))
         .background(Colors.Background.primary)
     }
 }
