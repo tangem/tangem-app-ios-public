@@ -135,6 +135,7 @@ final class SendViewModel: ObservableObject {
         self.emailDataProvider = emailDataProvider
 
         let addressService = SendAddressServiceFactory(walletModel: walletModel).makeService()
+        #warning("TODO: pass SendModel and NotificationManager as dependencies")
         sendModel = SendModel(walletModel: walletModel, transactionSigner: transactionSigner, addressService: addressService, sendType: sendType)
 
         let steps = sendType.steps
