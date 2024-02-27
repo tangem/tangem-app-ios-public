@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private lazy var servicesManager = ServicesManager()
 
+    #warning("TODO: remove with LegacySend")
     func addLoadingView() {
         if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
             let view = UIView(frame: window.bounds)
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    #warning("TODO: remove with LegacySend")
     func removeLoadingView() {
         loadingView?.removeFromSuperview()
         loadingView = nil
