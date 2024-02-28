@@ -345,7 +345,6 @@ final class MainViewModel: ObservableObject {
                 case .locked:
                     isLoggingOut = true
                 case .scan:
-                    // TODO: Do we need to place spinner into Navbar?..
                     break
                 case .inserted(let userWallet):
                     setNeedsUpdateUserWallet(userWallet)
