@@ -12,6 +12,7 @@ import BlockchainSdk
 #warning("TODO: reformat, regroup, refactor?")
 struct SendWalletInfo {
     let walletName: String
+    let balanceValue: Decimal?
     let balance: String
     let blockchain: Blockchain
     let currencyId: String?
