@@ -26,5 +26,6 @@ enum AppConstants {
 
     static let sessionId = UUID().uuidString
 
+    #warning("TODO: use TangemBlogUrlBuilder")
     static let feeExplanationTangemBlogURL = URL(string: "https://tangem.com/en/blog/post/what-is-a-transaction-fee-and-why-do-we-need-it/")!
 }
