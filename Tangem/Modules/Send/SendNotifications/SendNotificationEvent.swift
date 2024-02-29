@@ -71,7 +71,7 @@ extension SendNotificationEvent: NotificationEvent {
         case .customFeeTooLow:
             return Localization.sendNotificationTransactionDelayText
         case .feeCoverage:
-            return Localization.sendNetworkFeeWarningContent
+            return Localization.sendNetworkFeeWarningContent("", "") // TODO: Andy C
         case .minimumAmount(let value):
             return Localization.sendNotificationInvalidMinimumAmountText(value)
         case .withdrawalOptionalAmountChange(_, let amount):
