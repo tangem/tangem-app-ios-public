@@ -32,8 +32,7 @@ class UnlockUserWalletBottomSheetViewModel: ObservableObject, Identifiable {
     }
 
     func unlockWithBiometry() {
-        // TODO: Update anal
-        //        Analytics.log(.buttonUnlockAllWithFaceID)
+        Analytics.log(.buttonUnlockAllWithBiometrics)
 
         userWalletRepository.unlock(with: .biometry) { [weak self] result in
             switch result {
@@ -48,8 +47,7 @@ class UnlockUserWalletBottomSheetViewModel: ObservableObject, Identifiable {
     }
 
     func unlockWithCard() {
-        // TODO: Update anal
-        Analytics.beginLoggingCardScan(source: .myWalletsUnlock)
+        Analytics.beginLoggingCardScan(source: .mainUnlock)
         isScannerBusy = true
         userWalletRepository.unlock(with: .card(userWallet: userWalletModel.userWallet)) { [weak self] result in
             DispatchQueue.main.async {

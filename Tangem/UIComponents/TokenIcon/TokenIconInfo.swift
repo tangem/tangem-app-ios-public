@@ -7,9 +7,13 @@
 //
 
 import Foundation
+import SwiftUI
 
+// TODO: Remove the name from here. It doesn't used in the TokenIcon
 struct TokenIconInfo: Hashable {
     let name: String
     let blockchainIconName: String?
     let imageURL: URL?
+    let isCustom: Bool
+    let customTokenColor: Color?
 }
