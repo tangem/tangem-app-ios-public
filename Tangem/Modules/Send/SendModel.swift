@@ -308,6 +308,7 @@ class SendModel {
                 }
 
                 do {
+                    #warning("TODO: Use await validation")
                     let transaction = try walletModel.transactionCreator.createTransaction(
                         amount: validatedAmount,
                         fee: fee,
@@ -331,7 +332,7 @@ class SendModel {
             }
             .store(in: &bag)
 
-        if let withdrawalValidator = walletModel.withdrawalValidator {
+        if let withdrawalValidator = walletModel.withdrawalSuggestionProvider {
             transaction
                 .map { transaction in
                     guard let transaction else { return nil }

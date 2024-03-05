@@ -49,14 +49,12 @@ enum PreviewCard {
                     dataStorage: FakeBlockchainDataStorage()
                 )
             )
-            let walletManager = try! factory.makeWalletManager(
+            // TODO: Inject preview models into CardViewModel
+            _ = try! factory.makeWalletManager(
                 blockchain: blockchain,
                 publicKey: .init(seedKey: publicKey, derivationType: .none)
             )
         }
-
-        // TODO: Add preview models
-//        vm.state = .loaded(walletModel: walletModels)
         return vm
     }
 
