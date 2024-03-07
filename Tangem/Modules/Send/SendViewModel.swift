@@ -364,7 +364,11 @@ final class SendViewModel: ObservableObject {
 
     private func parseQRCode(_ code: String) {
         #warning("TODO: Add the necessary UI warnings")
-        let parser = QRCodeParser(amountType: walletModel.amountType, blockchain: walletModel.blockchainNetwork.blockchain)
+        let parser = QRCodeParser(
+            amountType: walletModel.amountType,
+            blockchain: walletModel.blockchainNetwork.blockchain,
+            decimalCount: walletModel.decimalCount
+        )
         let result = parser.parse(code)
 
         sendModel.setDestination(SendAddress(value: result.destination, inputSource: .qrCode))
