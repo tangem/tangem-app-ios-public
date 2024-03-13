@@ -371,12 +371,12 @@ final class SendViewModel: ObservableObject {
         )
         let result = parser.parse(code)
 
+        sendModel.setDestination(SendAddress(value: result.destination, inputSource: .qrCode))
+        sendModel.setAmount(result.amount)
+
         if let memo = result.memo {
             sendModel.setDestinationAdditionalField(memo)
         }
-
-        sendModel.setDestination(SendAddress(value: result.destination, inputSource: .qrCode))
-        sendModel.setAmount(result.amount)
     }
 
     // TODO: Andrey Fedorov - Re-use fee currency & redirect logic from Token Details & Send (IOS-5710)
