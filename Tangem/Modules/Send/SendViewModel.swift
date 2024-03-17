@@ -364,11 +364,22 @@ final class SendViewModel: ObservableObject {
 
     private func parseQRCode(_ code: String) {
         #warning("TODO: Add the necessary UI warnings")
-        let parser = QRCodeParser(amountType: walletModel.amountType, blockchain: walletModel.blockchainNetwork.blockchain)
-        let result = parser.parse(code)
+        let parser = QRCodeParser(
+            amountType: walletModel.amountType,
+            blockchain: walletModel.blockchainNetwork.blockchain,
+            decimalCount: walletModel.decimalCount
+        )
+
+        guard let result = parser.parse(code) else {
+            return
+        }
 
         sendModel.setDestination(SendAddress(value: result.destination, inputSource: .qrCode))
         sendModel.setAmount(result.amount)
+
+        if let memo = result.memo {
+            sendModel.setDestinationAdditionalField(memo)
+        }
     }
 
     // TODO: Andrey Fedorov - Re-use fee currency & redirect logic from Token Details & Send (IOS-5710)
