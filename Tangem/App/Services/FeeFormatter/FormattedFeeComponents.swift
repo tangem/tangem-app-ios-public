@@ -1,5 +1,5 @@
 //
-//  FormattedFeeParts.swift
+//  FormattedFeeComponents.swift
 //  Tangem
 //
 //  Created by Andrey Chukavin on 15.03.2024.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FormattedFeeParts {
+struct FormattedFeeComponents {
     let cryptoFee: String
     let fiatFee: String?
 }
