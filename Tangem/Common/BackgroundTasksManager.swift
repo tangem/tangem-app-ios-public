@@ -40,6 +40,14 @@ final class BackgroundTasksManager {
         }
     }
 
+    func schedule() {
+        // TODO: Andrey Fedorov - Add actual implementation
+    }
+
+    func cancel() {
+        // TODO: Andrey Fedorov - Add actual implementation
+    }
+
     private func handleBackgroundProcessingTask(_ task: BGProcessingTask) {
         // TODO: Andrey Fedorov - Add actual implementation
     }
