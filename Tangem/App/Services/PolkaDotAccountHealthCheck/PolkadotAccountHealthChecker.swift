@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import BlockchainSdk
 
-// TODO: Andrey Fedorov - Protect access to all mutable and stored properties
 /// - Warning: Read-write access to all `@AppStorageCompat` properties must be synchronized (e.g. by using `runOnMain(_:)` helper).
 final class PolkadotAccountHealthChecker {
     static let shared = PolkadotAccountHealthChecker()
@@ -46,10 +45,10 @@ final class PolkadotAccountHealthChecker {
             return
         }
 
-        healthCheckTasks[account] = runTask(in: self) { await $0.scheduleForegroundHealthCheck(for: account) }
+        healthCheckTasks[account] = runTask(in: self) { await $0.checkAccount(account) }
     }
 
-    private func scheduleForegroundHealthCheck(for account: String) async {
+    private func checkAccount(_ account: String) async {
         let backgroundTaskName = "com.tangem.PolkadotAccountHealthChecker_\(account)_\(UUID().uuidString)"
         let backgroundTask = BackgroundTaskWrapper(taskName: backgroundTaskName) { [weak self] in
             self?.healthCheckTasks[account]?.cancel()
@@ -89,8 +88,6 @@ final class PolkadotAccountHealthChecker {
             return
         }
 
-        // TODO: Andrey Fedorov - Add retries (using common helper perhaps?)
-        // TODO: Andrey Fedorov - Try to map API error first (using common helper perhaps?)
         do {
             let accountInfo = try await networkService.getAccountHealthInfo(account: account)
             try Task.checkCancellation()
@@ -115,8 +112,6 @@ final class PolkadotAccountHealthChecker {
             return
         }
 
-        // TODO: Andrey Fedorov - Add retries (using common helper perhaps?)
-        // TODO: Andrey Fedorov - Try to map API error first (using common helper perhaps?)
         do {
             var foundImmortalTransaction = false
 
