@@ -106,6 +106,10 @@ final class PolkadotAccountHealthChecker {
     }
 
     private func checkIfAccountContainsImmortalTransactions(_ account: String) async {
+        guard !analyzedForImmortalTransactionsAccounts.contains(account) else {
+            return
+        }
+
         // TODO: Andrey Fedorov - Add retries (using common helper perhaps?)
         // TODO: Andrey Fedorov - Try to map API error first (using common helper perhaps?)
         do {
@@ -127,6 +131,7 @@ final class PolkadotAccountHealthChecker {
 
                     let isTransactionImmortal = try await isTransactionImmortal(transaction)
                     try Task.checkCancellation()
+
                     lastAnalyzedTransactionIds[account] = transaction.id
 
                     // Early exit if we've found at least one immortal transaction
