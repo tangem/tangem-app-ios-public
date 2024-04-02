@@ -40,6 +40,7 @@ class AppLog {
         Log.debug(message())
     }
 
+    // TODO: Andrey Fedorov - Get rid of this method and pass file/line as arguments to `debug` (IOS-6440)
     func debugDetailed<T>(file: StaticString = #fileID, line: UInt = #line, _ message: @autoclosure () -> T) {
         Log.debug("\(file):\(line): \(message())")
     }
