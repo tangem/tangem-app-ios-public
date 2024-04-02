@@ -56,7 +56,7 @@ extension ScanCardSettingsViewModel {
 
         var cardInfo = cardInfo
 
-        // TODO: remove with details refactoring https://tangem.atlassian.net/browse/IOS-4184
+        // TODO: remove with details refactoring https://tangem.atlassian.net/browse/IOS-5193
         if let existingCardModel = userWalletRepository.models.first(where: { $0.userWalletId == userWalletId }) as? CardViewModel {
             cardInfo.name = existingCardModel.name
         }
@@ -65,7 +65,24 @@ extension ScanCardSettingsViewModel {
             return
         }
 
-        coordinator?.openCardSettings(cardModel: newCardViewModel)
+        let input = CardSettingsViewModel.Input(
+            userWalletId: newCardViewModel.userWalletId,
+            recoveryInteractor: UserCodeRecoveringCardInteractor(with: newCardViewModel.cardInfo),
+            securityOptionChangeInteractor: SecurityOptionChangingCardInteractor(with: newCardViewModel.cardInfo),
+            factorySettingsResettingCardInteractor: FactorySettingsResettingCardInteractor(with: newCardViewModel.cardInfo),
+            isResetToFactoryAvailable: !newCardViewModel.config.getFeatureAvailability(.resetToFactory).isHidden,
+            hasBackupCards: newCardViewModel.hasBackupCards,
+            canTwin: newCardViewModel.config.hasFeature(.twinning),
+            twinInput: newCardViewModel.twinInput,
+            cardIdFormatted: newCardViewModel.cardInfo.cardIdFormatted,
+            cardIssuer: newCardViewModel.cardInfo.card.issuer.name,
+            canDisplayHashesCount: newCardViewModel.config.hasFeature(.displayHashesCount),
+            cardSignedHashes: newCardViewModel.cardInfo.card.walletSignedHashes,
+            canChangeAccessCodeRecoverySettings: newCardViewModel.config.hasFeature(.accessCodeRecoverySettings),
+            resetTofactoryDisabledLocalizedReason: newCardViewModel.config.getDisabledLocalizedReason(for: .resetToFactory)
+        )
+
+        coordinator?.openCardSettings(with: input)
     }
 }
 
