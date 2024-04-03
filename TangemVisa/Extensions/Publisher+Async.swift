@@ -7,9 +7,9 @@
 //
 
 import Combine
-import Foundation
 
-public extension Publisher {
+// TODO: Remove it when Foundation was add
+extension Publisher {
     func async() async throws -> Output {
         var didSendValue = false
         let cancellableWrapper = CancellableWrapper()
