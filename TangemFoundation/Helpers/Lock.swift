@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: Move to Foundation
 public final class Lock {
     private let lock: NSLocking
 
