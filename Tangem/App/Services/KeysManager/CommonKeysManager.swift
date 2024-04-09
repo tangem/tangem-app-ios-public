@@ -51,7 +51,10 @@ extension CommonKeysManager: KeysManager {
             // TODO: rename to solana
             quickNodeSolanaCredentials: .init(apiKey: keys.quiknodeApiKey, subdomain: keys.quiknodeSubdomain),
             quickNodeBscCredentials: .init(apiKey: keys.bscQuiknodeApiKey, subdomain: keys.bscQuiknodeSubdomain),
-            defaultNetworkProviderConfiguration: .init(logger: .verbose, urlSessionConfiguration: .standard),
+            defaultNetworkProviderConfiguration: .init(
+                logger: UserDefaults.standard.bool(forKey: "com.tangem.NetworkLoggingEnabled") ? .verbose : .none,
+                urlSessionConfiguration: .standard
+            ),
             networkProviderConfigurations: [:]
         )
     }
