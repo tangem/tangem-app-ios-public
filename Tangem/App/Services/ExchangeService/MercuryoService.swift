@@ -269,7 +269,7 @@ private extension Blockchain {
              .mantle,
              .flare,
              .taraxa:
-            return nil
+            return nil // TODO: Andrey Fedorov - Add proper network ids (IOS-6506)
         }
     }
 }

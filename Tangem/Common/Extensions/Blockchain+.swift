@@ -232,6 +232,8 @@ extension Blockchain {
         case .arbitrum,
              .optimism,
              .base:
+            // TODO: Andrey Fedorov - Add other L2s here (IOS-6505)
+            // Provides a more descriptive display name for the fee currency (ETH) for some Ethereum L2s
             return displayName + " (\(currencySymbol))"
         default:
             return currencySymbol
