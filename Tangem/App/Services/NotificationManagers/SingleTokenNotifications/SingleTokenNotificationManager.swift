@@ -78,8 +78,8 @@ final class SingleTokenNotificationManager {
         // TODO: Andrey Fedorov - Setup this event asynchronously if needed
         // TODO: Andrey Fedorov - Get rid of `if case .hedera` if possible
         if case .hedera = walletModel.tokenItem.blockchain,
-           walletModel.assetPrerequisitesManager?.hasPrerequisites(for: walletModel.amountType) == true {
-            events.append(.hasUnfulfilledPrerequisites(configuration: .missingHederaTokenAssociation))
+           walletModel.assetRequirementsManager?.hasRequirements(for: walletModel.amountType) == true {
+            events.append(.hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation))
         }
 
         if let sendingRestrictions = walletModel.sendingRestrictions {
