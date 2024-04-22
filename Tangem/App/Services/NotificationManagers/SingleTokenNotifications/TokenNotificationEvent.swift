@@ -160,10 +160,9 @@ extension TokenNotificationEvent: NotificationEvent {
         case .networkUnreachable,
              .someNetworksUnreachable,
              .notEnoughFeeForTransaction,
-             .solanaHighImpact:
+             .solanaHighImpact,
+             .hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation):
             return .warning
-        case .hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation):
-            return .critical // TODO: Andrey Fedorov - Is this the correct value?
         }
     }
 
