@@ -75,11 +75,11 @@ final class SingleTokenNotificationManager {
             events.append(.solanaHighImpact)
         }
 
-        // TODO: Andrey Fedorov - Setup this event asynchronously if needed
+        // TODO: Andrey Fedorov - Setup this event asynchronously if needed with association fee
         // TODO: Andrey Fedorov - Get rid of `if case .hedera` if possible
         if case .hedera = walletModel.tokenItem.blockchain,
            walletModel.assetRequirementsManager?.hasRequirements(for: walletModel.amountType) == true {
-            events.append(.hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation))
+            events.append(.hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation(associationFee: nil)))
         }
 
         if let sendingRestrictions = walletModel.sendingRestrictions {

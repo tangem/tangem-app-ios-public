@@ -50,7 +50,7 @@ enum NotificationButtonActionType: Identifiable, Hashable {
         case .reduceAmountTo(_, let amountFormatted):
             return Localization.sendNotificationReduceTo(amountFormatted)
         case .addHederaTokenAssociation:
-            return "Associate" // TODO: Andrey Fedorov - Add localization
+            return Localization.warningHederaMissingTokenAssociationButtonTitle
         }
     }
 
