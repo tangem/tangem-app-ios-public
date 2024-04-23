@@ -75,8 +75,6 @@ final class SingleTokenNotificationManager {
             events.append(.solanaHighImpact)
         }
 
-        // TODO: Andrey Fedorov - Setup this event asynchronously if needed with association fee
-        // TODO: Andrey Fedorov - Get rid of `if case .hedera` if possible
         if let sendingRestrictions = walletModel.sendingRestrictions {
             let isFeeCurrencyPurchaseAllowed = walletModelsManager.walletModels.contains {
                 $0.tokenItem == walletModel.feeTokenItem && $0.blockchainNetwork == walletModel.blockchainNetwork
