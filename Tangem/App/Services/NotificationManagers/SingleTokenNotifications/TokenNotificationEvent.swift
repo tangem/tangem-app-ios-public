@@ -22,6 +22,7 @@ enum TokenNotificationEvent: Hashable {
             let currencySymbol: String
         }
 
+        /// `associationFee` fetched asynchronously and therefore may be absent in some cases.
         case missingHederaTokenAssociation(associationFee: HederaTokenAssociationFee?)
         @available(*, unavailable, message: "Token trust lines support not implemented yet")
         case missingTokenTrustline
@@ -201,7 +202,7 @@ extension TokenNotificationEvent {
         case .existentialDepositWarning: return nil
         case .notEnoughFeeForTransaction: return .tokenNoticeNotEnoughFee
         case .solanaHighImpact: return nil
-        case .hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation): return nil // TODO: Andrey Fedorov - Any analytics here?
+        case .hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation): return nil // TODO: Andrey Fedorov - Any analytics here (IOS-6684)
         }
     }
 
