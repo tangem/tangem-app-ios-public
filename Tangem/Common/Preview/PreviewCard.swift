@@ -48,7 +48,8 @@ enum PreviewCard {
                 dependencies: .init(
                     accountCreator: BlockchainAccountCreatorStub(),
                     dataStorage: FakeBlockchainDataStorage()
-                )
+                ),
+                apiList: [:]
             )
             // TODO: Inject preview models into CommonUserWalletModel
             _ = try! factory.makeWalletManager(
