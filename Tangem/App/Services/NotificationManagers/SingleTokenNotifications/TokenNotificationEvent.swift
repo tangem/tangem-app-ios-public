@@ -202,7 +202,7 @@ extension TokenNotificationEvent {
         case .existentialDepositWarning: return nil
         case .notEnoughFeeForTransaction: return .tokenNoticeNotEnoughFee
         case .solanaHighImpact: return nil
-        case .hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation): return nil // TODO: Andrey Fedorov - Any analytics here (IOS-6684)
+        case .hasUnfulfilledRequirements(configuration: .missingHederaTokenAssociation): return nil
         }
     }
 
