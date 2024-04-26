@@ -69,6 +69,10 @@ extension Blockchain {
         switch self {
         case .arbitrum,
              .optimism,
+             .aurora,
+             .manta,
+             .zkSync,
+             .polygonZkEVM,
              .base:
             // TODO: Andrey Fedorov - Add other L2s here (IOS-6505)
             // Provides a more descriptive display name for the fee currency (ETH) for some Ethereum L2s
