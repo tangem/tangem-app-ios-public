@@ -10,4 +10,7 @@ import Foundation
 
 protocol SingleWalletMainContentDelegate: AnyObject {
     func present(actionSheet: ActionSheetBinder)
+
+    // TODO: Remove this logic after removing AlertToast - merge IOS-6500
+    func displayAddressCopiedToast()
 }
