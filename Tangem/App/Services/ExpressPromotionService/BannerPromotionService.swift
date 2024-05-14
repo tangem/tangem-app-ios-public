@@ -41,5 +41,6 @@ enum PromotionProgramName: String, Hashable {
     // Will be deleted: https://tangem.atlassian.net/browse/IOS-6831
     case changelly
     // Estimated dates 13/05 - 13/06
+    // Will be deleted: https://tangem.atlassian.net/browse/IOS-6842
     case travala
 }
