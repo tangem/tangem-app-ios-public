@@ -116,7 +116,6 @@ extension MainCoordinator: MainRoutable {
     }
 
     func openScanCardManual() {
-        // TODO: add analytics if needed
         safariManager.openURL(TangemBlogUrlBuilder().url(post: .scanCard))
     }
 }
