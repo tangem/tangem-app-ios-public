@@ -1,5 +1,5 @@
 //
-//  DetailsUserWalletRowViewModel.swift
+//  SettingsUserWalletRowViewModel.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 16.05.2024.
@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-class DetailsUserWalletRowViewModel: ObservableObject {
+class SettingsUserWalletRowViewModel: ObservableObject {
     @Published var name: String
     @Published var icon: LoadingValue<CardImageResult> = .loading
     @Published var cardsCount: String
