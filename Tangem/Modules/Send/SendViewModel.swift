@@ -362,7 +362,13 @@ final class SendViewModel: ObservableObject {
 
         Publishers.CombineLatest(validSteps, $step)
             .map { validSteps, step in
-                !validSteps.contains(step)
+                #warning("TODO: invert the logic and publish INVALID steps instead (?)")
+                switch step {
+                case .finish:
+                    return false
+                default:
+                    return !validSteps.contains(step)
+                }
             }
             .assign(to: \.mainButtonDisabled, on: self, ownership: .weak)
             .store(in: &bag)
