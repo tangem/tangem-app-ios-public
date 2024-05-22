@@ -37,7 +37,7 @@ extension WarningEvent: NotificationEvent {
     var title: NotificationView.Title {
         switch self {
         case .rateApp:
-            return .string("Rate the app") // TODO: Andrey Fedorov - Localize
+            return .string(Localization.warningRateAppTitle)
         case .failedToVerifyCard:
             return .string(Localization.warningFailedToVerifyCardTitle)
         case .systemDeprecationTemporary:
@@ -78,7 +78,7 @@ extension WarningEvent: NotificationEvent {
         case .numberOfSignedHashesIncorrect:
             return Localization.warningNumberOfSignedHashesIncorrectMessage
         case .rateApp:
-            return "How do you like Tangem?" // TODO: Andrey Fedorov - Localize
+            return Localization.warningRateAppMessage
         case .failedToVerifyCard:
             return Localization.warningFailedToVerifyCardMessage
         case .testnetCard:

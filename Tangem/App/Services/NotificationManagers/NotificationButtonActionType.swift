@@ -57,9 +57,9 @@ enum NotificationButtonActionType: Identifiable, Hashable {
         case .addHederaTokenAssociation:
             return Localization.warningHederaMissingTokenAssociationButtonTitle
         case .openFeedbackMail:
-            return "Can be better" // TODO: Andrey Fedorov - Localize
+            return Localization.warningButtonCouldBeBetter
         case .openAppStoreReview:
-            return "Love it!" // TODO: Andrey Fedorov - Localize
+            return Localization.warningButtonReallyCool
         }
     }
 
