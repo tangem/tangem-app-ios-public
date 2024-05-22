@@ -1,5 +1,5 @@
 //
-//  UserWalletNotificationService.swift
+//  UserWalletNotificationManager.swift
 //  Tangem
 //
 //  Created by Andrew Son on 26/08/23.
