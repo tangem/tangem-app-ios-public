@@ -1,5 +1,5 @@
 //
-//  StakeDetailsRoutable.swift
+//  StakingDetailsRoutable.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 22.05.2024.
@@ -8,4 +8,4 @@
 
 import Foundation
 
-protocol StakeDetailsRoutable: AnyObject {}
+protocol StakingDetailsRoutable: AnyObject {}
