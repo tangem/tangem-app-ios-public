@@ -1,5 +1,5 @@
 //
-//  StakeView.swift
+//  StakingView.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 22.05.2024.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct StakeView: View {
-    @ObservedObject private var viewModel: StakeViewModel
+struct StakingView: View {
+    @ObservedObject private var viewModel: StakingViewModel
 
-    init(viewModel: StakeViewModel) {
+    init(viewModel: StakingViewModel) {
         self.viewModel = viewModel
     }
 
@@ -22,10 +22,10 @@ struct StakeView: View {
     }
 }
 
-struct StakeView_Preview: PreviewProvider {
-    static let viewModel = StakeViewModel(coordinator: StakeCoordinator())
+struct StakingView_Preview: PreviewProvider {
+    static let viewModel = StakingViewModel(coordinator: StakingCoordinator())
 
     static var previews: some View {
-        StakeView(viewModel: viewModel)
+        StakingView(viewModel: viewModel)
     }
 }

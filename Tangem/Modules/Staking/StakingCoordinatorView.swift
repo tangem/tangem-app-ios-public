@@ -1,5 +1,5 @@
 //
-//  StakeCoordinatorView.swift
+//  StakingCoordinatorView.swift
 //  Tangem
 //
 //  Created by Sergey Balashov on 22.05.2024.
@@ -8,17 +8,17 @@
 
 import SwiftUI
 
-struct StakeCoordinatorView: CoordinatorView {
-    @ObservedObject var coordinator: StakeCoordinator
+struct StakingCoordinatorView: CoordinatorView {
+    @ObservedObject var coordinator: StakingCoordinator
 
-    init(coordinator: StakeCoordinator) {
+    init(coordinator: StakingCoordinator) {
         self.coordinator = coordinator
     }
 
     var body: some View {
         ZStack {
             if let rootViewModel = coordinator.rootViewModel {
-                StakeView(viewModel: rootViewModel)
+                StakingView(viewModel: rootViewModel)
                     .navigationLinks(links)
             }
 
