@@ -1,5 +1,5 @@
 //
-//  AddCustomTokenManageTokensItem.swift
+//  MarketsAddCustomItemView.swift
 //  Tangem
 //
 //  Created by skibinalexander on 30.10.2023.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct ManageTokensAddCustomItemView: View {
+struct MarketsAddCustomItemView: View {
     let didTapAction: () -> Void
 
     var body: some View {
