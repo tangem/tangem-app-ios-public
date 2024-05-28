@@ -1,5 +1,5 @@
 //
-//  StakekitDTO+Actions.swift
+//  StakeKitDTO+Actions.swift
 //  TangemStaking
 //
 //  Created by Sergey Balashov on 27.05.2024.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension StakekitDTO {
-    // TODO: Will be update when the netwroks start be intergated
+extension StakeKitDTO {
+    // TODO: Will be updated when the networks start be intergated
     enum Actions {
         enum Get {
             struct Request: Encodable {

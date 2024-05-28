@@ -1,5 +1,5 @@
 //
-//  StakekitTarget.swift
+//  StakeKitTarget.swift
 //  TangemStaking
 //
 //  Created by Sergey Balashov on 27.05.2024.
@@ -9,15 +9,15 @@
 import Foundation
 import Moya
 
-struct StakekitTarget: Moya.TargetType {
+struct StakeKitTarget: Moya.TargetType {
     let apiKey: String
     let target: Target
 
     enum Target {
         case enabledYields
-        case getYield(StakekitDTO.Yield.Info.Request)
+        case getYield(StakeKitDTO.Yield.Info.Request)
 
-        case enterAction(StakekitDTO.Actions.Enter.Request)
+        case enterAction(StakeKitDTO.Actions.Enter.Request)
     }
 
     var baseURL: URL {
