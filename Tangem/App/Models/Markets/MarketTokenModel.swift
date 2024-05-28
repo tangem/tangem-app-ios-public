@@ -23,13 +23,13 @@ struct MarketTokenModel {
         self.marketRaiting = marketRaiting
     }
 
-    // TODO: - Need to remove, when GET  /v1/market_general/ did completed
+    // TODO: - Need to remove, when GET  /v1/market_general/ did completed https://tangem.atlassian.net/browse/IOS-6825
     init(coin: CoinModel) {
         id = coin.id
         name = coin.name
         symbol = coin.symbol
-        marketCup = "\(Int.random(in: 0 ..< 1000))"
-        marketRaiting = "\(Int.random(in: 0 ... 10000))М"
+        marketCup = "\(Int.random(in: 0 ..< 1000))М"
+        marketRaiting = "\(Int.random(in: 0 ... 10000))"
     }
 }
 
