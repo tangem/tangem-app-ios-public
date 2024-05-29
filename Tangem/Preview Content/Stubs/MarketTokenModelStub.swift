@@ -1,5 +1,5 @@
 //
-//  DummyMarketTokenModelFactory.swift
+//  MarketTokenModelStub.swift
 //  Tangem
 //
 //  Created by skibinalexander on 27.05.2024.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DummyMarketTokenModelFactory {
+struct MarketTokenModelStub {
     // TODO: Maybe replace in mock json file. Need for use in preview
     func list() -> [MarketTokenModel] {
         [
