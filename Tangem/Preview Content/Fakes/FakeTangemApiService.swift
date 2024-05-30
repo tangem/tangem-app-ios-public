@@ -97,6 +97,7 @@ class FakeTangemApiService: TangemApiService {
 
 extension FakeTangemApiService {
     func loadMarkets(requestModel: MarketDTO.General.Request) async throws -> MarketDTO.General.Response {
+        // Implement in https://tangem.atlassian.net/browse/IOS-6998 because we need a working endpoint
         throw "Not implemented"
     }
 }
