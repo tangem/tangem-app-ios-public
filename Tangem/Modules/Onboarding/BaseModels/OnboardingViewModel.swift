@@ -155,7 +155,6 @@ class OnboardingViewModel<Step: OnboardingStep, Coordinator: OnboardingRoutable>
         self.input = input
         self.coordinator = coordinator
 
-        // TODO: remove
         if let userWalletModel = input.cardInput.userWalletModel {
             self.userWalletModel = userWalletModel
         }
