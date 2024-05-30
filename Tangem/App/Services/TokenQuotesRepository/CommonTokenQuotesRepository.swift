@@ -98,7 +98,7 @@ private extension CommonTokenQuotesRepository {
             .store(in: &bag)
 
         NotificationCenter.default
-            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .publisher(for: UIApplication.willEnterForegroundNotification) // We can't use didBecomeActive because of NFC interaction app state changes
             .withWeakCaptureOf(self)
             .flatMap { repository, _ in
                 // Reload saved quotes
@@ -114,8 +114,8 @@ private extension CommonTokenQuotesRepository {
 
         let currencyCode = AppSettings.shared.selectedCurrencyCode
 
-        // TODO: - Remove when prices24h will be available on production api
-        let fields: [QuotesDTO.Request.Fields] = FeatureStorage().useDevApi ? [.price, .priceChange24h, .prices24h] : [.price, .priceChange24h]
+        // TODO: - Remove when lastUpdatedAt will be available on production api
+        let fields: [QuotesDTO.Request.Fields] = FeatureStorage().useDevApi ? [.price, .priceChange24h, .lastUpdatedAt] : [.price, .priceChange24h]
 
         // We get here currencyIds. But on in the API model we named it like coinIds
         let request = QuotesDTO.Request(
