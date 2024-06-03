@@ -1,5 +1,5 @@
 //
-//  Market.swift
+//  MarketsListOrderType.swift
 //  Tangem
 //
 //  Created by skibinalexander on 29.05.2024.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MarketListOrderType: String, Encodable {
+enum MarketsListOrderType: String, Encodable {
     case rating
     case trending
     case buyers
