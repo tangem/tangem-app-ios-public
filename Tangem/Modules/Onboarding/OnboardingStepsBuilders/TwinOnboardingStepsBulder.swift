@@ -23,8 +23,7 @@ struct TwinOnboardingStepsBulder {
             steps.append(.saveUserWallet)
         }
 
-        // TODO: https://tangem.atlassian.net/browse/IOS-6136
-        if FeatureProvider.isAvailable(.pushNotifications) {
+        if PushNotificationsProvider.isAvailable {
             steps.append(.pushNotifications)
         }
 

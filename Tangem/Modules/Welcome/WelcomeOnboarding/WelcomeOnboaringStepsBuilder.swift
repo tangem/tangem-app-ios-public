@@ -16,8 +16,7 @@ struct WelcomeOnboaringStepsBuilder {
             steps.append(.tos)
         }
 
-        if FeatureProvider.isAvailable(.pushNotifications) {
-            // TODO: https://tangem.atlassian.net/browse/IOS-6136
+        if PushNotificationsProvider.isAvailable {
             steps.append(.pushNotifications)
         }
 
