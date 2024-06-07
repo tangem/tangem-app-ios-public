@@ -12,12 +12,14 @@ struct WelcomeOnboaringStepsBuilder {
     func buildSteps() -> [WelcomeOnbordingStep] {
         var steps = [WelcomeOnbordingStep]()
 
-        //   if !AppSettings.shared.termsOfServicesAccepted.contains(AppConstants.tosURL.absoluteString) {
-        steps.append(.tos)
-        //   }
+        if !AppSettings.shared.termsOfServicesAccepted.contains(AppConstants.tosURL.absoluteString) {
+            steps.append(.tos)
+        }
 
-        // TODO: check for push notifications
-        // steps.append(.pushNotifications)
+        if FeatureProvider.isAvailable(.pushNotifications) {
+            // TODO: https://tangem.atlassian.net/browse/IOS-6136
+            steps.append(.pushNotifications)
+        }
 
         return steps
     }
