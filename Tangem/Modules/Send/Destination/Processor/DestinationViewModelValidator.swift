@@ -1,14 +1,19 @@
 //
-//  CommonDestinationViewModelValidator.swift
+//  DestinationViewModelValidator.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 21.11.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
+//  Created by Sergey Balashov on 10.06.2024.
+//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation
 import Combine
 import BlockchainSdk
+
+protocol DestinationViewModelValidator {
+    func validate(destination: String) throws
+    func canEmbedAdditionalField(into address: String) -> Bool
+}
 
 class CommonDestinationViewModelValidator {
     private let walletAddresses: [String]
