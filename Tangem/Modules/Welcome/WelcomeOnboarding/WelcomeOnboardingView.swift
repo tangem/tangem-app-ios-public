@@ -28,7 +28,7 @@ struct WelcomeOnboardingView: View {
         case .tos(let viewModel):
             WelcomeOnboardingTOSView(viewModel: viewModel)
         case .pushNotifications(let viewModel):
-            OnboardingPushNotificationsView(viewModel: viewModel)
+            EmptyView() // TODO: Andrey Fedorov - Add actual implementation (IOS-7302)
         case .none:
             EmptyView()
         }
@@ -39,6 +39,7 @@ struct WelcomeOnboardingView: View {
     WelcomeOnboardingView(
         viewModel: WelcomeOnboardingViewModel(
             steps: [.tos, .pushNotifications],
+            pushNotificationsPermissionManager: PushNotificationsPermissionManagerStub(),
             coordinator: WelcomeOnboardingCoordinator()
         )
     )

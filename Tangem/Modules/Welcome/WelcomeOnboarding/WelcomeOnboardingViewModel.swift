@@ -22,14 +22,18 @@ final class WelcomeOnboardingViewModel: ObservableObject {
 
     private weak var coordinator: WelcomeOnboardingRoutable?
 
+    private let pushNotificationsPermissionManager: PushNotificationsPermissionManager
+
     private let steps: [WelcomeOnbordingStep]
     private var currentStepIndex = 0
 
     init(
         steps: [WelcomeOnbordingStep],
+        pushNotificationsPermissionManager: PushNotificationsPermissionManager,
         coordinator: WelcomeOnboardingRoutable
     ) {
         self.steps = steps
+        self.pushNotificationsPermissionManager = pushNotificationsPermissionManager
         self.coordinator = coordinator
         updateState()
     }
@@ -59,7 +63,13 @@ final class WelcomeOnboardingViewModel: ObservableObject {
         case .tos:
             return .tos(WelcomeOnboardingTOSViewModel(delegate: self))
         case .pushNotifications:
-            return .pushNotifications(OnboardingPushNotificationsViewModel(delegate: self))
+            // TODO: Andrey Fedorov - Add actual implementation (IOS-7302)
+//            let viewModel = PushNotificationsPermissionRequestViewModel(
+//                permissionManager: pushNotificationsPermissionManager,
+//                delegate: self
+//            )
+
+            return .pushNotifications(() /* viewModel */ )
         }
     }
 }
@@ -69,7 +79,7 @@ final class WelcomeOnboardingViewModel: ObservableObject {
 extension WelcomeOnboardingViewModel {
     enum ViewState: Equatable {
         case tos(WelcomeOnboardingTOSViewModel)
-        case pushNotifications(OnboardingPushNotificationsViewModel)
+        case pushNotifications(Void /* PushNotificationsPermissionRequestViewModel */ ) // TODO: Andrey Fedorov - Add actual implementation (IOS-7302)
 
         static func == (lhs: WelcomeOnboardingViewModel.ViewState, rhs: WelcomeOnboardingViewModel.ViewState) -> Bool {
             switch (lhs, rhs) {
@@ -79,14 +89,6 @@ extension WelcomeOnboardingViewModel {
                 return false
             }
         }
-    }
-}
-
-// MARK: - OnboardingPushNotificationsDelegate
-
-extension WelcomeOnboardingViewModel: OnboardingPushNotificationsDelegate {
-    func didFinishPushNotificationOnboarding() {
-        openNextStep()
     }
 }
 
