@@ -2,8 +2,6 @@
 //  View+AlertBinder.swift
 //  Tangem
 //
-//  Created by Andrew Son on 18/10/23.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

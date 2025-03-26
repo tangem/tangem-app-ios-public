@@ -2,7 +2,6 @@
 //  File.swift
 //
 //
-//  Created by Mitch Lang on 2/3/20.
 //
 
 #if !os(Linux)

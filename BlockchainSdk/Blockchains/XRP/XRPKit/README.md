@@ -322,7 +322,7 @@ class MyClass: XRPWebSocketDelegate {
 
 ## Author
 
-MitchLang009, mitch.s.lang@gmail.com
+MitchLang009, [REDACTED_EMAIL]
 
 ## License
 

@@ -2,8 +2,6 @@
 //  MarketsTokenHistoryChartMapper.swift
 //  Tangem
 //
-//  Created by Andrey Fedorov on 29.07.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

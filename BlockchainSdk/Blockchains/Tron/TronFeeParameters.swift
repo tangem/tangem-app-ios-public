@@ -2,7 +2,6 @@
 //  TronFeeParameters.swift
 //  BlockchainSdk
 //
-//  Created by Dmitry Fedorov on 11.09.2024.
 //
 
 import Foundation

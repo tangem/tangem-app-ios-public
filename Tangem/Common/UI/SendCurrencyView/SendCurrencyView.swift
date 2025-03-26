@@ -2,8 +2,6 @@
 //  SendCurrencyView.swift
 //  Tangem
 //
-//  Created by Sergey Balashov on 16.11.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

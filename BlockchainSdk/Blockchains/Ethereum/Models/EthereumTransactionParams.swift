@@ -2,7 +2,6 @@
 //  EthereumTransactionParams.swift
 //  BlockchainSdk
 //
-//  Created by Andrew Son on 12/04/21.
 //
 
 import Foundation

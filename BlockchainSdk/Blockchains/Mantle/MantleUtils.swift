@@ -2,8 +2,6 @@
 //  MantleUtils.swift
 //  BlockchainSdk
 //
-//  Created by Aleksei Muraveinik on 26.08.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import BigInt

@@ -2,8 +2,6 @@
 //  CasperConstants.swift
 //  BlockchainSdk
 //
-//  Created by Alexander Skibin on 04.11.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import TangemSdk

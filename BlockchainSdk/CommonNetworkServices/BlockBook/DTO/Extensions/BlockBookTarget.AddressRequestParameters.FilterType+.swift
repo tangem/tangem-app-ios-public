@@ -2,8 +2,6 @@
 //  BlockBookTarget.AddressRequestParameters.FilterType+.swift
 //  BlockchainSdk
 //
-//  Created by Andrey Fedorov on 28.02.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

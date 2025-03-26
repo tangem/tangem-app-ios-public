@@ -2,8 +2,6 @@
 //  UserWalletEncryptionKeyStorage.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 02.09.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation

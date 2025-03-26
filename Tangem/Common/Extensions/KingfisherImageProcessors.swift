@@ -2,8 +2,6 @@
 //  KingfisherImageProcessors.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 30.08.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Kingfisher

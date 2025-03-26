@@ -2,8 +2,6 @@
 //  JSONRPC.Request.swift
 //  BlockchainSdk
 //
-//  Created by Sergey Balashov on 05.04.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

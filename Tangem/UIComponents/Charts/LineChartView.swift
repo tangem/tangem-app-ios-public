@@ -2,7 +2,6 @@
 //  LineChartView.swift
 //  LineChartView
 //
-//  Created by skibinalexander on 16.07.2024.
 //
 
 import SwiftUI

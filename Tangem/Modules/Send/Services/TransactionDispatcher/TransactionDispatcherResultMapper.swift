@@ -2,8 +2,6 @@
 //  TransactionDispatcherResultMapper.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 06.08.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

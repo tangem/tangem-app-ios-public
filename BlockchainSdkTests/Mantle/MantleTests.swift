@@ -2,8 +2,6 @@
 //  MantleTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Aleksei Muraveinik on 16.07.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import XCTest

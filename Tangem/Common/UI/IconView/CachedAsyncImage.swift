@@ -1,5 +1,4 @@
 //
-//  Created by Lorenzo Fiamingo on 04/11/20.
 //
 // Source: https://github.com/lorenzofiamingo/swiftui-cached-async-image
 

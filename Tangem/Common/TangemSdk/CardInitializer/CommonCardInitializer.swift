@@ -2,8 +2,6 @@
 //  CommonCardInitializer.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 22.05.2023.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

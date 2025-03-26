@@ -2,8 +2,6 @@
 //  TronTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Andrey Chukavin on 27.04.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import XCTest

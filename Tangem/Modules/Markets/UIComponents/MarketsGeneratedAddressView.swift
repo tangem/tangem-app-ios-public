@@ -2,8 +2,6 @@
 //  MarketsGeneratedAddressView.swift
 //  Tangem
 //
-//  Created by skibinalexander on 08.07.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

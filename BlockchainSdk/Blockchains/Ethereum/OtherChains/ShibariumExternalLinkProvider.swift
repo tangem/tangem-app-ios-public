@@ -2,8 +2,6 @@
 //  ShibariumExternalLinkProvider.swift
 //  BlockchainSdk
 //
-//  Created by Dmitry Fedorov on 26.01.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,6 @@
 //  ThreadSafeContainer+ExpressibleByArrayLiteral.swift
 //  TangemFoundation
 //
-//  Created by Andrey Fedorov on 14.07.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation

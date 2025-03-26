@@ -2,8 +2,6 @@
 //  BitcoinTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Andrew Son on 02/03/21.
-//  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import XCTest

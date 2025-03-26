@@ -2,8 +2,6 @@
 //  CasperAddressUtils.swift
 //  BlockchainSdk
 //
-//  Created by skibinalexander on 22.10.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,6 @@
 //  Analytics.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 31.03.2020.
-//  Copyright © 2020 Smart Cash AG. All rights reserved.
 //
 
 import Foundation

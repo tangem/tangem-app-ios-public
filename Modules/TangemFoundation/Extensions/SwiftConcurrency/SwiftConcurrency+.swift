@@ -2,8 +2,6 @@
 //  SwiftConcurrency+.swift
 //  TangemFoundation
 //
-//  Created by m3g0byt3 on 25.10.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

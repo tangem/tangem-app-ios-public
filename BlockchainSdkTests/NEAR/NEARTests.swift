@@ -2,8 +2,6 @@
 //  NEARTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Andrey Fedorov on 28.10.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation
@@ -60,7 +58,7 @@ final class NEARTests: XCTestCase {
         XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "a..near"))
         XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "$$$"))
         XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "WAT"))
-        XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "me@google.com"))
+        XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "[REDACTED_EMAIL]"))
         XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "system"))
         XCTAssertFalse(NEARAddressUtil.isImplicitAccount(accountId: "abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz"))
     }
@@ -100,7 +98,7 @@ final class NEARTests: XCTestCase {
         XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "a..near"))
         XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "$$$"))
         XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "WAT"))
-        XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "me@google.com"))
+        XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "[REDACTED_EMAIL]"))
         XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "system"))
         XCTAssertFalse(NEARAddressUtil.isValidNamedAccount(accountId: "abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz"))
     }

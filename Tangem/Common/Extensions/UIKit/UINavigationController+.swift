@@ -2,8 +2,6 @@
 //  UINavigationController+.swift
 //  Tangem
 //
-//  Created by Andrey Fedorov on 24.09.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

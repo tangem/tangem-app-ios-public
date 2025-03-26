@@ -2,8 +2,6 @@
 //  SolanaEd25519Tests.swift
 //  BlockchainSdkTests
 //
-//  Created by Andrew Son on 19/10/22.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import XCTest

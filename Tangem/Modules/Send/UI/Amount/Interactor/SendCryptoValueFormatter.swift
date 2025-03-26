@@ -2,8 +2,6 @@
 //  SendCryptoValueFormatter.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 28.05.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

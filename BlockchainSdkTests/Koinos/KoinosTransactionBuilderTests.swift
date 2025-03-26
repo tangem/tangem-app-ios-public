@@ -2,8 +2,6 @@
 //  KoinosTransactionBuilderTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Aleksei Muraveinik on 21.05.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import TangemSdk

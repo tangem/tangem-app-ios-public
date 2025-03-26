@@ -2,8 +2,6 @@
 //  View+AdaptiveSizeSheetModifier.swift
 //  Tangem
 //
-//  Created by GuitarKitty on 13.09.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

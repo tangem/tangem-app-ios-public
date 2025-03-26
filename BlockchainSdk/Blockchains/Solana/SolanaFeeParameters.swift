@@ -2,8 +2,6 @@
 //  SolanaFeeParameters.swift
 //  BlockchainSdk
 //
-//  Created by Andrey Chukavin on 14.03.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

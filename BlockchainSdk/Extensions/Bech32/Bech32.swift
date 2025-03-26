@@ -1,8 +1,6 @@
 //
 //  Bech32.swift
 //
-//  Created by Evolution Group Ltd on 12.02.2018.
-//  Copyright © 2018 Evolution Group Ltd. All rights reserved.
 //
 //  Base32 address format for native v0-16 witness outputs implementation
 //  BECH32 - https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki

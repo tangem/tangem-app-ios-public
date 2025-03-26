@@ -2,7 +2,6 @@
 //  File.swift
 //
 //
-//  Created by Mitch Lang on 1/30/20.
 //
 
 import Foundation

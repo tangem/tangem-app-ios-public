@@ -2,8 +2,6 @@
 //  VisaAppUtilities.swift
 //  Tangem
 //
-//  Created by Andrew Son on 15/05/24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

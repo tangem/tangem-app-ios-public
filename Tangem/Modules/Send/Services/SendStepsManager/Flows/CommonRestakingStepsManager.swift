@@ -2,8 +2,6 @@
 //  CommonRestakingStepsManager 2.swift
 //  TangemApp
 //
-//  Created by Dmitry Fedorov on 30.09.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 import Combine
 import TangemStaking

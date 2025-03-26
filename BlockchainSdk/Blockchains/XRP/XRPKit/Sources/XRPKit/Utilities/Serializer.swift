@@ -2,7 +2,6 @@
 //  Serializer.swift
 //  XRPKit
 //
-//  Created by Mitch Lang on 5/6/19.
 //
 //  reference: https://github.com/ripple/xrpl-dev-portal/blob/master/content/_code-samples/tx-serialization/serialize.py
 //

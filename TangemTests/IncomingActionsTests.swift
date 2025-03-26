@@ -2,8 +2,6 @@
 //  IncomingActionsTests.swift
 //  TangemTests
 //
-//  Created by Alexander Osokin on 01.02.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation

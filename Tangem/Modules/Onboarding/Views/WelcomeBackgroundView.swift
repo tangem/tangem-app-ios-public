@@ -2,8 +2,6 @@
 //  WelcomeBackgroundView.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 06.10.2021.
-//  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

@@ -2,8 +2,6 @@
 //  StorageType.swift
 //  Tangem
 //
-//  Created by Andrew Son on 11/10/20.
-//  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,6 @@
 //  MoonbeamExternalLinkProvider.swift
 //  BlockchainSdk
 //
-//  Created by Dmitry Fedorov on 08.03.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

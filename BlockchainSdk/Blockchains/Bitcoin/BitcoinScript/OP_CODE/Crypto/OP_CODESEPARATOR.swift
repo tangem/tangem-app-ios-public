@@ -2,8 +2,6 @@
 //  OP_CODESEPARATOR.swift
 //  BitcoinKit
 //
-//  Created by Shun Usami on 2018/08/09.
-//  Copyright © 2018 BitcoinKit developers. All rights reserved.
 //
 
 import Foundation

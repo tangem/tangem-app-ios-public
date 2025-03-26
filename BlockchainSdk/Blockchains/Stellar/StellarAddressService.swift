@@ -2,8 +2,6 @@
 //  StellarAddressService.swift
 //  BlockchainSdk
 //
-//  Created by Alexander Osokin on 11.12.2019.
-//  Copyright © 2019 Tangem AG. All rights reserved.
 //
 
 import Foundation

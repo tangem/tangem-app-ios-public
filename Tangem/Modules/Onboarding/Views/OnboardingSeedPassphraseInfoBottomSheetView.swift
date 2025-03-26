@@ -2,8 +2,6 @@
 //  OnboardingSeedPassphraseInfoBottomSheetView.swift
 //  Tangem
 //
-//  Created by Andrew Son on 15/03/24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

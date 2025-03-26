@@ -2,8 +2,6 @@
 //  ProgressBar.swift
 //  Tangem
 //
-//  Created by Andrew Son on 13.09.2021.
-//  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

@@ -2,7 +2,6 @@
 //  ElectrumWebSocketProvider.swift
 //  BlockchainSdk
 //
-//  Created by Sergey Balashov on 11.03.2024.
 //
 
 import Foundation

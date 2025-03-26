@@ -2,8 +2,6 @@
 //  Log+.swift
 //  BlockchainSdk
 //
-//  Created by Andrey Fedorov on 21.11.2023.
-//  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import Foundation

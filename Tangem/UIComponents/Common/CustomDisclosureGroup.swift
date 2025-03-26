@@ -2,8 +2,6 @@
 //  CustomDisclosureGroup.swift
 //  Tangem
 //
-//  Created by skibinalexander on 28.08.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

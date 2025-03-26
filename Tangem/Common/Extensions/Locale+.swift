@@ -2,14 +2,11 @@
 //  Locale+.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 20.03.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation
 
 extension Locale {
-    // Copyright https://github.com/mattt
     // https://gist.github.com/mattt/6d022b66f08ea8c1b99ebe7e48b95c4b
     func localizedCurrencySymbol(forCurrencyCode currencyCode: String) -> String? {
         switch currencyCode {

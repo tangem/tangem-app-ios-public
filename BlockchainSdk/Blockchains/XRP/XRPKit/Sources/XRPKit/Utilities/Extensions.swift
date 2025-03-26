@@ -2,7 +2,6 @@
 //  Extensions.swift
 //  XRPKit
 //
-//  Created by Mitch Lang on 5/10/19.
 //
 
 import Foundation

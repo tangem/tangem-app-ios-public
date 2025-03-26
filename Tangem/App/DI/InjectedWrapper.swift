@@ -2,7 +2,6 @@
 //  InjectedWrapper.swift
 //  IdealApp
 //
-//  Created by Alexander Osokin on 25.04.2022.
 //
 
 import Foundation

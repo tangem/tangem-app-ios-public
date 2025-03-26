@@ -2,8 +2,6 @@
 //  TransactionFeeProvider.swift
 //  BlockchainSdk
 //
-//  Created by Sergey Balashov on 29.03.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

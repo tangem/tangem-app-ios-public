@@ -2,7 +2,6 @@
 //  IssuedAmount.swift
 //  XRPKit
 //
-//  Created by Mitch Lang on 5/9/19.
 //
 
 import Foundation

@@ -2,8 +2,6 @@
 //  OnboardingViewModel.swift
 //  Tangem
 //
-//  Created by Andrew Son on 15.09.2021.
-//  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

@@ -2,8 +2,6 @@
 //  OnboardingSeedPhraseGenerateViewModel.swift
 //  Tangem
 //
-//  Created by Andrew Son on 05/03/24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Combine

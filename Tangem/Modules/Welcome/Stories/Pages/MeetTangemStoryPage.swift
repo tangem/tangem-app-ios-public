@@ -2,8 +2,6 @@
 //  MeetTangemStoryPage.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 14.02.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

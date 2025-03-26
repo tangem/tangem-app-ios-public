@@ -2,8 +2,6 @@
 //  BlockBookResponses.swift
 //  BlockchainSdk
 //
-//  Created by Pavel Grechikhin on 20.11.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation

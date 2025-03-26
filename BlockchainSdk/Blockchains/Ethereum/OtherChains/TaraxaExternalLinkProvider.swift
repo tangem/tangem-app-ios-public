@@ -2,8 +2,6 @@
 //  TaraxaExternalLinkProvider.swift
 //  BlockchainSdk
 //
-//  Created by Aleksei Muraveinik on 03.04.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

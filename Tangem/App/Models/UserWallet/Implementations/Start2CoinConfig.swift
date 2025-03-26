@@ -2,8 +2,6 @@
 //  Start2CoinConfig.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 01.08.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation
@@ -27,7 +25,7 @@ struct Start2CoinConfig: CardContainer {
 extension Start2CoinConfig: UserWalletConfig {
     var emailConfig: EmailConfig? {
         .init(
-            recipient: "cardsupport@start2coin.com",
+            recipient: "[REDACTED_EMAIL]",
             subject: Localization.feedbackSubjectSupport
         )
     }

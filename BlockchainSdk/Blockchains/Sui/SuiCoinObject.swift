@@ -2,8 +2,6 @@
 // SuiCoinObject.swift
 // BlockchainSdk
 //
-// Created by Sergei Iakovlev on 17.09.2024
-// Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

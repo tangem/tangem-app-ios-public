@@ -1,7 +1,6 @@
 //
 //  XRPAmount.swift
 //
-//  Created by Mitch Lang on 5/23/19.
 //
 
 import Foundation

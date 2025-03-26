@@ -1,4 +1,3 @@
-// Copyright Keefer Taylor, 2019
 
 import Foundation
 import TangemSdk

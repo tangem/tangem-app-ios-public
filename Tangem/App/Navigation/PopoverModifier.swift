@@ -2,7 +2,6 @@
 //  PopoverModifier.swift
 //  Recipes
 //
-//  Created by Paul Kraft on 05.01.21.
 //
 
 import SwiftUI

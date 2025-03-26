@@ -2,8 +2,6 @@
 //  CosmosTransactionBuilder.swift
 //  BlockchainSdk
 //
-//  Created by Andrey Chukavin on 11.04.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation

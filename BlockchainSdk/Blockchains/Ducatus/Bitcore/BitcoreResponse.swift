@@ -2,8 +2,6 @@
 //  BitcoreResponse.swift
 //  TangemKit
 //
-//  Created by Alexander Osokin on 03.02.2020.
-//  Copyright © 2020 Smart Cash AG. All rights reserved.
 //
 
 import Foundation

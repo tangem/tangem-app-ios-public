@@ -2,8 +2,6 @@
 //  IconWithMessageView.swift
 //  Tangem
 //
-//  Created by Andrew Son on 07/11/22.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

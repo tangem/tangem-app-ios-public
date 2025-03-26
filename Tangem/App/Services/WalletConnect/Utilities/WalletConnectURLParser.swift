@@ -2,8 +2,6 @@
 //  WalletConnectURLParser.swift
 //  Tangem
 //
-//  Created by Alexander Osokin on 31.01.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import Foundation

@@ -2,8 +2,6 @@
 //  TwinsCreateWalletTask.swift
 //  Tangem
 //
-//  Created by Andrew Son on 21/11/20.
-//  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
 import Foundation

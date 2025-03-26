@@ -2,7 +2,6 @@
 //  StoriesProgressView.swift
 //  StoriesDemo
 //
-//  Created by Andrey Chukavin on 26.01.2022.
 //
 
 import SwiftUI

@@ -2,8 +2,6 @@
 //  AddressesTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Alexander Osokin on 29.12.2021.
-//  Copyright © 2021 Tangem AG. All rights reserved.
 //
 
 import Foundation
@@ -972,7 +970,7 @@ class AddressesTests: XCTestCase {
         XCTAssertFalse(addressService.validate("a..near"))
         XCTAssertFalse(addressService.validate("$$$"))
         XCTAssertFalse(addressService.validate("WAT"))
-        XCTAssertFalse(addressService.validate("me@google.com"))
+        XCTAssertFalse(addressService.validate("[REDACTED_EMAIL]"))
         XCTAssertFalse(addressService.validate("system"))
         XCTAssertFalse(addressService.validate("abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz.abcdefghijklmnopqrstuvwxyz"))
         XCTAssertFalse(addressService.validate(""))
@@ -1048,7 +1046,7 @@ class AddressesTests: XCTestCase {
         XCTAssertFalse(addressService.validate("0x11e1B586dd370471D0B52046EE3D4309a6c29C6"))
         XCTAssertFalse(addressService.validate("0xddde7ddd4111A54eFF5679CDE026913692e0B71cC"))
         XCTAssertFalse(addressService.validate("c8177346deb2bab5390f472c338351e15e05063a"))
-        XCTAssertFalse(addressService.validate("me@google.com"))
+        XCTAssertFalse(addressService.validate("[REDACTED_EMAIL]"))
         XCTAssertFalse(addressService.validate(""))
     }
 
@@ -1104,7 +1102,7 @@ class AddressesTests: XCTestCase {
         XCTAssertFalse(addressService.validate("44bc93A8d3cEfA5a6721723a2f8d2e4F7d480BA0"))
         XCTAssertFalse(addressService.validate("0xf3d468DBb386aaD46E92FF222adDdf872C8CC06"))
         XCTAssertFalse(addressService.validate("0x6ECa00c52AFC728CDbF42E817d712e175bb23C7d1"))
-        XCTAssertFalse(addressService.validate("me@google.com"))
+        XCTAssertFalse(addressService.validate("[REDACTED_EMAIL]"))
         XCTAssertFalse(addressService.validate(""))
     }
 
@@ -1138,8 +1136,8 @@ class AddressesTests: XCTestCase {
         XCTAssertTrue(addressService.validate("0x8d2d7bcde13b2513617df3f98cdd5d0e4b9f714c6308b9204fe18ad900d92609"))
 
         XCTAssertFalse(addressService.validate("0x7d7e436f0askdjaksldb2aafde60774efb26cccll432cf881b677aca7faaf2a01879bd19fb8"))
-        XCTAssertFalse(addressService.validate("me@0x1.com"))
-        XCTAssertFalse(addressService.validate("me@google.com"))
+        XCTAssertFalse(addressService.validate("[REDACTED_EMAIL]"))
+        XCTAssertFalse(addressService.validate("[REDACTED_EMAIL]"))
         XCTAssertFalse(addressService.validate("x7d7e436f0askdjaksldb2aafde60774efb26cccll432cf881b677aca7faaf2a01879bd19fb8"))
         XCTAssertFalse(addressService.validate(""))
     }

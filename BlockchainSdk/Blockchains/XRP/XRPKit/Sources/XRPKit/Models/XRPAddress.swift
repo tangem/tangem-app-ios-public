@@ -2,7 +2,6 @@
 //  XRPAddress.swift
 //  AnyCodable
 //
-//  Created by Mitch Lang on 2/15/20.
 //
 
 import Foundation

@@ -2,8 +2,6 @@
 //  MarketsTokenDetailsExchangesListView+Skeletons.swift
 //  Tangem
 //
-//  Created by Andrew Son on 03.10.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

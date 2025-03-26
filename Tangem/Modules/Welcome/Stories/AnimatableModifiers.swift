@@ -2,8 +2,6 @@
 //  AnimatableModifiers.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 05.03.2022.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

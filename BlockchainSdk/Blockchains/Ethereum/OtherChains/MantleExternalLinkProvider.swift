@@ -2,8 +2,6 @@
 //  MantleExternalLinkProvider.swift
 //  BlockchainSdk
 //
-//  Created by Aleksei Muraveinik on 25.03.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

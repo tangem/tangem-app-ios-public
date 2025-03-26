@@ -2,7 +2,6 @@
 //  AnyEncodable.swift
 //  BlockchainSdk
 //
-//  Created by Sergey Balashov on 08.04.2024.
 //
 
 import Foundation

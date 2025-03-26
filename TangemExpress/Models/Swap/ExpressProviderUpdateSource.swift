@@ -2,8 +2,6 @@
 //  ExpressProviderUpdateSource.swift
 //  TangemExpress
 //
-//  Created by GuitarKitty on 11.10.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 public enum ExpressProviderUpdateSource {

@@ -2,8 +2,6 @@
 //  WalletConnectAction.swift
 //  Tangem
 //
-//  Created by Andrew Son on 19/12/22.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation

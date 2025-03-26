@@ -2,8 +2,6 @@
 //  MarketsListOrderBottonSheetView.swift
 //  Tangem
 //
-//  Created by skibinalexander on 03.06.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import SwiftUI

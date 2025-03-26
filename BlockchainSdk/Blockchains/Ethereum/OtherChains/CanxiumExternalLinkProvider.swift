@@ -2,8 +2,6 @@
 //  CanxiumExternalLinkProvider.swift
 //  TangemApp
 //
-//  Created by Alexander Osokin on 02.11.2024.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 struct CanxiumExternalLinkProvider: ExternalLinkProvider {

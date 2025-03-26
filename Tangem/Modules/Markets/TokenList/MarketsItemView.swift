@@ -2,8 +2,6 @@
 //  MarketsItemView.swift
 //  Tangem
 //
-//  Created by Andrey Chukavin on 31.07.2023.
-//  Copyright © 2022 Tangem AG. All rights reserved.
 //
 
 import Foundation

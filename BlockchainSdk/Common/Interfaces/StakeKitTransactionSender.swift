@@ -2,7 +2,6 @@
 //  StakeKitTransactionSender.swift
 //  BlockchainSdk
 //
-//  Created by Sergey Balashov on 02.09.2024.
 //
 
 import Foundation

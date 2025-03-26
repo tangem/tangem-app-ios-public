@@ -2,8 +2,6 @@
 //  WalletCoreSignerTesterUtility.swift
 //  BlockchainSdkTests
 //
-//  Created by skibinalexander on 21.03.2023.
-//  Copyright © 2023 Tangem AG. All rights reserved.
 //
 
 import XCTest

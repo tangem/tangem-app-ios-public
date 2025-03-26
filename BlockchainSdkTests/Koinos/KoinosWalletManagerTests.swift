@@ -2,8 +2,6 @@
 //  KoinosWalletManagerTests.swift
 //  BlockchainSdkTests
 //
-//  Created by Aleksei Muraveinik on 04.06.24.
-//  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
 import Foundation

@@ -2,7 +2,6 @@
 //  UTXOTransactionHistoryMapper.swift
 //  BlockchainSdk
 //
-//  Created by Sergey Balashov on 16.08.2023.
 //
 
 import Foundation

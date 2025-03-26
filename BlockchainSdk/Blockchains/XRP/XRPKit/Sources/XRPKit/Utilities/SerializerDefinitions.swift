@@ -2,7 +2,6 @@
 //  SerializerDefinitions.swift
 //  XRPKit
 //
-//  Created by Mitch Lang on 5/11/19.
 //
 
 import Foundation
